@@ -34,8 +34,8 @@ typedef void (^SIDogmaPerformerBlock)(SIInternalSession * internalSession, SIInt
   SIInternalSessionTask * internalSessionTask = nil;
 
   #warning fetching from map
-  if(theTask) internalSessionTask = [internalSession.mapTasks objectForKey:theTask];
-//  internalSessionTask = theTask.SI_internalSessionTask;
+//  if(theTask) internalSessionTask = [internalSession.mapTasks objectForKey:theTask];
+    internalSessionTask = theTask.SI_internalSessionTask;
   
   if(theSharedBeforeBlock)theSharedBeforeBlock(internalSession,internalSessionTask, NO);
   BOOL shouldStopHere = NO;
