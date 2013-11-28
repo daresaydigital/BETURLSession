@@ -155,7 +155,7 @@
   [tasks enumerateObjectsUsingBlock:^(SIInternalSession *obj, NSUInteger idx, BOOL *stop) {
     
     [obj.mapTasks.dictionaryRepresentation enumerateKeysAndObjectsUsingBlock:^(NSURLSessionTask *keyTask, SIInternalSessionTask *objTask, BOOL *stopTask) {
-      if(keyTask.taskIdentifier == theURLSessionTask.taskIdentifier) {
+      if([keyTask isEqual:theURLSessionTask]) {
         foundTask = objTask;
         *stopTask = YES;
         *stop = YES;
