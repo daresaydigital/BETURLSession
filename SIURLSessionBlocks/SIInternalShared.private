@@ -1,0 +1,120 @@
+
+@interface NSURLSessionConfiguration (Private)
+@property(readonly) SIInternalSessionConfiguration * SI_internalSessionConfiguration;
+-(void)SI_setRequestSerializer:(SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing> *)SI_serializerForRequest;
+-(void)SI_setResponseSerializer:(SIURLSessionResponseSerializerAbstract<SIURLSessionResponseSerializing> *)SI_serializerForResponse;
+-(void)SI_init;
+@end
+
+
+@interface NSURLSession (Private)
+@property(readonly) SIInternalSession * SI_internalSession;
+@end
+
+@interface NSURLSessionTask (Private)
+@property(readonly) SIInternalSessionTask * SI_internalSessionTask;
+@end
+
+
+@protocol SIPerforming <NSObject>
+-(void)SI_performSelector:(SEL)theSelector withObject:(id)theObject;
+-(id)SI_performSelector:(SEL)theSelector;
+@end
+
+@interface SIInternalSessionConfiguration ()
+<SIPerforming>
+
+@property(copy,setter = SI_setUserAgent:)            NSString      * SI_userAgent;
+@property(copy,setter=SI_setAcceptLanguage:)         NSString      * SI_acceptLanguage;
+@property(strong,setter = SI_setRequestSerializer:)  SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing> *    SI_serializerForRequest;
+@property(strong,setter = SI_setResponseSerializer:) SIURLSessionResponseSerializerAbstract<SIURLSessionResponseSerializing> *   SI_serializerForResponse;
+
+
+@end
+
+@interface SIInternalSession ()
+<SIPerforming>
+
+@property(nonatomic,strong,setter = SI_setDelegate:) id<NSURLSessionDataDelegate, NSURLSessionDownloadDelegate> SI_delegate;
+
+@property(nonatomic,strong, setter = SI_setBaseUrl:)    NSURL                  * SI_baseURL;
+@property(nonatomic,copy,setter = SI_setSessionName:)   NSString               * SI_sessionName;
+
+@property(assign,getter = SI_isAutoResume,setter = SI_setAutoResume:) BOOL SI_autoResume;
+
+@property(nonatomic,copy,setter = SI_setTaskWillBeginRequestBlock:) SIURLSessionTaskLifeCycleRequestBlock SI_taskWillBeginRequestBlock;
+@property(nonatomic,copy,setter = SI_setTaskDidBeginRequestBlock:) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidBeginRequestBlock;
+@property(nonatomic,copy,setter = SI_setTaskDidRequestBlock:) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidRequestBlock;
+@property(nonatomic,copy,setter = SI_setTaskWillEndRequestBlock:) SIURLSessionTaskLifeCycleRequestBlock SI_taskWillEndRequestBlock;
+@property(nonatomic,copy,setter = SI_setTaskDidEndRequestBlock:) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidEndRequestBlock;
+
+#pragma mark - Privates
+-(void)buildInternalSessionTaskWithURLSessionTask:(NSURLSessionTask *)theURLSessionTask;
+@property(nonatomic,strong) NSMapTable            * mapTasks;
+@property(nonatomic,weak)   NSURLSession          * URLSession;
+
+@end
+
+
+@interface SIInternalSessionTask ()
+<SIPerforming>
+@property(nonatomic,strong) SIInternalSession * internalSession;
+@property(nonatomic,strong,setter = SI_setParseResponseError:) NSError * SI_parseResponseError;
+@property(nonatomic,strong,setter = SI_setParseRequestError:) NSError * SI_parseRequestError;
+@property(nonatomic,copy,setter = SI_setError:) NSError * SI_error;
+@property(nonatomic,strong,setter = SI_setData:) NSData * SI_data;
+@property(nonatomic,copy,setter = SI_setDownloadLocation:) NSURL * SI_downloadLocation;
+@property(nonatomic,strong,setter = SI_setParsedObject:) id SI_parsedObject;
+
+
+
+@property(nonatomic,copy,setter = SI_setRequestDataCompleteBlock:) SIURLSessionTaskRequestDataCompleteBlock SI_requestDataCompleteBlock;
+@property(nonatomic,copy,setter = SI_setRequestCompleteBlock:) SIURLSessionTaskRequestCompleteBlock SI_requestCompleteBlock;
+@property(nonatomic,copy,setter = SI_setUploadProgressBlock:) SIURLSessionTaskProgressBlock SI_uploadProgressBlock;
+@property(nonatomic,copy,setter = SI_setDownloadProgressBlock:) SIURLSessionTaskProgressBlock SI_downloadProgressBlock;
+
+#pragma mark - <NSURLSessionTaskDelegate>
+@property(nonatomic,copy,setter = SI_setTaskWillPerformHTTPRedirectionBlock:) SIURLSessionTaskRedirectBlock SI_taskWillPerformHTTPRedirectionBlock;
+@property(nonatomic,copy,setter = SI_setTaskDidReceiveChallenge:) SIURLSessionTaskDidRecieveChallengeBlock SI_taskDidReceiveChallenge;
+@property(nonatomic,copy,setter = SI_setTaskNeedNewBodyStreamBlock:) SIURLSessionTaskNeedNewBodyStreamBlock SI_taskNeedNewBodyStreamBlock;
+@property(nonatomic,copy,setter = SI_setTaskDidCompleteWithErrorBlock:) SIURLSessionTaskDidCompleteWithErrorBlock SI_taskDidCompleteWithErrorBlock;
+
+
+
+#pragma mark - <NSURLSessionDataDelegate>
+@property(nonatomic,copy,setter = SI_setTaskDidReceiveResponseBlock:) SIURLSessionTaskDidReceiveResponseBlock SI_taskDidReceiveResponseBlock;
+@property(nonatomic,copy,setter = SI_setTaskBecomeDownloadTaskBlock:) SIURLSessionTaskDidBecomeDownloadTaskBlock SI_taskBecomeDownloadTaskBlock;
+
+@property(nonatomic,copy,setter = SI_setTaskDidReceiveDataBlock:) SIURLSessionTaskDidReceiveDataBlock SI_taskDidReceiveDataBlock;
+@property(nonatomic,copy,setter = SI_setTaskWillCacheResponseBlock:) SIURLSessionTaskWillCacheResponseBlock SI_taskWillCacheResponseBlock;
+
+#pragma mark - <NSURLSessionDownloadDelegate>
+@property(nonatomic,copy,setter = SI_setTaskDidFinishDownloadingToURLBlock:) SIURLSessionTaskDidFinishDownloadingToURLBlock SI_taskDidFinishDownloadingToURLBlock;
+
+@property(nonatomic,copy,setter = SI_setTaskDidResumeAtOffsetBlock:) SIURLSessionTaskDidResumeAtOffsetBlock SI_taskDidResumeAtOffsetBlock;
+
+
+
+
+@end
+
+
+@interface SIInternalManager ()
+@property(nonatomic,strong) NSMapTable * mapSessions;
+@property(nonatomic,strong) NSMapTable * mapConfigurations;
+
++(instancetype)sharedManager;
++(NSURLSession *)sessionWithName:(NSString *)theSessionName;
++(void)addURLSession:(NSURLSession *)theURLSession
+     withSessionName:(NSString *)theSessionName
+          andBaseURL:(NSURL *)theBaseURL;
+
++(void)createInternalSessionConfigurationForURLSessionConfiguration:(NSURLSessionConfiguration *)theURLSessionConfiguration;
+
++(SIInternalSessionConfiguration *)internalSessionConfigurationForURLSessionConfiguration:(NSURLSessionConfiguration *)theURLSessionConfiguration;
+
++(SIInternalSession *)internalSessionForURLSession:(NSURLSession *)theURLSession;
++(SIInternalSessionTask *)internalSessionTaskForURLSessionTask:(NSURLSessionTask *)theURLSessionTask;
+
+
+@end

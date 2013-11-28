@@ -1,0 +1,5 @@
+#include "Pods-SHWebViewBlocks.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/SHWebViewBlocks" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/SHURLSessionBlocks" "${PODS_ROOT}/Headers/SHWebViewBlocks"
+OTHER_LDFLAGS = -ObjC
+PODS_ROOT = ${SRCROOT}

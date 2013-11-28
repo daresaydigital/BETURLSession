@@ -1,0 +1,526 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1898FDD598324C47A0462C28 /* NSURLSession+SIURLSessionBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 8090C2B418564FA686DEDEB9 /* NSURLSession+SIURLSessionBlocks.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		281BEC035A5742898B88DEB1 /* SIInternalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBBBCEE0151440C826C2625 /* SIInternalManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		51ACCA6126B14E78827E00EA /* NSURLSessionTask+SIURLSessionBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = F92B42D7ACA64EB39145804E /* NSURLSessionTask+SIURLSessionBlocks.h */; };
+		55A5A9BD032744DF9DEE1C0E /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 881B446071E44FEA9A1FA02B /* Pods-dummy.m */; };
+		56B6E4E4D66940FD9276F35B /* SIURLSessionTaskSharedBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 28B4AF04C2BB4E60B6C9F59B /* SIURLSessionTaskSharedBlocks.h */; };
+		685E9B54363C49FB82815D3B /* SIURLSessionBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A6BB74B6F94D2DB1EC1ADA /* SIURLSessionBlocks.h */; };
+		68D53CCF09BE4F4591867E65 /* libPods-SIURLSessionBlocks.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A8BFF9FA6144C62A35D1542 /* libPods-SIURLSessionBlocks.a */; };
+		6F151CC3B36B43E7B48FB81E /* SIInternalManager+Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A18522504B5742FDAE1B1109 /* SIInternalManager+Delegate.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		822A8B1CD246403FB993D159 /* NSURLSessionTask+SIURLSessionBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 694D8E410FC4477DA3095848 /* NSURLSessionTask+SIURLSessionBlocks.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		82F92D95F4B74A08A00C9504 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75DC35A391734068A82E8772 /* Foundation.framework */; };
+		8CA5978F3EF34F1EB09B76DF /* Pods-SIURLSessionBlocks-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D6524825F8A4597BD38EB6E /* Pods-SIURLSessionBlocks-dummy.m */; };
+		B99514697B734E778D11586C /* SIInternalManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 079D066B87C548579393B237 /* SIInternalManager.h */; };
+		B9DFB5B9D4144397AD985308 /* SIInternalManager+Delegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F569364110F40E4A2E8F8B2 /* SIInternalManager+Delegate.h */; };
+		B9F2A11D3F1049F4AA43DED9 /* NSURLSession+SIURLSessionBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = DC29D407DD494873A9B1C525 /* NSURLSession+SIURLSessionBlocks.h */; };
+		D4C130B3753243ACAAB355C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75DC35A391734068A82E8772 /* Foundation.framework */; };
+		DFA64972830C477EBFB0E229 /* NSURLSessionConfiguration+SIURLSessionBlocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 94E4E1B56A5F4B3695AA5345 /* NSURLSessionConfiguration+SIURLSessionBlocks.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		E0547FC17DF64E8B8D6ED3D1 /* NSURLSessionConfiguration+SIURLSessionBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 0C4579E4A7C349D8BE7F91DB /* NSURLSessionConfiguration+SIURLSessionBlocks.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9AF2F6B3C4E44A1F874CEB78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1D36DB3D9684D83B8DA0566 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA74B4C8360A4F43AA006BD8;
+			remoteInfo = "Pods-SIURLSessionBlocks";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		079D066B87C548579393B237 /* SIInternalManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SIInternalManager.h; path = SIURLSessionBlocks/SIInternalManager.h; sourceTree = "<group>"; };
+		0C4579E4A7C349D8BE7F91DB /* NSURLSessionConfiguration+SIURLSessionBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSURLSessionConfiguration+SIURLSessionBlocks.h"; path = "SIURLSessionBlocks/NSURLSessionConfiguration+SIURLSessionBlocks.h"; sourceTree = "<group>"; };
+		12B1E3DA5C204D6696C2806A /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		28701C23940741209896F26F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		28B4AF04C2BB4E60B6C9F59B /* SIURLSessionTaskSharedBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SIURLSessionTaskSharedBlocks.h; path = SIURLSessionBlocks/SIURLSessionTaskSharedBlocks.h; sourceTree = "<group>"; };
+		2F5A04F9CFAB4899A3724218 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = "<group>"; };
+		3A8BFF9FA6144C62A35D1542 /* libPods-SIURLSessionBlocks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SIURLSessionBlocks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D6524825F8A4597BD38EB6E /* Pods-SIURLSessionBlocks-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SIURLSessionBlocks-dummy.m"; sourceTree = "<group>"; };
+		67EBFACAB27A467DAA78338B /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		694D8E410FC4477DA3095848 /* NSURLSessionTask+SIURLSessionBlocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURLSessionTask+SIURLSessionBlocks.m"; path = "SIURLSessionBlocks/NSURLSessionTask+SIURLSessionBlocks.m"; sourceTree = "<group>"; };
+		75DC35A391734068A82E8772 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7E8CB57E924D4076B9FC1C57 /* Pods-SIURLSessionBlocks.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SIURLSessionBlocks.xcconfig"; sourceTree = "<group>"; };
+		8090C2B418564FA686DEDEB9 /* NSURLSession+SIURLSessionBlocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURLSession+SIURLSessionBlocks.m"; path = "SIURLSessionBlocks/NSURLSession+SIURLSessionBlocks.m"; sourceTree = "<group>"; };
+		881B446071E44FEA9A1FA02B /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		90A6BB74B6F94D2DB1EC1ADA /* SIURLSessionBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SIURLSessionBlocks.h; path = SIURLSessionBlocks/SIURLSessionBlocks.h; sourceTree = "<group>"; };
+		9298873E73D747C085EDFFB5 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
+		94E4E1B56A5F4B3695AA5345 /* NSURLSessionConfiguration+SIURLSessionBlocks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURLSessionConfiguration+SIURLSessionBlocks.m"; path = "SIURLSessionBlocks/NSURLSessionConfiguration+SIURLSessionBlocks.m"; sourceTree = "<group>"; };
+		9CE45E6A327443D8B59AA78F /* SIInternalShared.private */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SIInternalShared.private; path = SIURLSessionBlocks/SIInternalShared.private; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		9F569364110F40E4A2E8F8B2 /* SIInternalManager+Delegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SIInternalManager+Delegate.h"; path = "SIURLSessionBlocks/SIInternalManager+Delegate.h"; sourceTree = "<group>"; };
+		A18522504B5742FDAE1B1109 /* SIInternalManager+Delegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SIInternalManager+Delegate.m"; path = "SIURLSessionBlocks/SIInternalManager+Delegate.m"; sourceTree = "<group>"; };
+		C4A896FDFF9B4476966D4782 /* Pods-SIURLSessionBlocks-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SIURLSessionBlocks-Private.xcconfig"; sourceTree = "<group>"; };
+		CEBBBCEE0151440C826C2625 /* SIInternalManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SIInternalManager.m; path = SIURLSessionBlocks/SIInternalManager.m; sourceTree = "<group>"; };
+		DC29D407DD494873A9B1C525 /* NSURLSession+SIURLSessionBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSURLSession+SIURLSessionBlocks.h"; path = "SIURLSessionBlocks/NSURLSession+SIURLSessionBlocks.h"; sourceTree = "<group>"; };
+		E1DCAB2C957C4CCE8FC9379A /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F720AD72A3FA4E7FBD4624BB /* Pods-SIURLSessionBlocks-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SIURLSessionBlocks-prefix.pch"; sourceTree = "<group>"; };
+		F92B42D7ACA64EB39145804E /* NSURLSessionTask+SIURLSessionBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSURLSessionTask+SIURLSessionBlocks.h"; path = "SIURLSessionBlocks/NSURLSessionTask+SIURLSessionBlocks.h"; sourceTree = "<group>"; };
+		FB018C5D4B504ACEAAC70A15 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7D9C50C756FA4C1BB62635CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4C130B3753243ACAAB355C5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A207C18F44C941E2B00BE623 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82F92D95F4B74A08A00C9504 /* Foundation.framework in Frameworks */,
+				68D53CCF09BE4F4591867E65 /* libPods-SIURLSessionBlocks.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C9398D4807241A49319E39C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				28701C23940741209896F26F /* libPods.a */,
+				3A8BFF9FA6144C62A35D1542 /* libPods-SIURLSessionBlocks.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		30E614065CEF4C4E95639146 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E83039EC693455698947CA8 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		424BC8767DA04A8F83C30F88 = {
+			isa = PBXGroup;
+			children = (
+				12B1E3DA5C204D6696C2806A /* Podfile */,
+				71447DA28D7A40B9889FFACB /* Development Pods */,
+				30E614065CEF4C4E95639146 /* Frameworks */,
+				1C9398D4807241A49319E39C /* Products */,
+				C4903D87EC23456A9078D7A9 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		4B759CCEB15E420F8E839AF7 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7E8CB57E924D4076B9FC1C57 /* Pods-SIURLSessionBlocks.xcconfig */,
+				C4A896FDFF9B4476966D4782 /* Pods-SIURLSessionBlocks-Private.xcconfig */,
+				4D6524825F8A4597BD38EB6E /* Pods-SIURLSessionBlocks-dummy.m */,
+				F720AD72A3FA4E7FBD4624BB /* Pods-SIURLSessionBlocks-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		6E83039EC693455698947CA8 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				75DC35A391734068A82E8772 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		71447DA28D7A40B9889FFACB /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C341D94510784DF4ABFE0B33 /* SIURLSessionBlocks */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		B4EDB3C2F043403E98B08295 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2F5A04F9CFAB4899A3724218 /* Pods.xcconfig */,
+				E1DCAB2C957C4CCE8FC9379A /* Pods-acknowledgements.markdown */,
+				67EBFACAB27A467DAA78338B /* Pods-acknowledgements.plist */,
+				881B446071E44FEA9A1FA02B /* Pods-dummy.m */,
+				9298873E73D747C085EDFFB5 /* Pods-environment.h */,
+				FB018C5D4B504ACEAAC70A15 /* Pods-resources.sh */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C341D94510784DF4ABFE0B33 /* SIURLSessionBlocks */ = {
+			isa = PBXGroup;
+			children = (
+				0C4579E4A7C349D8BE7F91DB /* NSURLSessionConfiguration+SIURLSessionBlocks.h */,
+				94E4E1B56A5F4B3695AA5345 /* NSURLSessionConfiguration+SIURLSessionBlocks.m */,
+				DC29D407DD494873A9B1C525 /* NSURLSession+SIURLSessionBlocks.h */,
+				8090C2B418564FA686DEDEB9 /* NSURLSession+SIURLSessionBlocks.m */,
+				F92B42D7ACA64EB39145804E /* NSURLSessionTask+SIURLSessionBlocks.h */,
+				694D8E410FC4477DA3095848 /* NSURLSessionTask+SIURLSessionBlocks.m */,
+				079D066B87C548579393B237 /* SIInternalManager.h */,
+				CEBBBCEE0151440C826C2625 /* SIInternalManager.m */,
+				9F569364110F40E4A2E8F8B2 /* SIInternalManager+Delegate.h */,
+				A18522504B5742FDAE1B1109 /* SIInternalManager+Delegate.m */,
+				90A6BB74B6F94D2DB1EC1ADA /* SIURLSessionBlocks.h */,
+				28B4AF04C2BB4E60B6C9F59B /* SIURLSessionTaskSharedBlocks.h */,
+				D17A89F34E4F4852AC9D542C /* Resources */,
+				4B759CCEB15E420F8E839AF7 /* Support Files */,
+			);
+			name = SIURLSessionBlocks;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		C4903D87EC23456A9078D7A9 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B4EDB3C2F043403E98B08295 /* Pods */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		D17A89F34E4F4852AC9D542C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9CE45E6A327443D8B59AA78F /* SIInternalShared.private */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B2C7527BEB094F8180AE1897 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9F2A11D3F1049F4AA43DED9 /* NSURLSession+SIURLSessionBlocks.h in Headers */,
+				E0547FC17DF64E8B8D6ED3D1 /* NSURLSessionConfiguration+SIURLSessionBlocks.h in Headers */,
+				51ACCA6126B14E78827E00EA /* NSURLSessionTask+SIURLSessionBlocks.h in Headers */,
+				B9DFB5B9D4144397AD985308 /* SIInternalManager+Delegate.h in Headers */,
+				B99514697B734E778D11586C /* SIInternalManager.h in Headers */,
+				685E9B54363C49FB82815D3B /* SIURLSessionBlocks.h in Headers */,
+				56B6E4E4D66940FD9276F35B /* SIURLSessionTaskSharedBlocks.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B12DBF1D901B4A368CD56520 /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2CB8CFDF96D4DF1816715D1 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				36980CB7B8624BF18E1C92A2 /* Sources */,
+				A207C18F44C941E2B00BE623 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A24517AAD1334E959688869E /* PBXTargetDependency */,
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = 28701C23940741209896F26F /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		FA74B4C8360A4F43AA006BD8 /* Pods-SIURLSessionBlocks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A625C413FDE942B09AE38747 /* Build configuration list for PBXNativeTarget "Pods-SIURLSessionBlocks" */;
+			buildPhases = (
+				D1A6C623A2FE42A59F93842C /* Sources */,
+				7D9C50C756FA4C1BB62635CA /* Frameworks */,
+				B2C7527BEB094F8180AE1897 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-SIURLSessionBlocks";
+			productName = "Pods-SIURLSessionBlocks";
+			productReference = 3A8BFF9FA6144C62A35D1542 /* libPods-SIURLSessionBlocks.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E1D36DB3D9684D83B8DA0566 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+			};
+			buildConfigurationList = 53A05E70CF8848C582EBF9F8 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 424BC8767DA04A8F83C30F88;
+			productRefGroup = 1C9398D4807241A49319E39C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B12DBF1D901B4A368CD56520 /* Pods */,
+				FA74B4C8360A4F43AA006BD8 /* Pods-SIURLSessionBlocks */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		36980CB7B8624BF18E1C92A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55A5A9BD032744DF9DEE1C0E /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D1A6C623A2FE42A59F93842C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1898FDD598324C47A0462C28 /* NSURLSession+SIURLSessionBlocks.m in Sources */,
+				DFA64972830C477EBFB0E229 /* NSURLSessionConfiguration+SIURLSessionBlocks.m in Sources */,
+				822A8B1CD246403FB993D159 /* NSURLSessionTask+SIURLSessionBlocks.m in Sources */,
+				8CA5978F3EF34F1EB09B76DF /* Pods-SIURLSessionBlocks-dummy.m in Sources */,
+				6F151CC3B36B43E7B48FB81E /* SIInternalManager+Delegate.m in Sources */,
+				281BEC035A5742898B88DEB1 /* SIInternalManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A24517AAD1334E959688869E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA74B4C8360A4F43AA006BD8 /* Pods-SIURLSessionBlocks */;
+			targetProxy = 9AF2F6B3C4E44A1F874CEB78 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3F3D78D2F217403E96FDB23B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F5A04F9CFAB4899A3724218 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5BE3154418F44F2085F6CC1A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4A896FDFF9B4476966D4782 /* Pods-SIURLSessionBlocks-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-SIURLSessionBlocks-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		9A1EC250FDAE45388F8274F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		D62A80542329432FB40BB42B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F5A04F9CFAB4899A3724218 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E46F9C37E28247AC8644AB1D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F23B2C797FD849B3922F71FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4A896FDFF9B4476966D4782 /* Pods-SIURLSessionBlocks-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-SIURLSessionBlocks-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		53A05E70CF8848C582EBF9F8 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A1EC250FDAE45388F8274F3 /* Debug */,
+				E46F9C37E28247AC8644AB1D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A625C413FDE942B09AE38747 /* Build configuration list for PBXNativeTarget "Pods-SIURLSessionBlocks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5BE3154418F44F2085F6CC1A /* Debug */,
+				F23B2C797FD849B3922F71FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2CB8CFDF96D4DF1816715D1 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F3D78D2F217403E96FDB23B /* Debug */,
+				D62A80542329432FB40BB42B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E1D36DB3D9684D83B8DA0566 /* Project object */;
+}
