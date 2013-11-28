@@ -11,10 +11,7 @@
 @protocol SIURLSessionRequestSerializing;
 @protocol SIURLSessionResponseSerializing;
 
-@interface NSURLSessionConfiguration (SIURLSessionBlocks)
-@property(copy,setter=SI_setUserAgent:)         NSString      * SI_userAgent;
-@property(copy,setter=SI_setAcceptLanguage:)    NSString      * SI_acceptLanguage;
-
+@interface NSURLSession (SIURLSessionBlocksSerializers)
 
 @property(readonly)  SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing>    * SI_serializerForRequest;
 @property(readonly)  SIURLSessionResponseSerializerAbstract<SIURLSessionResponseSerializing>  * SI_serializerForResponse;

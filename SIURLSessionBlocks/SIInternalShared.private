@@ -1,14 +1,10 @@
 
-@interface NSURLSessionConfiguration (Private)
-@property(readonly) SIInternalSessionConfiguration * SI_internalSessionConfiguration;
--(void)SI_setRequestSerializer:(SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing> *)SI_serializerForRequest;
--(void)SI_setResponseSerializer:(SIURLSessionResponseSerializerAbstract<SIURLSessionResponseSerializing> *)SI_serializerForResponse;
--(void)SI_init;
-@end
 
 
 @interface NSURLSession (Private)
 @property(readonly) SIInternalSession * SI_internalSession;
+@property(strong,setter = SI_setRequestSerializer:)  SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing> *    SI_serializerForRequest;
+@property(strong,setter = SI_setResponseSerializer:) SIURLSessionResponseSerializerAbstract<SIURLSessionResponseSerializing> *   SI_serializerForResponse;
 @end
 
 @interface NSURLSessionTask (Private)
@@ -21,19 +17,13 @@
 -(id)SI_performSelector:(SEL)theSelector;
 @end
 
-@interface SIInternalSessionConfiguration ()
-<SIPerforming>
-
-@property(copy,setter = SI_setUserAgent:)            NSString      * SI_userAgent;
-@property(copy,setter=SI_setAcceptLanguage:)         NSString      * SI_acceptLanguage;
-@property(strong,setter = SI_setRequestSerializer:)  SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing> *    SI_serializerForRequest;
-@property(strong,setter = SI_setResponseSerializer:) SIURLSessionResponseSerializerAbstract<SIURLSessionResponseSerializing> *   SI_serializerForResponse;
-
-
-@end
 
 @interface SIInternalSession ()
 <SIPerforming>
+
+@property(strong,setter = SI_setRequestSerializer:)  SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing> *    SI_serializerForRequest;
+@property(strong,setter = SI_setResponseSerializer:) SIURLSessionResponseSerializerAbstract<SIURLSessionResponseSerializing> *   SI_serializerForResponse;
+
 
 @property(nonatomic,strong,setter = SI_setDelegate:) id<NSURLSessionDataDelegate, NSURLSessionDownloadDelegate> SI_delegate;
 
@@ -109,9 +99,6 @@
      withSessionName:(NSString *)theSessionName
           andBaseURL:(NSURL *)theBaseURL;
 
-+(void)createInternalSessionConfigurationForURLSessionConfiguration:(NSURLSessionConfiguration *)theURLSessionConfiguration;
-
-+(SIInternalSessionConfiguration *)internalSessionConfigurationForURLSessionConfiguration:(NSURLSessionConfiguration *)theURLSessionConfiguration;
 
 +(SIInternalSession *)internalSessionForURLSession:(NSURLSession *)theURLSession;
 +(SIInternalSessionTask *)internalSessionTaskForURLSessionTask:(NSURLSessionTask *)theURLSessionTask;

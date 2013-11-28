@@ -111,11 +111,82 @@
   if(theResponseSerializer == nil) theResponseSerializer = [[SIURLSessionResponseSerializerJSON alloc] init];
 
   
-  [SIInternalManager createInternalSessionConfigurationForURLSessionConfiguration:theSessionConfiguration];
+  NSMutableDictionary * headers = theSessionConfiguration.HTTPAdditionalHeaders.mutableCopy;
+  if(headers == nil) headers = @{}.mutableCopy;
   
-  [theSessionConfiguration SI_setRequestSerializer:theRequestSerializer];
-  [theSessionConfiguration SI_setResponseSerializer:theResponseSerializer];
-  [theSessionConfiguration SI_init];
+  // Thanks to Matt Thomspon of AFNetworking.
+  // Accept-Language HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4
+  
+  NSMutableArray *acceptLanguagesComponents = @[].mutableCopy;
+  [[NSLocale preferredLanguages] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    CGFloat q = 1.0f - (idx * 0.1f);
+    [acceptLanguagesComponents addObject:[NSString stringWithFormat:@"%@;q=%0.1g", obj, q]];
+    if(q <= 0.5f) *stop = YES;
+  }];
+  
+  NSString * acceptLanguage = [acceptLanguagesComponents componentsJoinedByString:@", "];
+  NSParameterAssert(acceptLanguage);
+  headers[@"Accept-Language"] = acceptLanguage;
+  
+  
+  // Thanks to Matt Thomspon of AFNetworking.
+  // User-Agent Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43
+  
+  NSDictionary * bundleDictionary = [[NSBundle mainBundle] infoDictionary];
+  UIDevice     * currentDevice    = [UIDevice currentDevice];
+  NSString * userAgent = nil;
+  
+  
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
+  
+  userAgent = [NSString stringWithFormat:@"%@/%@ (%@; iOS %@; Scale/%0.2f)",
+               
+               [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleExecutableKey]
+               ?: [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleIdentifierKey],
+               
+               (__bridge id)CFBundleGetValueForInfoDictionaryKey(CFBundleGetMainBundle(), kCFBundleVersionKey)
+               ?: [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleVersionKey],
+               
+               [currentDevice model],
+               [currentDevice systemVersion],
+               
+               [[UIScreen mainScreen] scale]
+               ];
+  
+#elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
+  userAgent = [NSString stringWithFormat:@"%@/%@ (Mac OS X %@; Scale/%0.2f)",
+               
+               [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleExecutableKey]
+               ?: [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleIdentifierKey],
+               
+               [bundleDictionary objectForKey:@"CFBundleShortVersionString"]
+               ?: [bundleDictionaryobjectForKey:(__bridge NSString *)kCFBundleVersionKey],
+               
+               [[NSProcessInfo processInfo] operatingSystemVersionString],
+               
+               [NSWindow.new.backingScaleFactor]
+               ];
+#endif
+  
+  if (userAgent) {
+    if ([userAgent canBeConvertedToEncoding:NSASCIIStringEncoding] == NO) {
+      NSMutableString *mutableUserAgent = userAgent.mutableCopy;
+      CFStringTransform((__bridge CFMutableStringRef)(mutableUserAgent), NULL, (__bridge CFStringRef)@"Any-Latin; Latin-ASCII; [:^ASCII:] Remove", false);
+      userAgent = mutableUserAgent;
+    }
+    
+  }
+  
+  NSParameterAssert(userAgent);
+  headers[@"User-Agent"] = userAgent;
+  
+  [headers addEntriesFromDictionary:theRequestSerializer.headers];
+  [headers addEntriesFromDictionary:theResponseSerializer.headers];
+  
+  theSessionConfiguration.HTTPAdditionalHeaders = headers;
+  
+
+  
 
   
   
@@ -126,8 +197,10 @@
                                                     delegateQueue:theOperationQueue];
 
 
-
+  
   [SIInternalManager addURLSession:session withSessionName:theSessionName andBaseURL:url];
+  session.SI_serializerForResponse = theResponseSerializer;
+  session.SI_serializerForRequest = theRequestSerializer;
   
   session.SI_autoResume = NO;
 
@@ -297,16 +370,13 @@
   
   if(request.HTTPBody == nil && params && params.count > 0) {
 
-    NSLog(@"INTERNAL SERIALIZER %@",session.configuration.SI_internalSessionConfiguration.SI_serializerForRequest);
-    NSLog(@"INTERNAL %@",session.configuration.SI_internalSessionConfiguration);
-    NSLog(@"SERIALIZER %@",session.configuration.SI_serializerForRequest);
+
     
-    SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing> * serializer = session.configuration.SI_serializerForRequest;
-    if(serializer == nil) serializer = session.configuration.SI_internalSessionConfiguration.SI_serializerForRequest;
+    SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing> * serializer = session.SI_serializerForRequest;
+    if(serializer == nil) serializer = session.SI_internalSession.SI_serializerForRequest;
     
     NSParameterAssert(serializer);
     [serializer buildRequest:modifierRequest.copy withParameters:params onCompletion:^(id obj, NSError *error) {
-      NSLog(@"DID PARSE");
       needsToSerialize = NO;
       request = obj;
       parsingError = error;
@@ -320,7 +390,10 @@
 
   NSURLSessionTask * task  = nil;
 
-  if(request.HTTPBody && [session.configuration.SI_internalSessionConfiguration.SI_serializerForRequest.acceptableHTTPMethodsForURIEncoding containsObject:request.HTTPMethod.uppercaseString] == NO) {
+  SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing> * serializer = session.SI_serializerForRequest;
+  if(serializer == nil) serializer = session.SI_internalSession.SI_serializerForRequest;
+
+  if(request.HTTPBody && [serializer.acceptableHTTPMethodsForURIEncoding containsObject:request.HTTPMethod.uppercaseString] == NO) {
     task = [session uploadTaskWithRequest:request fromData:request.HTTPBody];
      }
   else

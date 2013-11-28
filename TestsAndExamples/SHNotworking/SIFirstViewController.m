@@ -63,31 +63,33 @@
   if([NSURLSession SI_fetchSessionWithName:@"Seivanx"] == nil) [NSURLSession SI_buildDefaultSessionWithName:@"Seivanx" withBaseURLString:@"http://0.0.0.0:3000"];
   
 
+  [task SI_setTaskDidCompleteWithErrorBlock:^(NSURLSessionTask *task, NSError *error) {
     double delayInSeconds = 5.0;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-         mapData = @{@"my" : @{@"dictionary" : @[@"With", @"Arrays", @"Arrays", @"and", [NSOrderedSet orderedSetWithArray:@[@"ordered",@"ordered",@"set"]]]}};
+      mapData = @{@"my" : @{@"dictionary" : @[@"With", @"Arrays", @"Arrays", @"and", [NSOrderedSet orderedSetWithArray:@[@"ordered",@"ordered",@"set"]]]}};
       
       NSURLSessionTask * xask = [[NSURLSession SI_fetchSessionWithName:@"Seivanx"] SI_taskGETResource:@"users" withParams:mapData completeBlock:^(NSError *error, NSDictionary *responseObject, NSHTTPURLResponse *urlResponse, NSURLSessionTask *task) {
         NSLog(@"XASK QUERY PARAMETERS %@", responseObject);
       }] ;
       
-
+      
       [xask SI_setDownloadProgressBlock:^(NSURLSessionTask *task, NSInteger bytes, NSInteger totalBytes, NSInteger totalBytesExpected) {
         NSLog(@"XASK DOWNLOAD: %@ - %@ - %@ - %@", @(bytes), @(totalBytes), @(totalBytesExpected), task);
-//        [task SI_setDownloadProgressBlock:nil];
+        //        [task SI_setDownloadProgressBlock:nil];
       }];
       
       
       [xask SI_setUploadProgressBlock:^(NSURLSessionTask *task, NSInteger bytes, NSInteger totalBytes, NSInteger totalBytesExpected) {
         NSLog(@"XASK UPLOAD: %@ - %@ - %@ - %@", @(bytes), @(totalBytes), @(totalBytesExpected), task);
-//        [task SI_setUploadProgressBlock:nil];
+        //        [task SI_setUploadProgressBlock:nil];
       }];
       
       [xask resume];
       
     });
 
+  }];
   [task resume];
     
 

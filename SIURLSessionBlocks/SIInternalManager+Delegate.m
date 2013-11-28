@@ -33,7 +33,9 @@ typedef void (^SIDogmaPerformerBlock)(SIInternalSession * internalSession, SIInt
   SIInternalSession * internalSession = theSession.SI_internalSession;
   SIInternalSessionTask * internalSessionTask = nil;
 
+  #warning fetching from map
   if(theTask) internalSessionTask = [internalSession.mapTasks objectForKey:theTask];
+//  internalSessionTask = theTask.SI_internalSessionTask;
   
   if(theSharedBeforeBlock)theSharedBeforeBlock(internalSession,internalSessionTask, NO);
   BOOL shouldStopHere = NO;
@@ -241,8 +243,8 @@ didCompleteWithError:(NSError *)error; {
 
                  internalSessionTask.SI_error = error;
                  if(internalSessionTask.SI_requestCompleteBlock) {
-                   SIURLSessionResponseSerializerAbstract<SIURLSessionResponseSerializing> * serializer = session.configuration.SI_serializerForResponse;
-                   if(serializer == nil) serializer = session.configuration.SI_internalSessionConfiguration.SI_serializerForResponse;
+                   SIURLSessionResponseSerializerAbstract<SIURLSessionResponseSerializing> * serializer = session.SI_serializerForResponse;
+                   if(serializer == nil) serializer = session.SI_internalSession.SI_serializerForResponse;
 
                    NSParameterAssert(serializer);
                    [serializer buildObjectForResponse:task.response responseData:internalSessionTask.SI_data onCompletion:^(id obj, NSError *responseError) {
@@ -444,8 +446,8 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite; {
   [self SI_delegateWithSession:session task:downloadTask selector:_cmd
                sharedBefore:nil
                       taskBlock:^(__unused SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
-                        if(internalSessionTask.SI_uploadProgressBlock) {
-                          internalSessionTask.SI_uploadProgressBlock(downloadTask, (NSInteger)bytesWritten,(NSInteger)totalBytesWritten,(NSInteger)totalBytesExpectedToWrite);
+                        if(internalSessionTask.SI_downloadProgressBlock) {
+                          internalSessionTask.SI_downloadProgressBlock(downloadTask, (NSInteger)bytesWritten,(NSInteger)totalBytesWritten,(NSInteger)totalBytesExpectedToWrite);
                           *stop = YES;
                         }
                       }

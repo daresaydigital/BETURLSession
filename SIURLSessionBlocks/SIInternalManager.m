@@ -14,7 +14,7 @@
 -(void)SI_performSelector:(SEL)theSelector withObject:(id)theObject; {
   NSParameterAssert(theSelector);
   NSParameterAssert([self respondsToSelector:theSelector]);
-  if([theObject isKindOfClass:NSClassFromString(@"NSBlock")]) theObject = [theObject copy];
+//  if([theObject isKindOfClass:NSClassFromString(@"NSBlock")]) theObject = [theObject copy];
   [self performSelector:theSelector withObject:theObject];
 }
 
@@ -56,7 +56,7 @@
 -(void)SI_performSelector:(SEL)theSelector withObject:(id)theObject; {
   NSParameterAssert(theSelector);
   NSParameterAssert([self respondsToSelector:theSelector]);
-  if([theObject isKindOfClass:NSClassFromString(@"NSBlock")]) theObject = [theObject copy];
+//  if([theObject isKindOfClass:NSClassFromString(@"NSBlock")]) theObject = [theObject copy];
   [self performSelector:theSelector withObject:theObject ];
 }
 
@@ -78,7 +78,7 @@
 -(void)SI_performSelector:(SEL)theSelector withObject:(id)theObject; {
   NSParameterAssert(theSelector);
   NSParameterAssert([self respondsToSelector:theSelector]);
-  if([theObject isKindOfClass:NSClassFromString(@"NSBlock")]) theObject = [theObject copy];
+//  if([theObject isKindOfClass:NSClassFromString(@"NSBlock")]) theObject = [theObject copy];
   [self performSelector:theSelector withObject:theObject];
 }
 
@@ -101,7 +101,6 @@
   self = [super init];
   if (self) {
     self.mapSessions       = [NSMapTable strongToStrongObjectsMapTable];
-    self.mapConfigurations = [NSMapTable strongToStrongObjectsMapTable];
   }
   
   return self;
@@ -139,24 +138,6 @@
 }
 
 
-+(void)createInternalSessionConfigurationForURLSessionConfiguration:(NSURLSessionConfiguration *)theURLSessionConfiguration; {
-  NSMapTable * mapTable = [[self sharedManager] mapConfigurations];
-  SIInternalSessionConfiguration * internalSessionConfiguration = SIInternalSessionConfiguration.new;
-  NSParameterAssert(mapTable);
-  NSParameterAssert(internalSessionConfiguration);
-  NSParameterAssert(theURLSessionConfiguration);
-  [mapTable setObject:internalSessionConfiguration forKey:theURLSessionConfiguration];
-}
-
-+(SIInternalSessionConfiguration *)internalSessionConfigurationForURLSessionConfiguration:(NSURLSessionConfiguration *)theURLSessionConfiguration; {
-  NSMapTable * mapTable = [[self sharedManager] mapConfigurations];
-#warning In the future, allow multiple sessions
-  SIInternalSessionConfiguration * internalSessionConfiguration = mapTable.dictionaryRepresentation.allValues.firstObject;
-  //[mapTable objectForKey:theURLSessionConfiguration];
-  NSParameterAssert(internalSessionConfiguration);
-  return internalSessionConfiguration;
-  
-}
 
 
 +(SIInternalSession *)internalSessionForURLSession:(NSURLSession *)theURLSession; {

@@ -381,156 +381,29 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
 @end
 
 
-@implementation NSObject (SIURLSessionBlocks)
-
--(SIInternalSessionConfiguration *)SI_internalSessionConfiguration; {
-  return [SIInternalManager internalSessionConfigurationForURLSessionConfiguration:(NSURLSessionConfiguration *)self];
-}
-
--(void)SI_init; {
-  NSParameterAssert(self.SI_internalSessionConfiguration);
-  NSURLSessionConfiguration * sessionConfiguration = (NSURLSessionConfiguration *)self;
-  sessionConfiguration.SI_userAgent = nil; //use default on getter
-  sessionConfiguration.SI_acceptLanguage = nil; //use default getter
-
-}
-
+@implementation NSObject (SIURLSessionBlocksSerializers)
 
 -(SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing> *)SI_serializerForRequest; {
-  return [self.SI_internalSessionConfiguration SI_performSelector:_cmd];
+  NSURLSession * session = (NSURLSession *)self;
+  return [session.SI_internalSession SI_performSelector:_cmd];
 }
 
 -(void)SI_setRequestSerializer:(SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing> *)theSerializer; {
-  [self.SI_internalSessionConfiguration SI_performSelector:_cmd withObject:theSerializer];
-  NSURLSessionConfiguration * sessionConfiguration = (NSURLSessionConfiguration *)self;
-  NSMutableDictionary * headers = sessionConfiguration.HTTPAdditionalHeaders.mutableCopy;
-  NSParameterAssert(headers);
-  [headers addEntriesFromDictionary:theSerializer.headers];
-  sessionConfiguration.HTTPAdditionalHeaders = headers.copy;
+  NSURLSession * session = (NSURLSession *)self;
+  [session.SI_internalSession SI_performSelector:_cmd withObject:theSerializer];
 }
 
 -(SIURLSessionResponseSerializerAbstract<SIURLSessionResponseSerializing> *)SI_serializerForResponse; {
-  return [self.SI_internalSessionConfiguration SI_performSelector:_cmd];
+  NSURLSession * session = (NSURLSession *)self;
+  return [session.SI_internalSession SI_performSelector:_cmd];
+
 }
 
 -(void)SI_setResponseSerializer:(SIURLSessionResponseSerializerAbstract<SIURLSessionResponseSerializing> *)theSerializer; {
-  [self.SI_internalSessionConfiguration SI_performSelector:_cmd withObject:theSerializer];
-  NSURLSessionConfiguration * sessionConfiguration = (NSURLSessionConfiguration *)self;
-  NSMutableDictionary * headers = sessionConfiguration.HTTPAdditionalHeaders.mutableCopy;
-  NSParameterAssert(headers);
-  [headers addEntriesFromDictionary:theSerializer.headers];
-  sessionConfiguration.HTTPAdditionalHeaders = headers.copy;
+  NSURLSession * session = (NSURLSession *)self;
+  [session.SI_internalSession SI_performSelector:_cmd withObject:theSerializer];
 }
 
-
-
-
--(NSString *)SI_userAgent; {
-  
-  
-  NSString * userAgent = [self.SI_internalSessionConfiguration SI_performSelector:_cmd];
-  
-  if(userAgent) return userAgent;
-  
-  // Thanks to Matt Thomspon of AFNetworking.
-  // User-Agent Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43
-
-  NSDictionary * bundleDictionary = [[NSBundle mainBundle] infoDictionary];
-  UIDevice     * currentDevice    = [UIDevice currentDevice];
-  
-
-  
-#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-  
-  userAgent = [NSString stringWithFormat:@"%@/%@ (%@; iOS %@; Scale/%0.2f)",
-               
-               [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleExecutableKey]
-               ?: [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleIdentifierKey],
-               
-               (__bridge id)CFBundleGetValueForInfoDictionaryKey(CFBundleGetMainBundle(), kCFBundleVersionKey)
-               ?: [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleVersionKey],
-               
-               [currentDevice model],
-               [currentDevice systemVersion],
-               
-               [[UIScreen mainScreen] scale]
-               ];
-  
-#elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
-  userAgent = [NSString stringWithFormat:@"%@/%@ (Mac OS X %@; Scale/%0.2f)",
-               
-               [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleExecutableKey]
-               ?: [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleIdentifierKey],
-               
-               [bundleDictionary objectForKey:@"CFBundleShortVersionString"]
-               ?: [bundleDictionaryobjectForKey:(__bridge NSString *)kCFBundleVersionKey],
-               
-               [[NSProcessInfo processInfo] operatingSystemVersionString],
-               
-               [NSWindow.new.backingScaleFactor]
-               ];
-#endif
-  
-  if (userAgent) {
-    if ([userAgent canBeConvertedToEncoding:NSASCIIStringEncoding] == NO) {
-      NSMutableString *mutableUserAgent = userAgent.mutableCopy;
-      CFStringTransform((__bridge CFMutableStringRef)(mutableUserAgent), NULL, (__bridge CFStringRef)@"Any-Latin; Latin-ASCII; [:^ASCII:] Remove", false);
-      userAgent = mutableUserAgent;
-    }
-    
-  }
-  
-  NSParameterAssert(userAgent);
-  NSURLSessionConfiguration * sessionConfiguration = (NSURLSessionConfiguration *)self;
-  sessionConfiguration.SI_userAgent = userAgent;
-  return userAgent;
-  
-}
-
--(void)SI_setUserAgent:(NSString *)SI_userAgent; {
-  [self.SI_internalSessionConfiguration SI_performSelector:_cmd withObject:SI_userAgent];
-  NSURLSessionConfiguration * sessionConfiguration = (NSURLSessionConfiguration *)self;
-  NSMutableDictionary * headers = sessionConfiguration.HTTPAdditionalHeaders.mutableCopy;
-  NSParameterAssert(headers);
-  [headers addEntriesFromDictionary:@{@"User-Agent" : self.SI_userAgent }];
-  sessionConfiguration.HTTPAdditionalHeaders = headers.copy;
-}
-
-
--(NSString *)SI_acceptLanguage; {
-  
-  
-  NSString * acceptLanguage = [self.SI_internalSessionConfiguration SI_performSelector:_cmd];
-  
-  if(acceptLanguage) return acceptLanguage;
-  
-  // Thanks to Matt Thomspon of AFNetworking.
-  // Accept-Language HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4
-  
-  NSMutableArray *acceptLanguagesComponents = @[].mutableCopy;
-  [[NSLocale preferredLanguages] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-    CGFloat q = 1.0f - (idx * 0.1f);
-    [acceptLanguagesComponents addObject:[NSString stringWithFormat:@"%@;q=%0.1g", obj, q]];
-    if(q <= 0.5f) *stop = YES;
-  }];
-  
-  acceptLanguage = [acceptLanguagesComponents componentsJoinedByString:@", "];
-  NSParameterAssert(acceptLanguage);
-  NSURLSessionConfiguration * sessionConfiguration = (NSURLSessionConfiguration *)self;
-  sessionConfiguration.SI_acceptLanguage = acceptLanguage;
-  return acceptLanguage;
-  
-}
-
--(void)SI_setAcceptLanguage:(NSString *)SI_acceptLanguage; {
-  [self.SI_internalSessionConfiguration SI_performSelector:_cmd withObject:SI_acceptLanguage];
-  NSURLSessionConfiguration * sessionConfiguration = (NSURLSessionConfiguration *)self;
-  NSMutableDictionary * headers = sessionConfiguration.HTTPAdditionalHeaders.mutableCopy;
-  NSParameterAssert(headers);
-  [headers addEntriesFromDictionary:@{@"Accept-Language" : self.SI_acceptLanguage }];
-  sessionConfiguration.HTTPAdditionalHeaders = headers.copy;
-  
-}
 
 
 
