@@ -1,16 +1,19 @@
 
 
+#warning Clean up serializes with protocols and etc
+#warning Make image serializers.
 
-@class SIURLSessionResponseSerializerAbstract;
-@class SIURLSessionRequestSerializerAbstract;
+
+@class SIURLSessionResponseSerializer;
+@class SIURLSessionRequestSerializer;
 
 @protocol SIURLSessionRequestSerializing;
 @protocol SIURLSessionResponseSerializing;
 
 @interface NSURLSession (SIURLSessionBlocksSerializers)
 
-@property(readonly)  SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing>    * SI_serializerForRequest;
-@property(readonly)  SIURLSessionResponseSerializerAbstract<SIURLSessionResponseSerializing>  * SI_serializerForResponse;
+@property(readonly)  SIURLSessionRequestSerializer<SIURLSessionRequestSerializing>    * SI_serializerForRequest;
+@property(readonly)  SIURLSessionResponseSerializer<SIURLSessionResponseSerializing>  * SI_serializerForResponse;
 
 @end
 
@@ -41,7 +44,7 @@ typedef void (^SIURLSessionSerializerErrorBlock)(id obj, NSError * error);
 @end
 
 
-@interface SIURLSessionSerializerAbstract : NSObject
+@interface SIURLSessionSerializer : NSObject
 @property(nonatomic,readonly) NSStringEncoding stringEncoding;
 
 -(NSString *)queryStringFromParameters:(NSObject<NSFastEnumeration> *)theParameters;
@@ -53,7 +56,7 @@ typedef void (^SIURLSessionSerializerErrorBlock)(id obj, NSError * error);
 
 @end
 
-@interface SIURLSessionRequestSerializerAbstract : SIURLSessionSerializerAbstract
+@interface SIURLSessionRequestSerializer : SIURLSessionSerializer
 @property(nonatomic,readonly) NSSet         * acceptableHTTPMethodsForURIEncoding;
 -(void)buildURIEncodedParametersRequest:(NSURLRequest *)theRequest
                                    withParam:(NSObject<NSFastEnumeration> *)theParameters
@@ -62,7 +65,7 @@ typedef void (^SIURLSessionSerializerErrorBlock)(id obj, NSError * error);
 
 
 
-@interface SIURLSessionResponseSerializerAbstract : SIURLSessionSerializerAbstract
+@interface SIURLSessionResponseSerializer : SIURLSessionSerializer
 
 @property(nonatomic,readonly) NSIndexSet    * acceptableHTTPStatusCodes;
 
@@ -73,10 +76,10 @@ typedef void (^SIURLSessionSerializerErrorBlock)(id obj, NSError * error);
 @end
 
 
-@interface SIURLSessionRequestSerializerJSON : SIURLSessionRequestSerializerAbstract
+@interface SIURLSessionRequestSerializerJSON : SIURLSessionRequestSerializer
 <SIURLSessionRequestSerializing>
 @end
 
-@interface SIURLSessionResponseSerializerJSON : SIURLSessionResponseSerializerAbstract
+@interface SIURLSessionResponseSerializerJSON : SIURLSessionResponseSerializer
 <SIURLSessionResponseSerializing>
 @end

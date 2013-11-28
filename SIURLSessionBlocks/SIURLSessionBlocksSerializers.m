@@ -21,14 +21,14 @@
 static NSString * const SIURLSessionSerializerAbstractUnescapedInQueryStringPairKeyCharacters = @"[].";
 static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharacters          = @":/?&=;+!@#$()',*";
 
-@interface SIURLSessionSerializerAbstract (Private)
+@interface SIURLSessionSerializer (Private)
 @property(nonatomic,readonly) NSSet         * acceptableMIMETypes;
 -(NSString *)escapedQueryKeyFromString:(NSString *)theKey;
 -(NSString *)escapedQueryValueFromString:(NSString *)theValue;
 
 @end
 
-@implementation SIURLSessionSerializerAbstract
+@implementation SIURLSessionSerializer
 -(NSString *)escapedQueryKeyFromString:(NSString *)theKey; {
   return (__bridge_transfer  NSString *)
   CFURLCreateStringByAddingPercentEscapes(
@@ -172,7 +172,7 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
 @end
 
 
-@implementation SIURLSessionRequestSerializerAbstract
+@implementation SIURLSessionRequestSerializer
 
 @synthesize acceptableHTTPMethodsForURIEncoding = _acceptableHTTPMethodsForURIEncoding;
 
@@ -187,7 +187,7 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
 }
 
 +(instancetype)serializerWithOptions:(NSDictionary *)theOptions; {
-  SIURLSessionRequestSerializerAbstract * serializer = [[self alloc] init];
+  SIURLSessionRequestSerializer * serializer = [[self alloc] init];
   NSParameterAssert(serializer);
   return serializer;
 }
@@ -220,7 +220,7 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
 
 
 
-@implementation SIURLSessionResponseSerializerAbstract
+@implementation SIURLSessionResponseSerializer
 
 
 -(instancetype)init; {
@@ -236,6 +236,8 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
   NSParameterAssert(self.acceptableMIMETypes);
   BOOL isValidResponse = YES;
   NSError * error = nil;
+  
+#warning Errror handling should be with parent class, at least a portion of it in regards with creating the NSError objects
   if (theResponse && [theResponse isKindOfClass:[NSHTTPURLResponse class]]) {
     if ([self.acceptableHTTPStatusCodes containsIndex:(NSUInteger)theResponse.statusCode] == NO) {
       NSDictionary * userInfo = @{
@@ -297,7 +299,7 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
   return serializer;
 }
 
-
+#warning Add validators
 -(void)buildRequest:(NSURLRequest *)theRequest
                withParameters:(NSDictionary *)theParameters
        onCompletion:(SIURLSessionSerializerErrorBlock)theBlock; {
@@ -383,23 +385,23 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
 
 @implementation NSObject (SIURLSessionBlocksSerializers)
 
--(SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing> *)SI_serializerForRequest; {
+-(SIURLSessionRequestSerializer<SIURLSessionRequestSerializing> *)SI_serializerForRequest; {
   NSURLSession * session = (NSURLSession *)self;
   return [session.SI_internalSession SI_performSelector:_cmd];
 }
 
--(void)SI_setRequestSerializer:(SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing> *)theSerializer; {
+-(void)SI_setRequestSerializer:(SIURLSessionRequestSerializer<SIURLSessionRequestSerializing> *)theSerializer; {
   NSURLSession * session = (NSURLSession *)self;
   [session.SI_internalSession SI_performSelector:_cmd withObject:theSerializer];
 }
 
--(SIURLSessionResponseSerializerAbstract<SIURLSessionResponseSerializing> *)SI_serializerForResponse; {
+-(SIURLSessionResponseSerializer<SIURLSessionResponseSerializing> *)SI_serializerForResponse; {
   NSURLSession * session = (NSURLSession *)self;
   return [session.SI_internalSession SI_performSelector:_cmd];
 
 }
 
--(void)SI_setResponseSerializer:(SIURLSessionResponseSerializerAbstract<SIURLSessionResponseSerializing> *)theSerializer; {
+-(void)SI_setResponseSerializer:(SIURLSessionResponseSerializer<SIURLSessionResponseSerializing> *)theSerializer; {
   NSURLSession * session = (NSURLSession *)self;
   [session.SI_internalSession SI_performSelector:_cmd withObject:theSerializer];
 }

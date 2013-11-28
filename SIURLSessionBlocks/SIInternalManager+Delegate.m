@@ -33,9 +33,9 @@ typedef void (^SIDogmaPerformerBlock)(SIInternalSession * internalSession, SIInt
   SIInternalSession * internalSession = theSession.SI_internalSession;
   SIInternalSessionTask * internalSessionTask = nil;
 
-  #warning fetching from map
+
   if(theTask) internalSessionTask = [internalSession.mapTasks objectForKey:theTask];
-//    internalSessionTask = theTask.SI_internalSessionTask;
+
   
   if(theSharedBeforeBlock)theSharedBeforeBlock(internalSession,internalSessionTask, NO);
   BOOL shouldStopHere = NO;
@@ -62,6 +62,7 @@ typedef void (^SIDogmaPerformerBlock)(SIInternalSession * internalSession, SIInt
  * explicitly invalidated, in which case it will receive an
  * { NSURLErrorDomain, NSURLUserCanceled } error.
  */
+#warning Remove invalidated Sessions from sessionMap on invalidation callback
 -(void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error; {
 
   [self SI_delegateWithSession:session task:nil selector:_cmd
@@ -234,6 +235,7 @@ totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend; {
 /* Sent as the last message related to a specific task.  Error may be
  * nil, which implies that no error occurred and this task is complete.
  */
+#warning Remove completed tasks from mapTasks, maybe delay the removal.
 -(void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
 didCompleteWithError:(NSError *)error; {
   
@@ -242,8 +244,9 @@ didCompleteWithError:(NSError *)error; {
                   if(internalSession.SI_taskWillEndRequestBlock) internalSession.SI_taskWillEndRequestBlock(task,error);
 
                  internalSessionTask.SI_error = error;
+                 #warning Get rid of serializer guards
                  if(internalSessionTask.SI_requestCompleteBlock) {
-                   SIURLSessionResponseSerializerAbstract<SIURLSessionResponseSerializing> * serializer = session.SI_serializerForResponse;
+                   SIURLSessionResponseSerializer<SIURLSessionResponseSerializing> * serializer = session.SI_serializerForResponse;
                    if(serializer == nil) serializer = session.SI_internalSession.SI_serializerForResponse;
 
                    NSParameterAssert(serializer);

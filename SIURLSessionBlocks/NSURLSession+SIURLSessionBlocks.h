@@ -10,8 +10,8 @@
 
 #import "SIURLSessionTaskSharedBlocks.h"
 
-@class SIURLSessionRequestSerializerAbstract;
-@class SIURLSessionResponseSerializerAbstract;
+@class SIURLSessionRequestSerializer;
+@class SIURLSessionResponseSerializer;
 
 @interface NSURLSession (SIURLSessionBlocks)
 
@@ -41,12 +41,14 @@ typedef NSURLSessionConfiguration * (^SIURLSessionConfiguratuinModifierBlock)(vo
 +(instancetype)SI_buildSessionWithName:(NSString *)theSessionName
                      withBaseURLString:(NSString *)theBaseURLString
                andSessionConfiguration:(NSURLSessionConfiguration *)theSessionConfiguration
-                andRequestSerializer:(SIURLSessionRequestSerializerAbstract *)theRequestSerializer
-                andResponseSerializer:(SIURLSessionResponseSerializerAbstract *)theResponseSerializer
+                andRequestSerializer:(SIURLSessionRequestSerializer *)theRequestSerializer
+                andResponseSerializer:(SIURLSessionResponseSerializer *)theResponseSerializer
                         operationQueue:(NSOperationQueue *)theOperationQueue;
 
 #pragma mark - Mama-san keeps track of the staff.
 +(instancetype)SI_fetchSessionWithName:(NSString *)theSessionName;
+
+#warning Fix lifecycle
 
 #pragma mark - Task based Life Cycle
 typedef void (^SIURLSessionTaskLifeCycleRequestBlock)(NSURLSessionTask * task, NSError * error);
@@ -66,6 +68,8 @@ typedef void (^SIURLSessionTaskLifeCycleRequestBlock)(NSURLSessionTask * task, N
 @property(readonly) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidEndRequestBlock;
 -(void)SI_setTaskDidEndRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock;
 
+
+#warning Clean out creating the tasks
 
 #pragma mark - Task Uploads turned to Downloads for progress handlers
 -(NSURLSessionTask *)SI_taskGETResource:(NSString *)theResource

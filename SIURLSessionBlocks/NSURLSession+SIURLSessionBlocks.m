@@ -88,11 +88,13 @@
 }
 
 
+#warning Clean this shit up, extract into it's own stuff. 
+#warning Will need a 'default' header-esque system and injecting it per request basis, instead of using the broke NSURLSessionConfiguration
 +(instancetype)SI_buildSessionWithName:(NSString *)theSessionName
                      withBaseURLString:(NSString *)theBaseURLString
                andSessionConfiguration:(NSURLSessionConfiguration *)theSessionConfiguration
-                  andRequestSerializer:(SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing> *)theRequestSerializer
-                 andResponseSerializer:(SIURLSessionResponseSerializerAbstract<SIURLSessionResponseSerializing> *)theResponseSerializer
+                  andRequestSerializer:(SIURLSessionRequestSerializer<SIURLSessionRequestSerializing> *)theRequestSerializer
+                 andResponseSerializer:(SIURLSessionResponseSerializer<SIURLSessionResponseSerializing> *)theResponseSerializer
                         operationQueue:(NSOperationQueue *)theOperationQueue; {
 
   NSParameterAssert(theSessionName);
@@ -342,6 +344,8 @@
   return task;
 
 }
+
+#warning Refactor out setting the class
 -(NSURLSessionTask *)SI_buildSessionTaskWithSubclass:(Class)theClass
                                           onResource:(NSString *)theResource
                                               params:(id<NSFastEnumeration>)theParams
@@ -371,8 +375,8 @@
   if(request.HTTPBody == nil && params && params.count > 0) {
 
 
-    
-    SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing> * serializer = session.SI_serializerForRequest;
+#warning Get rid of serializer guards
+    SIURLSessionRequestSerializer<SIURLSessionRequestSerializing> * serializer = session.SI_serializerForRequest;
     if(serializer == nil) serializer = session.SI_internalSession.SI_serializerForRequest;
     
     NSParameterAssert(serializer);
@@ -390,7 +394,8 @@
 
   NSURLSessionTask * task  = nil;
 
-  SIURLSessionRequestSerializerAbstract<SIURLSessionRequestSerializing> * serializer = session.SI_serializerForRequest;
+#warning Get rid of serializer guards
+  SIURLSessionRequestSerializer<SIURLSessionRequestSerializing> * serializer = session.SI_serializerForRequest;
   if(serializer == nil) serializer = session.SI_internalSession.SI_serializerForRequest;
 
   if(request.HTTPBody && [serializer.acceptableHTTPMethodsForURIEncoding containsObject:request.HTTPMethod.uppercaseString] == NO) {
@@ -399,28 +404,7 @@
   else
     task = [session downloadTaskWithRequest:request];
 
-//  else if (theClass == [NSURLSessionDataTask class])
-//    task = [session dataTaskWithRequest:request];
-//  else if (theClass == [NSURLSessionDownloadTask class]
-//           || [session.configuration.SI_serializerForRequest.acceptableHTTPMethodsForURIEncoding containsObject:request.HTTPMethod.uppercaseString])
-//    task = [session downloadTaskWithRequest:request];
-//  else if (theClass == [NSURLSessionUploadTask class] && [session.configuration.SI_serializerForRequest.acceptableHTTPMethodsForURIEncoding containsObject:request.HTTPMethod.uppercaseString] == NO)
-//    task = [session uploadTaskWithRequest:request fromData:HTTPBody];
-//  else
-//    NSParameterAssert([theClass isSubclassOfClass:[NSURLSessionTask class]]);
 
-//  if(theClass == [NSURLSessionTask class]
-//     && [session.configuration.SI_serializerForRequest.acceptableHTTPMethodsForURIEncoding containsObject:request.HTTPMethod.uppercaseString] == NO)
-//    task = [session uploadTaskWithRequest:request fromData:HTTPBody];
-//  else if (theClass == [NSURLSessionDataTask class])
-//    task = [session dataTaskWithRequest:request];
-//  else if (theClass == [NSURLSessionDownloadTask class]
-//                || [session.configuration.SI_serializerForRequest.acceptableHTTPMethodsForURIEncoding containsObject:request.HTTPMethod.uppercaseString])
-//    task = [session downloadTaskWithRequest:request];
-//  else if (theClass == [NSURLSessionUploadTask class] && [session.configuration.SI_serializerForRequest.acceptableHTTPMethodsForURIEncoding containsObject:request.HTTPMethod.uppercaseString] == NO)
-//    task = [session uploadTaskWithRequest:request fromData:HTTPBody];
-//  else
-//    NSParameterAssert([theClass isSubclassOfClass:[NSURLSessionTask class]]);
   
   [self.SI_internalSession buildInternalSessionTaskWithURLSessionTask:task];
   
