@@ -1,9 +1,5 @@
 
 
-//#define SIStaticConstString(X) static NSString * const X = @#X
-
-//SHStaticConstString(SH_blockShouldBeginEditing);
-
 
 @class SIURLSessionResponseSerializerAbstract;
 @class SIURLSessionRequestSerializerAbstract;

@@ -2,7 +2,7 @@
 
 #import "NSURLSessionTask+SIURLSessionBlocks.h"
 
-#import "NSURLSessionConfiguration+SIURLSessionBlocks.h"
+#import "SIURLSessionBlocksSerializers.h"
 #import "NSURLSession+SIURLSessionBlocks.h"
 
 #import "SIInternalManager.h"

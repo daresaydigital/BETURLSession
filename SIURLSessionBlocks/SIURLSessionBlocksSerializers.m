@@ -1,5 +1,5 @@
 
-#import "NSURLSessionConfiguration+SIURLSessionBlocks.h"
+#import "SIURLSessionBlocksSerializers.h"
 
 #import "NSURLSession+SIURLSessionBlocks.h"
 #import "NSURLSessionTask+SIURLSessionBlocks.h"
