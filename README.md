@@ -72,7 +72,7 @@ Contact
 
 If you end up using SIURLSessionBlocks in a project, we'd love to hear about it.
 
-email: [info@screeninteraction.com](mailto:info@screeninteraction.com)  
+email: [info@screeninteraction.com](mailto:contact@screeninteraction.com)  
 twitter: [@ScreenTwitt](https://twitter.com/ScreenTwitt)
 
 ## License

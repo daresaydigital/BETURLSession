@@ -27,7 +27,9 @@ Pod::Spec.new do |s|
 
   s.homepage     = url
   s.license      = 'MIT'
-  s.author       = { "Seivan Heidari" => "seivan.heidari@screeninteraction.com" }
+  s.author       = { "Seivan Heidari" => "seivan.heidari@screeninteraction.com",
+                     "Screen Interaction" => "contact@screeninteraction.com" 
+                     }
   
   s.source       = { :git => git_url, :tag => version}
   
