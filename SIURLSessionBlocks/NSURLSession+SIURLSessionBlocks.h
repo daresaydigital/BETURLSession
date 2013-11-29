@@ -69,9 +69,14 @@ typedef void (^SIURLSessionTaskLifeCycleRequestBlock)(NSURLSessionTask * task, N
 -(void)SI_setTaskDidEndRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock;
 
 
-#warning Clean out creating the tasks
+#warning Clean out task-creation. Will probably need to refactor out the internals and privates
 
 #pragma mark - Task Uploads turned to Downloads for progress handlers
+-(NSURLSessionTask *)SI_taskWithHTTPMethodString:(NSString *)theMethodString
+                                      onResource:(NSString *)theResource
+                                          params:(id<NSFastEnumeration>)theParams
+                                   completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock;
+
 -(NSURLSessionTask *)SI_taskGETResource:(NSString *)theResource
                              withParams:(NSDictionary *)theParams
                           completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock;

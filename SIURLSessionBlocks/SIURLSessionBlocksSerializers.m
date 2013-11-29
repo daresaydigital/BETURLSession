@@ -23,8 +23,6 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
 
 @interface SIURLSessionSerializer (Private)
 @property(nonatomic,readonly) NSSet         * acceptableMIMETypes;
--(NSString *)escapedQueryKeyFromString:(NSString *)theKey;
--(NSString *)escapedQueryValueFromString:(NSString *)theValue;
 
 @end
 
@@ -54,6 +52,13 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
   self = [super init];
   if(self) {
     _stringEncoding = NSUTF8StringEncoding;
+    NSString * charset = (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(
+                                                                                       CFStringConvertNSStringEncodingToEncoding(self.stringEncoding)
+                                                                                       );
+    
+    NSParameterAssert(charset);
+    _charset = [charset uppercaseString];
+
   }
   return self;
 }
@@ -255,10 +260,10 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
       error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorBadServerResponse userInfo:userInfo];
       isValidResponse = NO;
     }
-    else if (theData.length > 0 && [self.acceptableMIMETypes containsObject:theResponse.MIMEType] == NO) {
+    else if ([self.acceptableMIMETypes containsObject:theResponse.MIMEType] == NO) {
       
-      
-      NSDictionary * userInfo = @{
+      if(theData.length > 0 ){
+        NSDictionary * userInfo = @{
                                   NSLocalizedDescriptionKey:NSLocalizedString(@"SIURLSessionBlocks Response Serialization Failed",
                                                                               @"SIURLSessionBlocks Error"),
                                   
@@ -267,8 +272,9 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
                                   NSURLErrorFailingURLErrorKey:theResponse.URL
                                   };
       
-      error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorCannotDecodeContentData userInfo:userInfo];
-      isValidResponse = NO;
+        error = [[NSError alloc] initWithDomain:NSURLErrorDomain code:NSURLErrorCannotDecodeContentData userInfo:userInfo];
+        isValidResponse = NO;
+      }
       
     }
   }
@@ -285,10 +291,12 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
 -(instancetype)init; {
   self = [super init];
   if(self) {
-    _headers = @{@"Accept" : @"application/json"};
+    
+    _headers =  @{@"Content-Type" : [NSString stringWithFormat:@"application/json; charset=%@", self.charset] };
   }
   return self;
 }
+
 +(instancetype)serializerWithOptions:(NSDictionary *)theOptions; {
   SIURLSessionRequestSerializerJSON * serializer = [[self alloc] init];
   NSParameterAssert(serializer);
@@ -333,15 +341,7 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
   self = [super init];
   if(self) {
     _acceptableMIMETypes = [NSSet setWithArray:@[@"application/json", @"text/json", @"text/javascript"]];
-    
-    NSString * charset = (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(
-                                                                                       CFStringConvertNSStringEncodingToEncoding(self.stringEncoding)
-                                                                                       );
-    
-    NSParameterAssert(charset);
-    
-    _headers =  @{@"Content-Type" : [NSString stringWithFormat:@"application/json; charset=%@", charset] };
-
+    _headers = @{@"Accept" : [_acceptableMIMETypes.allObjects componentsJoinedByString:@","]};
   }
   return self;
 }
@@ -362,7 +362,7 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
 -(void)buildObjectForResponse:(NSURLResponse *)theResponse
                responseData:(NSData *)theResponseData
                       onCompletion:(SIURLSessionSerializerErrorBlock)theBlock; {
-//  NSParameterAssert(theResponseData);
+
   NSParameterAssert(theBlock);
 
   __block id theResponseObject = nil;
@@ -371,11 +371,57 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
     NSError * JSONParseError = nil;
     
     if(theResponseData) theResponseObject =[NSJSONSerialization JSONObjectWithData:theResponseData options:self.JSONReadingOptions error:&JSONParseError];
-    if(error == nil) error = JSONParseError;
+
+    
     
     theBlock(theResponseObject, error);
     
   }];
+  
+}
+
+@end
+
+@implementation SIURLSessionRequestSerializerFormURLEncoding
+@synthesize headers = _headers;
+-(instancetype)init; {
+  self = [super init];
+  if(self) {
+    
+
+    _headers = @{@"Content-Type" : [NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", self.charset] };
+  }
+  return self;
+}
+
++(instancetype)serializerWithOptions:(NSDictionary *)theOptions; {
+  SIURLSessionRequestSerializerFormURLEncoding * serializer = [[self alloc] init];
+  NSParameterAssert(serializer);
+  return serializer;
+}
+
+-(void)buildRequest:(NSURLRequest *)theRequest
+     withParameters:(NSDictionary *)theParameters
+       onCompletion:(SIURLSessionSerializerErrorBlock)theBlock; {
+  
+  NSParameterAssert(theRequest);
+  NSParameterAssert(theBlock);
+  
+  
+  if ([self.acceptableHTTPMethodsForURIEncoding containsObject:theRequest.HTTPMethod.uppercaseString])
+    [self buildURIEncodedParametersRequest:theRequest withParam:theParameters onCompletion:theBlock];
+  
+  else {
+    NSMutableURLRequest * newRequest = theRequest.mutableCopy;;
+    NSError * error = nil;
+    NSString  * bodyParameters = [self queryStringFromParameters:theParameters];
+    NSData * bodyParameterData = [bodyParameters dataUsingEncoding:self.stringEncoding allowLossyConversion:YES];
+    [newRequest setValue:@(bodyParameterData.length).stringValue forHTTPHeaderField:@"Content-Length"];
+    newRequest.HTTPBody = bodyParameterData;
+    theBlock(newRequest,error);
+  }
+  
+  
   
 }
 

@@ -46,12 +46,14 @@ typedef void (^SIURLSessionSerializerErrorBlock)(id obj, NSError * error);
 
 @interface SIURLSessionSerializer : NSObject
 @property(nonatomic,readonly) NSStringEncoding stringEncoding;
-
+@property(nonatomic,readonly) NSString * charset;
 -(NSString *)queryStringFromParameters:(NSObject<NSFastEnumeration> *)theParameters;
-
 -(NSArray *)queryPairsFromKey:(NSString *)theKey andValue:(NSObject<NSFastEnumeration> *)theValue;
 -(NSDictionary *)queryPairFromKey:(NSString *)theKey andValue:(NSObject<NSFastEnumeration> *)theValue;
 -(NSString *)URLEncodedPair:(NSDictionary *)thePair;
+-(NSString *)escapedQueryKeyFromString:(NSString *)theKey;
+-(NSString *)escapedQueryValueFromString:(NSString *)theValue;
+
 
 
 @end
@@ -76,10 +78,18 @@ typedef void (^SIURLSessionSerializerErrorBlock)(id obj, NSError * error);
 @end
 
 
+
+
+
+
 @interface SIURLSessionRequestSerializerJSON : SIURLSessionRequestSerializer
 <SIURLSessionRequestSerializing>
 @end
 
 @interface SIURLSessionResponseSerializerJSON : SIURLSessionResponseSerializer
 <SIURLSessionResponseSerializing>
+@end
+
+@interface SIURLSessionRequestSerializerFormURLEncoding : SIURLSessionRequestSerializer
+<SIURLSessionRequestSerializing>
 @end

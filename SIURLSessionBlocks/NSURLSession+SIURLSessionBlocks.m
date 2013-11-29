@@ -19,10 +19,6 @@
 
 //Use NSObject for implementation because NSURLSession is exposing __NSFCURLSession instead of the right class, causing unrecognized selectors exception
 @interface NSObject (RequestBuilder)
--(NSURLSessionTask *)SI_taskWithMethodString:(NSString *)theMethodString
-                                    onResource:(NSString *)theResource
-                                    params:(id<NSFastEnumeration>)theParams
-                                 completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock;
 
 -(NSURLSessionTask *)SI_buildSessionTaskWithSubclass:(Class)theClass
                                   onResource:(NSString *)theResource
@@ -88,7 +84,7 @@
 }
 
 
-#warning Clean this shit up, extract into it's own stuff. 
+#warning Clean this up, extract into its own stuff. 
 #warning Will need a 'default' header-esque system and injecting it per request basis, instead of using the broke NSURLSessionConfiguration
 +(instancetype)SI_buildSessionWithName:(NSString *)theSessionName
                      withBaseURLString:(NSString *)theBaseURLString
@@ -261,42 +257,58 @@
 }
 
 #pragma mark - Task Uploads turned to Downloads for progress handlers
+
+-(NSURLSessionTask *)SI_taskWithHTTPMethodString:(NSString *)theMethodString
+                                      onResource:(NSString *)theResource
+                                          params:(id<NSFastEnumeration>)theParams
+                                   completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock; {
+  
+  NSParameterAssert(theMethodString);
+  
+  NSURLSessionTask * task = [self SI_buildDataTaskOnResource:theResource withParams:theParams requestModifierBlock:^NSMutableURLRequest *(NSMutableURLRequest *modifierRequest) {
+    [modifierRequest setHTTPMethod:theMethodString];
+    return modifierRequest;
+  } completeDataBlock:nil];
+  [task SI_setRequestCompleteBlock:theBlock];
+  [task.SI_internalSessionTask SI_setRequestCompleteBlock:theBlock];
+#warning Why are we setting it twice.
+  return task;
+  
+}
+
+
 -(NSURLSessionTask *)SI_taskGETResource:(NSString *)theResource
                              withParams:(NSDictionary *)theParams
                           completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock; {
-  return [self SI_taskWithMethodString:@"GET" onResource:theResource params:theParams completeBlock:theBlock];
+  return [self SI_taskWithHTTPMethodString:@"GET" onResource:theResource params:theParams completeBlock:theBlock];
 }
 
 
 -(NSURLSessionTask *)SI_taskPOSTResource:(NSString *)theResource
                               withParams:(NSDictionary *)theParams
                            completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock; {
-  return [self SI_taskWithMethodString:@"POST" onResource:theResource params:theParams completeBlock:theBlock];
-  
+  return [self SI_taskWithHTTPMethodString:@"POST" onResource:theResource params:theParams completeBlock:theBlock];
 }
 
 
 -(NSURLSessionTask *)SI_taskPUTResource:(NSString*)theResource
                              withParams:(NSDictionary *)theParams
                           completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock; {
-  return [self SI_taskWithMethodString:@"PUT" onResource:theResource params:theParams completeBlock:theBlock];
-  
+  return [self SI_taskWithHTTPMethodString:@"PUT" onResource:theResource params:theParams completeBlock:theBlock];
 }
 
 
 -(NSURLSessionTask *)SI_taskPATCHResource:(NSString *)theResource
                                withParams:(NSDictionary *)theParams
                             completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock; {
-  return [self SI_taskWithMethodString:@"PATCH" onResource:theResource params:theParams completeBlock:theBlock];
-  
+  return [self SI_taskWithHTTPMethodString:@"PATCH" onResource:theResource params:theParams completeBlock:theBlock];
 }
 
 
 -(NSURLSessionTask *)SI_taskDELETEResource:(NSString *)theResource
                                 withParams:(NSDictionary *)theParams
                              completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock; {
-  return [self SI_taskWithMethodString:@"DELETE" onResource:theResource params:theParams completeBlock:theBlock];
-  
+  return [self SI_taskWithHTTPMethodString:@"DELETE" onResource:theResource params:theParams completeBlock:theBlock];
 }
 
 
@@ -326,24 +338,6 @@
   return [SIInternalManager internalSessionForURLSession:(NSURLSession *)self];
 }
 
-
--(NSURLSessionTask *)SI_taskWithMethodString:(NSString *)theMethodString
-                                    onResource:(NSString *)theResource
-                                        params:(id<NSFastEnumeration>)theParams
-                                 completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock; {
-  
-  NSParameterAssert(theMethodString);
-
-  
-  NSURLSessionTask * task = [self SI_buildDataTaskOnResource:theResource withParams:theParams requestModifierBlock:^NSMutableURLRequest *(NSMutableURLRequest *modifierRequest) {
-    [modifierRequest setHTTPMethod:theMethodString];
-    return modifierRequest;
-  } completeDataBlock:nil];
-  [task SI_setRequestCompleteBlock:theBlock];
-  [task.SI_internalSessionTask SI_setRequestCompleteBlock:theBlock];
-  return task;
-
-}
 
 #warning Refactor out setting the class
 -(NSURLSessionTask *)SI_buildSessionTaskWithSubclass:(Class)theClass

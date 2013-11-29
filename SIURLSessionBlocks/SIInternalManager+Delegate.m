@@ -252,10 +252,8 @@ didCompleteWithError:(NSError *)error; {
                    NSParameterAssert(serializer);
                    [serializer buildObjectForResponse:task.response responseData:internalSessionTask.SI_data onCompletion:^(id obj, NSError *responseError) {
                      internalSessionTask.SI_parseResponseError = responseError;
-                     if(internalSessionTask.SI_error == nil) internalSessionTask.SI_error = internalSessionTask.SI_parseResponseError;
-                     if(internalSessionTask.SI_error == nil) internalSessionTask.SI_error = internalSessionTask.SI_parseRequestError;
                      if(internalSessionTask.SI_error == nil) internalSessionTask.SI_error = error;
-                     
+                     if(internalSessionTask.SI_error == nil) internalSessionTask.SI_error = responseError;
                      internalSessionTask.SI_parsedObject = obj;
                      internalSessionTask.SI_requestCompleteBlock(internalSessionTask.SI_error,
                                                                  obj,
