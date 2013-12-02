@@ -2,13 +2,13 @@
 
 
 @interface NSURLSession (Private)
-@property(readonly) SIInternalSession * SI_internalSession;
+@property(readonly) __SIInternalSession * SI_internalSession;
 @property(strong,setter = SI_setRequestSerializer:)  SIURLSessionRequestSerializer<SIURLSessionRequestSerializing> *    SI_serializerForRequest;
 @property(strong,setter = SI_setResponseSerializer:) SIURLSessionResponseSerializer<SIURLSessionResponseSerializing> *   SI_serializerForResponse;
 @end
 
 @interface NSURLSessionTask (Private)
-@property(readonly) SIInternalSessionTask * SI_internalSessionTask;
+@property(readonly) __SIInternalSessionTask * SI_internalSessionTask;
 @end
 
 
@@ -18,7 +18,7 @@
 @end
 
 
-@interface SIInternalSession ()
+@interface __SIInternalSession ()
 <SIPerforming>
 
 @property(strong,setter = SI_setRequestSerializer:)  SIURLSessionRequestSerializer<SIURLSessionRequestSerializing> *    SI_serializerForRequest;
@@ -46,9 +46,9 @@
 @end
 
 
-@interface SIInternalSessionTask ()
+@interface __SIInternalSessionTask ()
 <SIPerforming>
-@property(nonatomic,strong) SIInternalSession * internalSession;
+@property(nonatomic,strong) __SIInternalSession * internalSession;
 @property(nonatomic,strong,setter = SI_setParseResponseError:) NSError * SI_parseResponseError;
 @property(nonatomic,strong,setter = SI_setParseRequestError:) NSError * SI_parseRequestError;
 @property(nonatomic,copy,setter = SI_setError:) NSError * SI_error;
@@ -88,7 +88,7 @@
 @end
 
 
-@interface SIInternalManager ()
+@interface __SIInternalManager ()
 @property(nonatomic,strong) NSMapTable * mapSessions;
 @property(nonatomic,strong) NSMapTable * mapConfigurations;
 
@@ -99,8 +99,8 @@
           andBaseURL:(NSURL *)theBaseURL;
 
 
-+(SIInternalSession *)internalSessionForURLSession:(NSURLSession *)theURLSession;
-+(SIInternalSessionTask *)internalSessionTaskForURLSessionTask:(NSURLSessionTask *)theURLSessionTask;
++(__SIInternalSession *)internalSessionForURLSession:(NSURLSession *)theURLSession;
++(__SIInternalSessionTask *)internalSessionTaskForURLSessionTask:(NSURLSessionTask *)theURLSessionTask;
 
 
 @end

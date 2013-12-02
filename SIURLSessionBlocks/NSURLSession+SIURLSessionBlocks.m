@@ -9,11 +9,11 @@
 
 #import "NSURLSession+SIURLSessionBlocks.h"
 
-#import "SIURLSessionBlocksSerializers.h"
+#import "SIURLSessionSerializers.h"
 #import "NSURLSessionTask+SIURLSessionBlocks.h"
 
-#import "SIInternalManager.h"
-#import "SIInternalManager+Delegate.h"
+#import "__SIInternalManager.h"
+#import "__SIInternalManager+Delegate.h"
 #include "SIInternalShared.private"
 
 
@@ -179,12 +179,12 @@
 
   
   NSURLSession * session = [NSURLSession sessionWithConfiguration:theSessionConfiguration
-                                                         delegate:[SIInternalManager sharedManager]
+                                                         delegate:[__SIInternalManager sharedManager]
                                                     delegateQueue:theOperationQueue];
 
 
   
-  [SIInternalManager addURLSession:session withSessionName:theSessionName andBaseURL:url];
+  [__SIInternalManager addURLSession:session withSessionName:theSessionName andBaseURL:url];
   session.SI_serializerForResponse = theResponseSerializer;
   session.SI_serializerForRequest = theRequestSerializer;
   
@@ -199,7 +199,7 @@
 
   NSParameterAssert(theSessionName);
   
-  NSURLSession * URLSession = [SIInternalManager sessionWithName:theSessionName];
+  NSURLSession * URLSession = [__SIInternalManager sessionWithName:theSessionName];
   return URLSession;
 }
 
@@ -351,8 +351,8 @@
 
 
 #pragma mark - Privates
--(SIInternalSession *)SI_internalSession; {
-  return [SIInternalManager internalSessionForURLSession:(NSURLSession *)self];
+-(__SIInternalSession *)SI_internalSession; {
+  return [__SIInternalManager internalSessionForURLSession:(NSURLSession *)self];
 }
 
 

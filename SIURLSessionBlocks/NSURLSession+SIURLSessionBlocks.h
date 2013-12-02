@@ -9,7 +9,7 @@
 
 
 #import "SIURLSessionTaskSharedBlocks.h"
-
+#import "NSURLSession+SIURLSessionConfiguration.h"
 @class SIURLSessionRequestSerializer;
 @class SIURLSessionResponseSerializer;
 
@@ -27,7 +27,6 @@
 @property(assign,setter = SI_setAutoResume:,getter = SI_isAutoResume) BOOL SI_autoResume;
 
 #pragma mark - Init
-typedef NSURLSessionConfiguration * (^SIURLSessionConfiguratuinModifierBlock)(void);
 
 +(instancetype)SI_buildDefaultSessionWithName:(NSString *)theSessionName
                             withBaseURLString:(NSString *)theBaseURLString;

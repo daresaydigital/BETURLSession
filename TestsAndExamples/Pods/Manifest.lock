@@ -1,5 +1,5 @@
 PODS:
-  - SIURLSessionBlocks (1.0.0)
+  - SIURLSessionBlocks (0.1.0)
 
 DEPENDENCIES:
   - SIURLSessionBlocks (from `../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  SIURLSessionBlocks: 28a8352b02771462e91000c16b7c04766d8ac7c3
+  SIURLSessionBlocks: 0a43129639db7b5789e730e27b892d0a6b5a9027
 
 COCOAPODS: 0.28.0

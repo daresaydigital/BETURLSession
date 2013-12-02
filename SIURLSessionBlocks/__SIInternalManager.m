@@ -1,10 +1,10 @@
 
-#import "SIInternalManager.h"
+#import "__SIInternalManager.h"
 #import "SIURLSessionBlocks.h"
 #include "SIInternalShared.private"
 
 
-@implementation SIInternalSessionConfiguration
+@implementation __SIInternalSessionConfiguration
 
 
 
@@ -28,7 +28,7 @@
 
 @end
 
-@implementation SIInternalSession
+@implementation __SIInternalSession
 
 -(instancetype)init; {
   self = [super init];
@@ -40,12 +40,12 @@
 
 -(void)buildInternalSessionTaskWithURLSessionTask:(NSURLSessionTask *)theURLSessionTask; {
   NSParameterAssert(theURLSessionTask);
-  SIInternalSessionTask * internalTask = SIInternalSessionTask.new;
+  __SIInternalSessionTask * internalTask = __SIInternalSessionTask.new;
   internalTask.internalSession = self;
   [self.mapTasks setObject:internalTask forKey:theURLSessionTask];
 }
 
--(SIInternalSessionTask *)internalTaskForURLSessionTask:(NSURLSessionTask *)theURLSessionTask; {
+-(__SIInternalSessionTask *)internalTaskForURLSessionTask:(NSURLSessionTask *)theURLSessionTask; {
   NSParameterAssert(theURLSessionTask);
   return [self.mapTasks objectForKey:theURLSessionTask];
 }
@@ -71,7 +71,7 @@
 @end
 
 
-@implementation SIInternalSessionTask
+@implementation __SIInternalSessionTask
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
 
@@ -93,7 +93,7 @@
 @end
 
 
-@implementation SIInternalManager
+@implementation __SIInternalManager
 
 
 #pragma mark - Init & Dealloc
@@ -107,10 +107,10 @@
 }
 
 +(instancetype)sharedManager; {
-  static SIInternalManager *_sharedInstance;
+  static __SIInternalManager *_sharedInstance;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
-    _sharedInstance = [[SIInternalManager alloc] init];
+    _sharedInstance = [[__SIInternalManager alloc] init];
     
   });
   
@@ -124,11 +124,11 @@
   NSParameterAssert([mapTable objectForKey:theURLSession] == nil);
 
   for(NSURLSession * existingURLSession in mapTable) {
-    SIInternalSession * existingInternalSession = [mapTable objectForKey:existingURLSession];
+    __SIInternalSession * existingInternalSession = [mapTable objectForKey:existingURLSession];
     NSParameterAssert([existingInternalSession.SI_sessionName isEqualToString:theSessionName] == NO);
   }
   
-  SIInternalSession * internalSession =  SIInternalSession.new;
+  __SIInternalSession * internalSession =  __SIInternalSession.new;
   internalSession.SI_sessionName = theSessionName;
   internalSession.SI_baseURL = theBaseURL;
 
@@ -140,21 +140,21 @@
 
 
 
-+(SIInternalSession *)internalSessionForURLSession:(NSURLSession *)theURLSession; {
++(__SIInternalSession *)internalSessionForURLSession:(NSURLSession *)theURLSession; {
   NSMapTable * mapTable = [[self sharedManager] mapSessions];
-  SIInternalSession * internalSession = [mapTable objectForKey:theURLSession];
+  __SIInternalSession * internalSession = [mapTable objectForKey:theURLSession];
   NSParameterAssert(internalSession);
   return internalSession;
   
 }
 
 //Could always swizzle this for performance in the future or build a better map.
-+(SIInternalSessionTask *)internalSessionTaskForURLSessionTask:(NSURLSessionTask *)theURLSessionTask; {
++(__SIInternalSessionTask *)internalSessionTaskForURLSessionTask:(NSURLSessionTask *)theURLSessionTask; {
   NSArray  * tasks  = [[self sharedManager] mapSessions].dictionaryRepresentation.objectEnumerator.allObjects;
-  __block SIInternalSessionTask * foundTask = nil;
-  [tasks enumerateObjectsUsingBlock:^(SIInternalSession *obj, NSUInteger idx, BOOL *stop) {
+  __block __SIInternalSessionTask * foundTask = nil;
+  [tasks enumerateObjectsUsingBlock:^(__SIInternalSession *obj, NSUInteger idx, BOOL *stop) {
     
-    [obj.mapTasks.dictionaryRepresentation enumerateKeysAndObjectsUsingBlock:^(NSURLSessionTask *keyTask, SIInternalSessionTask *objTask, BOOL *stopTask) {
+    [obj.mapTasks.dictionaryRepresentation enumerateKeysAndObjectsUsingBlock:^(NSURLSessionTask *keyTask, __SIInternalSessionTask *objTask, BOOL *stopTask) {
       if([keyTask isEqual:theURLSessionTask]) {
         foundTask = objTask;
         *stopTask = YES;

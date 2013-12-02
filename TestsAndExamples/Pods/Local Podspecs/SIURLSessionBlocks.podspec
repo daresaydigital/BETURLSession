@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
   name           = "SIURLSessionBlocks"
-  url            = "https://github.com/seivan/#{name}"
+  url            = "https://github.com/screeninteraction/#{name}"
   git_url        = "#{url}.git"
-  version        = "1.0.0"
+  version        = "0.1.0"
   source_files   = "#{name}/**/*.{h,m}"
 
   s.name         = name
@@ -13,7 +13,12 @@ Pod::Spec.new do |s|
                     Delegate callbacks via blocks.
                     Blocks are hold with a weak reference so you don't have to cleanup when your object is gone.
   
-                    * Swizzle and junk free
+                    * Plugginable serializers
+                    * No need for inheriting AND making a singleton
+                    * Keeps track of your session with just a simple key
+                    * Progress blocks for both Download and Upload
+                    * Life Cycle blocks to keep track of all requests that are happening
+                    * Very light weight
                     * No need to clean up after - The blocks are self maintained.
                     * Prefixed selectors.
                     * Minimum clutter on top of the public interface.
@@ -22,7 +27,9 @@ Pod::Spec.new do |s|
 
   s.homepage     = url
   s.license      = 'MIT'
-  s.author       = { "Seivan Heidari" => "seivan.heidari@icloud.com" }
+  s.author       = { "Seivan Heidari" => "seivan.heidari@screeninteraction.com",
+                     "Screen Interaction" => "contact@screeninteraction.com" 
+                     }
   
   s.source       = { :git => git_url, :tag => version}
   

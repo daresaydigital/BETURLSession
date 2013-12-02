@@ -2,10 +2,10 @@
 
 #import "NSURLSessionTask+SIURLSessionBlocks.h"
 
-#import "SIURLSessionBlocksSerializers.h"
+#import "SIURLSessionSerializers.h"
 #import "NSURLSession+SIURLSessionBlocks.h"
 
-#import "SIInternalManager.h"
+#import "__SIInternalManager.h"
 #include "SIInternalShared.private"
 
 
@@ -72,8 +72,8 @@
 
 #pragma mark - Privates
 //Could always swizzle this for performance in the future or build a better map. 
--(SIInternalSessionTask *)SI_internalSessionTask; {
-  return [SIInternalManager internalSessionTaskForURLSessionTask:(NSURLSessionTask *)self];
+-(__SIInternalSessionTask *)SI_internalSessionTask; {
+  return [__SIInternalManager internalSessionTaskForURLSessionTask:(NSURLSessionTask *)self];
 }
 
 #pragma mark - <NSURLSessionTaskDelegate>

@@ -1,10 +1,10 @@
 
-#import "SIInternalManager+Delegate.h"
+#import "__SIInternalManager+Delegate.h"
 #import "SIURLSessionBlocks.h"
 #include "SIInternalShared.private"
 
 @interface NSURLSession (Privates)
-typedef void (^SIDogmaPerformerBlock)(SIInternalSession * internalSession, SIInternalSessionTask * internalSessionTask, BOOL *stop);
+typedef void (^SIDogmaPerformerBlock)(__SIInternalSession * internalSession, __SIInternalSessionTask * internalSessionTask, BOOL *stop);
 
 -(void)SI_delegateWithSession:(NSURLSession *)theSession
                          task:(NSURLSessionTask *)theTask
@@ -30,8 +30,8 @@ typedef void (^SIDogmaPerformerBlock)(SIInternalSession * internalSession, SIInt
   NSParameterAssert(theSelector);
 
 
-  SIInternalSession * internalSession = theSession.SI_internalSession;
-  SIInternalSessionTask * internalSessionTask = nil;
+  __SIInternalSession * internalSession = theSession.SI_internalSession;
+  __SIInternalSessionTask * internalSessionTask = nil;
 
 
   if(theTask) internalSessionTask = [internalSession.mapTasks objectForKey:theTask];
@@ -52,7 +52,7 @@ typedef void (^SIDogmaPerformerBlock)(SIInternalSession * internalSession, SIInt
 @end
 
 
-@implementation SIInternalManager (Delegate)
+@implementation __SIInternalManager (Delegate)
 
 
 #pragma mark - <NSURLSessionDelegate>
@@ -68,11 +68,11 @@ typedef void (^SIDogmaPerformerBlock)(SIInternalSession * internalSession, SIInt
   [self SI_delegateWithSession:session task:nil selector:_cmd
                sharedBefore:nil
                       taskBlock:nil
-                   delegate:^void(SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
+                   delegate:^void(__SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
                      [internalSession.SI_delegate URLSession:session didBecomeInvalidWithError:error];
                    }
-                   internal:^void(__unused SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
-                     [[[SIInternalManager sharedManager] mapSessions] removeObjectForKey:session];
+                   internal:^void(__unused __SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
+                     [[[__SIInternalManager sharedManager] mapSessions] removeObjectForKey:session];
                    }];
 
 }
@@ -94,12 +94,12 @@ typedef void (^SIDogmaPerformerBlock)(SIInternalSession * internalSession, SIInt
   [self SI_delegateWithSession:session task:nil selector:_cmd
                sharedBefore:nil
                       taskBlock:nil
-                   delegate:^void(SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                   delegate:^void(__SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                      [internalSession.SI_delegate URLSession:session didReceiveChallenge:challenge completionHandler:completionHandler];
                      *stop = YES;
                      
                    }
-                   internal:^void(__unused SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
+                   internal:^void(__unused __SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
                      completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
                    }];
 
@@ -118,7 +118,7 @@ typedef void (^SIDogmaPerformerBlock)(SIInternalSession * internalSession, SIInt
   [self SI_delegateWithSession:session task:nil selector:_cmd
                sharedBefore:nil
                       taskBlock:nil
-                   delegate:^void(SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
+                   delegate:^void(__SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
                      [internalSession.SI_delegate URLSessionDidFinishEventsForBackgroundURLSession:session];
                    }
                    internal:nil];
@@ -141,17 +141,17 @@ willPerformHTTPRedirection:(NSHTTPURLResponse *)response
   
   [self SI_delegateWithSession:session task:task selector:_cmd
                sharedBefore:nil
-                      taskBlock:^void(SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                      taskBlock:^void(__SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                         if(internalSessionTask.SI_taskWillPerformHTTPRedirectionBlock) {
                           internalSessionTask.SI_taskWillPerformHTTPRedirectionBlock(task,response,request,completionHandler);
                           *stop = YES;
                         }
                       }
-                   delegate:^void(SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                   delegate:^void(__SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                      [internalSession.SI_delegate URLSession:session task:task willPerformHTTPRedirection:response newRequest:request completionHandler:completionHandler];
                      *stop = YES;
                    }
-                   internal:^void(__unused SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
+                   internal:^void(__unused __SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
                      completionHandler(request);
                    }];
 }
@@ -167,17 +167,17 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
   
   [self SI_delegateWithSession:session task:task selector:_cmd
                   sharedBefore:nil
-                      taskBlock:^(__unused SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                      taskBlock:^(__unused __SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                         if(internalSessionTask.SI_taskDidReceiveChallenge) {
                           internalSessionTask.SI_taskDidReceiveChallenge(task, challenge, completionHandler);
                           *stop = YES;
                         }
                       }
-                   delegate:^(SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                   delegate:^(__SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                      [internalSession.SI_delegate URLSession:session task:task didReceiveChallenge:challenge completionHandler:completionHandler];
                      *stop = YES;
                    }
-                   internal:^(__unused SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
+                   internal:^(__unused __SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
                      completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
                    }];
   
@@ -192,17 +192,17 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
   
   [self SI_delegateWithSession:session task:task selector:_cmd
                sharedBefore:nil
-                      taskBlock:^(__unused SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                      taskBlock:^(__unused __SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                         if(internalSessionTask.SI_taskNeedNewBodyStreamBlock) {
                           internalSessionTask.SI_taskNeedNewBodyStreamBlock(task, completionHandler);
                           *stop = YES;
                         }
                       }
-                   delegate:^(SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                   delegate:^(__SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                      [internalSession.SI_delegate URLSession:session task:task needNewBodyStream:completionHandler];
                      *stop = YES;
                    }
-                   internal:^(__unused SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
+                   internal:^(__unused __SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
                      completionHandler(nil);
                    }];
 
@@ -218,13 +218,13 @@ totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend; {
   
   [self SI_delegateWithSession:session task:task selector:_cmd
                sharedBefore:nil
-                      taskBlock:^(__unused SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                      taskBlock:^(__unused __SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                         if(internalSessionTask.SI_uploadProgressBlock) {
                           internalSessionTask.SI_uploadProgressBlock(task, (NSInteger)bytesSent,(NSInteger)totalBytesSent,(NSInteger)totalBytesExpectedToSend);
                           *stop = YES;
                         }
                       }
-                   delegate:^(SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
+                   delegate:^(__SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
                      [internalSession.SI_delegate URLSession:session task:task didSendBodyData:bytesSent totalBytesSent:totalBytesSent totalBytesExpectedToSend:totalBytesExpectedToSend];
                    }
                    internal:nil];
@@ -240,7 +240,7 @@ totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend; {
 didCompleteWithError:(NSError *)error; {
   
   [self SI_delegateWithSession:session task:task selector:_cmd
-               sharedBefore:^(SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
+               sharedBefore:^(__SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
                   if(internalSession.SI_taskWillEndRequestBlock) internalSession.SI_taskWillEndRequestBlock(task,error);
 
                  internalSessionTask.SI_error = error;
@@ -272,17 +272,17 @@ didCompleteWithError:(NSError *)error; {
 
 
                }
-                     taskBlock:^(__unused SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                     taskBlock:^(__unused __SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                        if(internalSessionTask.SI_taskDidCompleteWithErrorBlock){
                          internalSessionTask.SI_taskDidCompleteWithErrorBlock(task, error);
                          *stop = YES;
                        }
 
                       }
-                   delegate:^(SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
+                   delegate:^(__SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
                      [internalSession.SI_delegate URLSession:session task:task didCompleteWithError:error];
                    }
-                   internal:^(SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                   internal:^(__SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                      if(internalSession.SI_taskDidEndRequestBlock) internalSession.SI_taskDidEndRequestBlock(task,error);
                    }];
 
@@ -301,20 +301,20 @@ didReceiveResponse:(NSURLResponse *)response
  completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler; {
   
   [self SI_delegateWithSession:session task:dataTask selector:_cmd
-               sharedBefore:^(SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
+               sharedBefore:^(__SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
                  if(internalSession.SI_taskDidRequestBlock) internalSession.SI_taskDidRequestBlock(dataTask, nil);
                }
-                     taskBlock:^(__unused SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                     taskBlock:^(__unused __SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                         if(internalSessionTask.SI_taskDidReceiveResponseBlock) {
                           internalSessionTask.SI_taskDidReceiveResponseBlock(dataTask,response,completionHandler);
                           *stop = YES;
                         }
                       }
-                   delegate:^(SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                   delegate:^(__SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                      [internalSession.SI_delegate URLSession:session dataTask:dataTask didReceiveResponse:response completionHandler:completionHandler];
                      *stop = YES;
                    }
-                   internal:^(__unused SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
+                   internal:^(__unused __SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
                      completionHandler(NSURLSessionResponseBecomeDownload);
                    }];
 
@@ -326,18 +326,18 @@ didReceiveResponse:(NSURLResponse *)response
  */
 -(void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
 didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask; {
-  SIInternalSessionTask * internalSessionTask = [session.SI_internalSession.mapTasks objectForKey:dataTask];
+  __SIInternalSessionTask * internalSessionTask = [session.SI_internalSession.mapTasks objectForKey:dataTask];
   [session.SI_internalSession.mapTasks setObject:internalSessionTask forKey:downloadTask];
   
   [self SI_delegateWithSession:session task:downloadTask selector:_cmd
                   sharedBefore:nil
-                     taskBlock:^(__unused SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                     taskBlock:^(__unused __SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                         if(internalSessionTask.SI_taskBecomeDownloadTaskBlock) {
                           internalSessionTask.SI_taskBecomeDownloadTaskBlock(dataTask,downloadTask);
                           *stop = YES;
                         }
                       }
-                   delegate:^(SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
+                   delegate:^(__SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
                      [internalSession.SI_delegate URLSession:session dataTask:dataTask didBecomeDownloadTask:downloadTask];
                    }
                    internal:nil];
@@ -356,17 +356,17 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask; {
 
   
   [self SI_delegateWithSession:session task:dataTask selector:_cmd
-               sharedBefore:^(SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+               sharedBefore:^(__SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                  internalSessionTask.SI_data = data;
                  
                }
-                     taskBlock:^(SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                     taskBlock:^(__SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                        if(internalSessionTask.SI_taskDidReceiveDataBlock) {
                          internalSessionTask.SI_taskDidReceiveDataBlock(dataTask,data);
                          *stop = YES;
                        }
                      }
-                   delegate:^(SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
+                   delegate:^(__SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
                      [internalSession.SI_delegate URLSession:session dataTask:dataTask didReceiveData:data];
                    }
                    internal:nil];
@@ -385,18 +385,18 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask; {
 
   [self SI_delegateWithSession:session task:dataTask selector:_cmd
                sharedBefore:nil
-                      taskBlock:^(__unused SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                      taskBlock:^(__unused __SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                         if(internalSessionTask.SI_taskWillCacheResponseBlock) {
                           internalSessionTask.SI_taskWillCacheResponseBlock(dataTask,proposedResponse,completionHandler);
                           *stop = YES;
                         }
                       }
-                   delegate:^(SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                   delegate:^(__SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                      [internalSession.SI_delegate URLSession:session dataTask:dataTask willCacheResponse:proposedResponse completionHandler:completionHandler];
                      *stop = YES;
                      
                    }
-                   internal:^(__unused SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
+                   internal:^(__unused __SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
                      completionHandler(proposedResponse);
                    }];
  
@@ -415,19 +415,19 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask; {
 didFinishDownloadingToURL:(NSURL *)location; {
   
   [self SI_delegateWithSession:session task:downloadTask selector:_cmd
-               sharedBefore:^(SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+               sharedBefore:^(__SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                  NSData * data = [NSData dataWithContentsOfURL:location];
                  internalSessionTask.SI_data = data;
                  internalSessionTask.SI_downloadLocation = location;
 
                }
-                     taskBlock:^(__unused SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                     taskBlock:^(__unused __SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                         if(internalSessionTask.SI_taskDidFinishDownloadingToURLBlock) {
                           internalSessionTask.SI_taskDidFinishDownloadingToURLBlock(downloadTask,location);
                           *stop = YES;
                         }
                       }
-                   delegate:^(SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
+                   delegate:^(__SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
                      [internalSession.SI_delegate URLSession:session downloadTask:downloadTask didFinishDownloadingToURL:location];
                    }
                    internal:nil];
@@ -443,13 +443,13 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite; {
 
   [self SI_delegateWithSession:session task:downloadTask selector:_cmd
                sharedBefore:nil
-                      taskBlock:^(__unused SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                      taskBlock:^(__unused __SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                         if(internalSessionTask.SI_downloadProgressBlock) {
                           internalSessionTask.SI_downloadProgressBlock(downloadTask, (NSInteger)bytesWritten,(NSInteger)totalBytesWritten,(NSInteger)totalBytesExpectedToWrite);
                           *stop = YES;
                         }
                       }
-                   delegate:^(SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                   delegate:^(__SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                      [internalSession.SI_delegate URLSession:session task:downloadTask didSendBodyData:bytesWritten totalBytesSent:totalBytesWritten totalBytesExpectedToSend:totalBytesExpectedToWrite];
                    }
                    internal:nil];
@@ -468,13 +468,13 @@ expectedTotalBytes:(int64_t)expectedTotalBytes; {
  
   [self SI_delegateWithSession:session task:downloadTask selector:_cmd
                sharedBefore:nil
-                      taskBlock:^(__unused SIInternalSession *internalSession, SIInternalSessionTask *internalSessionTask, BOOL *stop) {
+                      taskBlock:^(__unused __SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                         if(internalSessionTask.SI_taskDidResumeAtOffsetBlock) {
                           internalSessionTask.SI_taskDidResumeAtOffsetBlock(downloadTask, (NSInteger)fileOffset, (NSInteger)expectedTotalBytes);
                           *stop = YES;
                         }
                       }
-                   delegate:^(SIInternalSession *internalSession, __unused SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
+                   delegate:^(__SIInternalSession *internalSession, __unused __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
                      [internalSession.SI_delegate URLSession:session downloadTask:downloadTask didResumeAtOffset:fileOffset expectedTotalBytes:expectedTotalBytes];
                    }
                    internal:nil];

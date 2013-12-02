@@ -30,16 +30,16 @@ typedef void (^SIURLSessionSerializerErrorBlock)(id obj, NSError * error);
 @protocol SIURLSessionRequestSerializing <SIURLSessionSerializing>
 @required
 -(void)buildRequest:(NSURLRequest *)theRequest
-               withParameters:(NSDictionary *)theParameters
-                        onCompletion:(SIURLSessionSerializerErrorBlock)theBlock;
+     withParameters:(NSDictionary *)theParameters
+       onCompletion:(SIURLSessionSerializerErrorBlock)theBlock;
 @end
 
 @protocol SIURLSessionResponseSerializing <SIURLSessionSerializing>
 @required
 @property(nonatomic,readonly) NSSet         * acceptableMIMETypes;
 -(void)buildObjectForResponse:(NSURLResponse *)theResponse
-               responseData:(NSData *)theResponseData
-                      onCompletion:(SIURLSessionSerializerErrorBlock)theBlock;
+                 responseData:(NSData *)theResponseData
+                 onCompletion:(SIURLSessionSerializerErrorBlock)theBlock;
 
 @end
 

@@ -1,11 +1,11 @@
 
-#import "SIURLSessionBlocksSerializers.h"
+#import "SIURLSessionSerializers.h"
 
 #import "NSURLSession+SIURLSessionBlocks.h"
 #import "NSURLSessionTask+SIURLSessionBlocks.h"
 
 
-#import "SIInternalManager.h"
+#import "__SIInternalManager.h"
 #include "SIInternalShared.private"
 
 
