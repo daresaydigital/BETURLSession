@@ -286,7 +286,7 @@
     task = [session downloadTaskWithRequest:modifierRequest];
   
   
-  
+
   [self.SI_internalSession buildInternalSessionTaskWithURLSessionTask:task];
   
   [task SI_setRequestDataCompleteBlock:theDataCompleteBlock];
@@ -324,7 +324,6 @@
     return modifierRequest.copy;
   } completeDataBlock:nil];
   [task SI_setRequestCompleteBlock:theBlock];
-  
   return task;
   
 }
