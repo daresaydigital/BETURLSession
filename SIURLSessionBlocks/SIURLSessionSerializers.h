@@ -62,6 +62,7 @@ typedef void (^SIURLSessionSerializerErrorBlock)(id obj, NSError * error);
 @property(nonatomic,readonly) NSString * userAgentHeader;
 @property(nonatomic,readonly) NSSet    * acceptableHTTPMethodsForURIEncoding;
 @property(nonatomic,copy) NSDictionary * HTTPAdditionalHeaders;
+-(void)setValue:(id)value forHTTPHeaderField:(NSString *)theHTTPHeaderField;
 
 -(void)buildRequest:(NSURLRequest *)theRequest
      withParameters:(NSDictionary *)theParameters

@@ -51,6 +51,17 @@
   self.SI_internalSession.SI_autoResume = theAutoResumeFlag;
 }
 
+-(NSDictionary *)SI_HTTPAdditionalHeaders; {
+  NSURLSession * session = (NSURLSession *)self;
+  return session.SI_serializerForRequest.HTTPAdditionalHeaders;
+}
+
+-(void)SI_setValue:(id)value forHTTPHeaderField:(NSString *)theHTTPHeaderField; {
+  NSURLSession * session = (NSURLSession *)self;
+  [session.SI_serializerForRequest setValue:value forHTTPHeaderField:theHTTPHeaderField];
+}
+
+
 -(NSString *)SI_fetchSessionWithName; {
   return [self.SI_internalSession SI_performSelector:_cmd];
 }
@@ -261,7 +272,8 @@
   
   
   NSURLSessionTask * task  = nil;
-  modifierRequest = request.copy;
+  modifierRequest = request.mutableCopy;
+
   
   [session.SI_serializerForRequest.HTTPAdditionalHeaders enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
     [modifierRequest setValue:obj forHTTPHeaderField:key];

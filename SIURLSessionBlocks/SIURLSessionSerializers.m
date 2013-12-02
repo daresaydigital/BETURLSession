@@ -262,6 +262,13 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
   return serializer;
 }
 
+-(void)setValue:(id)value forHTTPHeaderField:(NSString *)theHTTPHeaderField; {
+  NSParameterAssert(theHTTPHeaderField);
+  NSMutableDictionary * HTTPHeaders = self.HTTPAdditionalHeaders.mutableCopy;
+  if(value) HTTPHeaders[theHTTPHeaderField] = value;
+  else [HTTPHeaders removeObjectForKey:theHTTPHeaderField];
+  self.HTTPAdditionalHeaders = HTTPHeaders;
+}
 
 -(void)buildRequest:(NSURLRequest *)theRequest
      withParameters:(NSDictionary *)theParameters

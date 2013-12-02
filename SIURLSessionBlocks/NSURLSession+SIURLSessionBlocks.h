@@ -9,7 +9,7 @@
 
 
 #import "SIURLSessionTaskSharedBlocks.h"
-#import "NSURLSession+SIURLSessionConfiguration.h"
+
 @class SIURLSessionRequestSerializer;
 @class SIURLSessionResponseSerializer;
 
@@ -25,6 +25,10 @@
 @property(readonly) NSString    * SI_sessionName;
 
 @property(assign,setter = SI_setAutoResume:,getter = SI_isAutoResume) BOOL SI_autoResume;
+
+@property(nonatomic,copy) NSDictionary * SI_HTTPAdditionalHeaders;
+-(void)SI_setValue:(id)value forHTTPHeaderField:(NSString *)theHTTPHeaderField;
+
 
 #pragma mark - Init
 
