@@ -53,29 +53,25 @@ typedef NSURLSessionConfiguration * (^SIURLSessionConfiguratuinModifierBlock)(vo
 #pragma mark - Task based Life Cycle
 typedef void (^SIURLSessionTaskLifeCycleRequestBlock)(NSURLSessionTask * task, NSError * error);
 
-@property(readonly) SIURLSessionTaskLifeCycleRequestBlock SI_taskWillBeginRequestBlock;
--(void)SI_setTaskWillBeginRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock;
+//
+//@property(readonly) SIURLSessionTaskLifeCycleRequestBlock SI_taskWillBeginRequestBlock;
+//-(void)SI_setTaskWillBeginRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock;
+//
+//@property(readonly) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidBeginRequestBlock;
+//-(void)SI_setTaskDidBeginRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock;
+//
+//@property(readonly) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidRequestBlock;
+//-(void)SI_setTaskDidRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock;
+//
+//@property(readonly) SIURLSessionTaskLifeCycleRequestBlock SI_taskWillEndRequestBlock;
+//-(void)SI_setTaskWillEndRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock;
+//
+//@property(readonly) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidEndRequestBlock;
+//-(void)SI_setTaskDidEndRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock;
 
-@property(readonly) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidBeginRequestBlock;
--(void)SI_setTaskDidBeginRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock;
 
-@property(readonly) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidRequestBlock;
--(void)SI_setTaskDidRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock;
-
-@property(readonly) SIURLSessionTaskLifeCycleRequestBlock SI_taskWillEndRequestBlock;
--(void)SI_setTaskWillEndRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock;
-
-@property(readonly) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidEndRequestBlock;
--(void)SI_setTaskDidEndRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock;
-
-
-#warning Clean out task-creation. Will probably need to refactor out the internals and privates
 
 #pragma mark - Task Uploads turned to Downloads for progress handlers
--(NSURLSessionTask *)SI_taskWithHTTPMethodString:(NSString *)theMethodString
-                                      onResource:(NSString *)theResource
-                                          params:(id<NSFastEnumeration>)theParams
-                                   completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock;
 
 -(NSURLSessionTask *)SI_taskGETResource:(NSString *)theResource
                              withParams:(NSDictionary *)theParams
@@ -103,18 +99,19 @@ typedef void (^SIURLSessionTaskLifeCycleRequestBlock)(NSURLSessionTask * task, N
 
 
 #pragma mark - Custom Tasks
-typedef NSMutableURLRequest * (^SIURLSessionMutableRequestModifierBlock)(NSMutableURLRequest * modifierRequest);
+-(NSURLSessionTask *)SI_buildTaskWithHTTPMethodString:(NSString *)theMethodString
+                                      onResource:(NSString *)theResource
+                                          params:(id<NSFastEnumeration>)theParams
+                                   completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock;
+
+
+typedef NSURLRequest * (^SIURLSessionMutableRequestModifierBlock)(NSMutableURLRequest * modifierRequest);
 
 -(NSURLSessionTask *)SI_buildDataTaskOnResource:(NSString *)theResource
                                      withParams:(id<NSFastEnumeration>)theParams
                            requestModifierBlock:(SIURLSessionMutableRequestModifierBlock)theRequestModifierBlock
                               completeDataBlock:(SIURLSessionTaskRequestDataCompleteBlock)theDataCompleteBlock;
 
-
--(NSURLSessionDownloadTask *)SI_buildDownloadTaskOnResource:(NSString *)theResource
-                                                 withParams:(id<NSFastEnumeration>)theParams
-                                       requestModifierBlock:(SIURLSessionMutableRequestModifierBlock)theRequestModifierBlock
-                                          completeDataBlock:(SIURLSessionTaskRequestDataCompleteBlock)theDataCompleteBlock;
 
 
 @end
