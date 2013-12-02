@@ -369,12 +369,8 @@
   if(request.HTTPBody == nil && params && params.count > 0) {
 
 
-#warning Get rid of serializer guards
-    SIURLSessionRequestSerializer<SIURLSessionRequestSerializing> * serializer = session.SI_serializerForRequest;
-    if(serializer == nil) serializer = session.SI_internalSession.SI_serializerForRequest;
-    
-    NSParameterAssert(serializer);
-    [serializer buildRequest:modifierRequest.copy withParameters:params onCompletion:^(id obj, NSError *error) {
+
+    [session.SI_serializerForRequest buildRequest:modifierRequest.copy withParameters:params onCompletion:^(id obj, NSError *error) {
       needsToSerialize = NO;
       request = obj;
       parsingError = error;
@@ -388,11 +384,8 @@
 
   NSURLSessionTask * task  = nil;
 
-#warning Get rid of serializer guards
-  SIURLSessionRequestSerializer<SIURLSessionRequestSerializing> * serializer = session.SI_serializerForRequest;
-  if(serializer == nil) serializer = session.SI_internalSession.SI_serializerForRequest;
 
-  if(request.HTTPBody && [serializer.acceptableHTTPMethodsForURIEncoding containsObject:request.HTTPMethod.uppercaseString] == NO) {
+  if(request.HTTPBody && [session.SI_serializerForRequest.acceptableHTTPMethodsForURIEncoding containsObject:request.HTTPMethod.uppercaseString] == NO) {
     task = [session uploadTaskWithRequest:request fromData:request.HTTPBody];
      }
   else

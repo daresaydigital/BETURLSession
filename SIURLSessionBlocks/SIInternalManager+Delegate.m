@@ -244,13 +244,10 @@ didCompleteWithError:(NSError *)error; {
                   if(internalSession.SI_taskWillEndRequestBlock) internalSession.SI_taskWillEndRequestBlock(task,error);
 
                  internalSessionTask.SI_error = error;
-                 #warning Get rid of serializer guards
-                 if(internalSessionTask.SI_requestCompleteBlock) {
-                   SIURLSessionResponseSerializer<SIURLSessionResponseSerializing> * serializer = session.SI_serializerForResponse;
-                   if(serializer == nil) serializer = session.SI_internalSession.SI_serializerForResponse;
 
-                   NSParameterAssert(serializer);
-                   [serializer buildObjectForResponse:task.response responseData:internalSessionTask.SI_data onCompletion:^(id obj, NSError *responseError) {
+                 if(internalSessionTask.SI_requestCompleteBlock) {
+
+                   [session.SI_serializerForResponse buildObjectForResponse:task.response responseData:internalSessionTask.SI_data onCompletion:^(id obj, NSError *responseError) {
                      internalSessionTask.SI_parseResponseError = responseError;
                      if(internalSessionTask.SI_error == nil) internalSessionTask.SI_error = error;
                      if(internalSessionTask.SI_error == nil) internalSessionTask.SI_error = responseError;
