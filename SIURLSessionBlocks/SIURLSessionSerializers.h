@@ -1,7 +1,5 @@
 
 
-#warning Clean up serializes with protocols and etc
-#warning Make image serializers.
 
 
 @class SIURLSessionResponseSerializer;
@@ -12,8 +10,11 @@
 
 @interface NSURLSession (SIURLSessionBlocksSerializers)
 
-@property(readonly)  SIURLSessionRequestSerializer<SIURLSessionRequestSerializing>    * SI_serializerForRequest;
-@property(readonly)  SIURLSessionResponseSerializer<SIURLSessionResponseSerializing>  * SI_serializerForResponse;
+@property(readonly)
+SIURLSessionRequestSerializer<SIURLSessionRequestSerializing>    * SI_serializerForRequest;
+
+@property(readonly)
+SIURLSessionResponseSerializer<SIURLSessionResponseSerializing>  * SI_serializerForResponse;
 
 @end
 
@@ -70,8 +71,6 @@ typedef void (^SIURLSessionSerializerErrorBlock)(id obj, NSError * error);
 @interface SIURLSessionResponseSerializer : SIURLSessionSerializer
 
 @property(nonatomic,readonly) NSIndexSet    * acceptableHTTPStatusCodes;
-
-
 -(void)validateResponse:(NSHTTPURLResponse *)theResponse
                    data:(NSData *)theData
                   onCompletion:(SIURLSessionSerializerErrorBlock)theBlock;
