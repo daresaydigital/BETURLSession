@@ -47,7 +47,6 @@
 #pragma mark - Mama-san keeps track of the staff.
 +(instancetype)SI_fetchSessionWithName:(NSString *)theSessionName;
 
-#warning Fix lifecycle
 
 #pragma mark - Task based Life Cycle
 typedef void (^SIURLSessionTaskLifeCycleRequestBlock)(NSURLSessionTask * task, NSError * error);

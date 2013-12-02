@@ -71,9 +71,6 @@
   
 }
 
-
-#warning Clean this up, extract into its own stuff. 
-#warning Will need a 'default' header-esque system and injecting it per request basis, instead of using the broke NSURLSessionConfiguration
 +(instancetype)SI_buildSessionWithName:(NSString *)theSessionName
                      withBaseURLString:(NSString *)theBaseURLString
                andSessionConfiguration:(NSURLSessionConfiguration *)theSessionConfiguration
@@ -96,86 +93,29 @@
   if(theRequestSerializer == nil) theRequestSerializer = [[SIURLSessionRequestSerializerJSON alloc] init];
   if(theResponseSerializer == nil) theResponseSerializer = [[SIURLSessionResponseSerializerJSON alloc] init];
 
+  NSParameterAssert(theRequestSerializer.HTTPAdditionalHeaders);
   
   NSMutableDictionary * headers = theSessionConfiguration.HTTPAdditionalHeaders.mutableCopy;
   if(headers == nil) headers = @{}.mutableCopy;
   
-  // Thanks to Matt Thomspon of AFNetworking.
-  // Accept-Language HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4
+
   
-  NSMutableArray *acceptLanguagesComponents = @[].mutableCopy;
-  [[NSLocale preferredLanguages] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-    CGFloat q = 1.0f - (idx * 0.1f);
-    [acceptLanguagesComponents addObject:[NSString stringWithFormat:@"%@;q=%0.1g", obj, q]];
-    if(q <= 0.5f) *stop = YES;
+
+  headers[@"User-Agent"]      = theRequestSerializer.userAgentHeader;
+  headers[@"Content-Type"]    = theRequestSerializer.contentTypeHeader;
+  headers[@"Accept-Language"] = theRequestSerializer.acceptLanguageHeader;
+  headers[@"Accept"]          = theResponseSerializer.acceptHeader;
+
+  
+  [theRequestSerializer.HTTPAdditionalHeaders enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+    headers[key] = obj;
   }];
   
-  NSString * acceptLanguage = [acceptLanguagesComponents componentsJoinedByString:@", "];
-  NSParameterAssert(acceptLanguage);
-  headers[@"Accept-Language"] = acceptLanguage;
-  
-  
-  // Thanks to Matt Thomspon of AFNetworking.
-  // User-Agent Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43
-  
-  NSDictionary * bundleDictionary = [[NSBundle mainBundle] infoDictionary];
-  UIDevice     * currentDevice    = [UIDevice currentDevice];
-  NSString * userAgent = nil;
-  
-  
-#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-  
-  userAgent = [NSString stringWithFormat:@"%@/%@ (%@; iOS %@; Scale/%0.2f)",
-               
-               [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleExecutableKey]
-               ?: [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleIdentifierKey],
-               
-               (__bridge id)CFBundleGetValueForInfoDictionaryKey(CFBundleGetMainBundle(), kCFBundleVersionKey)
-               ?: [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleVersionKey],
-               
-               [currentDevice model],
-               [currentDevice systemVersion],
-               
-               [[UIScreen mainScreen] scale]
-               ];
-  
-#elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
-  userAgent = [NSString stringWithFormat:@"%@/%@ (Mac OS X %@; Scale/%0.2f)",
-               
-               [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleExecutableKey]
-               ?: [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleIdentifierKey],
-               
-               [bundleDictionary objectForKey:@"CFBundleShortVersionString"]
-               ?: [bundleDictionaryobjectForKey:(__bridge NSString *)kCFBundleVersionKey],
-               
-               [[NSProcessInfo processInfo] operatingSystemVersionString],
-               
-               [NSWindow.new.backingScaleFactor]
-               ];
-#endif
-  
-  if (userAgent) {
-    if ([userAgent canBeConvertedToEncoding:NSASCIIStringEncoding] == NO) {
-      NSMutableString *mutableUserAgent = userAgent.mutableCopy;
-      CFStringTransform((__bridge CFMutableStringRef)(mutableUserAgent), NULL, (__bridge CFStringRef)@"Any-Latin; Latin-ASCII; [:^ASCII:] Remove", false);
-      userAgent = mutableUserAgent;
-    }
-    
-  }
-  
-  NSParameterAssert(userAgent);
-  headers[@"User-Agent"] = userAgent;
-  
-  [headers addEntriesFromDictionary:theRequestSerializer.headers];
-  [headers addEntriesFromDictionary:theResponseSerializer.headers];
-  
-  theSessionConfiguration.HTTPAdditionalHeaders = headers;
+  theRequestSerializer.HTTPAdditionalHeaders = headers.copy;
+  theSessionConfiguration.HTTPAdditionalHeaders = theRequestSerializer.HTTPAdditionalHeaders;
   
 
-  
 
-  
-  
 
   
   NSURLSession * session = [NSURLSession sessionWithConfiguration:theSessionConfiguration
@@ -295,7 +235,7 @@
   NSParameterAssert(fullPathURL);
   
   __block NSURLRequest * request = [NSURLRequest requestWithURL:fullPathURL];
-  NSMutableURLRequest * modifierRequest = request.mutableCopy;
+  __block NSMutableURLRequest * modifierRequest = request.mutableCopy;
   if(theRequestModifierBlock) modifierRequest = theRequestModifierBlock(modifierRequest).mutableCopy;
   
   NSParameterAssert(request);
@@ -308,7 +248,7 @@
   
   __block BOOL needsToSerialize = YES;
   
-  if(request.HTTPBody == nil && params && params.count > 0) {
+  if(modifierRequest.HTTPBody == nil && params && params.count > 0) {
     [session.SI_serializerForRequest buildRequest:modifierRequest.copy withParameters:params onCompletion:^(id obj, NSError *error) {
       needsToSerialize = NO;
       request = obj;
@@ -321,13 +261,17 @@
   
   
   NSURLSessionTask * task  = nil;
+  modifierRequest = request.copy;
   
+  [session.SI_serializerForRequest.HTTPAdditionalHeaders enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+    [modifierRequest setValue:obj forHTTPHeaderField:key];
+  }];
   
-  if(request.HTTPBody && [session.SI_serializerForRequest.acceptableHTTPMethodsForURIEncoding containsObject:request.HTTPMethod.uppercaseString] == NO) {
-    task = [session uploadTaskWithRequest:request fromData:request.HTTPBody];
+  if(modifierRequest.HTTPBody && [session.SI_serializerForRequest.acceptableHTTPMethodsForURIEncoding containsObject:modifierRequest.HTTPMethod.uppercaseString] == NO) {
+    task = [session uploadTaskWithRequest:modifierRequest fromData:modifierRequest.HTTPBody];
   }
   else
-    task = [session downloadTaskWithRequest:request];
+    task = [session downloadTaskWithRequest:modifierRequest];
   
   
   

@@ -105,42 +105,42 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
     
   }
 
-//  else if([theValue conformsToProtocol:@protocol(NSFastEnumeration)]){
-//    for (id nestedValue in theValue) {
-//      NSString * newKey   = [NSString stringWithFormat:@"%@[]", theKey];
-//      NSArray  * newPairs = [self queryPairsFromKey:newKey andValue:nestedValue];
-//      [parameterComponents addObjectsFromArray:newPairs];
-//    }
-//  }
-  
-  else if ([theValue isKindOfClass:[NSArray class]]) {
-    
-    NSArray * array = (NSArray *)theValue;
-    [array enumerateObjectsUsingBlock:^(id nestedValue, __unused NSUInteger idx, __unused BOOL *stop) {
+  else if([theValue conformsToProtocol:@protocol(NSFastEnumeration)]){
+    for (id nestedValue in theValue) {
       NSString * newKey   = [NSString stringWithFormat:@"%@[]", theKey];
       NSArray  * newPairs = [self queryPairsFromKey:newKey andValue:nestedValue];
       [parameterComponents addObjectsFromArray:newPairs];
-    }];
-    
+    }
   }
-  else if ([theValue isKindOfClass:[NSSet class]]) {
-    NSSet * set = (NSSet *)theValue;
-    [set enumerateObjectsUsingBlock:^(id nestedValue, __unused BOOL *stop) {
-      NSString * newKey   = [NSString stringWithFormat:@"%@", theKey];
-      NSArray  * newPairs = [self queryPairsFromKey:newKey andValue:nestedValue];
-      [parameterComponents addObjectsFromArray:newPairs];
-    }];
-    
-  }
-  else if ([theValue isKindOfClass:[NSOrderedSet class]]) {
-    NSOrderedSet * orderedSet = (NSOrderedSet *)theValue;
-    [orderedSet enumerateObjectsUsingBlock:^(id nestedValue, NSUInteger idx, BOOL *stop) {
-      NSString * newKey   = [NSString stringWithFormat:@"%@", theKey];
-      NSArray  * newPairs = [self queryPairsFromKey:newKey andValue:nestedValue];
-      [parameterComponents addObjectsFromArray:newPairs];
-    }];
-    
-  }
+  
+//  else if ([theValue isKindOfClass:[NSArray class]]) {
+//    
+//    NSArray * array = (NSArray *)theValue;
+//    [array enumerateObjectsUsingBlock:^(id nestedValue, __unused NSUInteger idx, __unused BOOL *stop) {
+//      NSString * newKey   = [NSString stringWithFormat:@"%@[]", theKey];
+//      NSArray  * newPairs = [self queryPairsFromKey:newKey andValue:nestedValue];
+//      [parameterComponents addObjectsFromArray:newPairs];
+//    }];
+//    
+//  }
+//  else if ([theValue isKindOfClass:[NSSet class]]) {
+//    NSSet * set = (NSSet *)theValue;
+//    [set enumerateObjectsUsingBlock:^(id nestedValue, __unused BOOL *stop) {
+//      NSString * newKey   = [NSString stringWithFormat:@"%@", theKey];
+//      NSArray  * newPairs = [self queryPairsFromKey:newKey andValue:nestedValue];
+//      [parameterComponents addObjectsFromArray:newPairs];
+//    }];
+//    
+//  }
+//  else if ([theValue isKindOfClass:[NSOrderedSet class]]) {
+//    NSOrderedSet * orderedSet = (NSOrderedSet *)theValue;
+//    [orderedSet enumerateObjectsUsingBlock:^(id nestedValue, NSUInteger idx, BOOL *stop) {
+//      NSString * newKey   = [NSString stringWithFormat:@"%@", theKey];
+//      NSArray  * newPairs = [self queryPairsFromKey:newKey andValue:nestedValue];
+//      [parameterComponents addObjectsFromArray:newPairs];
+//    }];
+//    
+//  }
   
   else [parameterComponents addObject:[self queryPairFromKey:theKey andValue:theValue]];
   
@@ -179,14 +179,79 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
 
 @implementation SIURLSessionRequestSerializer
 
-@synthesize acceptableHTTPMethodsForURIEncoding = _acceptableHTTPMethodsForURIEncoding;
+
 
 
 
 -(instancetype)init; {
   self = [super init];
   if(self) {
+    self.HTTPAdditionalHeaders = @{};
     _acceptableHTTPMethodsForURIEncoding = [NSSet setWithArray:@[@"GET", @"HEAD", @"DELETE"]];
+    // Thanks to Matt Thomspon of AFNetworking.
+    // Accept-Language HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4
+    
+    NSMutableArray *acceptLanguagesComponents = @[].mutableCopy;
+    [[NSLocale preferredLanguages] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+      CGFloat q = 1.0f - (idx * 0.1f);
+      [acceptLanguagesComponents addObject:[NSString stringWithFormat:@"%@;q=%0.1g", obj, q]];
+      if(q <= 0.5f) *stop = YES;
+    }];
+    
+    NSString * acceptLanguage = [acceptLanguagesComponents componentsJoinedByString:@", "];
+    NSParameterAssert(acceptLanguage);
+    _acceptLanguageHeader = acceptLanguage;
+    
+    
+    // Thanks to Matt Thomspon of AFNetworking.
+    // User-Agent Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43
+    
+    NSDictionary * bundleDictionary = [[NSBundle mainBundle] infoDictionary];
+    UIDevice     * currentDevice    = [UIDevice currentDevice];
+    NSString * userAgent = nil;
+    
+    
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
+    
+    userAgent = [NSString stringWithFormat:@"%@/%@ (%@; iOS %@; Scale/%0.2f)",
+                 
+                 [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleExecutableKey]
+                 ?: [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleIdentifierKey],
+                 
+                 (__bridge id)CFBundleGetValueForInfoDictionaryKey(CFBundleGetMainBundle(), kCFBundleVersionKey)
+                 ?: [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleVersionKey],
+                 
+                 [currentDevice model],
+                 [currentDevice systemVersion],
+                 
+                 [[UIScreen mainScreen] scale]
+                 ];
+    
+#elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
+    userAgent = [NSString stringWithFormat:@"%@/%@ (Mac OS X %@; Scale/%0.2f)",
+                 
+                 [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleExecutableKey]
+                 ?: [bundleDictionary objectForKey:(__bridge NSString *)kCFBundleIdentifierKey],
+                 
+                 [bundleDictionary objectForKey:@"CFBundleShortVersionString"]
+                 ?: [bundleDictionaryobjectForKey:(__bridge NSString *)kCFBundleVersionKey],
+                 
+                 [[NSProcessInfo processInfo] operatingSystemVersionString],
+                 
+                 [NSWindow.new.backingScaleFactor]
+                 ];
+#endif
+    
+    if (userAgent) {
+      if ([userAgent canBeConvertedToEncoding:NSASCIIStringEncoding] == NO) {
+        NSMutableString *mutableUserAgent = userAgent.mutableCopy;
+        CFStringTransform((__bridge CFMutableStringRef)(mutableUserAgent), NULL, (__bridge CFStringRef)@"Any-Latin; Latin-ASCII; [:^ASCII:] Remove", false);
+        userAgent = mutableUserAgent;
+      }
+    }
+    NSParameterAssert(userAgent);
+    _userAgentHeader = userAgent;
+    
   }
   return self;
 }
@@ -197,25 +262,29 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
   return serializer;
 }
 
--(void)buildURIEncodedParametersRequest:(NSURLRequest *)theRequest
-                                        withParam:(NSObject<NSFastEnumeration> *)theParameters
-                                            onCompletion:(SIURLSessionSerializerErrorBlock)theBlock; {
-  
 
+-(void)buildRequest:(NSURLRequest *)theRequest
+     withParameters:(NSDictionary *)theParameters
+       onCompletion:(SIURLSessionSerializerErrorBlock)theBlock; {
+  
   NSParameterAssert(theRequest);
   NSParameterAssert(theBlock);
-  NSString * queryParameters = nil;
-  NSMutableURLRequest * newRequest = theRequest.mutableCopy;
   
-  NSEnumerator * emumeratingParams = (NSEnumerator*)theParameters;
-  if (theParameters && emumeratingParams.allObjects.count > 0 &&
-           [self.acceptableHTTPMethodsForURIEncoding containsObject:theRequest.HTTPMethod.uppercaseString]) {
-    queryParameters = [self queryStringFromParameters:theParameters];
-    newRequest.URL = [NSURL URLWithString:[newRequest.URL.absoluteString
-                                               stringByAppendingFormat:newRequest.URL.query ? @"&%@" : @"?%@", queryParameters]];
-  }
-  
-  theBlock(newRequest, nil);
+
+    NSParameterAssert(theRequest);
+    NSParameterAssert(theBlock);
+    NSString * queryParameters = nil;
+    NSMutableURLRequest * newRequest = theRequest.mutableCopy;
+    
+    NSEnumerator * emumeratingParams = (NSEnumerator*)theParameters;
+    if (theParameters && emumeratingParams.allObjects.count > 0 &&
+        [self.acceptableHTTPMethodsForURIEncoding containsObject:theRequest.HTTPMethod.uppercaseString]) {
+      queryParameters = [self queryStringFromParameters:theParameters];
+      newRequest.URL = [NSURL URLWithString:[newRequest.URL.absoluteString
+                                             stringByAppendingFormat:newRequest.URL.query ? @"&%@" : @"?%@", queryParameters]];
+    }
+    
+    theBlock(newRequest, nil);
   
   
 }
@@ -242,7 +311,6 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
   BOOL isValidResponse = YES;
   NSError * error = nil;
   
-#warning Errror handling should be with parent class, at least a portion of it in regards with creating the NSError objects
   if (theResponse && [theResponse isKindOfClass:[NSHTTPURLResponse class]]) {
     if ([self.acceptableHTTPStatusCodes containsIndex:(NSUInteger)theResponse.statusCode] == NO) {
       NSDictionary * userInfo = @{
@@ -286,13 +354,13 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
 
 
 @implementation SIURLSessionRequestSerializerJSON
-@synthesize headers = _headers;
+@synthesize contentTypeHeader = _contentTypeHeader;
 
 -(instancetype)init; {
   self = [super init];
   if(self) {
     
-    _headers =  @{@"Content-Type" : [NSString stringWithFormat:@"application/json; charset=%@", self.charset] };
+    _contentTypeHeader =  [NSString stringWithFormat:@"application/json; charset=%@", self.charset] ;
   }
   return self;
 }
@@ -307,17 +375,16 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
   return serializer;
 }
 
-#warning Add validators
+
 -(void)buildRequest:(NSURLRequest *)theRequest
                withParameters:(NSDictionary *)theParameters
        onCompletion:(SIURLSessionSerializerErrorBlock)theBlock; {
 
   NSParameterAssert(theRequest);
   NSParameterAssert(theBlock);
-
-  
-  if ([self.acceptableHTTPMethodsForURIEncoding containsObject:theRequest.HTTPMethod.uppercaseString])
-    [self buildURIEncodedParametersRequest:theRequest withParam:theParameters onCompletion:theBlock];
+  if ([self.acceptableHTTPMethodsForURIEncoding containsObject:theRequest.HTTPMethod.uppercaseString]) {
+    [super buildRequest:theRequest withParameters:theParameters onCompletion:theBlock];
+  }
 
   else {
     NSMutableURLRequest * newRequest = theRequest.mutableCopy;;
@@ -334,14 +401,14 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
 @end
 
 @implementation SIURLSessionResponseSerializerJSON
-@synthesize headers = _headers;
+@synthesize acceptHeader = _acceptHeader;
 @synthesize acceptableMIMETypes = _acceptableMIMETypes;
 
 -(instancetype)init; {
   self = [super init];
   if(self) {
     _acceptableMIMETypes = [NSSet setWithArray:@[@"application/json", @"text/json", @"text/javascript"]];
-    _headers = @{@"Accept" : [_acceptableMIMETypes.allObjects componentsJoinedByString:@","]};
+    _acceptHeader = [_acceptableMIMETypes.allObjects componentsJoinedByString:@","];
   }
   return self;
 }
@@ -355,7 +422,6 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
   }
   return serializer;
 }
-
 
 
 
@@ -373,7 +439,6 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
     if(theResponseData) theResponseObject =[NSJSONSerialization JSONObjectWithData:theResponseData options:self.JSONReadingOptions error:&JSONParseError];
 
     
-    
     theBlock(theResponseObject, error);
     
   }];
@@ -383,13 +448,14 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
 @end
 
 @implementation SIURLSessionRequestSerializerFormURLEncoding
-@synthesize headers = _headers;
+@synthesize contentTypeHeader = _contentTypeHeader;
+
 -(instancetype)init; {
   self = [super init];
   if(self) {
     
 
-    _headers = @{@"Content-Type" : [NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", self.charset] };
+    _contentTypeHeader =[NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", self.charset];
   }
   return self;
 }
@@ -408,9 +474,9 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
   NSParameterAssert(theBlock);
   
   
-  if ([self.acceptableHTTPMethodsForURIEncoding containsObject:theRequest.HTTPMethod.uppercaseString])
-    [self buildURIEncodedParametersRequest:theRequest withParam:theParameters onCompletion:theBlock];
-  
+  if ([self.acceptableHTTPMethodsForURIEncoding containsObject:theRequest.HTTPMethod.uppercaseString]) {
+    [super buildRequest:theRequest withParameters:theParameters onCompletion:theBlock];
+  }
   else {
     NSMutableURLRequest * newRequest = theRequest.mutableCopy;;
     NSError * error = nil;

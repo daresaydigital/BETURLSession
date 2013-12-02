@@ -23,21 +23,19 @@ typedef void (^SIURLSessionSerializerErrorBlock)(id obj, NSError * error);
 
 @protocol SIURLSessionSerializing <NSObject>
 @required
-@property(nonatomic,readonly) NSDictionary * headers;
 +(instancetype)serializerWithOptions:(NSDictionary *)theOptions;
 
 @end
 
 @protocol SIURLSessionRequestSerializing <SIURLSessionSerializing>
 @required
--(void)buildRequest:(NSURLRequest *)theRequest
-     withParameters:(NSDictionary *)theParameters
-       onCompletion:(SIURLSessionSerializerErrorBlock)theBlock;
+@property(nonatomic,readonly) NSString * contentTypeHeader;
 @end
 
 @protocol SIURLSessionResponseSerializing <SIURLSessionSerializing>
 @required
 @property(nonatomic,readonly) NSSet         * acceptableMIMETypes;
+@property(nonatomic,readonly) NSString      * acceptHeader;
 -(void)buildObjectForResponse:(NSURLResponse *)theResponse
                  responseData:(NSData *)theResponseData
                  onCompletion:(SIURLSessionSerializerErrorBlock)theBlock;
@@ -60,10 +58,15 @@ typedef void (^SIURLSessionSerializerErrorBlock)(id obj, NSError * error);
 @end
 
 @interface SIURLSessionRequestSerializer : SIURLSessionSerializer
-@property(nonatomic,readonly) NSSet         * acceptableHTTPMethodsForURIEncoding;
--(void)buildURIEncodedParametersRequest:(NSURLRequest *)theRequest
-                                   withParam:(NSObject<NSFastEnumeration> *)theParameters
-                                            onCompletion:(SIURLSessionSerializerErrorBlock)theBlock;
+@property(nonatomic,readonly) NSString * acceptLanguageHeader;
+@property(nonatomic,readonly) NSString * userAgentHeader;
+@property(nonatomic,readonly) NSSet    * acceptableHTTPMethodsForURIEncoding;
+@property(nonatomic,copy) NSDictionary * HTTPAdditionalHeaders;
+
+-(void)buildRequest:(NSURLRequest *)theRequest
+     withParameters:(NSDictionary *)theParameters
+       onCompletion:(SIURLSessionSerializerErrorBlock)theBlock;
+
 @end
 
 
