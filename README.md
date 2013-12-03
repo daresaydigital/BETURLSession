@@ -1,5 +1,7 @@
 #SIHTTPCore
 
+### Will be working on the README and docs for a while... this is temporary. 
+
 [![Build Status](https://travis-ci.org/etalio/SIHTTPCore.png?branch=master)](https://travis-ci.org/screeninteraction/SIHTTPCore)
 [![Version](http://cocoapod-badges.herokuapp.com/v/SIHTTPCore/badge.png)](http://cocoadocs.org/docsets/SIHTTPCore)
 [![Platform](http://cocoapod-badges.herokuapp.com/p/SIHTTPCore/badge.png)](http://cocoadocs.org/docsets/SIHTTPCore)
@@ -45,7 +47,7 @@ A: Because the way NSURLSession and NSURLSessionDataTasks are made. NSURLSession
 
 
 
->Q: Won't this pollute the public interace of basically everything?
+>Q: Won't this pollute the public interface of basically everything?
 
 A: Not really, only the implementation is on top of NSObject, the public interface is on the proper classes themselves
 
