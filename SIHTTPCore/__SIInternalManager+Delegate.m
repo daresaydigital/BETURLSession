@@ -1,6 +1,6 @@
 
 #import "__SIInternalManager+Delegate.h"
-#import "SIURLSessionBlocks.h"
+#import "SIHTTPCore.h"
 #include "SIInternalShared.private"
 
 @interface NSURLSession (Privates)

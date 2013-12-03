@@ -1,7 +1,7 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## SIURLSessionBlocks
+## SIHTTPCore
 
 Copyright (c) 2012 Seivan Heidari.
 

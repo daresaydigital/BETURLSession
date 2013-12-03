@@ -1,6 +1,6 @@
 
 #import "__SIInternalManager.h"
-#import "SIURLSessionBlocks.h"
+#import "SIHTTPCore.h"
 #include "SIInternalShared.private"
 
 

@@ -1,9 +1,9 @@
 
 
-#import "NSURLSessionTask+SIURLSessionBlocks.h"
+#import "NSURLSessionTask+SIHTTPCore.h"
 
 #import "SIURLSessionSerializers.h"
-#import "NSURLSession+SIURLSessionBlocks.h"
+#import "NSURLSession+SIHTTPCore.h"
 
 #import "__SIInternalManager.h"
 #include "SIInternalShared.private"
@@ -12,7 +12,7 @@
 
 //Use NSObject for implementation because NSURLSessionTask is exposing __NSFCURLSessionTask instead of the right class, causing unrecognized selectors exception
 
-@implementation NSObject (SIURLSessionBlocks)
+@implementation NSObject (SIHTTPCore)
 
 
 -(NSError *)SI_parseRequestError; {

@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  name           = "SIURLSessionBlocks"
+  name           = "SIHTTPCore"
   url            = "https://github.com/screeninteraction/#{name}"
   git_url        = "#{url}.git"
   version        = "0.1.0"
@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
 
   s.name         = name
   s.version      = version
-  s.summary      = "NSURLSession convenience and syntactic sugar - Network requests on iOS 7"
+  s.summary      = "Network requests on iOS & Mac OS X. NSURLSession convenience and syntactic sugar."
   s.description  = <<-DESC
 
                     Delegate callbacks via blocks.

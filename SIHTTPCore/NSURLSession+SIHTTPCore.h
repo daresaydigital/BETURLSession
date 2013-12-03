@@ -2,7 +2,7 @@
 
 #import "SIURLSessionTaskSharedBlocks.h"
 
-@interface NSURLSessionTask (SIURLSessionBlocks)
+@interface NSURLSessionTask (SIHTTPCore)
 
 
 @property(readonly) NSError * SI_parseRequestError;

@@ -1,8 +1,8 @@
 
 #import "SIURLSessionSerializers.h"
 
-#import "NSURLSession+SIURLSessionBlocks.h"
-#import "NSURLSessionTask+SIURLSessionBlocks.h"
+#import "NSURLSession+SIHTTPCore.h"
+#import "NSURLSessionTask+SIHTTPCore.h"
 
 
 #import "__SIInternalManager.h"
@@ -321,12 +321,12 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
   if (theResponse && [theResponse isKindOfClass:[NSHTTPURLResponse class]]) {
     if ([self.acceptableHTTPStatusCodes containsIndex:(NSUInteger)theResponse.statusCode] == NO) {
       NSDictionary * userInfo = @{
-                                  NSLocalizedDescriptionKey:NSLocalizedString(@"SIURLSessionBlocks Request Failed",
-                                                                              @"SIURLSessionBlocks Error"),
+                                  NSLocalizedDescriptionKey:NSLocalizedString(@"SIHTTPCore Request Failed",
+                                                                              @"SIHTTPCore Error"),
                                   
                                   NSLocalizedFailureReasonErrorKey:
                                     [NSString stringWithFormat:NSLocalizedString(@"Request failed: %@ (%d)",
-                                                                                 @"SIURLSessionBlocks"),
+                                                                                 @"SIHTTPCore"),
                                      [NSHTTPURLResponse localizedStringForStatusCode:theResponse.statusCode], theResponse.statusCode],
                                   
                                   NSURLErrorFailingURLErrorKey: theResponse.URL
@@ -339,11 +339,11 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
       
       if(theData.length > 0 ){
         NSDictionary * userInfo = @{
-                                  NSLocalizedDescriptionKey:NSLocalizedString(@"SIURLSessionBlocks Response Serialization Failed",
-                                                                              @"SIURLSessionBlocks Error"),
+                                  NSLocalizedDescriptionKey:NSLocalizedString(@"SIHTTPCore Response Serialization Failed",
+                                                                              @"SIHTTPCore Error"),
                                   
                                   NSLocalizedFailureReasonErrorKey:
-                                    [NSString stringWithFormat:NSLocalizedStringFromTable(@"Unacceptable mime-type: %@", @"SIURLSessionBlocks", nil), theResponse.MIMEType],
+                                    [NSString stringWithFormat:NSLocalizedStringFromTable(@"Unacceptable mime-type: %@", @"SIHTTPCore", nil), theResponse.MIMEType],
                                   NSURLErrorFailingURLErrorKey:theResponse.URL
                                   };
       
@@ -502,7 +502,7 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
 @end
 
 
-@implementation NSObject (SIURLSessionBlocksSerializers)
+@implementation NSObject (SIHTTPCoreSerializers)
 
 -(SIURLSessionRequestSerializer<SIURLSessionRequestSerializing> *)SI_serializerForRequest; {
   NSURLSession * session = (NSURLSession *)self;

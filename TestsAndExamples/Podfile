@@ -1,5 +1,4 @@
 platform :ios, '7.0' 
 
 #link_with [:SINotworking, :SINotworkingTests]
-pod 'SIURLSessionBlocks', :path => '../'
-#pod 'SIWebViewBlocks'
+pod 'SIHTTPCore', :path => '../'

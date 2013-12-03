@@ -8,5 +8,5 @@
 
 
 #import "SIURLSessionSerializers.h"
-#import "NSURLSession+SIURLSessionBlocks.h"
-#import "NSURLSessionTask+SIURLSessionBlocks.h"
+#import "NSURLSession+SIHTTPCore.h"
+#import "NSURLSessionTask+SIHTTPCore.h"

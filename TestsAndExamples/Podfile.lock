@@ -1,14 +1,14 @@
 PODS:
-  - SIURLSessionBlocks (0.1.0)
+  - SIHTTPCore (0.1.0)
 
 DEPENDENCIES:
-  - SIURLSessionBlocks (from `../`)
+  - SIHTTPCore (from `../`)
 
 EXTERNAL SOURCES:
-  SIURLSessionBlocks:
+  SIHTTPCore:
     :path: ../
 
 SPEC CHECKSUMS:
-  SIURLSessionBlocks: 0a43129639db7b5789e730e27b892d0a6b5a9027
+  SIHTTPCore: b36f274ec50d219f95ac99d39e9f378bc3f56285
 
 COCOAPODS: 0.28.0

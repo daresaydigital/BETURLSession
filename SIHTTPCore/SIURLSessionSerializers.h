@@ -8,7 +8,7 @@
 @protocol SIURLSessionRequestSerializing;
 @protocol SIURLSessionResponseSerializing;
 
-@interface NSURLSession (SIURLSessionBlocksSerializers)
+@interface NSURLSession (SIHTTPCoreSerializers)
 
 @property(readonly)
 SIURLSessionRequestSerializer<SIURLSessionRequestSerializing>    * SI_serializerForRequest;
