@@ -1,8 +1,8 @@
-#SIURLSessionBlocks
+#SIHTTPCore
 
-[![Build Status](https://travis-ci.org/etalio/SIURLSessionBlocks.png?branch=master)](https://travis-ci.org/screeninteraction/SIURLSessionBlocks)
-[![Version](http://cocoapod-badges.herokuapp.com/v/SIURLSessionBlocks/badge.png)](http://cocoadocs.org/docsets/SIURLSessionBlocks)
-[![Platform](http://cocoapod-badges.herokuapp.com/p/SIURLSessionBlocks/badge.png)](http://cocoadocs.org/docsets/SIURLSessionBlocks)
+[![Build Status](https://travis-ci.org/etalio/SIHTTPCore.png?branch=master)](https://travis-ci.org/screeninteraction/SIHTTPCore)
+[![Version](http://cocoapod-badges.herokuapp.com/v/SIHTTPCore/badge.png)](http://cocoadocs.org/docsets/SIHTTPCore)
+[![Platform](http://cocoapod-badges.herokuapp.com/p/SIHTTPCore/badge.png)](http://cocoadocs.org/docsets/SIHTTPCore)
 
 > Using NSURLSession and the rest of the new iOS 7 foundation network classes, wrapped with syntactic sugar and convenience. No need to inherit and make a singleton. The category will keep track of your session with a user defined key. 
 
@@ -20,21 +20,21 @@ Convenience serializers (JSON out of the box by default) to get started fast.
 ##Installation
 
 ```ruby
-pod 'SIURLSessionBlocks'
+pod 'SIHTTPCore'
 ```
 
 
 ##Setup
 
 ```objective-c
-#import <SIURLSessionBlocks.h>
+#import <SIHTTPCore.h>
 ```
 
 
 ## API
 
 This is currently a very early alpha version, 
-look at ```NSURLSessionTask+SIURLSessionBlocks.h``` & ```NSURLSession+SIURLSessionBlocks.h``` to figure out how to use it. 
+look at ```NSURLSessionTask+SIHTTPCore.h``` & ```NSURLSession+SIHTTPCore.h``` to figure out how to use it. 
 API changes are expected.
 
 FAQ
@@ -70,13 +70,13 @@ A: They'be comin'. Seriously though, I've been waiting on Travis to get fixed fi
 Contact
 -------
 
-If you end up using SIURLSessionBlocks in a project, we'd love to hear about it.
+If you end up using SIHTTPCore in a project, we'd love to hear about it.
 
 email: [info@screeninteraction.com](mailto:contact@screeninteraction.com)  
 twitter: [@ScreenTwitt](https://twitter.com/ScreenTwitt)
 
 ## License
 
-SIURLSessionBlocks is © 2013 [Screen Interaction](http://www.github.com/screeninteraction) and may be freely
+SIHTTPCore is © 2013 [Screen Interaction](http://www.github.com/screeninteraction) and may be freely
 distributed under the [MIT license](http://opensource.org/licenses/MIT).
-See the [`LICENSE.md`](https://github.com/screeninteraction/SIURLSessionBlocks/blob/master/LICENSE.md) file.
+See the [`LICENSE.md`](https://github.com/screeninteraction/SIHTTPCore/blob/master/LICENSE.md) file.
