@@ -1,7 +1,7 @@
 
 #import "__SIInternalManager+Delegate.h"
 #import "SIHTTPCore.h"
-#include "SIInternalShared.private"
+#include "__SIInternalShared.private"
 
 @interface NSURLSession (Privates)
 typedef void (^SIDogmaPerformerBlock)(__SIInternalSession * internalSession, __SIInternalSessionTask * internalSessionTask, BOOL *stop);

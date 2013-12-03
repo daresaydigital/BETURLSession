@@ -1,156 +1,120 @@
+//
+//  SINotworking.h
+//  SINotworking
+//
+//  Created by Seivan Heidari on 2013-10-29.
+//  Copyright (c) 2013 Seivan Heidari. All rights reserved.
+//
+
 
 
 #import "SIURLSessionTaskSharedBlocks.h"
 
-@interface NSURLSessionTask (SIHTTPCore)
+@class SIURLSessionRequestSerializer;
+@class SIURLSessionResponseSerializer;
+
+@interface NSURLSession (SIHTTPCore)
 
 
-@property(readonly) NSError * SI_parseRequestError;
-@property(readonly) NSError * SI_parseResponseError;
-@property(readonly) NSError * SI_error;
-@property(readonly) NSData  * SI_data;
-@property(readonly) NSURL   * SI_downloadLocation;
+#pragma mark - Properties
+//Yes, strong until the session is invalidated, then it's set to nil.
 
-@property(readonly) id SI_parsedObject;
+@property(strong,setter = SI_setDelegate:)   id<NSURLSessionDataDelegate,NSURLSessionDownloadDelegate>     SI_delegate;
 
+@property(readonly) NSURL       * SI_baseURL;
+@property(readonly) NSString    * SI_sessionName;
 
-typedef void (^SIURLSessionTaskProgressBlock)(NSURLSessionTask * task,
-                                              NSInteger  bytes,
-                                              NSInteger  totalBytes,
-                                              NSInteger  totalBytesExpected
-                                              );
+@property(assign,setter = SI_setAutoResume:,getter = SI_isAutoResume) BOOL SI_autoResume;
 
-@property(readonly) SIURLSessionTaskRequestDataCompleteBlock SI_requestDataCompleteBlock;
--(void)SI_setRequestDataCompleteBlock:(SIURLSessionTaskRequestDataCompleteBlock)theBlock;
-
-@property(readonly) SIURLSessionTaskRequestCompleteBlock SI_requestCompleteBlock;
--(void)SI_setRequestCompleteBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock;
+@property(nonatomic,copy) NSDictionary * SI_HTTPAdditionalHeaders;
+-(void)SI_setValue:(id)value forHTTPHeaderField:(NSString *)theHTTPHeaderField;
 
 
-@property(readonly) SIURLSessionTaskProgressBlock SI_uploadProgressBlock;
--(void)SI_setUploadProgressBlock:(SIURLSessionTaskProgressBlock)theBlock;
+#pragma mark - Init
 
-@property(readonly) SIURLSessionTaskProgressBlock SI_downloadProgressBlock;
--(void)SI_setDownloadProgressBlock:(SIURLSessionTaskProgressBlock)theBlock;
-
-
-#pragma mark - <NSURLSessionTaskDelegate>
-
-#pragma mark - taskWillPerformHTTPRedirection
-typedef void (^SIURLSessionTaskRedirectCompletionBlock)(NSURLRequest  * request);
-
-typedef void (^SIURLSessionTaskRedirectBlock)(NSURLSessionTask * task,
-                                              NSHTTPURLResponse * response,
-                                              NSURLRequest      * request,
-                                              SIURLSessionTaskRedirectCompletionBlock  completionBlock
-                                              );
-
-@property(readonly) SIURLSessionTaskRedirectBlock SI_taskWillPerformHTTPRedirectionBlock;
--(void)SI_setTaskWillPerfWormHTTPRedirectionBlock:(SIURLSessionTaskRedirectBlock)theBlock;
++(instancetype)SI_buildDefaultSessionWithName:(NSString *)theSessionName
+                            withBaseURLString:(NSString *)theBaseURLString;
 
 
-#pragma mark - taskDidReceiveChallenge
-typedef void (^SIURLSessionTaskDidRecieveChallengeCompletionBlock)(NSURLSessionAuthChallengeDisposition disposition,
-                                                                   NSURLCredential *credential
-                                                                   );
-
-typedef void (^SIURLSessionTaskDidRecieveChallengeBlock)(NSURLSessionTask * task,
-                                                         NSURLAuthenticationChallenge * challenge,
-                                                         SIURLSessionTaskDidRecieveChallengeCompletionBlock  completionBlock
-                                                         );
-
-@property(readonly) SIURLSessionTaskDidRecieveChallengeBlock SI_taskDidReceiveChallenge;
--(void)SI_setTaskDidReceiveChallenge:(SIURLSessionTaskDidRecieveChallengeBlock)theBlock;
++(instancetype)SI_buildSessionWithName:(NSString *)theSessionName
+                     withBaseURLString:(NSString *)theBaseURLString
+               andSessionConfiguration:(NSURLSessionConfiguration *)theSessionConfiguration;
 
 
-#pragma mark - taskNeedNewBodyStream
-typedef void (^SIURLSessionTaskNeedNewBodyStreamCompletionBlock)(NSInputStream *bodyStream);
++(instancetype)SI_buildSessionWithName:(NSString *)theSessionName
+                     withBaseURLString:(NSString *)theBaseURLString
+               andSessionConfiguration:(NSURLSessionConfiguration *)theSessionConfiguration
+                  andRequestSerializer:(SIURLSessionRequestSerializer *)theRequestSerializer
+                 andResponseSerializer:(SIURLSessionResponseSerializer *)theResponseSerializer
+                        operationQueue:(NSOperationQueue *)theOperationQueue;
 
-typedef void (^SIURLSessionTaskNeedNewBodyStreamBlock)(NSURLSessionTask * task,
-                                                       SIURLSessionTaskNeedNewBodyStreamCompletionBlock  completionBlock
-                                                       );
-
-@property(readonly) SIURLSessionTaskNeedNewBodyStreamBlock SI_taskNeedNewBodyStreamBlock;
--(void)SI_setTaskNeedNewBodyStreamBlock:(SIURLSessionTaskNeedNewBodyStreamBlock)theBlock;
-
-
-#pragma mark - taskDidCompleteWithError
+#pragma mark - Mama-san keeps track of the staff.
++(instancetype)SI_fetchSessionWithName:(NSString *)theSessionName;
 
 
-typedef void (^SIURLSessionTaskDidCompleteWithErrorBlock)(NSURLSessionTask * task,
-                                                          NSError *  error
-                                                          );
+#pragma mark - Task based Life Cycle
+typedef void (^SIURLSessionTaskLifeCycleRequestBlock)(NSURLSessionTask * task, NSError * error);
 
-@property(readonly) SIURLSessionTaskDidCompleteWithErrorBlock SI_taskDidCompleteWithErrorBlock;
--(void)SI_setTaskDidCompleteWithErrorBlock:(SIURLSessionTaskDidCompleteWithErrorBlock)theBlock;
+//
+//@property(readonly) SIURLSessionTaskLifeCycleRequestBlock SI_taskWillBeginRequestBlock;
+//-(void)SI_setTaskWillBeginRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock;
+//
+//@property(readonly) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidBeginRequestBlock;
+//-(void)SI_setTaskDidBeginRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock;
+//
+//@property(readonly) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidRequestBlock;
+//-(void)SI_setTaskDidRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock;
+//
+//@property(readonly) SIURLSessionTaskLifeCycleRequestBlock SI_taskWillEndRequestBlock;
+//-(void)SI_setTaskWillEndRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock;
+//
+//@property(readonly) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidEndRequestBlock;
+//-(void)SI_setTaskDidEndRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock;
 
 
 
-#pragma mark - <NSURLSessionDataDelegate>
+#pragma mark - Task Uploads turned to Downloads for progress handlers
 
-#pragma mark - taskDidReceiveResponse
-typedef void (^SIURLSessionTaskDidReceiveResponseCompletionBlock)(NSURLSessionResponseDisposition disposition);
+-(NSURLSessionTask *)SI_taskGETResource:(NSString *)theResource
+                             withParams:(NSDictionary *)theParams
+                          completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock;
 
-typedef void (^SIURLSessionTaskDidReceiveResponseBlock)(NSURLSessionTask * task,
-                                                        NSURLResponse * response,
-                                                        SIURLSessionTaskDidReceiveResponseCompletionBlock  completionBlock
-                                                        );
-
-@property(readonly) SIURLSessionTaskDidReceiveResponseBlock SI_taskDidReceiveResponseBlock;
--(void)SI_setTaskDidReceiveResponseBlock:(SIURLSessionTaskDidReceiveResponseBlock)theBlock;
+-(NSURLSessionTask *)SI_taskPOSTResource:(NSString *)theResource
+                              withParams:(NSDictionary *)theParams
+                           completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock;
 
 
-
-#pragma mark - taskDidBecomeDownloadTask
-typedef void (^SIURLSessionTaskDidBecomeDownloadTaskBlock)(NSURLSessionTask * task,
-                                                           NSURLSessionDownloadTask * downloadTask
-                                                           );
-
-@property(readonly) SIURLSessionTaskDidBecomeDownloadTaskBlock SI_taskBecomeDownloadTaskBlock;
--(void)SI_setTaskBecomeDownloadTaskBlock:(SIURLSessionTaskDidBecomeDownloadTaskBlock)theBlock;
+-(NSURLSessionTask *)SI_taskPUTResource:(NSString*)theResource
+                             withParams:(NSDictionary *)theParams
+                          completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock;
 
 
-#pragma mark - taskDidReceiveData
-typedef void (^SIURLSessionTaskDidReceiveDataBlock)(NSURLSessionTask * task,
-                                                           NSData * data
-                                                           );
+-(NSURLSessionTask *)SI_taskPATCHResource:(NSString *)theResource
+                               withParams:(NSDictionary *)theParams
+                            completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock;
 
-@property(readonly) SIURLSessionTaskDidReceiveDataBlock SI_taskDidReceiveDataBlock;
--(void)SI_setTaskDidReceiveDataBlock:(SIURLSessionTaskDidReceiveDataBlock)theBlock;
+
+-(NSURLSessionTask *)SI_taskDELETEResource:(NSString *)theResource
+                                withParams:(NSDictionary *)theParams
+                             completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock;
 
 
 
-#pragma mark - taskWillCacheResponse
-typedef void (^SIURLSessionTaskWillCacheResponseCompletionBlock)(NSCachedURLResponse * cachedResponse);
-
-typedef void (^SIURLSessionTaskWillCacheResponseBlock)(NSURLSessionTask * task,
-                                                       NSCachedURLResponse * proposedResponse,
-                                                       SIURLSessionTaskWillCacheResponseCompletionBlock  completionBlock
-                                                        );
-
-@property(readonly) SIURLSessionTaskWillCacheResponseBlock SI_taskWillCacheResponseBlock;
--(void)SI_setTaskWillCacheResponseBlock:(SIURLSessionTaskWillCacheResponseBlock)theBlock;
-
-#pragma mark - <NSURLSessionDownloadDelegate>
+#pragma mark - Custom Tasks
+-(NSURLSessionTask *)SI_buildTaskWithHTTPMethodString:(NSString *)theMethodString
+                                           onResource:(NSString *)theResource
+                                               params:(id<NSFastEnumeration>)theParams
+                                        completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock;
 
 
-#pragma mark - taskDidFinishDownloadingToURL
-typedef void (^SIURLSessionTaskDidFinishDownloadingToURLBlock)(NSURLSessionTask * task,
-                                                               NSURL * location
-                                                               );
+typedef NSURLRequest * (^SIURLSessionMutableRequestModifierBlock)(NSMutableURLRequest * modifierRequest);
 
-@property(readonly) SIURLSessionTaskDidFinishDownloadingToURLBlock SI_taskDidFinishDownloadingToURLBlock;
--(void)SI_setTaskDidFinishDownloadingToURLBlock:(SIURLSessionTaskDidFinishDownloadingToURLBlock)theBlock;
+-(NSURLSessionTask *)SI_buildDataTaskOnResource:(NSString *)theResource
+                                     withParams:(id<NSFastEnumeration>)theParams
+                           requestModifierBlock:(SIURLSessionMutableRequestModifierBlock)theRequestModifierBlock
+                              completeDataBlock:(SIURLSessionTaskRequestDataCompleteBlock)theDataCompleteBlock;
 
-
-#pragma mark - taskDidResumeAtOffset
-typedef void (^SIURLSessionTaskDidResumeAtOffsetBlock)(NSURLSessionTask * task,
-                                                       NSInteger  fileOffset,
-                                                       NSInteger  expectedTotalBytes
-                                                       );
-
-@property(readonly) SIURLSessionTaskDidResumeAtOffsetBlock SI_taskDidResumeAtOffsetBlock;
--(void)SI_setTaskDidResumeAtOffsetBlock:(SIURLSessionTaskDidResumeAtOffsetBlock)theBlock;
 
 
 @end
+

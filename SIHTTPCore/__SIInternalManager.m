@@ -1,7 +1,7 @@
 
 #import "__SIInternalManager.h"
 #import "SIHTTPCore.h"
-#include "SIInternalShared.private"
+#include "__SIInternalShared.private"
 
 
 @implementation __SIInternalSessionConfiguration
