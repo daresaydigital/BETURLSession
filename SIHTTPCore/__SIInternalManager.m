@@ -4,29 +4,6 @@
 #include "__SIInternalShared.private"
 
 
-@implementation __SIInternalSessionConfiguration
-
-
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-
--(void)SI_performSelector:(SEL)theSelector withObject:(id)theObject; {
-  NSParameterAssert(theSelector);
-  NSParameterAssert([self respondsToSelector:theSelector]);
-//  if([theObject isKindOfClass:NSClassFromString(@"NSBlock")]) theObject = [theObject copy];
-  [self performSelector:theSelector withObject:theObject];
-}
-
--(id)SI_performSelector:(SEL)theSelector; {
-  NSParameterAssert(theSelector);
-  return [self performSelector:theSelector];
-  
-}
-#pragma clang diagnostic pop
-
-
-@end
 
 @implementation __SIInternalSession
 
@@ -56,7 +33,6 @@
 -(void)SI_performSelector:(SEL)theSelector withObject:(id)theObject; {
   NSParameterAssert(theSelector);
   NSParameterAssert([self respondsToSelector:theSelector]);
-//  if([theObject isKindOfClass:NSClassFromString(@"NSBlock")]) theObject = [theObject copy];
   [self performSelector:theSelector withObject:theObject ];
 }
 
@@ -78,7 +54,6 @@
 -(void)SI_performSelector:(SEL)theSelector withObject:(id)theObject; {
   NSParameterAssert(theSelector);
   NSParameterAssert([self respondsToSelector:theSelector]);
-//  if([theObject isKindOfClass:NSClassFromString(@"NSBlock")]) theObject = [theObject copy];
   [self performSelector:theSelector withObject:theObject];
 }
 
@@ -148,7 +123,6 @@
   
 }
 
-//Could always swizzle this for performance in the future or build a better map.
 +(__SIInternalSessionTask *)internalSessionTaskForURLSessionTask:(NSURLSessionTask *)theURLSessionTask; {
   NSArray  * tasks  = [[self sharedManager] mapSessions].dictionaryRepresentation.objectEnumerator.allObjects;
   __block __SIInternalSessionTask * foundTask = nil;

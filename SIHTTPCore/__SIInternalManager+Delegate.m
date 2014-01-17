@@ -62,6 +62,7 @@ typedef void (^SIDogmaPerformerBlock)(__SIInternalSession * internalSession, __S
  * explicitly invalidated, in which case it will receive an
  * { NSURLErrorDomain, NSURLUserCanceled } error.
  */
+
 #warning Remove invalidated Sessions from sessionMap on invalidation callback
 -(void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error; {
 
@@ -241,7 +242,7 @@ didCompleteWithError:(NSError *)error; {
   
   [self SI_delegateWithSession:session task:task selector:_cmd
                sharedBefore:^(__SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
-                  if(internalSession.SI_taskWillEndRequestBlock) internalSession.SI_taskWillEndRequestBlock(task,error);
+
 
                  internalSessionTask.SI_error = error;
 
@@ -252,8 +253,9 @@ didCompleteWithError:(NSError *)error; {
                      if(internalSessionTask.SI_error == nil) internalSessionTask.SI_error = error;
                      if(internalSessionTask.SI_error == nil) internalSessionTask.SI_error = responseError;
                      internalSessionTask.SI_parsedObject = obj;
+                     NSObject<NSFastEnumeration> * enumerableObject = obj;
                      internalSessionTask.SI_requestCompleteBlock(internalSessionTask.SI_error,
-                                                                 obj,
+                                                                 enumerableObject,
                                                                  (NSHTTPURLResponse *)task.response,
                                                                  task);
 
@@ -283,7 +285,7 @@ didCompleteWithError:(NSError *)error; {
                      [internalSession.SI_delegate URLSession:session task:task didCompleteWithError:error];
                    }
                    internal:^(__SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
-                     if(internalSession.SI_taskDidEndRequestBlock) internalSession.SI_taskDidEndRequestBlock(task,error);
+
                    }];
 
 }
@@ -302,7 +304,7 @@ didReceiveResponse:(NSURLResponse *)response
   
   [self SI_delegateWithSession:session task:dataTask selector:_cmd
                sharedBefore:^(__SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, __unused BOOL *stop) {
-                 if(internalSession.SI_taskDidRequestBlock) internalSession.SI_taskDidRequestBlock(dataTask, nil);
+
                }
                      taskBlock:^(__unused __SIInternalSession *internalSession, __SIInternalSessionTask *internalSessionTask, BOOL *stop) {
                         if(internalSessionTask.SI_taskDidReceiveResponseBlock) {

@@ -9,14 +9,32 @@
 #include "__SIInternalShared.private"
 
 
+@implementation NSObject (SIHTTPCoreSerializers)
 
-@interface SIURLSessionRequestSerializerJSON ()
-@property(nonatomic,assign) NSJSONWritingOptions JSONWritingOptions;
+-(SIURLSessionRequestSerializer<SIURLSessionRequestSerializing> *)SI_serializerForRequest; {
+  NSURLSession * session = (NSURLSession *)self;
+  return [session.SI_internalSession SI_performSelector:_cmd];
+}
+
+-(void)SI_setRequestSerializer:(SIURLSessionRequestSerializer<SIURLSessionRequestSerializing> *)theSerializer; {
+  NSURLSession * session = (NSURLSession *)self;
+  [session.SI_internalSession SI_performSelector:_cmd withObject:theSerializer];
+}
+
+-(SIURLSessionResponseSerializer<SIURLSessionResponseSerializing> *)SI_serializerForResponse; {
+  NSURLSession * session = (NSURLSession *)self;
+  return [session.SI_internalSession SI_performSelector:_cmd];
+  
+}
+
+-(void)SI_setResponseSerializer:(SIURLSessionResponseSerializer<SIURLSessionResponseSerializing> *)theSerializer; {
+  NSURLSession * session = (NSURLSession *)self;
+  [session.SI_internalSession SI_performSelector:_cmd withObject:theSerializer];
+}
 @end
 
-@interface SIURLSessionResponseSerializerJSON ()
-@property(nonatomic,assign) NSJSONReadingOptions JSONReadingOptions;
-@end
+
+
 
 static NSString * const SIURLSessionSerializerAbstractUnescapedInQueryStringPairKeyCharacters = @"[].";
 static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharacters          = @":/?&=;+!@#$()',*";
@@ -112,35 +130,6 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
       [parameterComponents addObjectsFromArray:newPairs];
     }
   }
-  
-//  else if ([theValue isKindOfClass:[NSArray class]]) {
-//    
-//    NSArray * array = (NSArray *)theValue;
-//    [array enumerateObjectsUsingBlock:^(id nestedValue, __unused NSUInteger idx, __unused BOOL *stop) {
-//      NSString * newKey   = [NSString stringWithFormat:@"%@[]", theKey];
-//      NSArray  * newPairs = [self queryPairsFromKey:newKey andValue:nestedValue];
-//      [parameterComponents addObjectsFromArray:newPairs];
-//    }];
-//    
-//  }
-//  else if ([theValue isKindOfClass:[NSSet class]]) {
-//    NSSet * set = (NSSet *)theValue;
-//    [set enumerateObjectsUsingBlock:^(id nestedValue, __unused BOOL *stop) {
-//      NSString * newKey   = [NSString stringWithFormat:@"%@", theKey];
-//      NSArray  * newPairs = [self queryPairsFromKey:newKey andValue:nestedValue];
-//      [parameterComponents addObjectsFromArray:newPairs];
-//    }];
-//    
-//  }
-//  else if ([theValue isKindOfClass:[NSOrderedSet class]]) {
-//    NSOrderedSet * orderedSet = (NSOrderedSet *)theValue;
-//    [orderedSet enumerateObjectsUsingBlock:^(id nestedValue, NSUInteger idx, BOOL *stop) {
-//      NSString * newKey   = [NSString stringWithFormat:@"%@", theKey];
-//      NSArray  * newPairs = [self queryPairsFromKey:newKey andValue:nestedValue];
-//      [parameterComponents addObjectsFromArray:newPairs];
-//    }];
-//    
-//  }
   
   else [parameterComponents addObject:[self queryPairFromKey:theKey andValue:theValue]];
   
@@ -256,11 +245,6 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
   return self;
 }
 
-+(instancetype)serializerWithOptions:(NSDictionary *)theOptions; {
-  SIURLSessionRequestSerializer * serializer = [[self alloc] init];
-  NSParameterAssert(serializer);
-  return serializer;
-}
 
 -(void)setValue:(id)value forHTTPHeaderField:(NSString *)theHTTPHeaderField; {
   NSParameterAssert(theHTTPHeaderField);
@@ -357,173 +341,10 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
   theBlock(@(isValidResponse), error);
   
 }
-@end
-
-
-@implementation SIURLSessionRequestSerializerJSON
-@synthesize contentTypeHeader = _contentTypeHeader;
-
--(instancetype)init; {
-  self = [super init];
-  if(self) {
-    
-    _contentTypeHeader =  [NSString stringWithFormat:@"application/json; charset=%@", self.charset] ;
-  }
-  return self;
-}
-
-+(instancetype)serializerWithOptions:(NSDictionary *)theOptions; {
-  SIURLSessionRequestSerializerJSON * serializer = [[self alloc] init];
-  NSParameterAssert(serializer);
-  if(theOptions && theOptions.count > 0) {
-    NSNumber * option = theOptions.allValues.firstObject;
-    serializer.JSONWritingOptions = option.unsignedIntegerValue;
-  }
-  return serializer;
-}
-
-
--(void)buildRequest:(NSURLRequest *)theRequest
-               withParameters:(NSDictionary *)theParameters
-       onCompletion:(SIURLSessionSerializerErrorBlock)theBlock; {
-
-  NSParameterAssert(theRequest);
-  NSParameterAssert(theBlock);
-  if ([self.acceptableHTTPMethodsForURIEncoding containsObject:theRequest.HTTPMethod.uppercaseString]) {
-    [super buildRequest:theRequest withParameters:theParameters onCompletion:theBlock];
-  }
-
-  else {
-    NSMutableURLRequest * newRequest = theRequest.mutableCopy;;
-    NSError * error = nil;
-    [newRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:theParameters options:self.JSONWritingOptions error:&error]];
-    theBlock(newRequest,error);
-  }
-  
-
-
-}
-
-
-@end
-
-@implementation SIURLSessionResponseSerializerJSON
-@synthesize acceptHeader = _acceptHeader;
-@synthesize acceptableMIMETypes = _acceptableMIMETypes;
-
--(instancetype)init; {
-  self = [super init];
-  if(self) {
-    _acceptableMIMETypes = [NSSet setWithArray:@[@"application/json", @"text/json", @"text/javascript"]];
-    _acceptHeader = [_acceptableMIMETypes.allObjects componentsJoinedByString:@","];
-  }
-  return self;
-}
-
-+(instancetype)serializerWithOptions:(NSDictionary *)theOptions; {
-  SIURLSessionResponseSerializerJSON * serializer = [[self alloc] init];
-  NSParameterAssert(serializer);
-  if(theOptions && theOptions.count > 0) {
-    NSNumber * option = theOptions.allValues.firstObject;
-    serializer.JSONReadingOptions = option.unsignedIntegerValue;
-  }
-  return serializer;
-}
 
 
 
--(void)buildObjectForResponse:(NSURLResponse *)theResponse
-               responseData:(NSData *)theResponseData
-                      onCompletion:(SIURLSessionSerializerErrorBlock)theBlock; {
 
-  NSParameterAssert(theBlock);
-
-  __block id theResponseObject = nil;
-  
-  [self validateResponse:(NSHTTPURLResponse *)theResponse data:theResponseData onCompletion:^(id obj, NSError *error) {
-    NSError * JSONParseError = nil;
-    
-    if(theResponseData) theResponseObject =[NSJSONSerialization JSONObjectWithData:theResponseData options:self.JSONReadingOptions error:&JSONParseError];
-
-    
-    theBlock(theResponseObject, error);
-    
-  }];
-  
-}
-
-@end
-
-@implementation SIURLSessionRequestSerializerFormURLEncoding
-@synthesize contentTypeHeader = _contentTypeHeader;
-
--(instancetype)init; {
-  self = [super init];
-  if(self) {
-    
-
-    _contentTypeHeader =[NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@", self.charset];
-  }
-  return self;
-}
-
-+(instancetype)serializerWithOptions:(NSDictionary *)theOptions; {
-  SIURLSessionRequestSerializerFormURLEncoding * serializer = [[self alloc] init];
-  NSParameterAssert(serializer);
-  return serializer;
-}
-
--(void)buildRequest:(NSURLRequest *)theRequest
-     withParameters:(NSDictionary *)theParameters
-       onCompletion:(SIURLSessionSerializerErrorBlock)theBlock; {
-  
-  NSParameterAssert(theRequest);
-  NSParameterAssert(theBlock);
-  
-  
-  if ([self.acceptableHTTPMethodsForURIEncoding containsObject:theRequest.HTTPMethod.uppercaseString]) {
-    [super buildRequest:theRequest withParameters:theParameters onCompletion:theBlock];
-  }
-  else {
-    NSMutableURLRequest * newRequest = theRequest.mutableCopy;;
-    NSError * error = nil;
-    NSString  * bodyParameters = [self queryStringFromParameters:theParameters];
-    NSData * bodyParameterData = [bodyParameters dataUsingEncoding:self.stringEncoding allowLossyConversion:YES];
-    [newRequest setValue:@(bodyParameterData.length).stringValue forHTTPHeaderField:@"Content-Length"];
-    newRequest.HTTPBody = bodyParameterData;
-    theBlock(newRequest,error);
-  }
-  
-  
-  
-}
-
-
-@end
-
-
-@implementation NSObject (SIHTTPCoreSerializers)
-
--(SIURLSessionRequestSerializer<SIURLSessionRequestSerializing> *)SI_serializerForRequest; {
-  NSURLSession * session = (NSURLSession *)self;
-  return [session.SI_internalSession SI_performSelector:_cmd];
-}
-
--(void)SI_setRequestSerializer:(SIURLSessionRequestSerializer<SIURLSessionRequestSerializing> *)theSerializer; {
-  NSURLSession * session = (NSURLSession *)self;
-  [session.SI_internalSession SI_performSelector:_cmd withObject:theSerializer];
-}
-
--(SIURLSessionResponseSerializer<SIURLSessionResponseSerializing> *)SI_serializerForResponse; {
-  NSURLSession * session = (NSURLSession *)self;
-  return [session.SI_internalSession SI_performSelector:_cmd];
-
-}
-
--(void)SI_setResponseSerializer:(SIURLSessionResponseSerializer<SIURLSessionResponseSerializing> *)theSerializer; {
-  NSURLSession * session = (NSURLSession *)self;
-  [session.SI_internalSession SI_performSelector:_cmd withObject:theSerializer];
-}
 
 
 

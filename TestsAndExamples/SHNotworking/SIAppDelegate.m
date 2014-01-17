@@ -8,10 +8,6 @@
 
 #import "SIAppDelegate.h"
 #import <SIHTTPCore.h>
-#define CLIENT_ID  @"7y7gp0495bt7acqbqdaw7y7gp0495bt7"
-#define APP_SECRET @"ckm6ssv30cwz1zg7xu2pckm6ssv30cwz1zg7xu2p"
-#define REDIRECT_URI @"etalio7y7gp0495bt7acqbqdaw7y7gp0495bt7://authentication"
-
 @implementation SIAppDelegate
 
 -(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;{
@@ -20,25 +16,6 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation; {
-  NSLog(@"%@ %@ %@", url.query, sourceApplication, annotation);
-  NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-  for (NSString *param in [[url query] componentsSeparatedByString:@"&"]) {
-    NSArray *parts = [param componentsSeparatedByString:@"="];
-    if([parts count] < 2) continue;
-    [params setObject:[parts objectAtIndex:1] forKey:[parts objectAtIndex:0]];
-  }
-  
-  NSDictionary * postData = @{@"grant_type" : @"authorization_code",
-                              @"code" : params[@"code"],
-                              @"redirect_uri" : REDIRECT_URI,
-                              @"client_secret" : APP_SECRET,
-                              @"client_id" : CLIENT_ID
-                              };
-  
-  [NSURLSession SI_buildDefaultSessionWithName:@"x" withBaseURLString:@"https://api-etalio.3fs.si"];
-  [[[NSURLSession SI_fetchSessionWithName:@"x"] SI_taskPOSTResource:@"oauth2/token" withParams:postData completeBlock:^(NSError *error, NSDictionary *responseObject, NSHTTPURLResponse *urlResponse, NSURLSessionTask *task) {
-    
-  }] resume];
   
   return YES;
 }

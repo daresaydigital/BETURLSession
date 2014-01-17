@@ -15,24 +15,18 @@ SIURLSessionRequestSerializer<SIURLSessionRequestSerializing>    * SI_serializer
 
 @property(readonly)
 SIURLSessionResponseSerializer<SIURLSessionResponseSerializing>  * SI_serializerForResponse;
-
 @end
 
 
 typedef void (^SIURLSessionSerializerErrorBlock)(id obj, NSError * error);
 
-@protocol SIURLSessionSerializing <NSObject>
-@required
-+(instancetype)serializerWithOptions:(NSDictionary *)theOptions;
 
-@end
-
-@protocol SIURLSessionRequestSerializing <SIURLSessionSerializing>
+@protocol SIURLSessionRequestSerializing <NSObject>
 @required
 @property(nonatomic,readonly) NSString * contentTypeHeader;
 @end
 
-@protocol SIURLSessionResponseSerializing <SIURLSessionSerializing>
+@protocol SIURLSessionResponseSerializing <NSObject>
 @required
 @property(nonatomic,readonly) NSSet         * acceptableMIMETypes;
 @property(nonatomic,readonly) NSString      * acceptHeader;
@@ -52,8 +46,6 @@ typedef void (^SIURLSessionSerializerErrorBlock)(id obj, NSError * error);
 -(NSString *)URLEncodedPair:(NSDictionary *)thePair;
 -(NSString *)escapedQueryKeyFromString:(NSString *)theKey;
 -(NSString *)escapedQueryValueFromString:(NSString *)theValue;
-
-
 
 @end
 
@@ -85,14 +77,5 @@ typedef void (^SIURLSessionSerializerErrorBlock)(id obj, NSError * error);
 
 
 
-@interface SIURLSessionRequestSerializerJSON : SIURLSessionRequestSerializer
-<SIURLSessionRequestSerializing>
-@end
 
-@interface SIURLSessionResponseSerializerJSON : SIURLSessionResponseSerializer
-<SIURLSessionResponseSerializing>
-@end
 
-@interface SIURLSessionRequestSerializerFormURLEncoding : SIURLSessionRequestSerializer
-<SIURLSessionRequestSerializing>
-@end

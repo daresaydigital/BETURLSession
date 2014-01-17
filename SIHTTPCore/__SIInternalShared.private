@@ -32,11 +32,11 @@
 
 @property(assign,getter = SI_isAutoResume,setter = SI_setAutoResume:) BOOL SI_autoResume;
 
-@property(nonatomic,copy,setter = SI_setTaskWillBeginRequestBlock:) SIURLSessionTaskLifeCycleRequestBlock SI_taskWillBeginRequestBlock;
-@property(nonatomic,copy,setter = SI_setTaskDidBeginRequestBlock:) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidBeginRequestBlock;
-@property(nonatomic,copy,setter = SI_setTaskDidRequestBlock:) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidRequestBlock;
-@property(nonatomic,copy,setter = SI_setTaskWillEndRequestBlock:) SIURLSessionTaskLifeCycleRequestBlock SI_taskWillEndRequestBlock;
-@property(nonatomic,copy,setter = SI_setTaskDidEndRequestBlock:) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidEndRequestBlock;
+//@property(nonatomic,copy,setter = SI_setTaskWillBeginRequestBlock:) SIURLSessionTaskLifeCycleRequestBlock SI_taskWillBeginRequestBlock;
+//@property(nonatomic,copy,setter = SI_setTaskDidBeginRequestBlock:) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidBeginRequestBlock;
+//@property(nonatomic,copy,setter = SI_setTaskDidRequestBlock:) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidRequestBlock;
+//@property(nonatomic,copy,setter = SI_setTaskWillEndRequestBlock:) SIURLSessionTaskLifeCycleRequestBlock SI_taskWillEndRequestBlock;
+//@property(nonatomic,copy,setter = SI_setTaskDidEndRequestBlock:) SIURLSessionTaskLifeCycleRequestBlock SI_taskDidEndRequestBlock;
 
 #pragma mark - Privates
 -(void)buildInternalSessionTaskWithURLSessionTask:(NSURLSessionTask *)theURLSessionTask;

@@ -1,7 +1,7 @@
 
 #pragma mark - Request
 typedef void (^SIURLSessionTaskRequestCompleteBlock)(NSError * error,
-                                                     NSDictionary * responseObject,
+                                                     NSObject<NSFastEnumeration> * responseObject,
                                                      NSHTTPURLResponse * urlResponse,
                                                      NSURLSessionTask * task
                                                      );

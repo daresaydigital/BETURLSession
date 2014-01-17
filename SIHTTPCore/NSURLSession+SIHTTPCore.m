@@ -16,6 +16,8 @@
 #import "__SIInternalManager+Delegate.h"
 #include "__SIInternalShared.private"
 
+#import "SIURLSessionRequestSerializerJSON.h"
+#import "SIURLSessionResponseSerializerJSON.h"
 
 
 //Use NSObject for implementation because NSURLSession is exposing __NSFCURLSession instead of the right class, causing unrecognized selectors exception
@@ -68,21 +70,21 @@
 
 #pragma mark - Init
 
-+(instancetype)SI_buildDefaultSessionWithName:(NSString *)theSessionName
++(instancetype)SI_sessionWithName:(NSString *)theSessionName
                             withBaseURLString:(NSString *)theBaseURLString; {
   
-  return [self SI_buildSessionWithName:theSessionName withBaseURLString:theBaseURLString andSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+  return [self SI_sessionWithName:theSessionName withBaseURLString:theBaseURLString andSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
 }
 
-+(instancetype)SI_buildSessionWithName:(NSString *)theSessionName
++(instancetype)SI_sessionWithName:(NSString *)theSessionName
                      withBaseURLString:(NSString *)theBaseURLString
                andSessionConfiguration:(NSURLSessionConfiguration *)theSessionConfiguration; {
   
-  return [self SI_buildSessionWithName:theSessionName withBaseURLString:theBaseURLString andSessionConfiguration:theSessionConfiguration andRequestSerializer:nil andResponseSerializer:nil operationQueue:nil];
+  return [self SI_sessionWithName:theSessionName withBaseURLString:theBaseURLString andSessionConfiguration:theSessionConfiguration andRequestSerializer:nil andResponseSerializer:nil operationQueue:nil];
   
 }
 
-+(instancetype)SI_buildSessionWithName:(NSString *)theSessionName
++(instancetype)SI_sessionWithName:(NSString *)theSessionName
                      withBaseURLString:(NSString *)theBaseURLString
                andSessionConfiguration:(NSURLSessionConfiguration *)theSessionConfiguration
                   andRequestSerializer:(SIURLSessionRequestSerializer<SIURLSessionRequestSerializing> *)theRequestSerializer
@@ -101,8 +103,8 @@
   NSParameterAssert(url);
   
   
-  if(theRequestSerializer == nil) theRequestSerializer = [[SIURLSessionRequestSerializerJSON alloc] init];
-  if(theResponseSerializer == nil) theResponseSerializer = [[SIURLSessionResponseSerializerJSON alloc] init];
+  if(theRequestSerializer == nil) theRequestSerializer   = SIURLSessionRequestSerializerJSON.new ;
+  if(theResponseSerializer == nil) theResponseSerializer = SIURLSessionResponseSerializerJSON.new;
   
   NSParameterAssert(theRequestSerializer.HTTPAdditionalHeaders);
   
@@ -154,84 +156,103 @@
   return URLSession;
 }
 
-#pragma mark - Task based Life Cycle
--(SIURLSessionTaskLifeCycleRequestBlock)SI_taskWillBeginRequestBlock; {
-  return [self.SI_internalSession SI_performSelector:_cmd];
-}
--(SIURLSessionTaskLifeCycleRequestBlock)SI_taskDidBeginRequestBlock; {
-  return [self.SI_internalSession SI_performSelector:_cmd];
-}
-
--(SIURLSessionTaskLifeCycleRequestBlock)SI_taskDidRequestBlock; {
-  return [self.SI_internalSession SI_performSelector:_cmd];
-}
-
--(SIURLSessionTaskLifeCycleRequestBlock)SI_taskWillEndRequestBlock; {
-  return [self.SI_internalSession SI_performSelector:_cmd];
-}
-
--(SIURLSessionTaskLifeCycleRequestBlock)SI_taskDidEndRequestBlock; {
-  return [self.SI_internalSession SI_performSelector:_cmd];
-}
-
-
--(void)SI_setTaskWillBeginRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock; {
-  [self.SI_internalSession SI_performSelector:_cmd withObject:theBlock];
-}
-
--(void)SI_setTaskDidBeginRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock; {
-  [self.SI_internalSession SI_performSelector:_cmd withObject:theBlock];
-}
-
--(void)SI_setTaskDidRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock; {
-  [self.SI_internalSession SI_performSelector:_cmd withObject:theBlock];
-}
-
--(void)SI_setTaskWillEndRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock; {
-  [self.SI_internalSession SI_performSelector:_cmd withObject:theBlock];
-}
-
--(void)SI_setTaskDidEndRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock; {
-  [self.SI_internalSession SI_performSelector:_cmd withObject:theBlock];
-}
+//#pragma mark - Task based Life Cycle
+//-(SIURLSessionTaskLifeCycleRequestBlock)SI_taskWillBeginRequestBlock; {
+//  return [self.SI_internalSession SI_performSelector:_cmd];
+//}
+//-(SIURLSessionTaskLifeCycleRequestBlock)SI_taskDidBeginRequestBlock; {
+//  return [self.SI_internalSession SI_performSelector:_cmd];
+//}
+//
+//-(SIURLSessionTaskLifeCycleRequestBlock)SI_taskDidRequestBlock; {
+//  return [self.SI_internalSession SI_performSelector:_cmd];
+//}
+//
+//-(SIURLSessionTaskLifeCycleRequestBlock)SI_taskWillEndRequestBlock; {
+//  return [self.SI_internalSession SI_performSelector:_cmd];
+//}
+//
+//-(SIURLSessionTaskLifeCycleRequestBlock)SI_taskDidEndRequestBlock; {
+//  return [self.SI_internalSession SI_performSelector:_cmd];
+//}
+//
+//
+//-(void)SI_setTaskWillBeginRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock; {
+//  [self.SI_internalSession SI_performSelector:_cmd withObject:theBlock];
+//}
+//
+//-(void)SI_setTaskDidBeginRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock; {
+//  [self.SI_internalSession SI_performSelector:_cmd withObject:theBlock];
+//}
+//
+//-(void)SI_setTaskDidRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock; {
+//  [self.SI_internalSession SI_performSelector:_cmd withObject:theBlock];
+//}
+//
+//-(void)SI_setTaskWillEndRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock; {
+//  [self.SI_internalSession SI_performSelector:_cmd withObject:theBlock];
+//}
+//
+//-(void)SI_setTaskDidEndRequestBlock:(SIURLSessionTaskLifeCycleRequestBlock)theBlock; {
+//  [self.SI_internalSession SI_performSelector:_cmd withObject:theBlock];
+//}
 
 #pragma mark - Task Uploads turned to Downloads for progress handlers
 
 
 -(NSURLSessionTask *)SI_taskGETResource:(NSString *)theResource
-                             withParams:(NSDictionary *)theParams
+                             withParams:(id<NSFastEnumeration>)theParams
                           completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock; {
   return [self SI_buildTaskWithHTTPMethodString:@"GET" onResource:theResource params:theParams completeBlock:theBlock];
 }
 
 
 -(NSURLSessionTask *)SI_taskPOSTResource:(NSString *)theResource
-                              withParams:(NSDictionary *)theParams
+                              withParams:(id<NSFastEnumeration>)theParams
                            completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock; {
   return [self SI_buildTaskWithHTTPMethodString:@"POST" onResource:theResource params:theParams completeBlock:theBlock];
 }
 
 
 -(NSURLSessionTask *)SI_taskPUTResource:(NSString*)theResource
-                             withParams:(NSDictionary *)theParams
+                             withParams:(id<NSFastEnumeration>)theParams
                           completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock; {
   return [self SI_buildTaskWithHTTPMethodString:@"PUT" onResource:theResource params:theParams completeBlock:theBlock];
 }
 
 
 -(NSURLSessionTask *)SI_taskPATCHResource:(NSString *)theResource
-                               withParams:(NSDictionary *)theParams
+                               withParams:(id<NSFastEnumeration>)theParams
                             completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock; {
   return [self SI_buildTaskWithHTTPMethodString:@"PATCH" onResource:theResource params:theParams completeBlock:theBlock];
 }
 
 
 -(NSURLSessionTask *)SI_taskDELETEResource:(NSString *)theResource
-                                withParams:(NSDictionary *)theParams
+                                withParams:(id<NSFastEnumeration>)theParams
                              completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock; {
   return [self SI_buildTaskWithHTTPMethodString:@"DELETE" onResource:theResource params:theParams completeBlock:theBlock];
 }
 
+
+-(NSURLSessionTask *)SI_buildTaskWithHTTPMethodString:(NSString *)theMethodString
+                                           onResource:(NSString *)theResource
+                                               params:(id<NSFastEnumeration>)theParams
+                                        completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock; {
+  
+  NSParameterAssert(theMethodString);
+  
+  NSURLSessionTask * task = [self SI_buildDataTaskOnResource:theResource
+                                                  withParams:theParams
+                                        requestModifierBlock:^NSMutableURLRequest *(NSMutableURLRequest *modifierRequest) {
+    [modifierRequest setHTTPMethod:theMethodString];
+    return modifierRequest.copy;
+  } completeDataBlock:nil];
+  [task SI_setRequestCompleteBlock:theBlock];
+  
+  return task;
+  
+}
 
 #pragma mark - Custom Tasks
 
@@ -303,29 +324,9 @@
 }
 
 
-
-
-
 #pragma mark - Privates
 -(__SIInternalSession *)SI_internalSession; {
   return [__SIInternalManager internalSessionForURLSession:(NSURLSession *)self];
-}
-
-
--(NSURLSessionTask *)SI_buildTaskWithHTTPMethodString:(NSString *)theMethodString
-                                           onResource:(NSString *)theResource
-                                               params:(id<NSFastEnumeration>)theParams
-                                        completeBlock:(SIURLSessionTaskRequestCompleteBlock)theBlock; {
-  
-  NSParameterAssert(theMethodString);
-  
-  NSURLSessionTask * task = [self SI_buildDataTaskOnResource:theResource withParams:theParams requestModifierBlock:^NSMutableURLRequest *(NSMutableURLRequest *modifierRequest) {
-    [modifierRequest setHTTPMethod:theMethodString];
-    return modifierRequest.copy;
-  } completeDataBlock:nil];
-  [task SI_setRequestCompleteBlock:theBlock];
-  return task;
-  
 }
 
 

@@ -8,6 +8,6 @@
 
 
 @interface SIFirstViewController : UIViewController
-<NSURLSessionDataDelegate,NSURLSessionDownloadDelegate>
+
 @end
 
