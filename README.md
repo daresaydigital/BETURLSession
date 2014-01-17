@@ -34,37 +34,8 @@ pod 'SIHTTPCore'
 
 
 ## API
+[Documentation for now](https://github.com/screeninteraction/SIHTTPCore/blob/develop/SIHTTPCore/NSURLSession%2BSIHTTPCore.h#L35-L36)
 
-This is currently a very early alpha version, 
-look at ```NSURLSessionTask+SIHTTPCore.h``` & ```NSURLSession+SIHTTPCore.h``` to figure out how to use it. 
-API changes are expected.
-
-FAQ
-
->Q: Why are you making a category on NSObject.
-
-A: Because the way NSURLSession and NSURLSessionDataTasks are made. NSURLSession and NSURLSessionDataTask has a method_missing dispatching all selectors to private classes - the _NSCF composite class.
-
-
-
->Q: Won't this pollute the public interface of basically everything?
-
-A: Not really, only the implementation is on top of NSObject, the public interface is on the proper classes themselves
-
-
->Q: Why make Yet Another HTTP Client?
-
-A: We needed a lightweight dependency for a different project. 
-This is nothing but plugginable custom serializers for request & response with categories on top Apple's own classes. 
-It gives you the option to use blocks and/or delegates and stays out of your way. 
-It doesn't do too much. 
-It has a very light and readable source code since it relies on NSURLSession. 
-
-
-
->Q: Where are the tests?
-
-A: They'be comin'. Seriously though, I've been waiting on Travis to get fixed first. 
 
 
 
