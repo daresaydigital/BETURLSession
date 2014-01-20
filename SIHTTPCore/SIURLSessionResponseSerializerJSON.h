@@ -3,5 +3,5 @@
 
 @interface SIURLSessionResponseSerializerJSON : SIURLSessionResponseSerializer
 <SIURLSessionResponseSerializing>
-+(instancetype)serializerWithJSONReadingOptions:(NSJSONReadingOptions)theJSONReadingOptions;
++(instancetype)serializerWithJSONReadingOptions:(NSJSONReadingOptions)theJSONReadingOptions withoutNull:(BOOL)theNoNullFlag;
 @end
