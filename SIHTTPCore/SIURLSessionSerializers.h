@@ -46,6 +46,7 @@ typedef void (^SIURLSessionSerializerErrorBlock)(id obj, NSError * error);
 -(NSString *)URLEncodedPair:(NSDictionary *)thePair;
 -(NSString *)escapedQueryKeyFromString:(NSString *)theKey;
 -(NSString *)escapedQueryValueFromString:(NSString *)theValue;
+-(NSDictionary *)queryDictionaryFromString:(NSString *)theQueryString;
 
 @end
 

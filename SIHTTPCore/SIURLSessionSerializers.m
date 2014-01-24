@@ -162,6 +162,17 @@ static NSString * const SIURLSessionSerializerAbstractEscapedInQueryStringCharac
 
 }
 
+-(NSDictionary *)queryDictionaryFromString:(NSString *)theQueryString; {
+  //Duplicated code, needs to go to SIHTTPCore
+  NSMutableDictionary * params = @{}.mutableCopy;
+  [[theQueryString componentsSeparatedByString:@"&"] enumerateObjectsUsingBlock:^(NSString * param, __unused NSUInteger idx, __unused  BOOL *stop) {
+    NSArray * parts = [param componentsSeparatedByString:@"="];
+    if(parts.count < 2) return;
+    [params setObject:[parts objectAtIndex:1] forKey:[parts objectAtIndex:0]];
+  }];
+  return params.copy;
+
+}
 
 @end
 
