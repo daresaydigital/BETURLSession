@@ -1,0 +1,106 @@
+
+
+
+@interface NSURLSession (Private)
+@property(readonly) __BETInternalSession * bet_internalSession;
+@property(strong,setter = bet_setRequestSerializer:)  BETURLSessionRequestSerializer<BETURLSessionRequestSerializing> *    bet_serializerForRequest;
+@property(strong,setter = bet_setResponseSerializer:) BETURLSessionResponseSerializer<BETURLSessionResponseSerializing> *   bet_serializerForResponse;
+@end
+
+@interface NSURLSessionTask (Private)
+@property(readonly) __BETInternalSessionTask * bet_internalSessionTask;
+@end
+
+
+@protocol SIPerforming <NSObject>
+-(void)bet_performSelector:(SEL)theSelector withObject:(id)theObject;
+-(id)bet_performSelector:(SEL)theSelector;
+@end
+
+
+@interface __BETInternalSession ()
+<SIPerforming>
+
+@property(strong,setter = bet_setRequestSerializer:)  BETURLSessionRequestSerializer<BETURLSessionRequestSerializing> *    bet_serializerForRequest;
+@property(strong,setter = bet_setResponseSerializer:) BETURLSessionResponseSerializer<BETURLSessionResponseSerializing> *   bet_serializerForResponse;
+
+
+@property(nonatomic,strong,setter = bet_setDelegate:) id<NSURLSessionDataDelegate, NSURLSessionDownloadDelegate> bet_delegate;
+
+@property(nonatomic,strong, setter = bet_setBaseUrl:)    NSURL                  * bet_baseURL;
+@property(nonatomic,copy,setter = bet_setSessionName:)   NSString               * bet_sessionName;
+
+@property(assign,getter = bet_isAutoResumed,setter = bet_setAutoResumed:) BOOL bet_autoResumed;
+
+//@property(nonatomic,copy,setter = bet_setTaskWillBeginRequestBlock:) BETURLSessionTaskLifeCycleRequestBlock bet_taskWillBeginRequestBlock;
+//@property(nonatomic,copy,setter = bet_setTaskDidBeginRequestBlock:) BETURLSessionTaskLifeCycleRequestBlock bet_taskDidBeginRequestBlock;
+//@property(nonatomic,copy,setter = bet_setTaskDidRequestBlock:) BETURLSessionTaskLifeCycleRequestBlock bet_taskDidRequestBlock;
+//@property(nonatomic,copy,setter = bet_setTaskWillEndRequestBlock:) BETURLSessionTaskLifeCycleRequestBlock bet_taskWillEndRequestBlock;
+//@property(nonatomic,copy,setter = bet_setTaskDidEndRequestBlock:) BETURLSessionTaskLifeCycleRequestBlock bet_taskDidEndRequestBlock;
+
+#pragma mark - Privates
+-(void)buildInternalSessionTaskWithURLSessionTask:(NSURLSessionTask *)theURLSessionTask;
+@property(nonatomic,strong) NSMapTable            * mapTasks;
+@property(nonatomic,weak)   NSURLSession          * URLSession;
+
+@end
+
+
+@interface __BETInternalSessionTask ()
+<SIPerforming>
+@property(nonatomic,strong) __BETInternalSession * internalSession;
+@property(nonatomic,strong,setter = bet_setParseResponseError:) NSError * bet_parseResponseError;
+@property(nonatomic,strong,setter = bet_setParseRequestError:) NSError * bet_parseRequestError;
+@property(nonatomic,copy,setter = bet_setError:) NSError * bet_error;
+@property(nonatomic,strong,setter = bet_setData:) NSData * bet_data;
+@property(nonatomic,copy,setter = bet_setDownloadLocation:) NSURL * bet_downloadLocation;
+@property(nonatomic,strong,setter = bet_setParsedObject:) id bet_parsedObject;
+
+
+
+@property(nonatomic,copy,setter = bet_setRequestDataCompleteBlock:) BETURLSessionTaskRequestDataCompletionBlock bet_requestDataCompleteBlock;
+@property(nonatomic,copy,setter = bet_setRequestCompleteBlock:) BETURLSessionTaskRequestCompletionBlock bet_requestCompleteBlock;
+@property(nonatomic,copy,setter = bet_setUploadProgressBlock:) BETURLSessionTaskProgressBlock bet_uploadProgressBlock;
+@property(nonatomic,copy,setter = bet_setDownloadProgressBlock:) BETURLSessionTaskProgressBlock bet_downloadProgressBlock;
+
+#pragma mark - <NSURLSessionTaskDelegate>
+@property(nonatomic,copy,setter = bet_setTaskWillPerformHTTPRedirectionBlock:) BETURLSessionTaskRedirectBlock bet_taskWillPerformHTTPRedirectionBlock;
+@property(nonatomic,copy,setter = bet_setTaskDidReceiveChallenge:) BETURLSessionTaskDidRecieveChallengeBlock bet_taskDidReceiveChallenge;
+@property(nonatomic,copy,setter = bet_setTaskNeedNewBodyStreamBlock:) BETURLSessionTaskNeedNewBodyStreamBlock bet_taskNeedNewBodyStreamBlock;
+@property(nonatomic,copy,setter = bet_setTaskDidCompleteWithErrorBlock:) BETURLSessionTaskDidCompleteWithErrorBlock bet_taskDidCompleteWithErrorBlock;
+
+
+
+#pragma mark - <NSURLSessionDataDelegate>
+@property(nonatomic,copy,setter = bet_setTaskDidReceiveResponseBlock:) BETURLSessionTaskDidReceiveResponseBlock bet_taskDidReceiveResponseBlock;
+@property(nonatomic,copy,setter = bet_setTaskBecomeDownloadTaskBlock:) BETURLSessionTaskDidBecomeDownloadTaskBlock bet_taskBecomeDownloadTaskBlock;
+
+@property(nonatomic,copy,setter = bet_setTaskDidReceiveDataBlock:) BETURLSessionTaskDidReceiveDataBlock bet_taskDidReceiveDataBlock;
+@property(nonatomic,copy,setter = bet_setTaskWillCacheResponseBlock:) BETURLSessionTaskWillCacheResponseBlock bet_taskWillCacheResponseBlock;
+
+#pragma mark - <NSURLSessionDownloadDelegate>
+@property(nonatomic,copy,setter = bet_setTaskDidFinishDownloadingToURLBlock:) BETURLSessionTaskDidFinishDownloadingToURLBlock bet_taskDidFinishDownloadingToURLBlock;
+
+@property(nonatomic,copy,setter = bet_setTaskDidResumeAtOffsetBlock:) BETURLSessionTaskDidResumeAtOffsetBlock bet_taskDidResumeAtOffsetBlock;
+
+
+
+@end
+
+
+@interface __BETInternalManager ()
+@property(nonatomic,strong) NSMapTable * mapSessions;
+@property(nonatomic,strong) NSMapTable * mapConfigurations;
+
++(instancetype)sharedManager;
++(NSURLSession *)sessionWithName:(NSString *)theSessionName;
++(void)addURLSession:(NSURLSession *)theURLSession
+     withSessionName:(NSString *)theSessionName
+          andBaseURL:(NSURL *)theBaseURL;
+
+
++(__BETInternalSession *)internalSessionForURLSession:(NSURLSession *)theURLSession;
++(__BETInternalSessionTask *)internalSessionTaskForURLSessionTask:(NSURLSessionTask *)theURLSessionTask;
+
+
+@end
