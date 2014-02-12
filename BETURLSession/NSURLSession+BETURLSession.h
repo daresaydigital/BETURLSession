@@ -57,26 +57,26 @@
 
 -(NSURLSessionTask *)bet_taskGETResource:(NSString *)theResource
                              withParams:(id<NSFastEnumeration>)theParams
-                          completion:(BETURLSessionTaskRequestCompletionBlock)theBlock;
+                              completion:(BETURLSessionTaskRequestCompletionBlock)theCompletion;
 
 -(NSURLSessionTask *)bet_taskPOSTResource:(NSString *)theResource
                               withParams:(id<NSFastEnumeration>)theParams
-                           completion:(BETURLSessionTaskRequestCompletionBlock)theBlock;
+                               completion:(BETURLSessionTaskRequestCompletionBlock)theCompletion;
 
 
 -(NSURLSessionTask *)bet_taskPUTResource:(NSString*)theResource
                              withParams:(id<NSFastEnumeration>)theParams
-                          completion:(BETURLSessionTaskRequestCompletionBlock)theBlock;
+                          completion:(BETURLSessionTaskRequestCompletionBlock)theCompletion;
 
 
 -(NSURLSessionTask *)bet_taskPATCHResource:(NSString *)theResource
                                withParams:(id<NSFastEnumeration>)theParams
-                            completion:(BETURLSessionTaskRequestCompletionBlock)theBlock;
+                            completion:(BETURLSessionTaskRequestCompletionBlock)theCompletion;
 
 
 -(NSURLSessionTask *)bet_taskDELETEResource:(NSString *)theResource
                                 withParams:(id<NSFastEnumeration>)theParams
-                             completion:(BETURLSessionTaskRequestCompletionBlock)theBlock;
+                             completion:(BETURLSessionTaskRequestCompletionBlock)theCompletion;
 
 
 
@@ -84,7 +84,7 @@
 -(NSURLSessionTask *)bet_buildTaskWithHTTPMethodString:(NSString *)theMethodString
                                            onResource:(NSString *)theResource
                                                params:(id<NSFastEnumeration>)theParams
-                                        completion:(BETURLSessionTaskRequestCompletionBlock)theBlock;
+                                        completion:(BETURLSessionTaskRequestCompletionBlock)theCompletion;
 
 
 typedef NSURLRequest * (^BETURLSessionMutableRequestModifierBlock)(NSMutableURLRequest * modifierRequest);
@@ -93,8 +93,8 @@ typedef NSURLRequest * (^BETURLSessionMutableRequestModifierBlock)(NSMutableURLR
 
 -(NSURLSessionTask *)bet_buildDataTaskOnResource:(NSString *)theResource
                                       withParams:(id<NSFastEnumeration>)theParams
-                                  requestHandler:(BETURLSessionMutableRequestModifierBlock)theRequestModifierBlock
-                               completionHandler:(BETURLSessionTaskRequestDataCompletionBlock)theDataCompleteBlock;
+                                  requestHandler:(BETURLSessionMutableRequestModifierBlock)theRequestHandler
+                               completionHandler:(BETURLSessionTaskRequestDataCompletionBlock)theCompletion;
 
 
 @end

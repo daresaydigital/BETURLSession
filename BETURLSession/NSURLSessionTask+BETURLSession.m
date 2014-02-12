@@ -12,7 +12,7 @@
 
 //Use NSObject for implementation because NSURLSessionTask is exposing __NSFCURLSessionTask instead of the right class, causing unrecognized selectors exception
 
-@implementation NSObject (BETURLSession)
+@implementation NSURLSessionTask (BETURLSession)
 
 
 -(NSError *)bet_parseRequestError; {
@@ -39,36 +39,36 @@
   return [self.bet_internalSessionTask bet_performSelector:_cmd];
 }
 
--(BETURLSessionTaskRequestDataCompletionBlock)bet_requestDataCompleteBlock; {
+-(BETURLSessionTaskRequestDataCompletionBlock)bet_requestDataCompletion; {
   return [self.bet_internalSessionTask bet_performSelector:_cmd];
 }
 
--(void)bet_setRequestDataCompleteBlock:(BETURLSessionTaskRequestDataCompletionBlock)theBlock; {
-  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theBlock];
+-(void)bet_setRequestDataCompletion:(BETURLSessionTaskRequestDataCompletionBlock)theCompletion; {
+  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theCompletion];
 }
 
--(BETURLSessionTaskRequestCompletionBlock)bet_requestCompleteBlock; {
+-(BETURLSessionTaskRequestCompletionBlock)bet_requestCompletion; {
   return [self.bet_internalSessionTask bet_performSelector:_cmd];
 }
 
--(void)bet_setRequestCompleteBlock:(BETURLSessionTaskRequestCompletionBlock)theBlock; {
-  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theBlock];
+-(void)bet_setRequestCompletion:(BETURLSessionTaskRequestCompletionBlock)theCompletion; {
+  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theCompletion];
 }
 
--(BETURLSessionTaskProgressBlock)bet_uploadProgressBlock; {
+-(BETURLSessionTaskProgressHandlerBlock)bet_uploadProgressHandler; {
   return [self.bet_internalSessionTask bet_performSelector:_cmd];
 }
 
--(void)bet_setUploadProgressBlock:(BETURLSessionTaskProgressBlock)theBlock; {
-  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theBlock];
+-(void)bet_setUploadProgressHandler:(BETURLSessionTaskProgressHandlerBlock)theHandler; {
+  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theHandler];
 }
 
--(BETURLSessionTaskProgressBlock)bet_downloadProgressBlock; {
+-(BETURLSessionTaskProgressHandlerBlock)bet_downloadProgressHandler; {
   return [self.bet_internalSessionTask bet_performSelector:_cmd];
 }
 
--(void)bet_setDownloadProgressBlock:(BETURLSessionTaskProgressBlock)theBlock; {
-  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theBlock];
+-(void)bet_setDownloadProgressHandler:(BETURLSessionTaskProgressHandlerBlock)theHandler; {
+  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theHandler];
 }
 
 #pragma mark - Privates
@@ -81,46 +81,46 @@
 
 #pragma mark - taskWillPerformHTTPRedirection
 
--(BETURLSessionTaskRedirectBlock)bet_taskWillPerformHTTPRedirectionBlock; {
+-(BETURLSessionTaskRedirectHandlerBlock)bet_taskWillPerformHTTPRedirectionHandler; {
   return [self.bet_internalSessionTask bet_performSelector:_cmd];
 }
 
--(void)bet_setTaskWillPerfWormHTTPRedirectionBlock:(BETURLSessionTaskRedirectBlock)theBlock; {
-  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theBlock];
+-(void)bet_setTaskWillPerformHTTPRedirectionHandler:(BETURLSessionTaskRedirectHandlerBlock)theHandler; {
+  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theHandler];
 }
 
 
 #pragma mark - taskDidReceiveChallenge
 
--(BETURLSessionTaskDidRecieveChallengeBlock)bet_taskDidReceiveChallenge; {
+-(BETURLSessionTaskDidRecieveChallengeHandlerBlock)bet_taskDidReceiveChallengeHandler; {
   return [self.bet_internalSessionTask bet_performSelector:_cmd];
 }
 
--(void)bet_setTaskDidReceiveChallenge:(BETURLSessionTaskDidRecieveChallengeBlock)theBlock; {
-  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theBlock];
+-(void)bet_setTaskDidReceiveChallengeHandler:(BETURLSessionTaskDidRecieveChallengeHandlerBlock)theHandler; {
+  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theHandler];
 }
 
 
 #pragma mark - taskNeedNewBodyStream
 
--(BETURLSessionTaskNeedNewBodyStreamBlock)bet_taskNeedNewBodyStreamBlock; {
+-(BETURLSessionTaskNeedNewBodyStreamHandlerBlock)bet_taskNeedNewBodyStreamHandler; {
   return [self.bet_internalSessionTask bet_performSelector:_cmd];
 }
 
--(void)bet_setTaskNeedNewBodyStreamBlock:(BETURLSessionTaskNeedNewBodyStreamBlock)theBlock; {
-  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theBlock];
+-(void)bet_setTaskNeedNewBodyStreamHandler:(BETURLSessionTaskNeedNewBodyStreamHandlerBlock)theHandler; {
+  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theHandler];
 }
 
 
 #pragma mark - taskDidCompleteWithError
 
 
--(BETURLSessionTaskDidCompleteWithErrorBlock)bet_taskDidCompleteWithErrorBlock; {
+-(BETURLSessionTaskDidCompleteWithErrorHandlerBlock)bet_taskDidCompleteWithErrorHandler; {
   return [self.bet_internalSessionTask bet_performSelector:_cmd];
 }
 
--(void)bet_setTaskDidCompleteWithErrorBlock:(BETURLSessionTaskDidCompleteWithErrorBlock)theBlock; {
-  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theBlock];
+-(void)bet_setTaskDidCompleteWithErrorHandler:(BETURLSessionTaskDidCompleteWithErrorHandlerBlock)theHandler; {
+  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theHandler];
 }
 
 
@@ -128,47 +128,47 @@
 #pragma mark - <NSURLSessionDataDelegate>
 
 #pragma mark - taskDidReceiveResponse
--(BETURLSessionTaskDidReceiveResponseBlock)bet_taskDidReceiveResponseBlock; {
+-(BETURLSessionTaskDidReceiveResponseHandlerBlock)bet_taskDidReceiveResponseHandler; {
   return [self.bet_internalSessionTask bet_performSelector:_cmd];
 }
 
--(void)bet_setTaskDidReceiveResponseBlock:(BETURLSessionTaskDidReceiveResponseBlock)theBlock; {
-  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theBlock];
+-(void)bet_setTaskDidReceiveResponseHandler:(BETURLSessionTaskDidReceiveResponseHandlerBlock)theHandler; {
+  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theHandler];
 }
 
 
 
 #pragma mark - taskDidBecomeDownloadTask
 
--(BETURLSessionTaskDidBecomeDownloadTaskBlock)bet_taskBecomeDownloadTaskBlock; {
+-(BETURLSessionTaskDidBecomeDownloadTaskCompletionBlock)bet_taskBecomeDownloadTaskCompletion; {
   return [self.bet_internalSessionTask bet_performSelector:_cmd];
 }
 
--(void)bet_setTaskBecomeDownloadTaskBlock:(BETURLSessionTaskDidBecomeDownloadTaskBlock)theBlock; {
-  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theBlock];
+-(void)bet_setTaskBecomeDownloadTaskCompletion:(BETURLSessionTaskDidBecomeDownloadTaskCompletionBlock)theCompletion; {
+  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theCompletion];
 }
 
 
 #pragma mark - taskDidReceiveData
 
--(BETURLSessionTaskDidReceiveDataBlock)bet_taskDidReceiveDataBlock; {
+-(BETURLSessionTaskDidReceiveDataCompletionBlock)bet_taskDidReceiveDataCompletion; {
   return [self.bet_internalSessionTask bet_performSelector:_cmd];
 }
 
--(void)bet_setTaskDidReceiveDataBlock:(BETURLSessionTaskDidReceiveDataBlock)theBlock; {
-  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theBlock];
+-(void)bet_setTaskDidReceiveDataCompletion:(BETURLSessionTaskDidReceiveDataCompletionBlock)theCompletion; {
+  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theCompletion];
 }
 
 
 
 #pragma mark - taskWillCacheResponse
 
--(BETURLSessionTaskWillCacheResponseBlock)bet_taskWillCacheResponseBlock; {
+-(BETURLSessionTaskWillCacheResponseHandlerBlock)bet_taskWillCacheResponseHandler; {
   return [self.bet_internalSessionTask bet_performSelector:_cmd];
 }
 
--(void)bet_setTaskWillCacheResponseBlock:(BETURLSessionTaskWillCacheResponseBlock)theBlock; {
-  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theBlock];
+-(void)bet_setTaskWillCacheResponseHandler:(BETURLSessionTaskWillCacheResponseHandlerBlock)theHandler; {
+  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theHandler];
 }
 
 #pragma mark - <NSURLSessionDownloadDelegate>
@@ -176,23 +176,23 @@
 
 #pragma mark - taskDidFinishDownloadingToURL
 
--(BETURLSessionTaskDidFinishDownloadingToURLBlock)bet_taskDidFinishDownloadingToURLBlock; {
+-(BETURLSessionTaskDidFinishDownloadingToURLCompletion)bet_taskDidFinishDownloadingToURLCompletion; {
   return [self.bet_internalSessionTask bet_performSelector:_cmd];
 }
 
--(void)bet_setTaskDidFinishDownloadingToURLBlock:(BETURLSessionTaskDidFinishDownloadingToURLBlock)theBlock; {
-  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theBlock];
+-(void)bet_setTaskDidFinishDownloadingToURLCompletion:(BETURLSessionTaskDidFinishDownloadingToURLCompletion)theCompletion; {
+  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theCompletion];
 }
 
 
 #pragma mark - taskDidResumeAtOffset
 
--(BETURLSessionTaskDidResumeAtOffsetBlock)bet_taskDidResumeAtOffsetBlock; {
+-(BETURLSessionTaskDidResumeAtOffsetHandler)bet_taskDidResumeAtOffsetHandler; {
   return [self.bet_internalSessionTask bet_performSelector:_cmd];
 }
 
--(void)bet_setTaskDidResumeAtOffsetBlock:(BETURLSessionTaskDidResumeAtOffsetBlock)theBlock; {
-  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theBlock];
+-(void)bet_setTaskDidResumeAtOffsetHandler:(BETURLSessionTaskDidResumeAtOffsetHandler)theHandler; {
+  [self.bet_internalSessionTask bet_performSelector:_cmd withObject:theHandler];
 }
 
 

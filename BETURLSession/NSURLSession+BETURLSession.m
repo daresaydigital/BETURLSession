@@ -211,43 +211,43 @@
 
 -(NSURLSessionTask *)bet_taskGETResource:(NSString *)theResource
                              withParams:(id<NSFastEnumeration>)theParams
-                          completion:(BETURLSessionTaskRequestCompletionBlock)theBlock; {
-  return [self bet_buildTaskWithHTTPMethodString:@"GET" onResource:theResource params:theParams completion:theBlock];
+                          completion:(BETURLSessionTaskRequestCompletionBlock)theCompletion; {
+  return [self bet_buildTaskWithHTTPMethodString:@"GET" onResource:theResource params:theParams completion:theCompletion];
 }
 
 
 -(NSURLSessionTask *)bet_taskPOSTResource:(NSString *)theResource
                               withParams:(id<NSFastEnumeration>)theParams
-                           completion:(BETURLSessionTaskRequestCompletionBlock)theBlock; {
-  return [self bet_buildTaskWithHTTPMethodString:@"POST" onResource:theResource params:theParams completion:theBlock];
+                           completion:(BETURLSessionTaskRequestCompletionBlock)theCompletion; {
+  return [self bet_buildTaskWithHTTPMethodString:@"POST" onResource:theResource params:theParams completion:theCompletion];
 }
 
 
 -(NSURLSessionTask *)bet_taskPUTResource:(NSString*)theResource
                              withParams:(id<NSFastEnumeration>)theParams
-                          completion:(BETURLSessionTaskRequestCompletionBlock)theBlock; {
-  return [self bet_buildTaskWithHTTPMethodString:@"PUT" onResource:theResource params:theParams completion:theBlock];
+                          completion:(BETURLSessionTaskRequestCompletionBlock)theCompletion; {
+  return [self bet_buildTaskWithHTTPMethodString:@"PUT" onResource:theResource params:theParams completion:theCompletion];
 }
 
 
 -(NSURLSessionTask *)bet_taskPATCHResource:(NSString *)theResource
                                withParams:(id<NSFastEnumeration>)theParams
-                            completion:(BETURLSessionTaskRequestCompletionBlock)theBlock; {
-  return [self bet_buildTaskWithHTTPMethodString:@"PATCH" onResource:theResource params:theParams completion:theBlock];
+                            completion:(BETURLSessionTaskRequestCompletionBlock)theCompletion; {
+  return [self bet_buildTaskWithHTTPMethodString:@"PATCH" onResource:theResource params:theParams completion:theCompletion];
 }
 
 
 -(NSURLSessionTask *)bet_taskDELETEResource:(NSString *)theResource
                                 withParams:(id<NSFastEnumeration>)theParams
-                             completion:(BETURLSessionTaskRequestCompletionBlock)theBlock; {
-  return [self bet_buildTaskWithHTTPMethodString:@"DELETE" onResource:theResource params:theParams completion:theBlock];
+                             completion:(BETURLSessionTaskRequestCompletionBlock)theCompletion; {
+  return [self bet_buildTaskWithHTTPMethodString:@"DELETE" onResource:theResource params:theParams completion:theCompletion];
 }
 
 
 -(NSURLSessionTask *)bet_buildTaskWithHTTPMethodString:(NSString *)theMethodString
                                            onResource:(NSString *)theResource
                                                params:(id<NSFastEnumeration>)theParams
-                                        completion:(BETURLSessionTaskRequestCompletionBlock)theBlock; {
+                                        completion:(BETURLSessionTaskRequestCompletionBlock)theCompletion; {
   
   NSParameterAssert(theMethodString);
   
@@ -257,7 +257,7 @@
     [modifierRequest setHTTPMethod:theMethodString];
     return modifierRequest.copy;
   } completionHandler:nil];
-  [task bet_setRequestCompleteBlock:theBlock];
+  [task bet_setRequestCompletion:theCompletion];
   if(self.bet_isAutoResumed) [task resume];
   
   return task;
@@ -268,8 +268,8 @@
 
 -(NSURLSessionTask *)bet_buildDataTaskOnResource:(NSString *)theResource
                                       withParams:(id<NSFastEnumeration>)theParams
-                                  requestHandler:(BETURLSessionMutableRequestModifierBlock)theRequestModifierBlock
-                               completionHandler:(BETURLSessionTaskRequestDataCompletionBlock)theDataCompleteBlock; {
+                                  requestHandler:(BETURLSessionMutableRequestModifierBlock)theRequestHandler
+                               completionHandler:(BETURLSessionTaskRequestDataCompletionBlock)theCompletion; {
   
   NSURLSession * session = (NSURLSession*)self;
   
@@ -278,7 +278,7 @@
   
   __block NSURLRequest * request = [NSURLRequest requestWithURL:fullPathURL];
   __block NSMutableURLRequest * modifierRequest = request.mutableCopy;
-  if(theRequestModifierBlock) modifierRequest = theRequestModifierBlock(modifierRequest).mutableCopy;
+  if(theRequestHandler) modifierRequest = theRequestHandler(modifierRequest).mutableCopy;
   request = nil;
   
   NSParameterAssert(modifierRequest);
@@ -321,7 +321,7 @@
   
   [self.bet_internalSession buildInternalSessionTaskWithURLSessionTask:task];
   
-  [task bet_setRequestDataCompleteBlock:theDataCompleteBlock];
+  [task bet_setRequestDataCompletion:theCompletion];
   
   
   if(parsingError) task.bet_internalSessionTask.bet_parseRequestError = parsingError;

@@ -14,143 +14,141 @@
 @property(readonly) id bet_parsedObject;
 
 
-typedef void (^BETURLSessionTaskProgressBlock)(NSURLSessionTask * task,
+typedef void (^BETURLSessionTaskProgressHandlerBlock)(NSURLSessionTask * task,
                                               NSInteger  bytes,
                                               NSInteger  totalBytes,
                                               NSInteger  totalBytesExpected
                                               );
 
-@property(readonly) BETURLSessionTaskRequestDataCompletionBlock bet_requestDataCompleteBlock;
--(void)bet_setRequestDataCompleteBlock:(BETURLSessionTaskRequestDataCompletionBlock)theBlock;
+@property(readonly) BETURLSessionTaskRequestDataCompletionBlock bet_requestDataCompletion;
+-(void)bet_setRequestDataCompletion:(BETURLSessionTaskRequestDataCompletionBlock)theCompletion;
 
-@property(readonly) BETURLSessionTaskRequestCompletionBlock bet_requestCompleteBlock;
--(void)bet_setRequestCompleteBlock:(BETURLSessionTaskRequestCompletionBlock)theBlock;
+@property(readonly) BETURLSessionTaskRequestCompletionBlock bet_requestCompletion;
+-(void)bet_setRequestCompletion:(BETURLSessionTaskRequestCompletionBlock)theCompletion;
 
 
-@property(readonly) BETURLSessionTaskProgressBlock bet_uploadProgressBlock;
--(void)bet_setUploadProgressBlock:(BETURLSessionTaskProgressBlock)theBlock;
+@property(readonly) BETURLSessionTaskProgressHandlerBlock bet_uploadProgressHandler;
+-(void)bet_setUploadProgressHandler:(BETURLSessionTaskProgressHandlerBlock)theHandler;
 
-@property(readonly) BETURLSessionTaskProgressBlock bet_downloadProgressBlock;
--(void)bet_setDownloadProgressBlock:(BETURLSessionTaskProgressBlock)theBlock;
-
+@property(readonly) BETURLSessionTaskProgressHandlerBlock bet_downloadProgressHandler;
+-(void)bet_setDownloadProgressHandler:(BETURLSessionTaskProgressHandlerBlock)theHandler;
 
 #pragma mark - <NSURLSessionTaskDelegate>
 
 #pragma mark - taskWillPerformHTTPRedirection
-typedef void (^BETURLSessionTaskRedirectCompletionBlock)(NSURLRequest  * request);
+typedef void (^BETURLSessionTaskRedirectCompletionHandlerBlock)(NSURLRequest  * request);
 
-typedef void (^BETURLSessionTaskRedirectBlock)(NSURLSessionTask * task,
+typedef void (^BETURLSessionTaskRedirectHandlerBlock)(NSURLSessionTask * task,
                                               NSHTTPURLResponse * response,
                                               NSURLRequest      * request,
-                                              BETURLSessionTaskRedirectCompletionBlock  completionBlock
+                                              BETURLSessionTaskRedirectCompletionHandlerBlock  completionHandler
                                               );
 
-@property(readonly) BETURLSessionTaskRedirectBlock bet_taskWillPerformHTTPRedirectionBlock;
--(void)bet_setTaskWillPerfWormHTTPRedirectionBlock:(BETURLSessionTaskRedirectBlock)theBlock;
+@property(readonly) BETURLSessionTaskRedirectHandlerBlock bet_taskWillPerformHTTPRedirectionHandler;
+-(void)bet_setTaskWillPerformHTTPRedirectionHandler:(BETURLSessionTaskRedirectHandlerBlock)theHandler;
 
 
 #pragma mark - taskDidReceiveChallenge
-typedef void (^BETURLSessionTaskDidRecieveChallengeCompletionBlock)(NSURLSessionAuthChallengeDisposition disposition,
+typedef void (^BETURLSessionTaskDidRecieveChallengeCompletionHandlerBlock)(NSURLSessionAuthChallengeDisposition disposition,
                                                                    NSURLCredential *credential
                                                                    );
 
-typedef void (^BETURLSessionTaskDidRecieveChallengeBlock)(NSURLSessionTask * task,
+typedef void (^BETURLSessionTaskDidRecieveChallengeHandlerBlock)(NSURLSessionTask * task,
                                                          NSURLAuthenticationChallenge * challenge,
-                                                         BETURLSessionTaskDidRecieveChallengeCompletionBlock  completionBlock
+                                                         BETURLSessionTaskDidRecieveChallengeCompletionHandlerBlock  completionHandler
                                                          );
 
-@property(readonly) BETURLSessionTaskDidRecieveChallengeBlock bet_taskDidReceiveChallenge;
--(void)bet_setTaskDidReceiveChallenge:(BETURLSessionTaskDidRecieveChallengeBlock)theBlock;
+@property(readonly) BETURLSessionTaskDidRecieveChallengeHandlerBlock bet_taskDidReceiveChallengeHandler;
+-(void)bet_setTaskDidReceiveChallengeHandler:(BETURLSessionTaskDidRecieveChallengeHandlerBlock)theHandler;
 
 
 #pragma mark - taskNeedNewBodyStream
-typedef void (^BETURLSessionTaskNeedNewBodyStreamCompletionBlock)(NSInputStream *bodyStream);
+typedef void (^BETURLSessionTaskNeedNewBodyStreamCompletionHandlerBlock)(NSInputStream *bodyStream);
 
-typedef void (^BETURLSessionTaskNeedNewBodyStreamBlock)(NSURLSessionTask * task,
-                                                       BETURLSessionTaskNeedNewBodyStreamCompletionBlock  completionBlock
+typedef void (^BETURLSessionTaskNeedNewBodyStreamHandlerBlock)(NSURLSessionTask * task,
+                                                       BETURLSessionTaskNeedNewBodyStreamCompletionHandlerBlock  completionHandler
                                                        );
 
-@property(readonly) BETURLSessionTaskNeedNewBodyStreamBlock bet_taskNeedNewBodyStreamBlock;
--(void)bet_setTaskNeedNewBodyStreamBlock:(BETURLSessionTaskNeedNewBodyStreamBlock)theBlock;
+@property(readonly) BETURLSessionTaskNeedNewBodyStreamHandlerBlock bet_taskNeedNewBodyStreamHandler;
+-(void)bet_setTaskNeedNewBodyStreamHandler:(BETURLSessionTaskNeedNewBodyStreamHandlerBlock)theHandler;
 
 
 #pragma mark - taskDidCompleteWithError
 
 
-typedef void (^BETURLSessionTaskDidCompleteWithErrorBlock)(NSURLSessionTask * task,
+typedef void (^BETURLSessionTaskDidCompleteWithErrorHandlerBlock)(NSURLSessionTask * task,
                                                           NSError *  error
                                                           );
 
-@property(readonly) BETURLSessionTaskDidCompleteWithErrorBlock bet_taskDidCompleteWithErrorBlock;
--(void)bet_setTaskDidCompleteWithErrorBlock:(BETURLSessionTaskDidCompleteWithErrorBlock)theBlock;
+@property(readonly) BETURLSessionTaskDidCompleteWithErrorHandlerBlock bet_taskDidCompleteWithErrorHandler;
+-(void)bet_setTaskDidCompleteWithErrorHandler:(BETURLSessionTaskDidCompleteWithErrorHandlerBlock)theHandler;
 
 
 
 #pragma mark - <NSURLSessionDataDelegate>
 
 #pragma mark - taskDidReceiveResponse
-typedef void (^BETURLSessionTaskDidReceiveResponseCompletionBlock)(NSURLSessionResponseDisposition disposition);
+typedef void (^BETURLSessionTaskDidReceiveResponseCompletionHandlerBlock)(NSURLSessionResponseDisposition disposition);
 
-typedef void (^BETURLSessionTaskDidReceiveResponseBlock)(NSURLSessionTask * task,
+typedef void (^BETURLSessionTaskDidReceiveResponseHandlerBlock)(NSURLSessionTask * task,
                                                         NSURLResponse * response,
-                                                        BETURLSessionTaskDidReceiveResponseCompletionBlock  completionBlock
+                                                        BETURLSessionTaskDidReceiveResponseCompletionHandlerBlock  completionHandler
                                                         );
 
-@property(readonly) BETURLSessionTaskDidReceiveResponseBlock bet_taskDidReceiveResponseBlock;
--(void)bet_setTaskDidReceiveResponseBlock:(BETURLSessionTaskDidReceiveResponseBlock)theBlock;
+@property(readonly) BETURLSessionTaskDidReceiveResponseHandlerBlock bet_taskDidReceiveResponseHandler;
+-(void)bet_setTaskDidReceiveResponseHandler:(BETURLSessionTaskDidReceiveResponseHandlerBlock)theHandler;
 
 
 
 #pragma mark - taskDidBecomeDownloadTask
-typedef void (^BETURLSessionTaskDidBecomeDownloadTaskBlock)(NSURLSessionTask * task,
-                                                           NSURLSessionDownloadTask * downloadTask
+typedef void (^BETURLSessionTaskDidBecomeDownloadTaskCompletionBlock)(NSURLSessionTask * task,
+                                                            NSURLSessionDownloadTask * downloadTask
                                                            );
 
-@property(readonly) BETURLSessionTaskDidBecomeDownloadTaskBlock bet_taskBecomeDownloadTaskBlock;
--(void)bet_setTaskBecomeDownloadTaskBlock:(BETURLSessionTaskDidBecomeDownloadTaskBlock)theBlock;
+@property(readonly) BETURLSessionTaskDidBecomeDownloadTaskCompletionBlock bet_taskBecomeDownloadTaskCompletion;
+-(void)bet_setTaskBecomeDownloadTaskCompletion:(BETURLSessionTaskDidBecomeDownloadTaskCompletionBlock)theCompletion;
 
 
 #pragma mark - taskDidReceiveData
-typedef void (^BETURLSessionTaskDidReceiveDataBlock)(NSURLSessionTask * task,
+typedef void (^BETURLSessionTaskDidReceiveDataCompletionBlock)(NSURLSessionTask * task,
                                                            NSData * data
                                                            );
 
-@property(readonly) BETURLSessionTaskDidReceiveDataBlock bet_taskDidReceiveDataBlock;
--(void)bet_setTaskDidReceiveDataBlock:(BETURLSessionTaskDidReceiveDataBlock)theBlock;
+@property(readonly) BETURLSessionTaskDidReceiveDataCompletionBlock bet_taskDidReceiveDataCompletion;
+-(void)bet_setTaskDidReceiveDataCompletion:(BETURLSessionTaskDidReceiveDataCompletionBlock)theCompletion;
 
 
 
 #pragma mark - taskWillCacheResponse
-typedef void (^BETURLSessionTaskWillCacheResponseCompletionBlock)(NSCachedURLResponse * cachedResponse);
+typedef void (^BETURLSessionTaskWillCacheResponseCompletionHandlerBlock)(NSCachedURLResponse * cachedResponse);
 
-typedef void (^BETURLSessionTaskWillCacheResponseBlock)(NSURLSessionTask * task,
+typedef void (^BETURLSessionTaskWillCacheResponseHandlerBlock)(NSURLSessionTask * task,
                                                        NSCachedURLResponse * proposedResponse,
-                                                       BETURLSessionTaskWillCacheResponseCompletionBlock  completionBlock
+                                                       BETURLSessionTaskWillCacheResponseCompletionHandlerBlock  completionHandler
                                                         );
 
-@property(readonly) BETURLSessionTaskWillCacheResponseBlock bet_taskWillCacheResponseBlock;
--(void)bet_setTaskWillCacheResponseBlock:(BETURLSessionTaskWillCacheResponseBlock)theBlock;
+@property(readonly) BETURLSessionTaskWillCacheResponseHandlerBlock bet_taskWillCacheResponseHandler;
+-(void)bet_setTaskWillCacheResponseHandler:(BETURLSessionTaskWillCacheResponseHandlerBlock)theHandler;
 
 #pragma mark - <NSURLSessionDownloadDelegate>
 
-
 #pragma mark - taskDidFinishDownloadingToURL
-typedef void (^BETURLSessionTaskDidFinishDownloadingToURLBlock)(NSURLSessionTask * task,
-                                                               NSURL * location
-                                                               );
+typedef void (^BETURLSessionTaskDidFinishDownloadingToURLCompletion)(NSURLSessionTask * task,
+                                                                     NSURL * location
+                                                                     );
 
-@property(readonly) BETURLSessionTaskDidFinishDownloadingToURLBlock bet_taskDidFinishDownloadingToURLBlock;
--(void)bet_setTaskDidFinishDownloadingToURLBlock:(BETURLSessionTaskDidFinishDownloadingToURLBlock)theBlock;
+@property(readonly) BETURLSessionTaskDidFinishDownloadingToURLCompletion bet_taskDidFinishDownloadingToURLCompletion;
+-(void)bet_setTaskDidFinishDownloadingToURLCompletion:(BETURLSessionTaskDidFinishDownloadingToURLCompletion)theCompletion;
 
 
 #pragma mark - taskDidResumeAtOffset
-typedef void (^BETURLSessionTaskDidResumeAtOffsetBlock)(NSURLSessionTask * task,
-                                                       NSInteger  fileOffset,
-                                                       NSInteger  expectedTotalBytes
+typedef void (^BETURLSessionTaskDidResumeAtOffsetHandler)(NSURLSessionTask * task,
+                                                          NSInteger  fileOffset,
+                                                          NSInteger  expectedTotalBytes
                                                        );
 
-@property(readonly) BETURLSessionTaskDidResumeAtOffsetBlock bet_taskDidResumeAtOffsetBlock;
--(void)bet_setTaskDidResumeAtOffsetBlock:(BETURLSessionTaskDidResumeAtOffsetBlock)theBlock;
+@property(readonly) BETURLSessionTaskDidResumeAtOffsetHandler bet_taskDidResumeAtOffsetHandler;
+-(void)bet_setTaskDidResumeAtOffsetHandler:(BETURLSessionTaskDidResumeAtOffsetHandler)theHandler;
 
 
 @end

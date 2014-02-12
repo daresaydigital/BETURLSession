@@ -60,28 +60,29 @@
 
 @property(nonatomic,copy,setter = bet_setRequestDataCompleteBlock:) BETURLSessionTaskRequestDataCompletionBlock bet_requestDataCompleteBlock;
 @property(nonatomic,copy,setter = bet_setRequestCompleteBlock:) BETURLSessionTaskRequestCompletionBlock bet_requestCompleteBlock;
-@property(nonatomic,copy,setter = bet_setUploadProgressBlock:) BETURLSessionTaskProgressBlock bet_uploadProgressBlock;
-@property(nonatomic,copy,setter = bet_setDownloadProgressBlock:) BETURLSessionTaskProgressBlock bet_downloadProgressBlock;
+@property(nonatomic,copy,setter = bet_setUploadProgressBlock:) BETURLSessionTaskProgressHandlerBlock bet_uploadProgressBlock;
+
+@property(nonatomic,copy,setter = bet_setDownloadProgressBlock:) BETURLSessionTaskProgressHandlerBlock bet_downloadProgressBlock;
 
 #pragma mark - <NSURLSessionTaskDelegate>
-@property(nonatomic,copy,setter = bet_setTaskWillPerformHTTPRedirectionBlock:) BETURLSessionTaskRedirectBlock bet_taskWillPerformHTTPRedirectionBlock;
-@property(nonatomic,copy,setter = bet_setTaskDidReceiveChallenge:) BETURLSessionTaskDidRecieveChallengeBlock bet_taskDidReceiveChallenge;
-@property(nonatomic,copy,setter = bet_setTaskNeedNewBodyStreamBlock:) BETURLSessionTaskNeedNewBodyStreamBlock bet_taskNeedNewBodyStreamBlock;
-@property(nonatomic,copy,setter = bet_setTaskDidCompleteWithErrorBlock:) BETURLSessionTaskDidCompleteWithErrorBlock bet_taskDidCompleteWithErrorBlock;
+@property(nonatomic,copy,setter = bet_setTaskWillPerformHTTPRedirectionBlock:) BETURLSessionTaskRedirectHandlerBlock bet_taskWillPerformHTTPRedirectionBlock;
+@property(nonatomic,copy,setter = bet_setTaskDidReceiveChallenge:) BETURLSessionTaskDidRecieveChallengeHandlerBlock bet_taskDidReceiveChallenge;
+@property(nonatomic,copy,setter = bet_setTaskNeedNewBodyStreamBlock:) BETURLSessionTaskNeedNewBodyStreamHandlerBlock bet_taskNeedNewBodyStreamBlock;
+@property(nonatomic,copy,setter = bet_setTaskDidCompleteWithErrorBlock:) BETURLSessionTaskDidCompleteWithErrorHandlerBlock bet_taskDidCompleteWithErrorBlock;
 
 
 
 #pragma mark - <NSURLSessionDataDelegate>
-@property(nonatomic,copy,setter = bet_setTaskDidReceiveResponseBlock:) BETURLSessionTaskDidReceiveResponseBlock bet_taskDidReceiveResponseBlock;
-@property(nonatomic,copy,setter = bet_setTaskBecomeDownloadTaskBlock:) BETURLSessionTaskDidBecomeDownloadTaskBlock bet_taskBecomeDownloadTaskBlock;
+@property(nonatomic,copy,setter = bet_setTaskDidReceiveResponseBlock:) BETURLSessionTaskDidReceiveResponseHandlerBlock bet_taskDidReceiveResponseBlock;
+@property(nonatomic,copy,setter = bet_setTaskBecomeDownloadTaskBlock:) BETURLSessionTaskDidBecomeDownloadTaskCompletionBlock bet_taskBecomeDownloadTaskBlock;
 
-@property(nonatomic,copy,setter = bet_setTaskDidReceiveDataBlock:) BETURLSessionTaskDidReceiveDataBlock bet_taskDidReceiveDataBlock;
-@property(nonatomic,copy,setter = bet_setTaskWillCacheResponseBlock:) BETURLSessionTaskWillCacheResponseBlock bet_taskWillCacheResponseBlock;
+@property(nonatomic,copy,setter = bet_setTaskDidReceiveDataBlock:) BETURLSessionTaskDidReceiveDataCompletionBlock bet_taskDidReceiveDataBlock;
+@property(nonatomic,copy,setter = bet_setTaskWillCacheResponseBlock:) BETURLSessionTaskWillCacheResponseHandlerBlock bet_taskWillCacheResponseBlock;
 
 #pragma mark - <NSURLSessionDownloadDelegate>
-@property(nonatomic,copy,setter = bet_setTaskDidFinishDownloadingToURLBlock:) BETURLSessionTaskDidFinishDownloadingToURLBlock bet_taskDidFinishDownloadingToURLBlock;
+@property(nonatomic,copy,setter = bet_setTaskDidFinishDownloadingToURLBlock:)BETURLSessionTaskDidFinishDownloadingToURLCompletion bet_taskDidFinishDownloadingToURLBlock;
 
-@property(nonatomic,copy,setter = bet_setTaskDidResumeAtOffsetBlock:) BETURLSessionTaskDidResumeAtOffsetBlock bet_taskDidResumeAtOffsetBlock;
+@property(nonatomic,copy,setter = bet_setTaskDidResumeAtOffsetBlock:) BETURLSessionTaskDidResumeAtOffsetHandler bet_taskDidResumeAtOffsetBlock;
 
 
 
