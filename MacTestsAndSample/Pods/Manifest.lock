@@ -1,0 +1,22 @@
+PODS:
+  - BETURLSession (1.0.0)
+  - SHTestCaseAdditions (1.4.1):
+    - SHTestCaseAdditions/XCTest
+  - SHTestCaseAdditions/XCTest (1.4.1)
+  - VCRURLConnection (0.2.0)
+
+DEPENDENCIES:
+  - BETURLSession (from `../`)
+  - SHTestCaseAdditions
+  - VCRURLConnection
+
+EXTERNAL SOURCES:
+  BETURLSession:
+    :path: ../
+
+SPEC CHECKSUMS:
+  BETURLSession: 2e51573f9794aa50cfa85fb0b54ce93e1c8eaa79
+  SHTestCaseAdditions: ff32e10731f37effd08c254e538c3e7998f74921
+  VCRURLConnection: 7c5471d671641dbd0f1b46903ebeb4b88caae04c
+
+COCOAPODS: 0.29.0

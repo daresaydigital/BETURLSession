@@ -1,0 +1,12 @@
+
+link_with [:Sample, :Tests]
+pod 'BETURLSession', :path => '../'
+
+
+target :Tests, :exclusive => true do
+  pod 'SHTestCaseAdditions'
+  pod 'VCRURLConnection'
+end
+
+
+

@@ -1,4 +1,0 @@
-platform :ios, '7.0' 
-
-#link_with [:SINotworking, :SINotworkingTests]
-pod 'SIHTTPCore', :path => '../'

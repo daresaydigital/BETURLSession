@@ -1,0 +1,1116 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B3C033F3D774CC1B7C1BC99 /* VCROrderedMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = EEBD1B42627B487782A472A0 /* VCROrderedMutableDictionary.h */; };
+		13416F3211CF49A8B5F6B144 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C32EE62E664CC79A57EE72 /* Cocoa.framework */; };
+		13C35099E5FC479FB0A1E315 /* __BETInternalManager+Delegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AFAD33E0DCAB46CA9CB868A0 /* __BETInternalManager+Delegate.h */; };
+		1A18767E0F0C4935AF953081 /* VCROrderedMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 92792D2DA4724897955D3BC4 /* VCROrderedMutableDictionary.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		1B4833A8C4E04934B4998D42 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C32EE62E664CC79A57EE72 /* Cocoa.framework */; };
+		267C2B9472D848DA84B3285D /* VCRRecording.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B90386C2BB04A72BC64879B /* VCRRecording.h */; };
+		2809E310474442568BBD4F89 /* libPods-Tests-SHTestCaseAdditions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D5FD6C681BB4DBBA5D1D3B9 /* libPods-Tests-SHTestCaseAdditions.a */; };
+		2C098847FFEC4CAF8E1DB30A /* XCTestCase+SHTestCaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 663EDC7121114A1AB50C6E4C /* XCTestCase+SHTestCaseAdditions.h */; };
+		2D0D0C5ACE564ADB822E7125 /* __SHTestCaseInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F65C2080CA4BC99680ECD5 /* __SHTestCaseInternal.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		2D7D66AA44E54C83BC6E4A25 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C32EE62E664CC79A57EE72 /* Cocoa.framework */; };
+		33DF703D11434173A835D194 /* libPods-Tests-VCRURLConnection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94367C0D5CF84D4D87DCE0AE /* libPods-Tests-VCRURLConnection.a */; };
+		35600BD770504CF1AEE74595 /* VCRError.m in Sources */ = {isa = PBXBuildFile; fileRef = 070268CE721147A1B3C9704D /* VCRError.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		36BD86F2DB09478C8AD12AAD /* VCRRequestKey.h in Headers */ = {isa = PBXBuildFile; fileRef = 6104FE5E1CB8405B85900CF9 /* VCRRequestKey.h */; };
+		38CB9BB279554166A328EB94 /* VCR.m in Sources */ = {isa = PBXBuildFile; fileRef = 48190C178F8741819DCC6B06 /* VCR.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		3DA0262E88E44A8F9481A38A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55F711E39264FAF828B9A63 /* XCTest.framework */; };
+		3F934A76DA7F443BAC29AF10 /* NSURLSessionTask+BETURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = AC26E97E4DA746388558BDAC /* NSURLSessionTask+BETURLSession.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		440802F7B726490CACF2851D /* __SHTestCaseShared.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FB77EAB356E40AFB5295746 /* __SHTestCaseShared.h */; };
+		549A538358804F4F9C572C9C /* BETURLSessionRequestSerializerFormURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 7787795543C94D2482258B58 /* BETURLSessionRequestSerializerFormURLEncoding.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		656A642B58D044A4A7792A61 /* BETURLSessionTaskSharedBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 995F6BBA6DD64DCBA4A49EEB /* BETURLSessionTaskSharedBlocks.h */; };
+		6F4325CCB6E3410F910E78CA /* VCRRecordingURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = A4C2E987E3534C7CA6230511 /* VCRRecordingURLProtocol.h */; };
+		739B092D325E422E894B5BE2 /* NSURLSession+BETURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F43F2D74AD64812959615F7 /* NSURLSession+BETURLSession.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		74E32C62F4FB4BAAB89ABE66 /* BETURLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = CC11EBD6F824445D8C14C0E7 /* BETURLSession.h */; };
+		7520E3B045C24905A919007E /* SHTestCaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 700C0D3BE8434CD4B3AC207A /* SHTestCaseAdditions.h */; };
+		78F7520CD5204DEC808D5D8E /* BETURLSessionRequestSerializerFormURLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = FE2BFFFBA0FF403A9A76891F /* BETURLSessionRequestSerializerFormURLEncoding.h */; };
+		7AE2E0A81B4344B89763343D /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 96860C598A064CF0B58098CA /* Pods-dummy.m */; };
+		7B4E6D086E0C4040A4E13B0C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C32EE62E664CC79A57EE72 /* Cocoa.framework */; };
+		7FC5E31C96B140EF95526F2F /* VCRReplayingURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D2FC0CAD554CE5894363AA /* VCRReplayingURLProtocol.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		800935D4830F4C268EAA4BDD /* Pods-Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D07F10E36046FE90298180 /* Pods-Tests-dummy.m */; };
+		87C624878D68447385907F32 /* VCRReplayingURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D72616B72E4B4106BC3F2A4C /* VCRReplayingURLProtocol.h */; };
+		90A4AA5CA5AA4873A0CB4F79 /* BETURLSessionResponseSerializerJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 654FEE19F510450AA4289868 /* BETURLSessionResponseSerializerJSON.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		91A9968FEF324444B0E79647 /* VCRError.h in Headers */ = {isa = PBXBuildFile; fileRef = 053E6B98244A4C6C830E4EE9 /* VCRError.h */; };
+		9234A06DB7494B399AF84B56 /* __BETInternalManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 95CEE57CD9754D9F96792F57 /* __BETInternalManager.h */; };
+		98588E502B8740F2B9498785 /* NSURLSessionTask+BETURLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 6560AD58CA2D4F6B8A54782E /* NSURLSessionTask+BETURLSession.h */; };
+		A1B6EEFF79634AF0B7AB59F8 /* BETURLSessionRequestSerializerJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE922EBB9A7413A813A699A /* BETURLSessionRequestSerializerJSON.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		A71A1B6FF0774152BCA18AF7 /* __BETInternalManager+Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F8F3507F76458381369A4A /* __BETInternalManager+Delegate.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		AB3193D8ED8C4AD98059720C /* BETURLSessionRequestSerializerJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 23DFC5D72FCF4182B0701097 /* BETURLSessionRequestSerializerJSON.h */; };
+		AB5E20044287405E87C070FA /* NSURLSession+BETURLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 929537EF75D1433FB15BE11E /* NSURLSession+BETURLSession.h */; };
+		AFB3C29633434C91991854F1 /* VCR+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA758D2CE249D897A568E9 /* VCR+NSURLSessionConfiguration.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		B51CBEB3EBAB4D0D8C8A1C57 /* VCRCassetteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F243C21E9744C218A448452 /* VCRCassetteManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		B582F891299A4AD988449243 /* VCR.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DFE7C9518F244168A418941 /* VCR.h */; };
+		BA327C4F06134B90AFFC208E /* libPods-BETURLSession.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A9F382F584451EAC93134F /* libPods-BETURLSession.a */; };
+		C071C4758F884061885B1B66 /* VCRCassette.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB4986C21D740638B9393F7 /* VCRCassette.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		C11D031A3B97455CB932DB46 /* VCRRecordingURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E07927FF26C4C1B8141E98D /* VCRRecordingURLProtocol.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		C18206825A744B208A4442E9 /* Pods-BETURLSession-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB03D27683C4236AA1BB947 /* Pods-BETURLSession-dummy.m */; };
+		C2B3461CD55846D6A6FF4EAA /* BETURLSessionAbstractSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1DEF54BDE441CC96D9CB23 /* BETURLSessionAbstractSerializer.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		CB7CDF8149454F63B802D830 /* BETURLSessionResponseSerializerJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 99207FB983724168828FF9BC /* BETURLSessionResponseSerializerJSON.h */; };
+		CD3AE7C135C8430BB86FA533 /* VCRRequestKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB29F0F0CB049A18C96298D /* VCRRequestKey.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		CF2F649095F94A0698E21ECF /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E620BF5A25945549316C10A /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		CF3614FE7C984E888EB84BCE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C32EE62E664CC79A57EE72 /* Cocoa.framework */; };
+		D1AA7DDD95C54DC3BD49E233 /* VCRRecording.m in Sources */ = {isa = PBXBuildFile; fileRef = 40575B0C2ACD4BF5B1417686 /* VCRRecording.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		D6F019F488584801BBEF7B37 /* XCTestCase+SHTestCaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971863A27694741B4CD789D /* XCTestCase+SHTestCaseAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
+		D7CDA8EFD1F54E089EC0AA0A /* VCRCassette_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 0751EA3B2E23458396588C7C /* VCRCassette_Private.h */; };
+		DB386C126C304F69841A94EC /* VCRCassetteManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D70A55295A6E428CB858C076 /* VCRCassetteManager.h */; };
+		E654EAAF3EED47AF85101619 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 3650D3851A1D4E07B05874DD /* NSData+Base64.h */; };
+		E9E6C90DE41E4CAA9EA5FB8B /* Pods-Tests-SHTestCaseAdditions-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BC2CA55F744D9FB79D8930 /* Pods-Tests-SHTestCaseAdditions-dummy.m */; };
+		EAD6518728F849799E30088E /* BETURLSessionAbstractSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 95349826DB31440AA2F5D7CD /* BETURLSessionAbstractSerializer.h */; };
+		ECE2F12B01664B5FAC458360 /* __SHTestCaseInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = F2DEB28D9B7B4D82A4ED0B31 /* __SHTestCaseInternal.h */; };
+		F368795CE7454011BAF2D86C /* Pods-Tests-VCRURLConnection-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF0E81DBEEC42F4A44537C4 /* Pods-Tests-VCRURLConnection-dummy.m */; };
+		F47070CB99E2439593B58C77 /* VCR+NSURLSessionConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 646878349486416A87C851FC /* VCR+NSURLSessionConfiguration.h */; };
+		F6BBAB1402FE45AFA0488C25 /* VCRCassette.h in Headers */ = {isa = PBXBuildFile; fileRef = 964DB665F7074E81B63254B1 /* VCRCassette.h */; };
+		F74349F9244243E58D985705 /* __BETInternalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 611C19BBDA3F430F8F26246A /* __BETInternalManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2ECB3EAC868F43E8B32D332B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81E3ACECD42842B690A61A57 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D94BEA61596E49F697ECC84C;
+			remoteInfo = "Pods-BETURLSession";
+		};
+		4D1E4B827D624143AF310062 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81E3ACECD42842B690A61A57 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F6C3327C58549228DD6E0C5;
+			remoteInfo = "Pods-Tests-VCRURLConnection";
+		};
+		D038B89455E149BC90AD5C34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 81E3ACECD42842B690A61A57 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8658F658B0D745A688FDD118;
+			remoteInfo = "Pods-Tests-SHTestCaseAdditions";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03949D1EFFD043458C7C7984 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		053E6B98244A4C6C830E4EE9 /* VCRError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCRError.h; path = VCRURLConnection/VCRError.h; sourceTree = "<group>"; };
+		070268CE721147A1B3C9704D /* VCRError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCRError.m; path = VCRURLConnection/VCRError.m; sourceTree = "<group>"; };
+		0751EA3B2E23458396588C7C /* VCRCassette_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCRCassette_Private.h; path = VCRURLConnection/VCRCassette_Private.h; sourceTree = "<group>"; };
+		07E63C5B46224676B32AD880 /* Pods-BETURLSession.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BETURLSession.xcconfig"; sourceTree = "<group>"; };
+		0D5FD6C681BB4DBBA5D1D3B9 /* libPods-Tests-SHTestCaseAdditions.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests-SHTestCaseAdditions.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E620BF5A25945549316C10A /* NSData+Base64.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "VCRURLConnection/NSData+Base64.m"; sourceTree = "<group>"; };
+		1CDA758D2CE249D897A568E9 /* VCR+NSURLSessionConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "VCR+NSURLSessionConfiguration.m"; path = "VCRURLConnection/VCR+NSURLSessionConfiguration.m"; sourceTree = "<group>"; };
+		1E07927FF26C4C1B8141E98D /* VCRRecordingURLProtocol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCRRecordingURLProtocol.m; path = VCRURLConnection/VCRRecordingURLProtocol.m; sourceTree = "<group>"; };
+		23DFC5D72FCF4182B0701097 /* BETURLSessionRequestSerializerJSON.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BETURLSessionRequestSerializerJSON.h; path = BETURLSession/BETURLSessionRequestSerializerJSON.h; sourceTree = "<group>"; };
+		2A1DEF54BDE441CC96D9CB23 /* BETURLSessionAbstractSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BETURLSessionAbstractSerializer.m; path = BETURLSession/BETURLSessionAbstractSerializer.m; sourceTree = "<group>"; };
+		2AB29F0F0CB049A18C96298D /* VCRRequestKey.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCRRequestKey.m; path = VCRURLConnection/VCRRequestKey.m; sourceTree = "<group>"; };
+		32F8F3507F76458381369A4A /* __BETInternalManager+Delegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "__BETInternalManager+Delegate.m"; path = "BETURLSession/__BETInternalManager+Delegate.m"; sourceTree = "<group>"; };
+		3650D3851A1D4E07B05874DD /* NSData+Base64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "VCRURLConnection/NSData+Base64.h"; sourceTree = "<group>"; };
+		3D529C9671E44BE98F28701A /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		40575B0C2ACD4BF5B1417686 /* VCRRecording.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCRRecording.m; path = VCRURLConnection/VCRRecording.m; sourceTree = "<group>"; };
+		48190C178F8741819DCC6B06 /* VCR.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCR.m; path = VCRURLConnection/VCR.m; sourceTree = "<group>"; };
+		4B90386C2BB04A72BC64879B /* VCRRecording.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCRRecording.h; path = VCRURLConnection/VCRRecording.h; sourceTree = "<group>"; };
+		4F43F2D74AD64812959615F7 /* NSURLSession+BETURLSession.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURLSession+BETURLSession.m"; path = "BETURLSession/NSURLSession+BETURLSession.m"; sourceTree = "<group>"; };
+		50A9F382F584451EAC93134F /* libPods-BETURLSession.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BETURLSession.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55F65C2080CA4BC99680ECD5 /* __SHTestCaseInternal.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = __SHTestCaseInternal.m; path = SHTestCaseAdditions/__SHTestCaseInternal.m; sourceTree = "<group>"; };
+		56EC4106E7C243A7B107A230 /* Pods-Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		6104FE5E1CB8405B85900CF9 /* VCRRequestKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCRRequestKey.h; path = VCRURLConnection/VCRRequestKey.h; sourceTree = "<group>"; };
+		611C19BBDA3F430F8F26246A /* __BETInternalManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = __BETInternalManager.m; path = BETURLSession/__BETInternalManager.m; sourceTree = "<group>"; };
+		646878349486416A87C851FC /* VCR+NSURLSessionConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "VCR+NSURLSessionConfiguration.h"; path = "VCRURLConnection/VCR+NSURLSessionConfiguration.h"; sourceTree = "<group>"; };
+		654FEE19F510450AA4289868 /* BETURLSessionResponseSerializerJSON.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BETURLSessionResponseSerializerJSON.m; path = BETURLSession/BETURLSessionResponseSerializerJSON.m; sourceTree = "<group>"; };
+		6560AD58CA2D4F6B8A54782E /* NSURLSessionTask+BETURLSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSURLSessionTask+BETURLSession.h"; path = "BETURLSession/NSURLSessionTask+BETURLSession.h"; sourceTree = "<group>"; };
+		663EDC7121114A1AB50C6E4C /* XCTestCase+SHTestCaseAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "XCTestCase+SHTestCaseAdditions.h"; path = "SHTestCaseAdditions/XCTest/XCTestCase+SHTestCaseAdditions.h"; sourceTree = "<group>"; };
+		6971863A27694741B4CD789D /* XCTestCase+SHTestCaseAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestCase+SHTestCaseAdditions.m"; path = "SHTestCaseAdditions/XCTest/XCTestCase+SHTestCaseAdditions.m"; sourceTree = "<group>"; };
+		6FB77EAB356E40AFB5295746 /* __SHTestCaseShared.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = __SHTestCaseShared.h; path = SHTestCaseAdditions/__SHTestCaseShared.h; sourceTree = "<group>"; };
+		6FC2296DC5FF44DCB04861C0 /* Pods-BETURLSession-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BETURLSession-Private.xcconfig"; sourceTree = "<group>"; };
+		700C0D3BE8434CD4B3AC207A /* SHTestCaseAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SHTestCaseAdditions.h; path = SHTestCaseAdditions/XCTest/SHTestCaseAdditions.h; sourceTree = "<group>"; };
+		74C32EE62E664CC79A57EE72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		7787795543C94D2482258B58 /* BETURLSessionRequestSerializerFormURLEncoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BETURLSessionRequestSerializerFormURLEncoding.m; path = BETURLSession/BETURLSessionRequestSerializerFormURLEncoding.m; sourceTree = "<group>"; };
+		8051C1FDAF4C497DB71A1899 /* Pods-Tests-VCRURLConnection-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests-VCRURLConnection-Private.xcconfig"; sourceTree = "<group>"; };
+		8A9FF7B1BD8A43BF85AB21F3 /* Pods-Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests.xcconfig"; sourceTree = "<group>"; };
+		8B43C29D579A46338DD5DE28 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		8D611AF6E51745BD82D9C3BC /* __BETInternalShared.private */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = __BETInternalShared.private; path = BETURLSession/__BETInternalShared.private; sourceTree = "<group>"; };
+		8D63B706FF724E08A96BA70F /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F243C21E9744C218A448452 /* VCRCassetteManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCRCassetteManager.m; path = VCRURLConnection/VCRCassetteManager.m; sourceTree = "<group>"; };
+		8F429AE4DB1A430DA663E9E5 /* Pods-Tests-VCRURLConnection-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tests-VCRURLConnection-prefix.pch"; sourceTree = "<group>"; };
+		8FE922EBB9A7413A813A699A /* BETURLSessionRequestSerializerJSON.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BETURLSessionRequestSerializerJSON.m; path = BETURLSession/BETURLSessionRequestSerializerJSON.m; sourceTree = "<group>"; };
+		92792D2DA4724897955D3BC4 /* VCROrderedMutableDictionary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCROrderedMutableDictionary.m; path = VCRURLConnection/VCROrderedMutableDictionary.m; sourceTree = "<group>"; };
+		927D75645A8F4C3E85089DBB /* Pods-Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		929537EF75D1433FB15BE11E /* NSURLSession+BETURLSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSURLSession+BETURLSession.h"; path = "BETURLSession/NSURLSession+BETURLSession.h"; sourceTree = "<group>"; };
+		94367C0D5CF84D4D87DCE0AE /* libPods-Tests-VCRURLConnection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests-VCRURLConnection.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95349826DB31440AA2F5D7CD /* BETURLSessionAbstractSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BETURLSessionAbstractSerializer.h; path = BETURLSession/BETURLSessionAbstractSerializer.h; sourceTree = "<group>"; };
+		95BC2CA55F744D9FB79D8930 /* Pods-Tests-SHTestCaseAdditions-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Tests-SHTestCaseAdditions-dummy.m"; sourceTree = "<group>"; };
+		95CEE57CD9754D9F96792F57 /* __BETInternalManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = __BETInternalManager.h; path = BETURLSession/__BETInternalManager.h; sourceTree = "<group>"; };
+		964DB665F7074E81B63254B1 /* VCRCassette.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCRCassette.h; path = VCRURLConnection/VCRCassette.h; sourceTree = "<group>"; };
+		96860C598A064CF0B58098CA /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		99207FB983724168828FF9BC /* BETURLSessionResponseSerializerJSON.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BETURLSessionResponseSerializerJSON.h; path = BETURLSession/BETURLSessionResponseSerializerJSON.h; sourceTree = "<group>"; };
+		995F6BBA6DD64DCBA4A49EEB /* BETURLSessionTaskSharedBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BETURLSessionTaskSharedBlocks.h; path = BETURLSession/BETURLSessionTaskSharedBlocks.h; sourceTree = "<group>"; };
+		9DFE7C9518F244168A418941 /* VCR.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCR.h; path = VCRURLConnection/VCR.h; sourceTree = "<group>"; };
+		9FB4986C21D740638B9393F7 /* VCRCassette.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCRCassette.m; path = VCRURLConnection/VCRCassette.m; sourceTree = "<group>"; };
+		A3E03DE1543D4AEC87AA57D9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = "<group>"; };
+		A4C2E987E3534C7CA6230511 /* VCRRecordingURLProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCRRecordingURLProtocol.h; path = VCRURLConnection/VCRRecordingURLProtocol.h; sourceTree = "<group>"; };
+		A7D07F10E36046FE90298180 /* Pods-Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Tests-dummy.m"; sourceTree = "<group>"; };
+		AC26E97E4DA746388558BDAC /* NSURLSessionTask+BETURLSession.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURLSessionTask+BETURLSession.m"; path = "BETURLSession/NSURLSessionTask+BETURLSession.m"; sourceTree = "<group>"; };
+		AF900ACC375B406BBC99AE22 /* Pods-BETURLSession-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BETURLSession-prefix.pch"; sourceTree = "<group>"; };
+		AFAD33E0DCAB46CA9CB868A0 /* __BETInternalManager+Delegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "__BETInternalManager+Delegate.h"; path = "BETURLSession/__BETInternalManager+Delegate.h"; sourceTree = "<group>"; };
+		C4D2FC0CAD554CE5894363AA /* VCRReplayingURLProtocol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCRReplayingURLProtocol.m; path = VCRURLConnection/VCRReplayingURLProtocol.m; sourceTree = "<group>"; };
+		C55F711E39264FAF828B9A63 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		CC11EBD6F824445D8C14C0E7 /* BETURLSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BETURLSession.h; path = BETURLSession/BETURLSession.h; sourceTree = "<group>"; };
+		CE2832EC9E244F61A776950F /* Pods-Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tests-resources.sh"; sourceTree = "<group>"; };
+		D709E40887784FFF91A2DAB3 /* Pods-Tests-VCRURLConnection.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests-VCRURLConnection.xcconfig"; sourceTree = "<group>"; };
+		D70A55295A6E428CB858C076 /* VCRCassetteManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCRCassetteManager.h; path = VCRURLConnection/VCRCassetteManager.h; sourceTree = "<group>"; };
+		D72616B72E4B4106BC3F2A4C /* VCRReplayingURLProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCRReplayingURLProtocol.h; path = VCRURLConnection/VCRReplayingURLProtocol.h; sourceTree = "<group>"; };
+		D758E3542CD04DD4B724126A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFB03D27683C4236AA1BB947 /* Pods-BETURLSession-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BETURLSession-dummy.m"; sourceTree = "<group>"; };
+		DFB2B878128E4D0A9D083CD6 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		E4977CD279A14726A1939549 /* Pods-Tests-SHTestCaseAdditions-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests-SHTestCaseAdditions-Private.xcconfig"; sourceTree = "<group>"; };
+		E83A0A6993534507A6C37BA2 /* Pods-Tests-SHTestCaseAdditions-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tests-SHTestCaseAdditions-prefix.pch"; sourceTree = "<group>"; };
+		E969D5BAE4154A9898BB3165 /* Pods-Tests-SHTestCaseAdditions.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests-SHTestCaseAdditions.xcconfig"; sourceTree = "<group>"; };
+		EEBD1B42627B487782A472A0 /* VCROrderedMutableDictionary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCROrderedMutableDictionary.h; path = VCRURLConnection/VCROrderedMutableDictionary.h; sourceTree = "<group>"; };
+		EECD0345E19845C59D7462C9 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
+		F2DEB28D9B7B4D82A4ED0B31 /* __SHTestCaseInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = __SHTestCaseInternal.h; path = SHTestCaseAdditions/__SHTestCaseInternal.h; sourceTree = "<group>"; };
+		F66E1EB6B3FA4EF2B3A19BA9 /* Pods-Tests-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tests-environment.h"; sourceTree = "<group>"; };
+		FBF0E81DBEEC42F4A44537C4 /* Pods-Tests-VCRURLConnection-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Tests-VCRURLConnection-dummy.m"; sourceTree = "<group>"; };
+		FE2BFFFBA0FF403A9A76891F /* BETURLSessionRequestSerializerFormURLEncoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BETURLSessionRequestSerializerFormURLEncoding.h; path = BETURLSession/BETURLSessionRequestSerializerFormURLEncoding.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		42C42021EF4141A59DB5EE3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D7D66AA44E54C83BC6E4A25 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		54F6FAD6302E4334AB1ACC65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B4833A8C4E04934B4998D42 /* Cocoa.framework in Frameworks */,
+				3DA0262E88E44A8F9481A38A /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6289ECBFC0624353B124BB18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B4E6D086E0C4040A4E13B0C /* Cocoa.framework in Frameworks */,
+				BA327C4F06134B90AFFC208E /* libPods-BETURLSession.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CC511E25E09E4A13913F23F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13416F3211CF49A8B5F6B144 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E594B9AD5DFC4715BD14D0CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF3614FE7C984E888EB84BCE /* Cocoa.framework in Frameworks */,
+				2809E310474442568BBD4F89 /* libPods-Tests-SHTestCaseAdditions.a in Frameworks */,
+				33DF703D11434173A835D194 /* libPods-Tests-VCRURLConnection.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0543B86A6777437EB6ED4A8D /* BETURLSession */ = {
+			isa = PBXGroup;
+			children = (
+				929537EF75D1433FB15BE11E /* NSURLSession+BETURLSession.h */,
+				4F43F2D74AD64812959615F7 /* NSURLSession+BETURLSession.m */,
+				6560AD58CA2D4F6B8A54782E /* NSURLSessionTask+BETURLSession.h */,
+				AC26E97E4DA746388558BDAC /* NSURLSessionTask+BETURLSession.m */,
+				CC11EBD6F824445D8C14C0E7 /* BETURLSession.h */,
+				95349826DB31440AA2F5D7CD /* BETURLSessionAbstractSerializer.h */,
+				2A1DEF54BDE441CC96D9CB23 /* BETURLSessionAbstractSerializer.m */,
+				FE2BFFFBA0FF403A9A76891F /* BETURLSessionRequestSerializerFormURLEncoding.h */,
+				7787795543C94D2482258B58 /* BETURLSessionRequestSerializerFormURLEncoding.m */,
+				23DFC5D72FCF4182B0701097 /* BETURLSessionRequestSerializerJSON.h */,
+				8FE922EBB9A7413A813A699A /* BETURLSessionRequestSerializerJSON.m */,
+				99207FB983724168828FF9BC /* BETURLSessionResponseSerializerJSON.h */,
+				654FEE19F510450AA4289868 /* BETURLSessionResponseSerializerJSON.m */,
+				995F6BBA6DD64DCBA4A49EEB /* BETURLSessionTaskSharedBlocks.h */,
+				95CEE57CD9754D9F96792F57 /* __BETInternalManager.h */,
+				611C19BBDA3F430F8F26246A /* __BETInternalManager.m */,
+				AFAD33E0DCAB46CA9CB868A0 /* __BETInternalManager+Delegate.h */,
+				32F8F3507F76458381369A4A /* __BETInternalManager+Delegate.m */,
+				E8B38A2ED28348208877F711 /* Resources */,
+				C27A0D371A5448CF966B8F3C /* Support Files */,
+			);
+			name = BETURLSession;
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		0A11AAB1CB314BBDB2441F89 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C9337B070F484642B5A426FC /* SHTestCaseAdditions */,
+				6732D3EAD1AA420C96467661 /* VCRURLConnection */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1C0DC32BD3E847218A8323F8 /* OS X */ = {
+			isa = PBXGroup;
+			children = (
+				74C32EE62E664CC79A57EE72 /* Cocoa.framework */,
+				C55F711E39264FAF828B9A63 /* XCTest.framework */,
+			);
+			name = "OS X";
+			sourceTree = "<group>";
+		};
+		1F4A6DCF15B9448DAA10F3FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1C0DC32BD3E847218A8323F8 /* OS X */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		467326756D3548D1AE75D84F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A3E03DE1543D4AEC87AA57D9 /* Pods.xcconfig */,
+				DFB2B878128E4D0A9D083CD6 /* Pods-acknowledgements.markdown */,
+				8B43C29D579A46338DD5DE28 /* Pods-acknowledgements.plist */,
+				96860C598A064CF0B58098CA /* Pods-dummy.m */,
+				EECD0345E19845C59D7462C9 /* Pods-environment.h */,
+				03949D1EFFD043458C7C7984 /* Pods-resources.sh */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5D842825BA42401C94D45D3C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E969D5BAE4154A9898BB3165 /* Pods-Tests-SHTestCaseAdditions.xcconfig */,
+				E4977CD279A14726A1939549 /* Pods-Tests-SHTestCaseAdditions-Private.xcconfig */,
+				95BC2CA55F744D9FB79D8930 /* Pods-Tests-SHTestCaseAdditions-dummy.m */,
+				E83A0A6993534507A6C37BA2 /* Pods-Tests-SHTestCaseAdditions-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		628760A3D0BF4EA19C2D29B6 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0543B86A6777437EB6ED4A8D /* BETURLSession */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		667E375B14EC442CB1FCEF1C /* XCTest */ = {
+			isa = PBXGroup;
+			children = (
+				700C0D3BE8434CD4B3AC207A /* SHTestCaseAdditions.h */,
+				663EDC7121114A1AB50C6E4C /* XCTestCase+SHTestCaseAdditions.h */,
+				6971863A27694741B4CD789D /* XCTestCase+SHTestCaseAdditions.m */,
+				F2DEB28D9B7B4D82A4ED0B31 /* __SHTestCaseInternal.h */,
+				55F65C2080CA4BC99680ECD5 /* __SHTestCaseInternal.m */,
+				6FB77EAB356E40AFB5295746 /* __SHTestCaseShared.h */,
+			);
+			name = XCTest;
+			sourceTree = "<group>";
+		};
+		6732D3EAD1AA420C96467661 /* VCRURLConnection */ = {
+			isa = PBXGroup;
+			children = (
+				3650D3851A1D4E07B05874DD /* NSData+Base64.h */,
+				0E620BF5A25945549316C10A /* NSData+Base64.m */,
+				9DFE7C9518F244168A418941 /* VCR.h */,
+				48190C178F8741819DCC6B06 /* VCR.m */,
+				646878349486416A87C851FC /* VCR+NSURLSessionConfiguration.h */,
+				1CDA758D2CE249D897A568E9 /* VCR+NSURLSessionConfiguration.m */,
+				964DB665F7074E81B63254B1 /* VCRCassette.h */,
+				9FB4986C21D740638B9393F7 /* VCRCassette.m */,
+				D70A55295A6E428CB858C076 /* VCRCassetteManager.h */,
+				8F243C21E9744C218A448452 /* VCRCassetteManager.m */,
+				0751EA3B2E23458396588C7C /* VCRCassette_Private.h */,
+				053E6B98244A4C6C830E4EE9 /* VCRError.h */,
+				070268CE721147A1B3C9704D /* VCRError.m */,
+				EEBD1B42627B487782A472A0 /* VCROrderedMutableDictionary.h */,
+				92792D2DA4724897955D3BC4 /* VCROrderedMutableDictionary.m */,
+				4B90386C2BB04A72BC64879B /* VCRRecording.h */,
+				40575B0C2ACD4BF5B1417686 /* VCRRecording.m */,
+				A4C2E987E3534C7CA6230511 /* VCRRecordingURLProtocol.h */,
+				1E07927FF26C4C1B8141E98D /* VCRRecordingURLProtocol.m */,
+				D72616B72E4B4106BC3F2A4C /* VCRReplayingURLProtocol.h */,
+				C4D2FC0CAD554CE5894363AA /* VCRReplayingURLProtocol.m */,
+				6104FE5E1CB8405B85900CF9 /* VCRRequestKey.h */,
+				2AB29F0F0CB049A18C96298D /* VCRRequestKey.m */,
+				CC87D278C49F4DAF93C0C2F3 /* Support Files */,
+			);
+			path = VCRURLConnection;
+			sourceTree = "<group>";
+		};
+		8F5981215A864DACBB7A3F0D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D758E3542CD04DD4B724126A /* libPods.a */,
+				50A9F382F584451EAC93134F /* libPods-BETURLSession.a */,
+				8D63B706FF724E08A96BA70F /* libPods-Tests.a */,
+				0D5FD6C681BB4DBBA5D1D3B9 /* libPods-Tests-SHTestCaseAdditions.a */,
+				94367C0D5CF84D4D87DCE0AE /* libPods-Tests-VCRURLConnection.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9875322A1DC942CEAD1C2749 = {
+			isa = PBXGroup;
+			children = (
+				3D529C9671E44BE98F28701A /* Podfile */,
+				628760A3D0BF4EA19C2D29B6 /* Development Pods */,
+				1F4A6DCF15B9448DAA10F3FD /* Frameworks */,
+				0A11AAB1CB314BBDB2441F89 /* Pods */,
+				8F5981215A864DACBB7A3F0D /* Products */,
+				AEC395D496634BC195CD4EC2 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		9E057C1DD49E428BA508F121 /* Pods-Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8A9FF7B1BD8A43BF85AB21F3 /* Pods-Tests.xcconfig */,
+				927D75645A8F4C3E85089DBB /* Pods-Tests-acknowledgements.markdown */,
+				56EC4106E7C243A7B107A230 /* Pods-Tests-acknowledgements.plist */,
+				A7D07F10E36046FE90298180 /* Pods-Tests-dummy.m */,
+				F66E1EB6B3FA4EF2B3A19BA9 /* Pods-Tests-environment.h */,
+				CE2832EC9E244F61A776950F /* Pods-Tests-resources.sh */,
+			);
+			name = "Pods-Tests";
+			sourceTree = "<group>";
+		};
+		AEC395D496634BC195CD4EC2 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				467326756D3548D1AE75D84F /* Pods */,
+				9E057C1DD49E428BA508F121 /* Pods-Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		C27A0D371A5448CF966B8F3C /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				07E63C5B46224676B32AD880 /* Pods-BETURLSession.xcconfig */,
+				6FC2296DC5FF44DCB04861C0 /* Pods-BETURLSession-Private.xcconfig */,
+				DFB03D27683C4236AA1BB947 /* Pods-BETURLSession-dummy.m */,
+				AF900ACC375B406BBC99AE22 /* Pods-BETURLSession-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		C9337B070F484642B5A426FC /* SHTestCaseAdditions */ = {
+			isa = PBXGroup;
+			children = (
+				5D842825BA42401C94D45D3C /* Support Files */,
+				667E375B14EC442CB1FCEF1C /* XCTest */,
+			);
+			path = SHTestCaseAdditions;
+			sourceTree = "<group>";
+		};
+		CC87D278C49F4DAF93C0C2F3 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D709E40887784FFF91A2DAB3 /* Pods-Tests-VCRURLConnection.xcconfig */,
+				8051C1FDAF4C497DB71A1899 /* Pods-Tests-VCRURLConnection-Private.xcconfig */,
+				FBF0E81DBEEC42F4A44537C4 /* Pods-Tests-VCRURLConnection-dummy.m */,
+				8F429AE4DB1A430DA663E9E5 /* Pods-Tests-VCRURLConnection-prefix.pch */,
+			);
+			name = "Support Files";
+			sourceTree = SOURCE_ROOT;
+		};
+		E8B38A2ED28348208877F711 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8D611AF6E51745BD82D9C3BC /* __BETInternalShared.private */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		650B828200654B86A9C93171 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E654EAAF3EED47AF85101619 /* NSData+Base64.h in Headers */,
+				F47070CB99E2439593B58C77 /* VCR+NSURLSessionConfiguration.h in Headers */,
+				B582F891299A4AD988449243 /* VCR.h in Headers */,
+				F6BBAB1402FE45AFA0488C25 /* VCRCassette.h in Headers */,
+				DB386C126C304F69841A94EC /* VCRCassetteManager.h in Headers */,
+				D7CDA8EFD1F54E089EC0AA0A /* VCRCassette_Private.h in Headers */,
+				91A9968FEF324444B0E79647 /* VCRError.h in Headers */,
+				0B3C033F3D774CC1B7C1BC99 /* VCROrderedMutableDictionary.h in Headers */,
+				267C2B9472D848DA84B3285D /* VCRRecording.h in Headers */,
+				6F4325CCB6E3410F910E78CA /* VCRRecordingURLProtocol.h in Headers */,
+				87C624878D68447385907F32 /* VCRReplayingURLProtocol.h in Headers */,
+				36BD86F2DB09478C8AD12AAD /* VCRRequestKey.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC11F338341742D586CD3AC2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74E32C62F4FB4BAAB89ABE66 /* BETURLSession.h in Headers */,
+				EAD6518728F849799E30088E /* BETURLSessionAbstractSerializer.h in Headers */,
+				78F7520CD5204DEC808D5D8E /* BETURLSessionRequestSerializerFormURLEncoding.h in Headers */,
+				AB3193D8ED8C4AD98059720C /* BETURLSessionRequestSerializerJSON.h in Headers */,
+				CB7CDF8149454F63B802D830 /* BETURLSessionResponseSerializerJSON.h in Headers */,
+				656A642B58D044A4A7792A61 /* BETURLSessionTaskSharedBlocks.h in Headers */,
+				AB5E20044287405E87C070FA /* NSURLSession+BETURLSession.h in Headers */,
+				98588E502B8740F2B9498785 /* NSURLSessionTask+BETURLSession.h in Headers */,
+				13C35099E5FC479FB0A1E315 /* __BETInternalManager+Delegate.h in Headers */,
+				9234A06DB7494B399AF84B56 /* __BETInternalManager.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D64993627D0B40BB9646940E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7520E3B045C24905A919007E /* SHTestCaseAdditions.h in Headers */,
+				2C098847FFEC4CAF8E1DB30A /* XCTestCase+SHTestCaseAdditions.h in Headers */,
+				ECE2F12B01664B5FAC458360 /* __SHTestCaseInternal.h in Headers */,
+				440802F7B726490CACF2851D /* __SHTestCaseShared.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3E9B239E3A5447ADB3EAB160 /* Pods-Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B8C0D16DAE67479098F96ADC /* Build configuration list for PBXNativeTarget "Pods-Tests" */;
+			buildPhases = (
+				451441A406384294BB6273B2 /* Sources */,
+				E594B9AD5DFC4715BD14D0CB /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				02C7D90A2E7043BC86A48321 /* PBXTargetDependency */,
+				137138D5E23B42B4999BB96A /* PBXTargetDependency */,
+			);
+			name = "Pods-Tests";
+			productName = "Pods-Tests";
+			productReference = 8D63B706FF724E08A96BA70F /* libPods-Tests.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		8658F658B0D745A688FDD118 /* Pods-Tests-SHTestCaseAdditions */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9FA74A197F104DABB2597EC7 /* Build configuration list for PBXNativeTarget "Pods-Tests-SHTestCaseAdditions" */;
+			buildPhases = (
+				5A2CB2D09C7C4748A0C3B066 /* Sources */,
+				54F6FAD6302E4334AB1ACC65 /* Frameworks */,
+				D64993627D0B40BB9646940E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Tests-SHTestCaseAdditions";
+			productName = "Pods-Tests-SHTestCaseAdditions";
+			productReference = 0D5FD6C681BB4DBBA5D1D3B9 /* libPods-Tests-SHTestCaseAdditions.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		8F6C3327C58549228DD6E0C5 /* Pods-Tests-VCRURLConnection */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2FB8838082B44E28EDFC39B /* Build configuration list for PBXNativeTarget "Pods-Tests-VCRURLConnection" */;
+			buildPhases = (
+				AC79DD5C10C044268AD79092 /* Sources */,
+				42C42021EF4141A59DB5EE3C /* Frameworks */,
+				650B828200654B86A9C93171 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Tests-VCRURLConnection";
+			productName = "Pods-Tests-VCRURLConnection";
+			productReference = 94367C0D5CF84D4D87DCE0AE /* libPods-Tests-VCRURLConnection.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		92BD552117F74E929877ECAA /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C23F330AEFBB4774A5256CA8 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				24DEFB267CF14ADAB2B58D30 /* Sources */,
+				6289ECBFC0624353B124BB18 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A13BF50BFA3643EEB3F584B7 /* PBXTargetDependency */,
+			);
+			name = Pods;
+			productName = Pods;
+			productReference = D758E3542CD04DD4B724126A /* libPods.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		D94BEA61596E49F697ECC84C /* Pods-BETURLSession */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F8CE98751CC406AB7CD4733 /* Build configuration list for PBXNativeTarget "Pods-BETURLSession" */;
+			buildPhases = (
+				AE65D7F2359B4D53BAD26E40 /* Sources */,
+				CC511E25E09E4A13913F23F2 /* Frameworks */,
+				AC11F338341742D586CD3AC2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-BETURLSession";
+			productName = "Pods-BETURLSession";
+			productReference = 50A9F382F584451EAC93134F /* libPods-BETURLSession.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		81E3ACECD42842B690A61A57 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+			};
+			buildConfigurationList = A3DC0ADBFFFC440DB1402BFC /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9875322A1DC942CEAD1C2749;
+			productRefGroup = 8F5981215A864DACBB7A3F0D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				92BD552117F74E929877ECAA /* Pods */,
+				D94BEA61596E49F697ECC84C /* Pods-BETURLSession */,
+				3E9B239E3A5447ADB3EAB160 /* Pods-Tests */,
+				8658F658B0D745A688FDD118 /* Pods-Tests-SHTestCaseAdditions */,
+				8F6C3327C58549228DD6E0C5 /* Pods-Tests-VCRURLConnection */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		24DEFB267CF14ADAB2B58D30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7AE2E0A81B4344B89763343D /* Pods-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		451441A406384294BB6273B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				800935D4830F4C268EAA4BDD /* Pods-Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A2CB2D09C7C4748A0C3B066 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9E6C90DE41E4CAA9EA5FB8B /* Pods-Tests-SHTestCaseAdditions-dummy.m in Sources */,
+				D6F019F488584801BBEF7B37 /* XCTestCase+SHTestCaseAdditions.m in Sources */,
+				2D0D0C5ACE564ADB822E7125 /* __SHTestCaseInternal.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC79DD5C10C044268AD79092 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF2F649095F94A0698E21ECF /* NSData+Base64.m in Sources */,
+				F368795CE7454011BAF2D86C /* Pods-Tests-VCRURLConnection-dummy.m in Sources */,
+				AFB3C29633434C91991854F1 /* VCR+NSURLSessionConfiguration.m in Sources */,
+				38CB9BB279554166A328EB94 /* VCR.m in Sources */,
+				C071C4758F884061885B1B66 /* VCRCassette.m in Sources */,
+				B51CBEB3EBAB4D0D8C8A1C57 /* VCRCassetteManager.m in Sources */,
+				35600BD770504CF1AEE74595 /* VCRError.m in Sources */,
+				1A18767E0F0C4935AF953081 /* VCROrderedMutableDictionary.m in Sources */,
+				D1AA7DDD95C54DC3BD49E233 /* VCRRecording.m in Sources */,
+				C11D031A3B97455CB932DB46 /* VCRRecordingURLProtocol.m in Sources */,
+				7FC5E31C96B140EF95526F2F /* VCRReplayingURLProtocol.m in Sources */,
+				CD3AE7C135C8430BB86FA533 /* VCRRequestKey.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE65D7F2359B4D53BAD26E40 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2B3461CD55846D6A6FF4EAA /* BETURLSessionAbstractSerializer.m in Sources */,
+				549A538358804F4F9C572C9C /* BETURLSessionRequestSerializerFormURLEncoding.m in Sources */,
+				A1B6EEFF79634AF0B7AB59F8 /* BETURLSessionRequestSerializerJSON.m in Sources */,
+				90A4AA5CA5AA4873A0CB4F79 /* BETURLSessionResponseSerializerJSON.m in Sources */,
+				739B092D325E422E894B5BE2 /* NSURLSession+BETURLSession.m in Sources */,
+				3F934A76DA7F443BAC29AF10 /* NSURLSessionTask+BETURLSession.m in Sources */,
+				C18206825A744B208A4442E9 /* Pods-BETURLSession-dummy.m in Sources */,
+				A71A1B6FF0774152BCA18AF7 /* __BETInternalManager+Delegate.m in Sources */,
+				F74349F9244243E58D985705 /* __BETInternalManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		02C7D90A2E7043BC86A48321 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8658F658B0D745A688FDD118 /* Pods-Tests-SHTestCaseAdditions */;
+			targetProxy = D038B89455E149BC90AD5C34 /* PBXContainerItemProxy */;
+		};
+		137138D5E23B42B4999BB96A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F6C3327C58549228DD6E0C5 /* Pods-Tests-VCRURLConnection */;
+			targetProxy = 4D1E4B827D624143AF310062 /* PBXContainerItemProxy */;
+		};
+		A13BF50BFA3643EEB3F584B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D94BEA61596E49F697ECC84C /* Pods-BETURLSession */;
+			targetProxy = 2ECB3EAC868F43E8B32D332B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0284E7A309534BB4A5F4FB96 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8051C1FDAF4C497DB71A1899 /* Pods-Tests-VCRURLConnection-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-Tests-VCRURLConnection-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		37C3B6D687264865BDDCC7F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FC2296DC5FF44DCB04861C0 /* Pods-BETURLSession-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-BETURLSession-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		4952A8BEDDF94E34B5816EC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3E03DE1543D4AEC87AA57D9 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		86E6A7E4A56844DFB3B3B799 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+			};
+			name = Debug;
+		};
+		91D2C6C4D2904C85B5C40F75 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A9FF7B1BD8A43BF85AB21F3 /* Pods-Tests.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		944D424D17FB49F9BBFEE237 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4977CD279A14726A1939549 /* Pods-Tests-SHTestCaseAdditions-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-Tests-SHTestCaseAdditions-prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		B5AF247CA0BF46D38A1BF8BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A9FF7B1BD8A43BF85AB21F3 /* Pods-Tests.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_CFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-DNS_BLOCK_ASSERTIONS=1",
+					"$(inherited)",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		B97C84DEBE7A4501A71E753A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				STRIP_INSTALLED_PRODUCT = NO;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE11DDFC0EF8419AA11680C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3E03DE1543D4AEC87AA57D9 /* Pods.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D3DD963233B340F7AEA65E0B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8051C1FDAF4C497DB71A1899 /* Pods-Tests-VCRURLConnection-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-Tests-VCRURLConnection-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E4FA9E7703714A188B71FAF2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4977CD279A14726A1939549 /* Pods-Tests-SHTestCaseAdditions-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-Tests-SHTestCaseAdditions-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		F367CFC1D48D456E8D09EEE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FC2296DC5FF44DCB04861C0 /* Pods-BETURLSession-Private.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/xcodeproj.dst;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pods-BETURLSession-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2F8CE98751CC406AB7CD4733 /* Build configuration list for PBXNativeTarget "Pods-BETURLSession" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F367CFC1D48D456E8D09EEE9 /* Debug */,
+				37C3B6D687264865BDDCC7F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9FA74A197F104DABB2597EC7 /* Build configuration list for PBXNativeTarget "Pods-Tests-SHTestCaseAdditions" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4FA9E7703714A188B71FAF2 /* Debug */,
+				944D424D17FB49F9BBFEE237 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3DC0ADBFFFC440DB1402BFC /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				86E6A7E4A56844DFB3B3B799 /* Debug */,
+				B97C84DEBE7A4501A71E753A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B8C0D16DAE67479098F96ADC /* Build configuration list for PBXNativeTarget "Pods-Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91D2C6C4D2904C85B5C40F75 /* Debug */,
+				B5AF247CA0BF46D38A1BF8BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C23F330AEFBB4774A5256CA8 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE11DDFC0EF8419AA11680C7 /* Debug */,
+				4952A8BEDDF94E34B5816EC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D2FB8838082B44E28EDFC39B /* Build configuration list for PBXNativeTarget "Pods-Tests-VCRURLConnection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3DD963233B340F7AEA65E0B /* Debug */,
+				0284E7A309534BB4A5F4FB96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 81E3ACECD42842B690A61A57 /* Project object */;
+}
