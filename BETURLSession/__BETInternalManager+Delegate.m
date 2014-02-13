@@ -144,8 +144,8 @@ willPerformHTTPRedirection:(NSHTTPURLResponse *)response
   [self bet_delegateWithSession:session task:task selector:_cmd
                sharedBefore:nil
                       taskBlock:^void(__BETInternalSession *internalSession, __BETInternalSessionTask *internalSessionTask, BOOL *stop) {
-                        if(internalSessionTask.bet_taskWillPerformHTTPRedirectionBlock) {
-                          internalSessionTask.bet_taskWillPerformHTTPRedirectionBlock(task,response,request,completionHandler);
+                        if(internalSessionTask.bet_taskWillPerformHTTPRedirectionHandler) {
+                          internalSessionTask.bet_taskWillPerformHTTPRedirectionHandler(task,response,request,completionHandler);
                           *stop = YES;
                         }
                       }
@@ -170,8 +170,8 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
   [self bet_delegateWithSession:session task:task selector:_cmd
                   sharedBefore:nil
                       taskBlock:^(__unused __BETInternalSession *internalSession, __BETInternalSessionTask *internalSessionTask, BOOL *stop) {
-                        if(internalSessionTask.bet_taskDidReceiveChallenge) {
-                          internalSessionTask.bet_taskDidReceiveChallenge(task, challenge, completionHandler);
+                        if(internalSessionTask.bet_taskDidReceiveChallengeHandler) {
+                          internalSessionTask.bet_taskDidReceiveChallengeHandler(task, challenge, completionHandler);
                           *stop = YES;
                         }
                       }
@@ -195,8 +195,8 @@ didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
   [self bet_delegateWithSession:session task:task selector:_cmd
                sharedBefore:nil
                       taskBlock:^(__unused __BETInternalSession *internalSession, __BETInternalSessionTask *internalSessionTask, BOOL *stop) {
-                        if(internalSessionTask.bet_taskNeedNewBodyStreamBlock) {
-                          internalSessionTask.bet_taskNeedNewBodyStreamBlock(task, completionHandler);
+                        if(internalSessionTask.bet_taskNeedNewBodyStreamHandler) {
+                          internalSessionTask.bet_taskNeedNewBodyStreamHandler(task, completionHandler);
                           *stop = YES;
                         }
                       }
@@ -221,8 +221,8 @@ totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend; {
   [self bet_delegateWithSession:session task:task selector:_cmd
                sharedBefore:nil
                       taskBlock:^(__unused __BETInternalSession *internalSession, __BETInternalSessionTask *internalSessionTask, BOOL *stop) {
-                        if(internalSessionTask.bet_uploadProgressBlock) {
-                          internalSessionTask.bet_uploadProgressBlock(task, (NSInteger)bytesSent,(NSInteger)totalBytesSent,(NSInteger)totalBytesExpectedToSend);
+                        if(internalSessionTask.bet_uploadProgressHandler) {
+                          internalSessionTask.bet_uploadProgressHandler(task, (NSInteger)bytesSent,(NSInteger)totalBytesSent,(NSInteger)totalBytesExpectedToSend);
                           *stop = YES;
                         }
                       }
@@ -247,7 +247,7 @@ didCompleteWithError:(NSError *)error; {
 
                  internalSessionTask.bet_error = error;
 
-                 if(internalSessionTask.bet_requestCompleteBlock) {
+                 if(internalSessionTask.bet_requestCompletion) {
 
                    [session.bet_serializerForResponse buildObjectForResponse:task.response responseData:internalSessionTask.bet_data onCompletion:^(id obj, NSError *responseError) {
                      internalSessionTask.bet_parseResponseError = responseError;
@@ -255,7 +255,7 @@ didCompleteWithError:(NSError *)error; {
                      if(internalSessionTask.bet_error == nil) internalSessionTask.bet_error = responseError;
                      internalSessionTask.bet_parsedObject = obj;
                      NSObject<NSFastEnumeration> * enumerableObject = obj;
-                     internalSessionTask.bet_requestCompleteBlock(enumerableObject,
+                     internalSessionTask.bet_requestCompletion(enumerableObject,
                                                                  (NSHTTPURLResponse *)task.response,
                                                                   task,
                                                                  internalSessionTask.bet_error);
@@ -264,8 +264,8 @@ didCompleteWithError:(NSError *)error; {
 
 
                  }
-                 if(internalSessionTask.bet_requestDataCompleteBlock) {
-                   internalSessionTask.bet_requestDataCompleteBlock(internalSessionTask.bet_downloadLocation,
+                 if(internalSessionTask.bet_requestDataCompletion) {
+                   internalSessionTask.bet_requestDataCompletion(internalSessionTask.bet_downloadLocation,
                                                                     internalSessionTask.bet_data,
                                                                     (NSHTTPURLResponse *)task.response,
                                                                     task,
@@ -276,8 +276,8 @@ didCompleteWithError:(NSError *)error; {
 
                }
                      taskBlock:^(__unused __BETInternalSession *internalSession, __BETInternalSessionTask *internalSessionTask, BOOL *stop) {
-                       if(internalSessionTask.bet_taskDidCompleteWithErrorBlock){
-                         internalSessionTask.bet_taskDidCompleteWithErrorBlock(task, error);
+                       if(internalSessionTask.bet_taskDidCompleteWithErrorHandler){
+                         internalSessionTask.bet_taskDidCompleteWithErrorHandler(task, error);
                          *stop = YES;
                        }
 
@@ -308,8 +308,8 @@ didReceiveResponse:(NSURLResponse *)response
 
                }
                      taskBlock:^(__unused __BETInternalSession *internalSession, __BETInternalSessionTask *internalSessionTask, BOOL *stop) {
-                        if(internalSessionTask.bet_taskDidReceiveResponseBlock) {
-                          internalSessionTask.bet_taskDidReceiveResponseBlock(dataTask,response,completionHandler);
+                        if(internalSessionTask.bet_taskDidReceiveResponseHandler) {
+                          internalSessionTask.bet_taskDidReceiveResponseHandler(dataTask,response,completionHandler);
                           *stop = YES;
                         }
                       }
@@ -335,8 +335,8 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask; {
   [self bet_delegateWithSession:session task:downloadTask selector:_cmd
                   sharedBefore:nil
                      taskBlock:^(__unused __BETInternalSession *internalSession, __BETInternalSessionTask *internalSessionTask, BOOL *stop) {
-                        if(internalSessionTask.bet_taskBecomeDownloadTaskBlock) {
-                          internalSessionTask.bet_taskBecomeDownloadTaskBlock(dataTask,downloadTask);
+                        if(internalSessionTask.bet_taskBecomeDownloadTaskHandler) {
+                          internalSessionTask.bet_taskBecomeDownloadTaskHandler(dataTask,downloadTask);
                           *stop = YES;
                         }
                       }
@@ -364,8 +364,8 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask; {
                  
                }
                      taskBlock:^(__BETInternalSession *internalSession, __BETInternalSessionTask *internalSessionTask, BOOL *stop) {
-                       if(internalSessionTask.bet_taskDidReceiveDataBlock) {
-                         internalSessionTask.bet_taskDidReceiveDataBlock(dataTask,data);
+                       if(internalSessionTask.bet_taskDidReceiveDataHandler) {
+                         internalSessionTask.bet_taskDidReceiveDataHandler(dataTask,data);
                          *stop = YES;
                        }
                      }
@@ -389,8 +389,8 @@ didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask; {
   [self bet_delegateWithSession:session task:dataTask selector:_cmd
                sharedBefore:nil
                       taskBlock:^(__unused __BETInternalSession *internalSession, __BETInternalSessionTask *internalSessionTask, BOOL *stop) {
-                        if(internalSessionTask.bet_taskWillCacheResponseBlock) {
-                          internalSessionTask.bet_taskWillCacheResponseBlock(dataTask,proposedResponse,completionHandler);
+                        if(internalSessionTask.bet_taskWillCacheResponseHandler) {
+                          internalSessionTask.bet_taskWillCacheResponseHandler(dataTask,proposedResponse,completionHandler);
                           *stop = YES;
                         }
                       }
@@ -425,8 +425,8 @@ didFinishDownloadingToURL:(NSURL *)location; {
 
                }
                      taskBlock:^(__unused __BETInternalSession *internalSession, __BETInternalSessionTask *internalSessionTask, BOOL *stop) {
-                        if(internalSessionTask.bet_taskDidFinishDownloadingToURLBlock) {
-                          internalSessionTask.bet_taskDidFinishDownloadingToURLBlock(downloadTask,location);
+                        if(internalSessionTask.bet_taskDidFinishDownloadingToURLHandler) {
+                          internalSessionTask.bet_taskDidFinishDownloadingToURLHandler(downloadTask,location);
                           *stop = YES;
                         }
                       }
@@ -447,8 +447,8 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite; {
   [self bet_delegateWithSession:session task:downloadTask selector:_cmd
                sharedBefore:nil
                       taskBlock:^(__unused __BETInternalSession *internalSession, __BETInternalSessionTask *internalSessionTask, BOOL *stop) {
-                        if(internalSessionTask.bet_downloadProgressBlock) {
-                          internalSessionTask.bet_downloadProgressBlock(downloadTask, (NSInteger)bytesWritten,(NSInteger)totalBytesWritten,(NSInteger)totalBytesExpectedToWrite);
+                        if(internalSessionTask.bet_downloadProgressHandler) {
+                          internalSessionTask.bet_downloadProgressHandler(downloadTask, (NSInteger)bytesWritten,(NSInteger)totalBytesWritten,(NSInteger)totalBytesExpectedToWrite);
                           *stop = YES;
                         }
                       }
@@ -472,8 +472,8 @@ expectedTotalBytes:(int64_t)expectedTotalBytes; {
   [self bet_delegateWithSession:session task:downloadTask selector:_cmd
                sharedBefore:nil
                       taskBlock:^(__unused __BETInternalSession *internalSession, __BETInternalSessionTask *internalSessionTask, BOOL *stop) {
-                        if(internalSessionTask.bet_taskDidResumeAtOffsetBlock) {
-                          internalSessionTask.bet_taskDidResumeAtOffsetBlock(downloadTask, (NSInteger)fileOffset, (NSInteger)expectedTotalBytes);
+                        if(internalSessionTask.bet_taskDidResumeAtOffsetHandler) {
+                          internalSessionTask.bet_taskDidResumeAtOffsetHandler(downloadTask, (NSInteger)fileOffset, (NSInteger)expectedTotalBytes);
                           *stop = YES;
                         }
                       }
