@@ -46,9 +46,13 @@ pod 'BETURLSession'
   NSMutableArray * bigData = @[].mutableCopy;
   for (NSInteger i = 0; i!=50000; i++) [bigData addObject:@(i)];
   
-  NSURLSessionTask * task = [session bet_taskPOSTResource:@"post" withParams:@{@"POST" : bigData} 
-                                                                  completion:^(BETResponse *response) {
-    NSLog(@"POST completed with code %@ & error %@", @(response.HTTPURLResponse.statusCode), response.error);
+  NSURLSessionTask * task = [session bet_taskPOSTResource:@"post" 
+                                               withParams:@{@"POST" : bigData} 
+                                               completion:^(BETResponse *response) {
+    NSLog(@"POST completed with code %@ & error %@", 
+                @(response.HTTPURLResponse.statusCode), 
+                  response.error
+          );
   }];
   
   BETURLSessionTaskProgressHandlerBlock (^progressHandlerWithName)(NSString *) = ^BETURLSessionTaskProgressHandlerBlock(NSString * name) {
