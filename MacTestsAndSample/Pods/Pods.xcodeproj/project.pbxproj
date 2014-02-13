@@ -1,1116 +1,3231 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		0B3C033F3D774CC1B7C1BC99 /* VCROrderedMutableDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = EEBD1B42627B487782A472A0 /* VCROrderedMutableDictionary.h */; };
-		13416F3211CF49A8B5F6B144 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C32EE62E664CC79A57EE72 /* Cocoa.framework */; };
-		13C35099E5FC479FB0A1E315 /* __BETInternalManager+Delegate.h in Headers */ = {isa = PBXBuildFile; fileRef = AFAD33E0DCAB46CA9CB868A0 /* __BETInternalManager+Delegate.h */; };
-		1A18767E0F0C4935AF953081 /* VCROrderedMutableDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 92792D2DA4724897955D3BC4 /* VCROrderedMutableDictionary.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		1B4833A8C4E04934B4998D42 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C32EE62E664CC79A57EE72 /* Cocoa.framework */; };
-		267C2B9472D848DA84B3285D /* VCRRecording.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B90386C2BB04A72BC64879B /* VCRRecording.h */; };
-		2809E310474442568BBD4F89 /* libPods-Tests-SHTestCaseAdditions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D5FD6C681BB4DBBA5D1D3B9 /* libPods-Tests-SHTestCaseAdditions.a */; };
-		2C098847FFEC4CAF8E1DB30A /* XCTestCase+SHTestCaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 663EDC7121114A1AB50C6E4C /* XCTestCase+SHTestCaseAdditions.h */; };
-		2D0D0C5ACE564ADB822E7125 /* __SHTestCaseInternal.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F65C2080CA4BC99680ECD5 /* __SHTestCaseInternal.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		2D7D66AA44E54C83BC6E4A25 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C32EE62E664CC79A57EE72 /* Cocoa.framework */; };
-		33DF703D11434173A835D194 /* libPods-Tests-VCRURLConnection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94367C0D5CF84D4D87DCE0AE /* libPods-Tests-VCRURLConnection.a */; };
-		35600BD770504CF1AEE74595 /* VCRError.m in Sources */ = {isa = PBXBuildFile; fileRef = 070268CE721147A1B3C9704D /* VCRError.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		36BD86F2DB09478C8AD12AAD /* VCRRequestKey.h in Headers */ = {isa = PBXBuildFile; fileRef = 6104FE5E1CB8405B85900CF9 /* VCRRequestKey.h */; };
-		38CB9BB279554166A328EB94 /* VCR.m in Sources */ = {isa = PBXBuildFile; fileRef = 48190C178F8741819DCC6B06 /* VCR.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		3DA0262E88E44A8F9481A38A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55F711E39264FAF828B9A63 /* XCTest.framework */; };
-		3F934A76DA7F443BAC29AF10 /* NSURLSessionTask+BETURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = AC26E97E4DA746388558BDAC /* NSURLSessionTask+BETURLSession.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		440802F7B726490CACF2851D /* __SHTestCaseShared.h in Headers */ = {isa = PBXBuildFile; fileRef = 6FB77EAB356E40AFB5295746 /* __SHTestCaseShared.h */; };
-		549A538358804F4F9C572C9C /* BETURLSessionRequestSerializerFormURLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 7787795543C94D2482258B58 /* BETURLSessionRequestSerializerFormURLEncoding.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		656A642B58D044A4A7792A61 /* BETURLSessionTaskSharedBlocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 995F6BBA6DD64DCBA4A49EEB /* BETURLSessionTaskSharedBlocks.h */; };
-		6F4325CCB6E3410F910E78CA /* VCRRecordingURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = A4C2E987E3534C7CA6230511 /* VCRRecordingURLProtocol.h */; };
-		739B092D325E422E894B5BE2 /* NSURLSession+BETURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F43F2D74AD64812959615F7 /* NSURLSession+BETURLSession.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		74E32C62F4FB4BAAB89ABE66 /* BETURLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = CC11EBD6F824445D8C14C0E7 /* BETURLSession.h */; };
-		7520E3B045C24905A919007E /* SHTestCaseAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 700C0D3BE8434CD4B3AC207A /* SHTestCaseAdditions.h */; };
-		78F7520CD5204DEC808D5D8E /* BETURLSessionRequestSerializerFormURLEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = FE2BFFFBA0FF403A9A76891F /* BETURLSessionRequestSerializerFormURLEncoding.h */; };
-		7AE2E0A81B4344B89763343D /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 96860C598A064CF0B58098CA /* Pods-dummy.m */; };
-		7B4E6D086E0C4040A4E13B0C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C32EE62E664CC79A57EE72 /* Cocoa.framework */; };
-		7FC5E31C96B140EF95526F2F /* VCRReplayingURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D2FC0CAD554CE5894363AA /* VCRReplayingURLProtocol.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		800935D4830F4C268EAA4BDD /* Pods-Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D07F10E36046FE90298180 /* Pods-Tests-dummy.m */; };
-		87C624878D68447385907F32 /* VCRReplayingURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = D72616B72E4B4106BC3F2A4C /* VCRReplayingURLProtocol.h */; };
-		90A4AA5CA5AA4873A0CB4F79 /* BETURLSessionResponseSerializerJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 654FEE19F510450AA4289868 /* BETURLSessionResponseSerializerJSON.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		91A9968FEF324444B0E79647 /* VCRError.h in Headers */ = {isa = PBXBuildFile; fileRef = 053E6B98244A4C6C830E4EE9 /* VCRError.h */; };
-		9234A06DB7494B399AF84B56 /* __BETInternalManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 95CEE57CD9754D9F96792F57 /* __BETInternalManager.h */; };
-		98588E502B8740F2B9498785 /* NSURLSessionTask+BETURLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 6560AD58CA2D4F6B8A54782E /* NSURLSessionTask+BETURLSession.h */; };
-		A1B6EEFF79634AF0B7AB59F8 /* BETURLSessionRequestSerializerJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FE922EBB9A7413A813A699A /* BETURLSessionRequestSerializerJSON.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		A71A1B6FF0774152BCA18AF7 /* __BETInternalManager+Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F8F3507F76458381369A4A /* __BETInternalManager+Delegate.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		AB3193D8ED8C4AD98059720C /* BETURLSessionRequestSerializerJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 23DFC5D72FCF4182B0701097 /* BETURLSessionRequestSerializerJSON.h */; };
-		AB5E20044287405E87C070FA /* NSURLSession+BETURLSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 929537EF75D1433FB15BE11E /* NSURLSession+BETURLSession.h */; };
-		AFB3C29633434C91991854F1 /* VCR+NSURLSessionConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA758D2CE249D897A568E9 /* VCR+NSURLSessionConfiguration.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		B51CBEB3EBAB4D0D8C8A1C57 /* VCRCassetteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F243C21E9744C218A448452 /* VCRCassetteManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		B582F891299A4AD988449243 /* VCR.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DFE7C9518F244168A418941 /* VCR.h */; };
-		BA327C4F06134B90AFFC208E /* libPods-BETURLSession.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A9F382F584451EAC93134F /* libPods-BETURLSession.a */; };
-		C071C4758F884061885B1B66 /* VCRCassette.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FB4986C21D740638B9393F7 /* VCRCassette.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		C11D031A3B97455CB932DB46 /* VCRRecordingURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E07927FF26C4C1B8141E98D /* VCRRecordingURLProtocol.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		C18206825A744B208A4442E9 /* Pods-BETURLSession-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB03D27683C4236AA1BB947 /* Pods-BETURLSession-dummy.m */; };
-		C2B3461CD55846D6A6FF4EAA /* BETURLSessionAbstractSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A1DEF54BDE441CC96D9CB23 /* BETURLSessionAbstractSerializer.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		CB7CDF8149454F63B802D830 /* BETURLSessionResponseSerializerJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 99207FB983724168828FF9BC /* BETURLSessionResponseSerializerJSON.h */; };
-		CD3AE7C135C8430BB86FA533 /* VCRRequestKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB29F0F0CB049A18C96298D /* VCRRequestKey.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		CF2F649095F94A0698E21ECF /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E620BF5A25945549316C10A /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		CF3614FE7C984E888EB84BCE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74C32EE62E664CC79A57EE72 /* Cocoa.framework */; };
-		D1AA7DDD95C54DC3BD49E233 /* VCRRecording.m in Sources */ = {isa = PBXBuildFile; fileRef = 40575B0C2ACD4BF5B1417686 /* VCRRecording.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		D6F019F488584801BBEF7B37 /* XCTestCase+SHTestCaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6971863A27694741B4CD789D /* XCTestCase+SHTestCaseAdditions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc -DOS_OBJECT_USE_OBJC=0"; }; };
-		D7CDA8EFD1F54E089EC0AA0A /* VCRCassette_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 0751EA3B2E23458396588C7C /* VCRCassette_Private.h */; };
-		DB386C126C304F69841A94EC /* VCRCassetteManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D70A55295A6E428CB858C076 /* VCRCassetteManager.h */; };
-		E654EAAF3EED47AF85101619 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 3650D3851A1D4E07B05874DD /* NSData+Base64.h */; };
-		E9E6C90DE41E4CAA9EA5FB8B /* Pods-Tests-SHTestCaseAdditions-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BC2CA55F744D9FB79D8930 /* Pods-Tests-SHTestCaseAdditions-dummy.m */; };
-		EAD6518728F849799E30088E /* BETURLSessionAbstractSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 95349826DB31440AA2F5D7CD /* BETURLSessionAbstractSerializer.h */; };
-		ECE2F12B01664B5FAC458360 /* __SHTestCaseInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = F2DEB28D9B7B4D82A4ED0B31 /* __SHTestCaseInternal.h */; };
-		F368795CE7454011BAF2D86C /* Pods-Tests-VCRURLConnection-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FBF0E81DBEEC42F4A44537C4 /* Pods-Tests-VCRURLConnection-dummy.m */; };
-		F47070CB99E2439593B58C77 /* VCR+NSURLSessionConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 646878349486416A87C851FC /* VCR+NSURLSessionConfiguration.h */; };
-		F6BBAB1402FE45AFA0488C25 /* VCRCassette.h in Headers */ = {isa = PBXBuildFile; fileRef = 964DB665F7074E81B63254B1 /* VCRCassette.h */; };
-		F74349F9244243E58D985705 /* __BETInternalManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 611C19BBDA3F430F8F26246A /* __BETInternalManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		2ECB3EAC868F43E8B32D332B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 81E3ACECD42842B690A61A57 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D94BEA61596E49F697ECC84C;
-			remoteInfo = "Pods-BETURLSession";
-		};
-		4D1E4B827D624143AF310062 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 81E3ACECD42842B690A61A57 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8F6C3327C58549228DD6E0C5;
-			remoteInfo = "Pods-Tests-VCRURLConnection";
-		};
-		D038B89455E149BC90AD5C34 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 81E3ACECD42842B690A61A57 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8658F658B0D745A688FDD118;
-			remoteInfo = "Pods-Tests-SHTestCaseAdditions";
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		03949D1EFFD043458C7C7984 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		053E6B98244A4C6C830E4EE9 /* VCRError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCRError.h; path = VCRURLConnection/VCRError.h; sourceTree = "<group>"; };
-		070268CE721147A1B3C9704D /* VCRError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCRError.m; path = VCRURLConnection/VCRError.m; sourceTree = "<group>"; };
-		0751EA3B2E23458396588C7C /* VCRCassette_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCRCassette_Private.h; path = VCRURLConnection/VCRCassette_Private.h; sourceTree = "<group>"; };
-		07E63C5B46224676B32AD880 /* Pods-BETURLSession.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BETURLSession.xcconfig"; sourceTree = "<group>"; };
-		0D5FD6C681BB4DBBA5D1D3B9 /* libPods-Tests-SHTestCaseAdditions.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests-SHTestCaseAdditions.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0E620BF5A25945549316C10A /* NSData+Base64.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "VCRURLConnection/NSData+Base64.m"; sourceTree = "<group>"; };
-		1CDA758D2CE249D897A568E9 /* VCR+NSURLSessionConfiguration.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "VCR+NSURLSessionConfiguration.m"; path = "VCRURLConnection/VCR+NSURLSessionConfiguration.m"; sourceTree = "<group>"; };
-		1E07927FF26C4C1B8141E98D /* VCRRecordingURLProtocol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCRRecordingURLProtocol.m; path = VCRURLConnection/VCRRecordingURLProtocol.m; sourceTree = "<group>"; };
-		23DFC5D72FCF4182B0701097 /* BETURLSessionRequestSerializerJSON.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BETURLSessionRequestSerializerJSON.h; path = BETURLSession/BETURLSessionRequestSerializerJSON.h; sourceTree = "<group>"; };
-		2A1DEF54BDE441CC96D9CB23 /* BETURLSessionAbstractSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BETURLSessionAbstractSerializer.m; path = BETURLSession/BETURLSessionAbstractSerializer.m; sourceTree = "<group>"; };
-		2AB29F0F0CB049A18C96298D /* VCRRequestKey.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCRRequestKey.m; path = VCRURLConnection/VCRRequestKey.m; sourceTree = "<group>"; };
-		32F8F3507F76458381369A4A /* __BETInternalManager+Delegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "__BETInternalManager+Delegate.m"; path = "BETURLSession/__BETInternalManager+Delegate.m"; sourceTree = "<group>"; };
-		3650D3851A1D4E07B05874DD /* NSData+Base64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "VCRURLConnection/NSData+Base64.h"; sourceTree = "<group>"; };
-		3D529C9671E44BE98F28701A /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		40575B0C2ACD4BF5B1417686 /* VCRRecording.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCRRecording.m; path = VCRURLConnection/VCRRecording.m; sourceTree = "<group>"; };
-		48190C178F8741819DCC6B06 /* VCR.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCR.m; path = VCRURLConnection/VCR.m; sourceTree = "<group>"; };
-		4B90386C2BB04A72BC64879B /* VCRRecording.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCRRecording.h; path = VCRURLConnection/VCRRecording.h; sourceTree = "<group>"; };
-		4F43F2D74AD64812959615F7 /* NSURLSession+BETURLSession.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURLSession+BETURLSession.m"; path = "BETURLSession/NSURLSession+BETURLSession.m"; sourceTree = "<group>"; };
-		50A9F382F584451EAC93134F /* libPods-BETURLSession.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BETURLSession.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		55F65C2080CA4BC99680ECD5 /* __SHTestCaseInternal.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = __SHTestCaseInternal.m; path = SHTestCaseAdditions/__SHTestCaseInternal.m; sourceTree = "<group>"; };
-		56EC4106E7C243A7B107A230 /* Pods-Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		6104FE5E1CB8405B85900CF9 /* VCRRequestKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCRRequestKey.h; path = VCRURLConnection/VCRRequestKey.h; sourceTree = "<group>"; };
-		611C19BBDA3F430F8F26246A /* __BETInternalManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = __BETInternalManager.m; path = BETURLSession/__BETInternalManager.m; sourceTree = "<group>"; };
-		646878349486416A87C851FC /* VCR+NSURLSessionConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "VCR+NSURLSessionConfiguration.h"; path = "VCRURLConnection/VCR+NSURLSessionConfiguration.h"; sourceTree = "<group>"; };
-		654FEE19F510450AA4289868 /* BETURLSessionResponseSerializerJSON.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BETURLSessionResponseSerializerJSON.m; path = BETURLSession/BETURLSessionResponseSerializerJSON.m; sourceTree = "<group>"; };
-		6560AD58CA2D4F6B8A54782E /* NSURLSessionTask+BETURLSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSURLSessionTask+BETURLSession.h"; path = "BETURLSession/NSURLSessionTask+BETURLSession.h"; sourceTree = "<group>"; };
-		663EDC7121114A1AB50C6E4C /* XCTestCase+SHTestCaseAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "XCTestCase+SHTestCaseAdditions.h"; path = "SHTestCaseAdditions/XCTest/XCTestCase+SHTestCaseAdditions.h"; sourceTree = "<group>"; };
-		6971863A27694741B4CD789D /* XCTestCase+SHTestCaseAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "XCTestCase+SHTestCaseAdditions.m"; path = "SHTestCaseAdditions/XCTest/XCTestCase+SHTestCaseAdditions.m"; sourceTree = "<group>"; };
-		6FB77EAB356E40AFB5295746 /* __SHTestCaseShared.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = __SHTestCaseShared.h; path = SHTestCaseAdditions/__SHTestCaseShared.h; sourceTree = "<group>"; };
-		6FC2296DC5FF44DCB04861C0 /* Pods-BETURLSession-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BETURLSession-Private.xcconfig"; sourceTree = "<group>"; };
-		700C0D3BE8434CD4B3AC207A /* SHTestCaseAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SHTestCaseAdditions.h; path = SHTestCaseAdditions/XCTest/SHTestCaseAdditions.h; sourceTree = "<group>"; };
-		74C32EE62E664CC79A57EE72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		7787795543C94D2482258B58 /* BETURLSessionRequestSerializerFormURLEncoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BETURLSessionRequestSerializerFormURLEncoding.m; path = BETURLSession/BETURLSessionRequestSerializerFormURLEncoding.m; sourceTree = "<group>"; };
-		8051C1FDAF4C497DB71A1899 /* Pods-Tests-VCRURLConnection-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests-VCRURLConnection-Private.xcconfig"; sourceTree = "<group>"; };
-		8A9FF7B1BD8A43BF85AB21F3 /* Pods-Tests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests.xcconfig"; sourceTree = "<group>"; };
-		8B43C29D579A46338DD5DE28 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		8D611AF6E51745BD82D9C3BC /* __BETInternalShared.private */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = __BETInternalShared.private; path = BETURLSession/__BETInternalShared.private; sourceTree = "<group>"; };
-		8D63B706FF724E08A96BA70F /* libPods-Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8F243C21E9744C218A448452 /* VCRCassetteManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCRCassetteManager.m; path = VCRURLConnection/VCRCassetteManager.m; sourceTree = "<group>"; };
-		8F429AE4DB1A430DA663E9E5 /* Pods-Tests-VCRURLConnection-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tests-VCRURLConnection-prefix.pch"; sourceTree = "<group>"; };
-		8FE922EBB9A7413A813A699A /* BETURLSessionRequestSerializerJSON.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BETURLSessionRequestSerializerJSON.m; path = BETURLSession/BETURLSessionRequestSerializerJSON.m; sourceTree = "<group>"; };
-		92792D2DA4724897955D3BC4 /* VCROrderedMutableDictionary.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCROrderedMutableDictionary.m; path = VCRURLConnection/VCROrderedMutableDictionary.m; sourceTree = "<group>"; };
-		927D75645A8F4C3E85089DBB /* Pods-Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		929537EF75D1433FB15BE11E /* NSURLSession+BETURLSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSURLSession+BETURLSession.h"; path = "BETURLSession/NSURLSession+BETURLSession.h"; sourceTree = "<group>"; };
-		94367C0D5CF84D4D87DCE0AE /* libPods-Tests-VCRURLConnection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tests-VCRURLConnection.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		95349826DB31440AA2F5D7CD /* BETURLSessionAbstractSerializer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BETURLSessionAbstractSerializer.h; path = BETURLSession/BETURLSessionAbstractSerializer.h; sourceTree = "<group>"; };
-		95BC2CA55F744D9FB79D8930 /* Pods-Tests-SHTestCaseAdditions-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Tests-SHTestCaseAdditions-dummy.m"; sourceTree = "<group>"; };
-		95CEE57CD9754D9F96792F57 /* __BETInternalManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = __BETInternalManager.h; path = BETURLSession/__BETInternalManager.h; sourceTree = "<group>"; };
-		964DB665F7074E81B63254B1 /* VCRCassette.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCRCassette.h; path = VCRURLConnection/VCRCassette.h; sourceTree = "<group>"; };
-		96860C598A064CF0B58098CA /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		99207FB983724168828FF9BC /* BETURLSessionResponseSerializerJSON.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BETURLSessionResponseSerializerJSON.h; path = BETURLSession/BETURLSessionResponseSerializerJSON.h; sourceTree = "<group>"; };
-		995F6BBA6DD64DCBA4A49EEB /* BETURLSessionTaskSharedBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BETURLSessionTaskSharedBlocks.h; path = BETURLSession/BETURLSessionTaskSharedBlocks.h; sourceTree = "<group>"; };
-		9DFE7C9518F244168A418941 /* VCR.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCR.h; path = VCRURLConnection/VCR.h; sourceTree = "<group>"; };
-		9FB4986C21D740638B9393F7 /* VCRCassette.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCRCassette.m; path = VCRURLConnection/VCRCassette.m; sourceTree = "<group>"; };
-		A3E03DE1543D4AEC87AA57D9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.xcconfig; sourceTree = "<group>"; };
-		A4C2E987E3534C7CA6230511 /* VCRRecordingURLProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCRRecordingURLProtocol.h; path = VCRURLConnection/VCRRecordingURLProtocol.h; sourceTree = "<group>"; };
-		A7D07F10E36046FE90298180 /* Pods-Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Tests-dummy.m"; sourceTree = "<group>"; };
-		AC26E97E4DA746388558BDAC /* NSURLSessionTask+BETURLSession.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURLSessionTask+BETURLSession.m"; path = "BETURLSession/NSURLSessionTask+BETURLSession.m"; sourceTree = "<group>"; };
-		AF900ACC375B406BBC99AE22 /* Pods-BETURLSession-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BETURLSession-prefix.pch"; sourceTree = "<group>"; };
-		AFAD33E0DCAB46CA9CB868A0 /* __BETInternalManager+Delegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "__BETInternalManager+Delegate.h"; path = "BETURLSession/__BETInternalManager+Delegate.h"; sourceTree = "<group>"; };
-		C4D2FC0CAD554CE5894363AA /* VCRReplayingURLProtocol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = VCRReplayingURLProtocol.m; path = VCRURLConnection/VCRReplayingURLProtocol.m; sourceTree = "<group>"; };
-		C55F711E39264FAF828B9A63 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		CC11EBD6F824445D8C14C0E7 /* BETURLSession.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BETURLSession.h; path = BETURLSession/BETURLSession.h; sourceTree = "<group>"; };
-		CE2832EC9E244F61A776950F /* Pods-Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Tests-resources.sh"; sourceTree = "<group>"; };
-		D709E40887784FFF91A2DAB3 /* Pods-Tests-VCRURLConnection.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests-VCRURLConnection.xcconfig"; sourceTree = "<group>"; };
-		D70A55295A6E428CB858C076 /* VCRCassetteManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCRCassetteManager.h; path = VCRURLConnection/VCRCassetteManager.h; sourceTree = "<group>"; };
-		D72616B72E4B4106BC3F2A4C /* VCRReplayingURLProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCRReplayingURLProtocol.h; path = VCRURLConnection/VCRReplayingURLProtocol.h; sourceTree = "<group>"; };
-		D758E3542CD04DD4B724126A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		DFB03D27683C4236AA1BB947 /* Pods-BETURLSession-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BETURLSession-dummy.m"; sourceTree = "<group>"; };
-		DFB2B878128E4D0A9D083CD6 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E4977CD279A14726A1939549 /* Pods-Tests-SHTestCaseAdditions-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests-SHTestCaseAdditions-Private.xcconfig"; sourceTree = "<group>"; };
-		E83A0A6993534507A6C37BA2 /* Pods-Tests-SHTestCaseAdditions-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tests-SHTestCaseAdditions-prefix.pch"; sourceTree = "<group>"; };
-		E969D5BAE4154A9898BB3165 /* Pods-Tests-SHTestCaseAdditions.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests-SHTestCaseAdditions.xcconfig"; sourceTree = "<group>"; };
-		EEBD1B42627B487782A472A0 /* VCROrderedMutableDictionary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VCROrderedMutableDictionary.h; path = VCRURLConnection/VCROrderedMutableDictionary.h; sourceTree = "<group>"; };
-		EECD0345E19845C59D7462C9 /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
-		F2DEB28D9B7B4D82A4ED0B31 /* __SHTestCaseInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = __SHTestCaseInternal.h; path = SHTestCaseAdditions/__SHTestCaseInternal.h; sourceTree = "<group>"; };
-		F66E1EB6B3FA4EF2B3A19BA9 /* Pods-Tests-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Tests-environment.h"; sourceTree = "<group>"; };
-		FBF0E81DBEEC42F4A44537C4 /* Pods-Tests-VCRURLConnection-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Tests-VCRURLConnection-dummy.m"; sourceTree = "<group>"; };
-		FE2BFFFBA0FF403A9A76891F /* BETURLSessionRequestSerializerFormURLEncoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BETURLSessionRequestSerializerFormURLEncoding.h; path = BETURLSession/BETURLSessionRequestSerializerFormURLEncoding.h; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		42C42021EF4141A59DB5EE3C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2D7D66AA44E54C83BC6E4A25 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		54F6FAD6302E4334AB1ACC65 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1B4833A8C4E04934B4998D42 /* Cocoa.framework in Frameworks */,
-				3DA0262E88E44A8F9481A38A /* XCTest.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6289ECBFC0624353B124BB18 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7B4E6D086E0C4040A4E13B0C /* Cocoa.framework in Frameworks */,
-				BA327C4F06134B90AFFC208E /* libPods-BETURLSession.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CC511E25E09E4A13913F23F2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				13416F3211CF49A8B5F6B144 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E594B9AD5DFC4715BD14D0CB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CF3614FE7C984E888EB84BCE /* Cocoa.framework in Frameworks */,
-				2809E310474442568BBD4F89 /* libPods-Tests-SHTestCaseAdditions.a in Frameworks */,
-				33DF703D11434173A835D194 /* libPods-Tests-VCRURLConnection.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		0543B86A6777437EB6ED4A8D /* BETURLSession */ = {
-			isa = PBXGroup;
-			children = (
-				929537EF75D1433FB15BE11E /* NSURLSession+BETURLSession.h */,
-				4F43F2D74AD64812959615F7 /* NSURLSession+BETURLSession.m */,
-				6560AD58CA2D4F6B8A54782E /* NSURLSessionTask+BETURLSession.h */,
-				AC26E97E4DA746388558BDAC /* NSURLSessionTask+BETURLSession.m */,
-				CC11EBD6F824445D8C14C0E7 /* BETURLSession.h */,
-				95349826DB31440AA2F5D7CD /* BETURLSessionAbstractSerializer.h */,
-				2A1DEF54BDE441CC96D9CB23 /* BETURLSessionAbstractSerializer.m */,
-				FE2BFFFBA0FF403A9A76891F /* BETURLSessionRequestSerializerFormURLEncoding.h */,
-				7787795543C94D2482258B58 /* BETURLSessionRequestSerializerFormURLEncoding.m */,
-				23DFC5D72FCF4182B0701097 /* BETURLSessionRequestSerializerJSON.h */,
-				8FE922EBB9A7413A813A699A /* BETURLSessionRequestSerializerJSON.m */,
-				99207FB983724168828FF9BC /* BETURLSessionResponseSerializerJSON.h */,
-				654FEE19F510450AA4289868 /* BETURLSessionResponseSerializerJSON.m */,
-				995F6BBA6DD64DCBA4A49EEB /* BETURLSessionTaskSharedBlocks.h */,
-				95CEE57CD9754D9F96792F57 /* __BETInternalManager.h */,
-				611C19BBDA3F430F8F26246A /* __BETInternalManager.m */,
-				AFAD33E0DCAB46CA9CB868A0 /* __BETInternalManager+Delegate.h */,
-				32F8F3507F76458381369A4A /* __BETInternalManager+Delegate.m */,
-				E8B38A2ED28348208877F711 /* Resources */,
-				C27A0D371A5448CF966B8F3C /* Support Files */,
-			);
-			name = BETURLSession;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		0A11AAB1CB314BBDB2441F89 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C9337B070F484642B5A426FC /* SHTestCaseAdditions */,
-				6732D3EAD1AA420C96467661 /* VCRURLConnection */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		1C0DC32BD3E847218A8323F8 /* OS X */ = {
-			isa = PBXGroup;
-			children = (
-				74C32EE62E664CC79A57EE72 /* Cocoa.framework */,
-				C55F711E39264FAF828B9A63 /* XCTest.framework */,
-			);
-			name = "OS X";
-			sourceTree = "<group>";
-		};
-		1F4A6DCF15B9448DAA10F3FD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1C0DC32BD3E847218A8323F8 /* OS X */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		467326756D3548D1AE75D84F /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A3E03DE1543D4AEC87AA57D9 /* Pods.xcconfig */,
-				DFB2B878128E4D0A9D083CD6 /* Pods-acknowledgements.markdown */,
-				8B43C29D579A46338DD5DE28 /* Pods-acknowledgements.plist */,
-				96860C598A064CF0B58098CA /* Pods-dummy.m */,
-				EECD0345E19845C59D7462C9 /* Pods-environment.h */,
-				03949D1EFFD043458C7C7984 /* Pods-resources.sh */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		5D842825BA42401C94D45D3C /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				E969D5BAE4154A9898BB3165 /* Pods-Tests-SHTestCaseAdditions.xcconfig */,
-				E4977CD279A14726A1939549 /* Pods-Tests-SHTestCaseAdditions-Private.xcconfig */,
-				95BC2CA55F744D9FB79D8930 /* Pods-Tests-SHTestCaseAdditions-dummy.m */,
-				E83A0A6993534507A6C37BA2 /* Pods-Tests-SHTestCaseAdditions-prefix.pch */,
-			);
-			name = "Support Files";
-			sourceTree = SOURCE_ROOT;
-		};
-		628760A3D0BF4EA19C2D29B6 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0543B86A6777437EB6ED4A8D /* BETURLSession */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		667E375B14EC442CB1FCEF1C /* XCTest */ = {
-			isa = PBXGroup;
-			children = (
-				700C0D3BE8434CD4B3AC207A /* SHTestCaseAdditions.h */,
-				663EDC7121114A1AB50C6E4C /* XCTestCase+SHTestCaseAdditions.h */,
-				6971863A27694741B4CD789D /* XCTestCase+SHTestCaseAdditions.m */,
-				F2DEB28D9B7B4D82A4ED0B31 /* __SHTestCaseInternal.h */,
-				55F65C2080CA4BC99680ECD5 /* __SHTestCaseInternal.m */,
-				6FB77EAB356E40AFB5295746 /* __SHTestCaseShared.h */,
-			);
-			name = XCTest;
-			sourceTree = "<group>";
-		};
-		6732D3EAD1AA420C96467661 /* VCRURLConnection */ = {
-			isa = PBXGroup;
-			children = (
-				3650D3851A1D4E07B05874DD /* NSData+Base64.h */,
-				0E620BF5A25945549316C10A /* NSData+Base64.m */,
-				9DFE7C9518F244168A418941 /* VCR.h */,
-				48190C178F8741819DCC6B06 /* VCR.m */,
-				646878349486416A87C851FC /* VCR+NSURLSessionConfiguration.h */,
-				1CDA758D2CE249D897A568E9 /* VCR+NSURLSessionConfiguration.m */,
-				964DB665F7074E81B63254B1 /* VCRCassette.h */,
-				9FB4986C21D740638B9393F7 /* VCRCassette.m */,
-				D70A55295A6E428CB858C076 /* VCRCassetteManager.h */,
-				8F243C21E9744C218A448452 /* VCRCassetteManager.m */,
-				0751EA3B2E23458396588C7C /* VCRCassette_Private.h */,
-				053E6B98244A4C6C830E4EE9 /* VCRError.h */,
-				070268CE721147A1B3C9704D /* VCRError.m */,
-				EEBD1B42627B487782A472A0 /* VCROrderedMutableDictionary.h */,
-				92792D2DA4724897955D3BC4 /* VCROrderedMutableDictionary.m */,
-				4B90386C2BB04A72BC64879B /* VCRRecording.h */,
-				40575B0C2ACD4BF5B1417686 /* VCRRecording.m */,
-				A4C2E987E3534C7CA6230511 /* VCRRecordingURLProtocol.h */,
-				1E07927FF26C4C1B8141E98D /* VCRRecordingURLProtocol.m */,
-				D72616B72E4B4106BC3F2A4C /* VCRReplayingURLProtocol.h */,
-				C4D2FC0CAD554CE5894363AA /* VCRReplayingURLProtocol.m */,
-				6104FE5E1CB8405B85900CF9 /* VCRRequestKey.h */,
-				2AB29F0F0CB049A18C96298D /* VCRRequestKey.m */,
-				CC87D278C49F4DAF93C0C2F3 /* Support Files */,
-			);
-			path = VCRURLConnection;
-			sourceTree = "<group>";
-		};
-		8F5981215A864DACBB7A3F0D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D758E3542CD04DD4B724126A /* libPods.a */,
-				50A9F382F584451EAC93134F /* libPods-BETURLSession.a */,
-				8D63B706FF724E08A96BA70F /* libPods-Tests.a */,
-				0D5FD6C681BB4DBBA5D1D3B9 /* libPods-Tests-SHTestCaseAdditions.a */,
-				94367C0D5CF84D4D87DCE0AE /* libPods-Tests-VCRURLConnection.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		9875322A1DC942CEAD1C2749 = {
-			isa = PBXGroup;
-			children = (
-				3D529C9671E44BE98F28701A /* Podfile */,
-				628760A3D0BF4EA19C2D29B6 /* Development Pods */,
-				1F4A6DCF15B9448DAA10F3FD /* Frameworks */,
-				0A11AAB1CB314BBDB2441F89 /* Pods */,
-				8F5981215A864DACBB7A3F0D /* Products */,
-				AEC395D496634BC195CD4EC2 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		9E057C1DD49E428BA508F121 /* Pods-Tests */ = {
-			isa = PBXGroup;
-			children = (
-				8A9FF7B1BD8A43BF85AB21F3 /* Pods-Tests.xcconfig */,
-				927D75645A8F4C3E85089DBB /* Pods-Tests-acknowledgements.markdown */,
-				56EC4106E7C243A7B107A230 /* Pods-Tests-acknowledgements.plist */,
-				A7D07F10E36046FE90298180 /* Pods-Tests-dummy.m */,
-				F66E1EB6B3FA4EF2B3A19BA9 /* Pods-Tests-environment.h */,
-				CE2832EC9E244F61A776950F /* Pods-Tests-resources.sh */,
-			);
-			name = "Pods-Tests";
-			sourceTree = "<group>";
-		};
-		AEC395D496634BC195CD4EC2 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				467326756D3548D1AE75D84F /* Pods */,
-				9E057C1DD49E428BA508F121 /* Pods-Tests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		C27A0D371A5448CF966B8F3C /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				07E63C5B46224676B32AD880 /* Pods-BETURLSession.xcconfig */,
-				6FC2296DC5FF44DCB04861C0 /* Pods-BETURLSession-Private.xcconfig */,
-				DFB03D27683C4236AA1BB947 /* Pods-BETURLSession-dummy.m */,
-				AF900ACC375B406BBC99AE22 /* Pods-BETURLSession-prefix.pch */,
-			);
-			name = "Support Files";
-			sourceTree = SOURCE_ROOT;
-		};
-		C9337B070F484642B5A426FC /* SHTestCaseAdditions */ = {
-			isa = PBXGroup;
-			children = (
-				5D842825BA42401C94D45D3C /* Support Files */,
-				667E375B14EC442CB1FCEF1C /* XCTest */,
-			);
-			path = SHTestCaseAdditions;
-			sourceTree = "<group>";
-		};
-		CC87D278C49F4DAF93C0C2F3 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				D709E40887784FFF91A2DAB3 /* Pods-Tests-VCRURLConnection.xcconfig */,
-				8051C1FDAF4C497DB71A1899 /* Pods-Tests-VCRURLConnection-Private.xcconfig */,
-				FBF0E81DBEEC42F4A44537C4 /* Pods-Tests-VCRURLConnection-dummy.m */,
-				8F429AE4DB1A430DA663E9E5 /* Pods-Tests-VCRURLConnection-prefix.pch */,
-			);
-			name = "Support Files";
-			sourceTree = SOURCE_ROOT;
-		};
-		E8B38A2ED28348208877F711 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				8D611AF6E51745BD82D9C3BC /* __BETInternalShared.private */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		650B828200654B86A9C93171 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E654EAAF3EED47AF85101619 /* NSData+Base64.h in Headers */,
-				F47070CB99E2439593B58C77 /* VCR+NSURLSessionConfiguration.h in Headers */,
-				B582F891299A4AD988449243 /* VCR.h in Headers */,
-				F6BBAB1402FE45AFA0488C25 /* VCRCassette.h in Headers */,
-				DB386C126C304F69841A94EC /* VCRCassetteManager.h in Headers */,
-				D7CDA8EFD1F54E089EC0AA0A /* VCRCassette_Private.h in Headers */,
-				91A9968FEF324444B0E79647 /* VCRError.h in Headers */,
-				0B3C033F3D774CC1B7C1BC99 /* VCROrderedMutableDictionary.h in Headers */,
-				267C2B9472D848DA84B3285D /* VCRRecording.h in Headers */,
-				6F4325CCB6E3410F910E78CA /* VCRRecordingURLProtocol.h in Headers */,
-				87C624878D68447385907F32 /* VCRReplayingURLProtocol.h in Headers */,
-				36BD86F2DB09478C8AD12AAD /* VCRRequestKey.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AC11F338341742D586CD3AC2 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				74E32C62F4FB4BAAB89ABE66 /* BETURLSession.h in Headers */,
-				EAD6518728F849799E30088E /* BETURLSessionAbstractSerializer.h in Headers */,
-				78F7520CD5204DEC808D5D8E /* BETURLSessionRequestSerializerFormURLEncoding.h in Headers */,
-				AB3193D8ED8C4AD98059720C /* BETURLSessionRequestSerializerJSON.h in Headers */,
-				CB7CDF8149454F63B802D830 /* BETURLSessionResponseSerializerJSON.h in Headers */,
-				656A642B58D044A4A7792A61 /* BETURLSessionTaskSharedBlocks.h in Headers */,
-				AB5E20044287405E87C070FA /* NSURLSession+BETURLSession.h in Headers */,
-				98588E502B8740F2B9498785 /* NSURLSessionTask+BETURLSession.h in Headers */,
-				13C35099E5FC479FB0A1E315 /* __BETInternalManager+Delegate.h in Headers */,
-				9234A06DB7494B399AF84B56 /* __BETInternalManager.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D64993627D0B40BB9646940E /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7520E3B045C24905A919007E /* SHTestCaseAdditions.h in Headers */,
-				2C098847FFEC4CAF8E1DB30A /* XCTestCase+SHTestCaseAdditions.h in Headers */,
-				ECE2F12B01664B5FAC458360 /* __SHTestCaseInternal.h in Headers */,
-				440802F7B726490CACF2851D /* __SHTestCaseShared.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
-/* Begin PBXNativeTarget section */
-		3E9B239E3A5447ADB3EAB160 /* Pods-Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B8C0D16DAE67479098F96ADC /* Build configuration list for PBXNativeTarget "Pods-Tests" */;
-			buildPhases = (
-				451441A406384294BB6273B2 /* Sources */,
-				E594B9AD5DFC4715BD14D0CB /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				02C7D90A2E7043BC86A48321 /* PBXTargetDependency */,
-				137138D5E23B42B4999BB96A /* PBXTargetDependency */,
-			);
-			name = "Pods-Tests";
-			productName = "Pods-Tests";
-			productReference = 8D63B706FF724E08A96BA70F /* libPods-Tests.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		8658F658B0D745A688FDD118 /* Pods-Tests-SHTestCaseAdditions */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9FA74A197F104DABB2597EC7 /* Build configuration list for PBXNativeTarget "Pods-Tests-SHTestCaseAdditions" */;
-			buildPhases = (
-				5A2CB2D09C7C4748A0C3B066 /* Sources */,
-				54F6FAD6302E4334AB1ACC65 /* Frameworks */,
-				D64993627D0B40BB9646940E /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-Tests-SHTestCaseAdditions";
-			productName = "Pods-Tests-SHTestCaseAdditions";
-			productReference = 0D5FD6C681BB4DBBA5D1D3B9 /* libPods-Tests-SHTestCaseAdditions.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		8F6C3327C58549228DD6E0C5 /* Pods-Tests-VCRURLConnection */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D2FB8838082B44E28EDFC39B /* Build configuration list for PBXNativeTarget "Pods-Tests-VCRURLConnection" */;
-			buildPhases = (
-				AC79DD5C10C044268AD79092 /* Sources */,
-				42C42021EF4141A59DB5EE3C /* Frameworks */,
-				650B828200654B86A9C93171 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-Tests-VCRURLConnection";
-			productName = "Pods-Tests-VCRURLConnection";
-			productReference = 94367C0D5CF84D4D87DCE0AE /* libPods-Tests-VCRURLConnection.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		92BD552117F74E929877ECAA /* Pods */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C23F330AEFBB4774A5256CA8 /* Build configuration list for PBXNativeTarget "Pods" */;
-			buildPhases = (
-				24DEFB267CF14ADAB2B58D30 /* Sources */,
-				6289ECBFC0624353B124BB18 /* Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A13BF50BFA3643EEB3F584B7 /* PBXTargetDependency */,
-			);
-			name = Pods;
-			productName = Pods;
-			productReference = D758E3542CD04DD4B724126A /* libPods.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		D94BEA61596E49F697ECC84C /* Pods-BETURLSession */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2F8CE98751CC406AB7CD4733 /* Build configuration list for PBXNativeTarget "Pods-BETURLSession" */;
-			buildPhases = (
-				AE65D7F2359B4D53BAD26E40 /* Sources */,
-				CC511E25E09E4A13913F23F2 /* Frameworks */,
-				AC11F338341742D586CD3AC2 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-BETURLSession";
-			productName = "Pods-BETURLSession";
-			productReference = 50A9F382F584451EAC93134F /* libPods-BETURLSession.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		81E3ACECD42842B690A61A57 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastUpgradeCheck = 0500;
-			};
-			buildConfigurationList = A3DC0ADBFFFC440DB1402BFC /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
-			mainGroup = 9875322A1DC942CEAD1C2749;
-			productRefGroup = 8F5981215A864DACBB7A3F0D /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				92BD552117F74E929877ECAA /* Pods */,
-				D94BEA61596E49F697ECC84C /* Pods-BETURLSession */,
-				3E9B239E3A5447ADB3EAB160 /* Pods-Tests */,
-				8658F658B0D745A688FDD118 /* Pods-Tests-SHTestCaseAdditions */,
-				8F6C3327C58549228DD6E0C5 /* Pods-Tests-VCRURLConnection */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXSourcesBuildPhase section */
-		24DEFB267CF14ADAB2B58D30 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7AE2E0A81B4344B89763343D /* Pods-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		451441A406384294BB6273B2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				800935D4830F4C268EAA4BDD /* Pods-Tests-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5A2CB2D09C7C4748A0C3B066 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E9E6C90DE41E4CAA9EA5FB8B /* Pods-Tests-SHTestCaseAdditions-dummy.m in Sources */,
-				D6F019F488584801BBEF7B37 /* XCTestCase+SHTestCaseAdditions.m in Sources */,
-				2D0D0C5ACE564ADB822E7125 /* __SHTestCaseInternal.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AC79DD5C10C044268AD79092 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CF2F649095F94A0698E21ECF /* NSData+Base64.m in Sources */,
-				F368795CE7454011BAF2D86C /* Pods-Tests-VCRURLConnection-dummy.m in Sources */,
-				AFB3C29633434C91991854F1 /* VCR+NSURLSessionConfiguration.m in Sources */,
-				38CB9BB279554166A328EB94 /* VCR.m in Sources */,
-				C071C4758F884061885B1B66 /* VCRCassette.m in Sources */,
-				B51CBEB3EBAB4D0D8C8A1C57 /* VCRCassetteManager.m in Sources */,
-				35600BD770504CF1AEE74595 /* VCRError.m in Sources */,
-				1A18767E0F0C4935AF953081 /* VCROrderedMutableDictionary.m in Sources */,
-				D1AA7DDD95C54DC3BD49E233 /* VCRRecording.m in Sources */,
-				C11D031A3B97455CB932DB46 /* VCRRecordingURLProtocol.m in Sources */,
-				7FC5E31C96B140EF95526F2F /* VCRReplayingURLProtocol.m in Sources */,
-				CD3AE7C135C8430BB86FA533 /* VCRRequestKey.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		AE65D7F2359B4D53BAD26E40 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C2B3461CD55846D6A6FF4EAA /* BETURLSessionAbstractSerializer.m in Sources */,
-				549A538358804F4F9C572C9C /* BETURLSessionRequestSerializerFormURLEncoding.m in Sources */,
-				A1B6EEFF79634AF0B7AB59F8 /* BETURLSessionRequestSerializerJSON.m in Sources */,
-				90A4AA5CA5AA4873A0CB4F79 /* BETURLSessionResponseSerializerJSON.m in Sources */,
-				739B092D325E422E894B5BE2 /* NSURLSession+BETURLSession.m in Sources */,
-				3F934A76DA7F443BAC29AF10 /* NSURLSessionTask+BETURLSession.m in Sources */,
-				C18206825A744B208A4442E9 /* Pods-BETURLSession-dummy.m in Sources */,
-				A71A1B6FF0774152BCA18AF7 /* __BETInternalManager+Delegate.m in Sources */,
-				F74349F9244243E58D985705 /* __BETInternalManager.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		02C7D90A2E7043BC86A48321 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8658F658B0D745A688FDD118 /* Pods-Tests-SHTestCaseAdditions */;
-			targetProxy = D038B89455E149BC90AD5C34 /* PBXContainerItemProxy */;
-		};
-		137138D5E23B42B4999BB96A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8F6C3327C58549228DD6E0C5 /* Pods-Tests-VCRURLConnection */;
-			targetProxy = 4D1E4B827D624143AF310062 /* PBXContainerItemProxy */;
-		};
-		A13BF50BFA3643EEB3F584B7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D94BEA61596E49F697ECC84C /* Pods-BETURLSession */;
-			targetProxy = 2ECB3EAC868F43E8B32D332B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin XCBuildConfiguration section */
-		0284E7A309534BB4A5F4FB96 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8051C1FDAF4C497DB71A1899 /* Pods-Tests-VCRURLConnection-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-Tests-VCRURLConnection-prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		37C3B6D687264865BDDCC7F8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6FC2296DC5FF44DCB04861C0 /* Pods-BETURLSession-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-BETURLSession-prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		4952A8BEDDF94E34B5816EC2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3E03DE1543D4AEC87AA57D9 /* Pods.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		86E6A7E4A56844DFB3B3B799 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				COPY_PHASE_STRIP = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				ONLY_ACTIVE_ARCH = YES;
-				STRIP_INSTALLED_PRODUCT = NO;
-			};
-			name = Debug;
-		};
-		91D2C6C4D2904C85B5C40F75 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A9FF7B1BD8A43BF85AB21F3 /* Pods-Tests.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		944D424D17FB49F9BBFEE237 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E4977CD279A14726A1939549 /* Pods-Tests-SHTestCaseAdditions-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-Tests-SHTestCaseAdditions-prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		B5AF247CA0BF46D38A1BF8BF /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A9FF7B1BD8A43BF85AB21F3 /* Pods-Tests.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				OTHER_CFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_CPLUSPLUSFLAGS = (
-					"-DNS_BLOCK_ASSERTIONS=1",
-					"$(inherited)",
-				);
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		B97C84DEBE7A4501A71E753A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				STRIP_INSTALLED_PRODUCT = NO;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		CE11DDFC0EF8419AA11680C7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3E03DE1543D4AEC87AA57D9 /* Pods.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		D3DD963233B340F7AEA65E0B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8051C1FDAF4C497DB71A1899 /* Pods-Tests-VCRURLConnection-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-Tests-VCRURLConnection-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		E4FA9E7703714A188B71FAF2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E4977CD279A14726A1939549 /* Pods-Tests-SHTestCaseAdditions-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-Tests-SHTestCaseAdditions-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		F367CFC1D48D456E8D09EEE9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6FC2296DC5FF44DCB04861C0 /* Pods-BETURLSession-Private.xcconfig */;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COMBINE_HIDPI_IMAGES = YES;
-				COPY_PHASE_STRIP = NO;
-				DSTROOT = /tmp/xcodeproj.dst;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Pods-BETURLSession-prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				OTHER_LDFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		2F8CE98751CC406AB7CD4733 /* Build configuration list for PBXNativeTarget "Pods-BETURLSession" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F367CFC1D48D456E8D09EEE9 /* Debug */,
-				37C3B6D687264865BDDCC7F8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9FA74A197F104DABB2597EC7 /* Build configuration list for PBXNativeTarget "Pods-Tests-SHTestCaseAdditions" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E4FA9E7703714A188B71FAF2 /* Debug */,
-				944D424D17FB49F9BBFEE237 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A3DC0ADBFFFC440DB1402BFC /* Build configuration list for PBXProject "Pods" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				86E6A7E4A56844DFB3B3B799 /* Debug */,
-				B97C84DEBE7A4501A71E753A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B8C0D16DAE67479098F96ADC /* Build configuration list for PBXNativeTarget "Pods-Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				91D2C6C4D2904C85B5C40F75 /* Debug */,
-				B5AF247CA0BF46D38A1BF8BF /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C23F330AEFBB4774A5256CA8 /* Build configuration list for PBXNativeTarget "Pods" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE11DDFC0EF8419AA11680C7 /* Debug */,
-				4952A8BEDDF94E34B5816EC2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D2FB8838082B44E28EDFC39B /* Build configuration list for PBXNativeTarget "Pods-Tests-VCRURLConnection" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D3DD963233B340F7AEA65E0B /* Debug */,
-				0284E7A309534BB4A5F4FB96 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = 81E3ACECD42842B690A61A57 /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>0075BCBE313B47E390FA2DA7</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A56EF82A7BDE434F9FAC3DA6</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>01BBD5C135994E3CB0D104C7</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>VCRRecordingURLProtocol.m</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCRRecordingURLProtocol.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>04771F1A3CFB4ED68C0A4108</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>__SHTestCaseInternal.m</string>
+			<key>path</key>
+			<string>SHTestCaseAdditions/__SHTestCaseInternal.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>05FF0FB8DD1747FF99B1325F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>76BADDCBCF8C4F84B38BA99D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>072CC5BC1AF54D0C93A08B09</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>4BE9EE6F3D6C4BE387F4B4DC</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COMBINE_HIDPI_IMAGES</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_VERSION</key>
+				<string>com.apple.compilers.llvm.clang.1_0</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.9</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>macosx</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>07C2E6769BF94776AFA80DAC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-Tests-SHTestCaseAdditions.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>092D58A4BFE6422BABBF437F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>F51DC1FF27544048A61B1C91</string>
+				<string>E27A9DEBF0834E58B2CD3373</string>
+				<string>77C35E6D61894203B80091A6</string>
+				<string>9C676B21654F4858911CA066</string>
+				<string>76BADDCBCF8C4F84B38BA99D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0BBD9869E8784D468BB4CEC1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>__BETInternalManager+Delegate.m</string>
+			<key>path</key>
+			<string>BETURLSession/__BETInternalManager+Delegate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0C31C3DE211241BEB7B5E852</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E882DB76BE534FE989EE8501</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>0C98F2AD31FA40849FCEB4D9</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9700BA4E55B34E91BB8CAD14</string>
+				<string>928A4F5CE4F8441C8876527E</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>OS X</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0D35A5788A06434A9ECC503E</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>B46FBA82F326445D86813996</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COMBINE_HIDPI_IMAGES</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Pods-Tests-SHTestCaseAdditions-prefix.pch</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_VERSION</key>
+				<string>com.apple.compilers.llvm.clang.1_0</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.9</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>macosx</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>0DA62161B8014E7EA2F2DA93</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>9D353ECAB4454080A36C35F3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Development Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>10524F4D1B024E27B60C139B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>AC370A69950B4B83A2ED9AD3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>14E1474B3C79403DAA68B431</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>4BE9EE6F3D6C4BE387F4B4DC</string>
+				<string>35E9746BF8F5436F90EE6F3E</string>
+				<string>86D6A80A57CD4608BAC3762D</string>
+				<string>B6BEE8C00F674556A5230181</string>
+				<string>49A3734F93D04BDBB4A5DC26</string>
+				<string>B851F723F6D74A8AB26C51C8</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>15590C49B93A4E88B964E52B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>812A662424774D2F8896298C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1583FE9CA25D4E319F6C0959</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-BETURLSession-Private.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>188F5C00BF7542A6B7984784</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>VCRRequestKey.m</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCRRequestKey.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>194F40052FA542A6A01BD720</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>BETURLSessionRequestSerializerFormURLEncoding.h</string>
+			<key>path</key>
+			<string>BETURLSession/BETURLSessionRequestSerializerFormURLEncoding.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1A2CBDD673B345A685665673</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>73CF6B83F1F14B619295BE8B</string>
+			<key>targetProxy</key>
+			<string>4CA89BFE0E33476C902F2E6B</string>
+		</dict>
+		<key>1BD7DFA60763434B954CDA3D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>NSURLSessionTask+BETURLSession.m</string>
+			<key>path</key>
+			<string>BETURLSession/NSURLSessionTask+BETURLSession.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1E57A633050B4FF98E494BB5</key>
+		<dict>
+			<key>fileRef</key>
+			<string>50746A55FFCC4FD4BB2CC027</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>21E349A7CCE64270AB7898BB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-BETURLSession.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>24FFEA1879C44BD78CDAABCD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CA6FC0C7A9914EC6B80F8C1D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>294422203237421E8E445E61</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>VCRReplayingURLProtocol.h</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCRReplayingURLProtocol.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>296516BD81BF4A44B0C60CB1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Pods-Tests-acknowledgements.markdown</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2B64D2D88FF84F41973FD615</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>6F94ACD36A99460CAC3F3AB7</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COMBINE_HIDPI_IMAGES</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
+				<string>YES</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_VERSION</key>
+				<string>com.apple.compilers.llvm.clang.1_0</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.9</string>
+				<key>OTHER_CFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_CPLUSPLUSFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>macosx</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>2BCCDB3A35CE48DEBBF414A3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>BETResponse.h</string>
+			<key>path</key>
+			<string>BETURLSession/BETResponse.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2DAEBD9BAFA84841B7A12BA9</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>name</key>
+			<string>Podfile</string>
+			<key>path</key>
+			<string>../Podfile</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+			<key>xcLanguageSpecificationIdentifier</key>
+			<string>xcode.lang.ruby</string>
+		</dict>
+		<key>2E340CCE23E74E87AD058F5B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>VCRCassette_Private.h</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCRCassette_Private.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>2E8AEB6613F5472285983961</key>
+		<dict>
+			<key>fileRef</key>
+			<string>01BBD5C135994E3CB0D104C7</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>2F1C7726FFD145B0905F5CD0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>30EB22CEFB5E44C09700BC6E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>2F65336BBEDD412CB1AAED8C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>62B0F400DA6B481FA1165A2B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>30B2183A134A459A9E77FB03</key>
+		<dict>
+			<key>fileRef</key>
+			<string>C833CC36458D450A85E1D85A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>30EB22CEFB5E44C09700BC6E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>__BETInternalManager.m</string>
+			<key>path</key>
+			<string>BETURLSession/__BETInternalManager.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3132E26F01D64EC1A0DB5391</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>64338225D7304A5B84783B84</string>
+				<string>5BBC167EB5C74E5295298668</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>SHTestCaseAdditions</string>
+			<key>path</key>
+			<string>SHTestCaseAdditions</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>31BC1BC4EDB644C09404F463</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>6F94ACD36A99460CAC3F3AB7</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COMBINE_HIDPI_IMAGES</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_VERSION</key>
+				<string>com.apple.compilers.llvm.clang.1_0</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.9</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>macosx</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>32EA1DD8094743A68318352C</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>55BD5E9EB9D045E899B10C01</string>
+				<string>A90E329A719A42339C74A51B</string>
+				<string>C833CC36458D450A85E1D85A</string>
+				<string>7BD6E6B484794925B811AD8D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>33628439328F4955804FE0C7</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>NSURLSession+BETURLSession.h</string>
+			<key>path</key>
+			<string>BETURLSession/NSURLSession+BETURLSession.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>344EBE7C57854A1D861EC3BD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>93F840909EC74BF0B135460F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>34FC485CA4F742BCB55DCCB0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9700BA4E55B34E91BB8CAD14</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>3525561455CA498E8CABFD8A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-BETURLSession-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>358F61B45AFF4831BE853998</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>BETURLSessionRequestSerializerFormURLEncoding.m</string>
+			<key>path</key>
+			<string>BETURLSession/BETURLSessionRequestSerializerFormURLEncoding.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>35E9746BF8F5436F90EE6F3E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Pods-acknowledgements.markdown</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>36E91FF6A03D4988869CA523</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>A90E329A719A42339C74A51B</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COMBINE_HIDPI_IMAGES</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
+				<string>YES</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Pods-Tests-VCRURLConnection-prefix.pch</string>
+				<key>GCC_VERSION</key>
+				<string>com.apple.compilers.llvm.clang.1_0</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.9</string>
+				<key>OTHER_CFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_CPLUSPLUSFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>macosx</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>37F9A78AE34C474E9A7051BD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>358F61B45AFF4831BE853998</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>37FDDF7EB1D0471D986593C5</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9700BA4E55B34E91BB8CAD14</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>39404DD5F63940E4B2B09E47</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>VCRCassetteManager.m</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCRCassetteManager.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3E67251FCB1947CDA086DB83</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CFE02851ED5345A69BBE29DC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>3F86B434B1BE49F3BB924850</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>34FC485CA4F742BCB55DCCB0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>40E0701FEE60432B8F63E325</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>15590C49B93A4E88B964E52B</string>
+				<string>C90CF60479ED46E68D967AC1</string>
+				<string>DA29EDF8591247F383632BB7</string>
+				<string>FBB6FF25860E4562AEAA4CDD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>428B52636B444D5BBECEAD46</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>NSURLSessionTask+BETURLSession.h</string>
+			<key>path</key>
+			<string>BETURLSession/NSURLSessionTask+BETURLSession.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>47341DB92FBA4003A7D862F2</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>__BETInternalManager+Delegate.h</string>
+			<key>path</key>
+			<string>BETURLSession/__BETInternalManager+Delegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4776502E9F3D4E09AAEF68CF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>VCR.h</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCR.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>49A3734F93D04BDBB4A5DC26</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-environment.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4BE9EE6F3D6C4BE387F4B4DC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4CA89BFE0E33476C902F2E6B</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>FEC8E702474E4B9EB4308310</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>73CF6B83F1F14B619295BE8B</string>
+			<key>remoteInfo</key>
+			<string>Pods-Tests-VCRURLConnection</string>
+		</dict>
+		<key>4DD6FE225DCA47A695A828EA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B5CC44A46DBD484192FB4096</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>4E2E7759BE4B42BCB8A912C7</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>31BC1BC4EDB644C09404F463</string>
+				<string>2B64D2D88FF84F41973FD615</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>4F25C1AAF9F7475CB0FFCDF3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>194F40052FA542A6A01BD720</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>50746A55FFCC4FD4BB2CC027</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>VCROrderedMutableDictionary.m</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCROrderedMutableDictionary.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>513EE58F6BFC43BB95F886A1</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-Tests-environment.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>54260843E80E48D18EE64C4E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>BETURLSessionTaskSharedBlocks.h</string>
+			<key>path</key>
+			<string>BETURLSession/BETURLSessionTaskSharedBlocks.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>55BD5E9EB9D045E899B10C01</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-Tests-VCRURLConnection.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>564115332C3840F2BF21B16F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>VCRRecording.h</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCRRecording.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>57035509AAD04C0A84175B83</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>__BETInternalShared.private</string>
+			<key>path</key>
+			<string>BETURLSession/__BETInternalShared.private</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5878A2A6C05449D084D769E7</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8F2D3FCB9C0744428E70D578</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>58BC5DB10E294B81959537B4</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>765AC671FF8C4639863FC623</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>58C90738F0C245329EFBB35A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A67A7CCB76C242FF85D4FAE5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>5A03C13987704863838C0359</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-Tests-SHTestCaseAdditions-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5BBC167EB5C74E5295298668</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>812A662424774D2F8896298C</string>
+				<string>9C299EF4C20D4FF08BA8EA46</string>
+				<string>F9812F6F12304616A93205CC</string>
+				<string>EE32F7B13F424981A51C0E97</string>
+				<string>04771F1A3CFB4ED68C0A4108</string>
+				<string>8264F75E1F5441FAA447E14B</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>XCTest</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5C6DBF280CF842EAB9058F22</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5A03C13987704863838C0359</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>5DC0BCC788D5424FB04391A0</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>82B3640E4C1A45F6A1A2B0C2</string>
+			<key>targetProxy</key>
+			<string>6436AA143799468792F6F1D5</string>
+		</dict>
+		<key>5EFB4F24EF6C404FA0D340B8</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6F94ACD36A99460CAC3F3AB7</string>
+				<string>296516BD81BF4A44B0C60CB1</string>
+				<string>9FE292A4E7B242EB90FF9C7F</string>
+				<string>FF7916BEF5394FF2A2CB0D7E</string>
+				<string>513EE58F6BFC43BB95F886A1</string>
+				<string>9A154767BD704AA2ACE0CB09</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods-Tests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62553B9D6E874BE6B161E8D3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B70C64DDFF0A48C482239C2D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>62B0F400DA6B481FA1165A2B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>VCRError.m</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCRError.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>62E7BFBC489C44EFA527B158</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>FEC8E702474E4B9EB4308310</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>A9A471269DCA4ECFB059A600</string>
+			<key>remoteInfo</key>
+			<string>Pods-BETURLSession</string>
+		</dict>
+		<key>64338225D7304A5B84783B84</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>07C2E6769BF94776AFA80DAC</string>
+				<string>B46FBA82F326445D86813996</string>
+				<string>5A03C13987704863838C0359</string>
+				<string>7AFC47F38A4E4D39B448CE5C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>6436AA143799468792F6F1D5</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>FEC8E702474E4B9EB4308310</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>82B3640E4C1A45F6A1A2B0C2</string>
+			<key>remoteInfo</key>
+			<string>Pods-Tests-SHTestCaseAdditions</string>
+		</dict>
+		<key>6C1640FC6A5A4E2B907075A2</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>VCRRecordingURLProtocol.h</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCRRecordingURLProtocol.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6E8A2745088F4036938FB70C</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9700BA4E55B34E91BB8CAD14</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>6F94ACD36A99460CAC3F3AB7</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-Tests.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>70F34CCC9FA44AA5B65F757E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>VCROrderedMutableDictionary.h</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCROrderedMutableDictionary.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>736970D06EF34784A7FC9630</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>BETURLSessionResponseSerializerJSON.h</string>
+			<key>path</key>
+			<string>BETURLSession/BETURLSessionResponseSerializerJSON.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>73CF6B83F1F14B619295BE8B</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>D443483D290446269570F13B</string>
+			<key>buildPhases</key>
+			<array>
+				<string>E03D0993956F40E2BD810D45</string>
+				<string>3F86B434B1BE49F3BB924850</string>
+				<string>AE05CE93F2B049068358FBBA</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-Tests-VCRURLConnection</string>
+			<key>productName</key>
+			<string>Pods-Tests-VCRURLConnection</string>
+			<key>productReference</key>
+			<string>76BADDCBCF8C4F84B38BA99D</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>74AE81FEDAF5403F98AF53C0</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>VCRError.h</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCRError.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>74C111F55E5A4BE7839BD28B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B4ABE0EA41D947E4954E900C</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>74D78829A2E54C94ABD69ADA</key>
+		<dict>
+			<key>fileRef</key>
+			<string>979F7D374A644799956EBF66</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>74EA983A821947CCB6678A6B</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>AE28213062464A29BC8B5522</string>
+				<string>CBB3DF0C907C4D1CBB528335</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>75F8C92AD6A24CB190727BB8</key>
+		<dict>
+			<key>fileRef</key>
+			<string>564115332C3840F2BF21B16F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>765AC671FF8C4639863FC623</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9700BA4E55B34E91BB8CAD14</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>76BADDCBCF8C4F84B38BA99D</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-Tests-VCRURLConnection.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>77C35E6D61894203B80091A6</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-Tests.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>7AFC47F38A4E4D39B448CE5C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-Tests-SHTestCaseAdditions-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7BD6E6B484794925B811AD8D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Pods-Tests-VCRURLConnection-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7E3803A221BB438E9A655C29</key>
+		<dict>
+			<key>fileRef</key>
+			<string>74AE81FEDAF5403F98AF53C0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>80462A553CDB4A129C1E673A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>57035509AAD04C0A84175B83</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Resources</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>812A662424774D2F8896298C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>SHTestCaseAdditions.h</string>
+			<key>path</key>
+			<string>SHTestCaseAdditions/XCTest/SHTestCaseAdditions.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>815923BF3945442897946CB6</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>A90E329A719A42339C74A51B</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COMBINE_HIDPI_IMAGES</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Pods-Tests-VCRURLConnection-prefix.pch</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_VERSION</key>
+				<string>com.apple.compilers.llvm.clang.1_0</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.9</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>macosx</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>816630B58CBE4CF489E78F25</key>
+		<dict>
+			<key>fileRef</key>
+			<string>6C1640FC6A5A4E2B907075A2</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8264F75E1F5441FAA447E14B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>__SHTestCaseShared.h</string>
+			<key>path</key>
+			<string>SHTestCaseAdditions/__SHTestCaseShared.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>82B3640E4C1A45F6A1A2B0C2</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>D5ED94E4C4D349EA825F6D8F</string>
+			<key>buildPhases</key>
+			<array>
+				<string>8A88787BB8B241D596169D3F</string>
+				<string>9B9A89B093C84CD1B2C25BEC</string>
+				<string>40E0701FEE60432B8F63E325</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-Tests-SHTestCaseAdditions</string>
+			<key>productName</key>
+			<string>Pods-Tests-SHTestCaseAdditions</string>
+			<key>productReference</key>
+			<string>9C676B21654F4858911CA066</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>836092DAEC1648B981E31BF3</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2BCCDB3A35CE48DEBBF414A3</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>837D6715B427423C9E78C339</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F1F85D73EF2C44FCA396C118</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>85E4712AB78D46339851EBBE</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>NO</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.9</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>STRIP_INSTALLED_PRODUCT</key>
+				<string>NO</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>86D6A80A57CD4608BAC3762D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8819D99B5CC44BE8A2A26766</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8B9752D5391446FCADDD3D13</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>88315D5966E04AF5935D5F02</key>
+		<dict>
+			<key>fileRef</key>
+			<string>2E340CCE23E74E87AD058F5B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>885E1904E207498CB13DEF62</key>
+		<dict>
+			<key>fileRef</key>
+			<string>928A4F5CE4F8441C8876527E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>8993285FA6B0440B97854714</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>A9A471269DCA4ECFB059A600</string>
+			<key>targetProxy</key>
+			<string>62E7BFBC489C44EFA527B158</string>
+		</dict>
+		<key>8A8186D5DD764EEAA2AAB8D4</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>E742B8A3CBF1444BA668929D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8A88787BB8B241D596169D3F</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>5C6DBF280CF842EAB9058F22</string>
+				<string>FBA053E4ABDB4509B427B282</string>
+				<string>A710E82670954ED8989FEBCC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8B9752D5391446FCADDD3D13</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>NSURLSession+BETURLSession.m</string>
+			<key>path</key>
+			<string>BETURLSession/NSURLSession+BETURLSession.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8F2D3FCB9C0744428E70D578</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>BETURLSessionRequestSerializerJSON.h</string>
+			<key>path</key>
+			<string>BETURLSession/BETURLSessionRequestSerializerJSON.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>928A4F5CE4F8441C8876527E</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>XCTest.framework</string>
+			<key>path</key>
+			<string>Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/XCTest.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>9379560DF8A8491BA6751A6D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>96A0B5ACB0A34A7AA5F386E9</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>93F840909EC74BF0B135460F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>BETURLSession.h</string>
+			<key>path</key>
+			<string>BETURLSession/BETURLSession.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>96A0B5ACB0A34A7AA5F386E9</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-BETURLSession-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9700BA4E55B34E91BB8CAD14</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Cocoa.framework</string>
+			<key>path</key>
+			<string>Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/Cocoa.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>979F7D374A644799956EBF66</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>VCRReplayingURLProtocol.m</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCRReplayingURLProtocol.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9A154767BD704AA2ACE0CB09</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-Tests-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9B528D2BE0B748DABB1E605A</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>6E8A2745088F4036938FB70C</string>
+				<string>A34105D39A8D4F0FB4E19EEF</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>9B9A89B093C84CD1B2C25BEC</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>FB99F009B05047119D6AFDC2</string>
+				<string>885E1904E207498CB13DEF62</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>9C299EF4C20D4FF08BA8EA46</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>XCTestCase+SHTestCaseAdditions.h</string>
+			<key>path</key>
+			<string>SHTestCaseAdditions/XCTest/XCTestCase+SHTestCaseAdditions.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9C676B21654F4858911CA066</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-Tests-SHTestCaseAdditions.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>9D353ECAB4454080A36C35F3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2BCCDB3A35CE48DEBBF414A3</string>
+				<string>A67A7CCB76C242FF85D4FAE5</string>
+				<string>93F840909EC74BF0B135460F</string>
+				<string>CFE02851ED5345A69BBE29DC</string>
+				<string>E882DB76BE534FE989EE8501</string>
+				<string>194F40052FA542A6A01BD720</string>
+				<string>358F61B45AFF4831BE853998</string>
+				<string>8F2D3FCB9C0744428E70D578</string>
+				<string>A56EF82A7BDE434F9FAC3DA6</string>
+				<string>736970D06EF34784A7FC9630</string>
+				<string>B654C95F4C0F42DDAF0A3ED2</string>
+				<string>54260843E80E48D18EE64C4E</string>
+				<string>33628439328F4955804FE0C7</string>
+				<string>8B9752D5391446FCADDD3D13</string>
+				<string>428B52636B444D5BBECEAD46</string>
+				<string>1BD7DFA60763434B954CDA3D</string>
+				<string>F44A5171C81042D3AF81E963</string>
+				<string>30EB22CEFB5E44C09700BC6E</string>
+				<string>47341DB92FBA4003A7D862F2</string>
+				<string>0BBD9869E8784D468BB4CEC1</string>
+				<string>80462A553CDB4A129C1E673A</string>
+				<string>DD21FA708F654C71AE0AD399</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>BETURLSession</string>
+			<key>path</key>
+			<string>../..</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9FB3D78D992D47A2B4AF3BD5</key>
+		<dict>
+			<key>fileRef</key>
+			<string>BB74E2D425824F15AC6BD1C5</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9FE292A4E7B242EB90FF9C7F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-Tests-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A34105D39A8D4F0FB4E19EEF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>E27A9DEBF0834E58B2CD3373</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A344CD1F07224C06A6D0950D</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>85E4712AB78D46339851EBBE</string>
+				<string>D3FD26A82AE847EE9D29DBEF</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>A34792333A5D40D8848FE4B8</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>14E1474B3C79403DAA68B431</string>
+				<string>5EFB4F24EF6C404FA0D340B8</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Targets Support Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A3D7AC03FE8242C7A6B60D16</key>
+		<dict>
+			<key>fileRef</key>
+			<string>4776502E9F3D4E09AAEF68CF</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A404455099DB4A5A810F3F72</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0BBD9869E8784D468BB4CEC1</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>A4670F1323224290A4FAB612</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>VCR+NSURLSessionConfiguration.m</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCR+NSURLSessionConfiguration.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A4F1D4DFA01D40F496BCC3DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>47341DB92FBA4003A7D862F2</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A56EF82A7BDE434F9FAC3DA6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>BETURLSessionRequestSerializerJSON.m</string>
+			<key>path</key>
+			<string>BETURLSession/BETURLSessionRequestSerializerJSON.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A67A7CCB76C242FF85D4FAE5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>BETResponse.m</string>
+			<key>path</key>
+			<string>BETURLSession/BETResponse.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A710E82670954ED8989FEBCC</key>
+		<dict>
+			<key>fileRef</key>
+			<string>04771F1A3CFB4ED68C0A4108</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>A7C2B8D2A1ED468EA631F5C6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>70F34CCC9FA44AA5B65F757E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>A90E329A719A42339C74A51B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-Tests-VCRURLConnection-Private.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A9A471269DCA4ECFB059A600</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>74EA983A821947CCB6678A6B</string>
+			<key>buildPhases</key>
+			<array>
+				<string>BC6ECDBB03344027B9A4EC99</string>
+				<string>58BC5DB10E294B81959537B4</string>
+				<string>F8692D81D4A8418280F4160B</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-BETURLSession</string>
+			<key>productName</key>
+			<string>Pods-BETURLSession</string>
+			<key>productReference</key>
+			<string>E27A9DEBF0834E58B2CD3373</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>AC129D8F3C5A4B418F808475</key>
+		<dict>
+			<key>fileRef</key>
+			<string>428B52636B444D5BBECEAD46</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>AC370A69950B4B83A2ED9AD3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>NSData+Base64.m</string>
+			<key>path</key>
+			<string>VCRURLConnection/NSData+Base64.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AD5D722FCFEC4625ACE6F95D</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>37FDDF7EB1D0471D986593C5</string>
+				<string>E542FDBB22134471A8BF31DE</string>
+				<string>05FF0FB8DD1747FF99B1325F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>AE05CE93F2B049068358FBBA</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>62553B9D6E874BE6B161E8D3</string>
+				<string>837D6715B427423C9E78C339</string>
+				<string>A3D7AC03FE8242C7A6B60D16</string>
+				<string>9FB3D78D992D47A2B4AF3BD5</string>
+				<string>4DD6FE225DCA47A695A828EA</string>
+				<string>88315D5966E04AF5935D5F02</string>
+				<string>7E3803A221BB438E9A655C29</string>
+				<string>A7C2B8D2A1ED468EA631F5C6</string>
+				<string>75F8C92AD6A24CB190727BB8</string>
+				<string>816630B58CBE4CF489E78F25</string>
+				<string>FEF22F2C78EB4BB693AFCDFF</string>
+				<string>C95AE00A02C04986846E14C6</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>AE28213062464A29BC8B5522</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>1583FE9CA25D4E319F6C0959</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COMBINE_HIDPI_IMAGES</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
+				<string>YES</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Pods-BETURLSession-prefix.pch</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_VERSION</key>
+				<string>com.apple.compilers.llvm.clang.1_0</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.9</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>macosx</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>B31FEEEBB246493BADC4FFA7</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>VCRRequestKey.h</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCRRequestKey.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B3A81A06389A4B2CA1ACB94B</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>072CC5BC1AF54D0C93A08B09</string>
+				<string>CC18028068A44F04A48BB55D</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>B46FBA82F326445D86813996</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-Tests-SHTestCaseAdditions-Private.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B4ABE0EA41D947E4954E900C</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>VCR.m</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCR.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B5CC44A46DBD484192FB4096</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>VCRCassetteManager.h</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCRCassetteManager.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B654C95F4C0F42DDAF0A3ED2</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>BETURLSessionResponseSerializerJSON.m</string>
+			<key>path</key>
+			<string>BETURLSession/BETURLSessionResponseSerializerJSON.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B6BEE8C00F674556A5230181</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B70C64DDFF0A48C482239C2D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>NSData+Base64.h</string>
+			<key>path</key>
+			<string>VCRURLConnection/NSData+Base64.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B851F723F6D74A8AB26C51C8</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BB74E2D425824F15AC6BD1C5</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>VCRCassette.h</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCRCassette.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>BC6ECDBB03344027B9A4EC99</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>58C90738F0C245329EFBB35A</string>
+				<string>0C31C3DE211241BEB7B5E852</string>
+				<string>37F9A78AE34C474E9A7051BD</string>
+				<string>0075BCBE313B47E390FA2DA7</string>
+				<string>BE7B85FA825F40FC8AA43F46</string>
+				<string>8819D99B5CC44BE8A2A26766</string>
+				<string>E64A409344B340128726E278</string>
+				<string>9379560DF8A8491BA6751A6D</string>
+				<string>A404455099DB4A5A810F3F72</string>
+				<string>2F1C7726FFD145B0905F5CD0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>BCB88531FBD84E5C8D867BB2</key>
+		<dict>
+			<key>fileRef</key>
+			<string>CAE3428518AD43918C5A38D2</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>BE7B85FA825F40FC8AA43F46</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B654C95F4C0F42DDAF0A3ED2</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>BFCA80870B754E2C85B5F254</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>2DAEBD9BAFA84841B7A12BA9</string>
+				<string>0DA62161B8014E7EA2F2DA93</string>
+				<string>EF4533F1E6A3415E96C63599</string>
+				<string>D037D27964F44A809463FEDC</string>
+				<string>092D58A4BFE6422BABBF437F</string>
+				<string>A34792333A5D40D8848FE4B8</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C833CC36458D450A85E1D85A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-Tests-VCRURLConnection-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C90CF60479ED46E68D967AC1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9C299EF4C20D4FF08BA8EA46</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>C95AE00A02C04986846E14C6</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B31FEEEBB246493BADC4FFA7</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>CA6FC0C7A9914EC6B80F8C1D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>VCRCassette.m</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCRCassette.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CAE3428518AD43918C5A38D2</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>VCRRecording.m</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCRRecording.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>CBB3DF0C907C4D1CBB528335</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>1583FE9CA25D4E319F6C0959</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COMBINE_HIDPI_IMAGES</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
+				<string>YES</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Pods-BETURLSession-prefix.pch</string>
+				<key>GCC_VERSION</key>
+				<string>com.apple.compilers.llvm.clang.1_0</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.9</string>
+				<key>OTHER_CFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_CPLUSPLUSFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>macosx</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>CC18028068A44F04A48BB55D</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>4BE9EE6F3D6C4BE387F4B4DC</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COMBINE_HIDPI_IMAGES</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
+				<string>YES</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_VERSION</key>
+				<string>com.apple.compilers.llvm.clang.1_0</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.9</string>
+				<key>OTHER_CFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_CPLUSPLUSFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>macosx</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>CFE02851ED5345A69BBE29DC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>BETURLSessionAbstractSerializer.h</string>
+			<key>path</key>
+			<string>BETURLSession/BETURLSessionAbstractSerializer.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D037D27964F44A809463FEDC</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>3132E26F01D64EC1A0DB5391</string>
+				<string>FCC5FEF271C94D6CB29C2D10</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>D21D1AAA307145218D71C8BF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>736970D06EF34784A7FC9630</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>D272282BFB8C4B7DB5983645</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A4670F1323224290A4FAB612</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>D3FD26A82AE847EE9D29DBEF</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>NO</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.9</string>
+				<key>STRIP_INSTALLED_PRODUCT</key>
+				<string>NO</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>D443483D290446269570F13B</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>815923BF3945442897946CB6</string>
+				<string>36E91FF6A03D4988869CA523</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>D5ED94E4C4D349EA825F6D8F</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>0D35A5788A06434A9ECC503E</string>
+				<string>DD5290D79B4E47DFA2B41CCF</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>D9E03D4CC9EB472FAFD312EF</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>F0506AF386F04C809ACCF388</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>DA29EDF8591247F383632BB7</key>
+		<dict>
+			<key>fileRef</key>
+			<string>EE32F7B13F424981A51C0E97</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DABA5562E778495AB78C1160</key>
+		<dict>
+			<key>fileRef</key>
+			<string>33628439328F4955804FE0C7</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DB27A9DCA6DA4B78BD0506FF</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>B3A81A06389A4B2CA1ACB94B</string>
+			<key>buildPhases</key>
+			<array>
+				<string>8A8186D5DD764EEAA2AAB8D4</string>
+				<string>9B528D2BE0B748DABB1E605A</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>8993285FA6B0440B97854714</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>productName</key>
+			<string>Pods</string>
+			<key>productReference</key>
+			<string>F51DC1FF27544048A61B1C91</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>DB86E71C1B7C4E30A1124257</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F44A5171C81042D3AF81E963</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>DD21FA708F654C71AE0AD399</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>21E349A7CCE64270AB7898BB</string>
+				<string>1583FE9CA25D4E319F6C0959</string>
+				<string>96A0B5ACB0A34A7AA5F386E9</string>
+				<string>3525561455CA498E8CABFD8A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>sourceTree</key>
+			<string>SOURCE_ROOT</string>
+		</dict>
+		<key>DD5290D79B4E47DFA2B41CCF</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>B46FBA82F326445D86813996</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>COMBINE_HIDPI_IMAGES</key>
+				<string>YES</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>DEBUG_INFORMATION_FORMAT</key>
+				<string>dwarf-with-dsym</string>
+				<key>DSTROOT</key>
+				<string>/tmp/xcodeproj.dst</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_ENABLE_OBJC_EXCEPTIONS</key>
+				<string>YES</string>
+				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Pods-Tests-SHTestCaseAdditions-prefix.pch</string>
+				<key>GCC_VERSION</key>
+				<string>com.apple.compilers.llvm.clang.1_0</string>
+				<key>INSTALL_PATH</key>
+				<string>$(BUILT_PRODUCTS_DIR)</string>
+				<key>MACOSX_DEPLOYMENT_TARGET</key>
+				<string>10.9</string>
+				<key>OTHER_CFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_CPLUSPLUSFLAGS</key>
+				<array>
+					<string>-DNS_BLOCK_ASSERTIONS=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>macosx</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>E03D0993956F40E2BD810D45</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>10524F4D1B024E27B60C139B</string>
+				<string>30B2183A134A459A9E77FB03</string>
+				<string>D272282BFB8C4B7DB5983645</string>
+				<string>74C111F55E5A4BE7839BD28B</string>
+				<string>24FFEA1879C44BD78CDAABCD</string>
+				<string>EED43FD36B554B239F4BBC6D</string>
+				<string>2F65336BBEDD412CB1AAED8C</string>
+				<string>1E57A633050B4FF98E494BB5</string>
+				<string>BCB88531FBD84E5C8D867BB2</string>
+				<string>2E8AEB6613F5472285983961</string>
+				<string>74D78829A2E54C94ABD69ADA</string>
+				<string>EC1DC36FCBF143EB81CBE313</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E27A9DEBF0834E58B2CD3373</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods-BETURLSession.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>E542FDBB22134471A8BF31DE</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9C676B21654F4858911CA066</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E64A409344B340128726E278</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1BD7DFA60763434B954CDA3D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc</string>
+			</dict>
+		</dict>
+		<key>E6E92E7706194D948BA08143</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>4E2E7759BE4B42BCB8A912C7</string>
+			<key>buildPhases</key>
+			<array>
+				<string>D9E03D4CC9EB472FAFD312EF</string>
+				<string>AD5D722FCFEC4625ACE6F95D</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>5DC0BCC788D5424FB04391A0</string>
+				<string>1A2CBDD673B345A685665673</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-Tests</string>
+			<key>productName</key>
+			<string>Pods-Tests</string>
+			<key>productReference</key>
+			<string>77C35E6D61894203B80091A6</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>E742B8A3CBF1444BA668929D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B6BEE8C00F674556A5230181</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>E882DB76BE534FE989EE8501</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>BETURLSessionAbstractSerializer.m</string>
+			<key>path</key>
+			<string>BETURLSession/BETURLSessionAbstractSerializer.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EC1DC36FCBF143EB81CBE313</key>
+		<dict>
+			<key>fileRef</key>
+			<string>188F5C00BF7542A6B7984784</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>EE32F7B13F424981A51C0E97</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>__SHTestCaseInternal.h</string>
+			<key>path</key>
+			<string>SHTestCaseAdditions/__SHTestCaseInternal.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>EED43FD36B554B239F4BBC6D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>39404DD5F63940E4B2B09E47</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>EF4533F1E6A3415E96C63599</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>0C98F2AD31FA40849FCEB4D9</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F0506AF386F04C809ACCF388</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FF7916BEF5394FF2A2CB0D7E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F157660A02514C35AA8F4331</key>
+		<dict>
+			<key>fileRef</key>
+			<string>54260843E80E48D18EE64C4E</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>F1F85D73EF2C44FCA396C118</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>VCR+NSURLSessionConfiguration.h</string>
+			<key>path</key>
+			<string>VCRURLConnection/VCR+NSURLSessionConfiguration.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F44A5171C81042D3AF81E963</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>__BETInternalManager.h</string>
+			<key>path</key>
+			<string>BETURLSession/__BETInternalManager.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>F51DC1FF27544048A61B1C91</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>libPods.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>F8692D81D4A8418280F4160B</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>836092DAEC1648B981E31BF3</string>
+				<string>344EBE7C57854A1D861EC3BD</string>
+				<string>3E67251FCB1947CDA086DB83</string>
+				<string>4F25C1AAF9F7475CB0FFCDF3</string>
+				<string>5878A2A6C05449D084D769E7</string>
+				<string>D21D1AAA307145218D71C8BF</string>
+				<string>F157660A02514C35AA8F4331</string>
+				<string>DABA5562E778495AB78C1160</string>
+				<string>AC129D8F3C5A4B418F808475</string>
+				<string>A4F1D4DFA01D40F496BCC3DE</string>
+				<string>DB86E71C1B7C4E30A1124257</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>F9812F6F12304616A93205CC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>XCTestCase+SHTestCaseAdditions.m</string>
+			<key>path</key>
+			<string>SHTestCaseAdditions/XCTest/XCTestCase+SHTestCaseAdditions.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FB99F009B05047119D6AFDC2</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9700BA4E55B34E91BB8CAD14</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FBA053E4ABDB4509B427B282</key>
+		<dict>
+			<key>fileRef</key>
+			<string>F9812F6F12304616A93205CC</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-fobjc-arc -DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>FBB6FF25860E4562AEAA4CDD</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8264F75E1F5441FAA447E14B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FCC5FEF271C94D6CB29C2D10</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>B70C64DDFF0A48C482239C2D</string>
+				<string>AC370A69950B4B83A2ED9AD3</string>
+				<string>4776502E9F3D4E09AAEF68CF</string>
+				<string>B4ABE0EA41D947E4954E900C</string>
+				<string>F1F85D73EF2C44FCA396C118</string>
+				<string>A4670F1323224290A4FAB612</string>
+				<string>BB74E2D425824F15AC6BD1C5</string>
+				<string>CA6FC0C7A9914EC6B80F8C1D</string>
+				<string>B5CC44A46DBD484192FB4096</string>
+				<string>39404DD5F63940E4B2B09E47</string>
+				<string>2E340CCE23E74E87AD058F5B</string>
+				<string>74AE81FEDAF5403F98AF53C0</string>
+				<string>62B0F400DA6B481FA1165A2B</string>
+				<string>70F34CCC9FA44AA5B65F757E</string>
+				<string>50746A55FFCC4FD4BB2CC027</string>
+				<string>564115332C3840F2BF21B16F</string>
+				<string>CAE3428518AD43918C5A38D2</string>
+				<string>6C1640FC6A5A4E2B907075A2</string>
+				<string>01BBD5C135994E3CB0D104C7</string>
+				<string>294422203237421E8E445E61</string>
+				<string>979F7D374A644799956EBF66</string>
+				<string>B31FEEEBB246493BADC4FFA7</string>
+				<string>188F5C00BF7542A6B7984784</string>
+				<string>32EA1DD8094743A68318352C</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>VCRURLConnection</string>
+			<key>path</key>
+			<string>VCRURLConnection</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FEC8E702474E4B9EB4308310</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastUpgradeCheck</key>
+				<string>0500</string>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>A344CD1F07224C06A6D0950D</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+			</array>
+			<key>mainGroup</key>
+			<string>BFCA80870B754E2C85B5F254</string>
+			<key>productRefGroup</key>
+			<string>092D58A4BFE6422BABBF437F</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>DB27A9DCA6DA4B78BD0506FF</string>
+				<string>A9A471269DCA4ECFB059A600</string>
+				<string>E6E92E7706194D948BA08143</string>
+				<string>82B3640E4C1A45F6A1A2B0C2</string>
+				<string>73CF6B83F1F14B619295BE8B</string>
+			</array>
+		</dict>
+		<key>FEF22F2C78EB4BB693AFCDFF</key>
+		<dict>
+			<key>fileRef</key>
+			<string>294422203237421E8E445E61</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>FF7916BEF5394FF2A2CB0D7E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-Tests-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>FEC8E702474E4B9EB4308310</string>
+</dict>
+</plist>

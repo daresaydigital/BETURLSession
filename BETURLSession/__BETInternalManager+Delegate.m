@@ -1,7 +1,19 @@
 
 #import "__BETInternalManager+Delegate.h"
+
 #import "BETURLSession.h"
-#import "__BETInternalShared.private"
+#include "__BETInternalShared.private"
+
+
+#import "BETResponse.h"
+@interface BETResponse ()
+-(instancetype)initWithResponseWithResponseObject:(id<NSFastEnumeration,NSObject>)theResponseObject
+                                  HTTPURLResponse:(NSHTTPURLResponse *)theHTTPURLResponse
+                                   URLSessionTask:(NSURLSessionTask *)theURLSessionTask
+                                            error:(NSError *)theError;
+@end
+
+
 
 @interface NSURLSession (Privates)
 typedef void (^BETDogmaPerformerBlock)(__BETInternalSession * internalSession, __BETInternalSessionTask * internalSessionTask, BOOL *stop);
@@ -90,8 +102,6 @@ typedef void (^BETDogmaPerformerBlock)(__BETInternalSession * internalSession, _
 -(void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
  completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler; {
 
-//  completionHandler(NSURLSessionAuthChallengeUseCredential, [NSURLCredential credentialWithUser:@"12345" password:@"12345" persistence:NSURLCredentialPersistenceForSession]);
-//  
   [self bet_delegateWithSession:session task:nil selector:_cmd
                sharedBefore:nil
                       taskBlock:nil
@@ -254,11 +264,9 @@ didCompleteWithError:(NSError *)error; {
                      if(internalSessionTask.bet_error == nil) internalSessionTask.bet_error = error;
                      if(internalSessionTask.bet_error == nil) internalSessionTask.bet_error = responseError;
                      internalSessionTask.bet_parsedObject = obj;
-                     NSObject<NSFastEnumeration> * enumerableObject = obj;
-                     internalSessionTask.bet_requestCompletion(enumerableObject,
-                                                                 (NSHTTPURLResponse *)task.response,
-                                                                  task,
-                                                                 internalSessionTask.bet_error);
+                     id<NSFastEnumeration, NSObject> enumerableObject = obj;
+                     BETResponse * response = [[BETResponse alloc] initWithResponseWithResponseObject:enumerableObject HTTPURLResponse:(NSHTTPURLResponse *)task.response URLSessionTask:task error:internalSessionTask.bet_error];
+                     internalSessionTask.bet_requestCompletion(response);
 
                    }];
 

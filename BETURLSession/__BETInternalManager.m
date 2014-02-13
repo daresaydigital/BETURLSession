@@ -1,7 +1,7 @@
 
 #import "__BETInternalManager.h"
 #import "BETURLSession.h"
-#import "__BETInternalShared.private"
+#include "__BETInternalShared.private"
 
 
 

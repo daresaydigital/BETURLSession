@@ -271,6 +271,7 @@
                                   requestHandler:(BETURLSessionMutableRequestHandlerBlock)theRequestHandler
                                completionHandler:(BETURLSessionTaskRequestDataCompletionBlock)theCompletion; {
   
+  
   NSURLSession * session = (NSURLSession*)self;
   
   NSURL * fullPathURL    = theResource ? [session.bet_baseURL URLByAppendingPathComponent:theResource] : session.bet_baseURL;

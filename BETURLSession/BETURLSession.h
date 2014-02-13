@@ -6,7 +6,8 @@
 //  Copyright (c) 2013 Seivan Heidari. All rights reserved.
 //
 
-
+#import "BETResponse.h"
 #import "BETURLSessionAbstractSerializer.h"
 #import "NSURLSession+BETURLSession.h"
 #import "NSURLSessionTask+BETURLSession.h"
+
