@@ -1,12 +1,14 @@
-#SIHTTPCore
+#BETURLSession
 
-### Will be working on the README and docs for a while... this is temporary. 
 
-[![Build Status](https://travis-ci.org/etalio/SIHTTPCore.png?branch=master)](https://travis-ci.org/screeninteraction/SIHTTPCore)
-[![Version](http://cocoapod-badges.herokuapp.com/v/SIHTTPCore/badge.png)](http://cocoadocs.org/docsets/SIHTTPCore)
-[![Platform](http://cocoapod-badges.herokuapp.com/p/SIHTTPCore/badge.png)](http://cocoadocs.org/docsets/SIHTTPCore)
+[![Build Status](https://travis-ci.org/etalio/BETURLSession.png?branch=master)](https://travis-ci.org/screeninteraction/BETURLSession)
+[![Version](https://cocoapod-badges.herokuapp.com/v/BETURLSession/badge.png)](http://cocoadocs.org/docsets/BETURLSession)
+[![Platform](https://cocoapod-badges.herokuapp.com/p/BETURLSession/badge.png)](http://cocoadocs.org/docsets/BETURLSession)
 
-> Using NSURLSession and the rest of the new iOS 7 foundation network classes, wrapped with syntactic sugar and convenience. No need to inherit and make a singleton. The category will keep track of your session with a user defined key. 
+> Using NSURLSession and the rest of the new iOS 7 & Mavericks foundation network classes, wrapped with syntactic sugar and convenience. 
+No need to inherit and make a singleton. The category will keep track of your session with a session name. 
+
+
 
 ##Overview
 
@@ -22,19 +24,19 @@ Convenience serializers (JSON out of the box by default) to get started fast.
 ##Installation
 
 ```ruby
-pod 'SIHTTPCore'
+pod 'BETURLSession'
 ```
 
 
 ##Setup
 
 ```objective-c
-#import <SIHTTPCore.h>
+#import <BETURLSession.h>
 ```
 
 
 ## API
-[Documentation for now](https://github.com/screeninteraction/SIHTTPCore/blob/develop/SIHTTPCore/NSURLSession%2BSIHTTPCore.h#L35-L36)
+[Documentation for now](https://github.com/screeninteraction/BETURLSession/blob/develop/BETURLSession/NSURLSession%2BBETURLSession.h#L35-L36)
 
 
 
@@ -43,13 +45,13 @@ pod 'SIHTTPCore'
 Contact
 -------
 
-If you end up using SIHTTPCore in a project, we'd love to hear about it.
+If you end up using BETURLSession in a project, we'd love to hear about it.
 
 email: [info@screeninteraction.com](mailto:contact@screeninteraction.com)  
 twitter: [@ScreenTwitt](https://twitter.com/ScreenTwitt)
 
 ## License
 
-SIHTTPCore is © 2013 [Screen Interaction](http://www.github.com/screeninteraction) and may be freely
+BETURLSession is © 2013 [Screen Interaction](http://www.github.com/screeninteraction) and may be freely
 distributed under the [MIT license](http://opensource.org/licenses/MIT).
-See the [`LICENSE.md`](https://github.com/screeninteraction/SIHTTPCore/blob/master/LICENSE.md) file.
+See the [`LICENSE.md`](https://github.com/screeninteraction/BETURLSession/blob/master/LICENSE.md) file.
