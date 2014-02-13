@@ -12,7 +12,7 @@
 
 //Use NSObject for implementation because NSURLSessionTask is exposing __NSFCURLSessionTask instead of the right class, causing unrecognized selectors exception
 
-@implementation NSURLSessionTask (BETURLSession)
+@implementation NSObject (BETURLSession)
 
 
 -(NSError *)bet_parseRequestError; {
