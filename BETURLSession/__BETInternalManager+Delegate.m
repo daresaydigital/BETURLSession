@@ -4,15 +4,15 @@
 #import "__BETInternalShared.private"
 
 @interface NSURLSession (Privates)
-typedef void (^SIDogmaPerformerBlock)(__BETInternalSession * internalSession, __BETInternalSessionTask * internalSessionTask, BOOL *stop);
+typedef void (^BETDogmaPerformerBlock)(__BETInternalSession * internalSession, __BETInternalSessionTask * internalSessionTask, BOOL *stop);
 
 -(void)bet_delegateWithSession:(NSURLSession *)theSession
                          task:(NSURLSessionTask *)theTask
                   selector:(SEL)theSelector
-                    sharedBefore:(SIDogmaPerformerBlock)theSharedBeforeBlock
-                     taskBlock:(SIDogmaPerformerBlock)theTaskBlock
-                  delegate:(SIDogmaPerformerBlock)theDelegateBlock
-                  internal:(SIDogmaPerformerBlock)theInternalBlock;
+                    sharedBefore:(BETDogmaPerformerBlock)theSharedBeforeBlock
+                     taskBlock:(BETDogmaPerformerBlock)theTaskBlock
+                  delegate:(BETDogmaPerformerBlock)theDelegateBlock
+                  internal:(BETDogmaPerformerBlock)theInternalBlock;
 
 @end
 
@@ -21,10 +21,10 @@ typedef void (^SIDogmaPerformerBlock)(__BETInternalSession * internalSession, __
 -(void)bet_delegateWithSession:(NSURLSession *)theSession
                          task:(NSURLSessionTask *)theTask
                   selector:(SEL)theSelector
-                    sharedBefore:(SIDogmaPerformerBlock)theSharedBeforeBlock
-                     taskBlock:(SIDogmaPerformerBlock)theTaskBlock
-                  delegate:(SIDogmaPerformerBlock)theDelegateBlock
-                  internal:(SIDogmaPerformerBlock)theInternalBlock; {
+                    sharedBefore:(BETDogmaPerformerBlock)theSharedBeforeBlock
+                     taskBlock:(BETDogmaPerformerBlock)theTaskBlock
+                  delegate:(BETDogmaPerformerBlock)theDelegateBlock
+                  internal:(BETDogmaPerformerBlock)theInternalBlock; {
   
 
   NSParameterAssert(theSelector);
@@ -257,6 +257,7 @@ didCompleteWithError:(NSError *)error; {
                      NSObject<NSFastEnumeration> * enumerableObject = obj;
                      internalSessionTask.bet_requestCompleteBlock(enumerableObject,
                                                                  (NSHTTPURLResponse *)task.response,
+                                                                  task,
                                                                  internalSessionTask.bet_error);
 
                    }];

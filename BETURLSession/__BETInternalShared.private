@@ -12,14 +12,14 @@
 @end
 
 
-@protocol SIPerforming <NSObject>
+@protocol BETPerforming <NSObject>
 -(void)bet_performSelector:(SEL)theSelector withObject:(id)theObject;
 -(id)bet_performSelector:(SEL)theSelector;
 @end
 
 
 @interface __BETInternalSession ()
-<SIPerforming>
+<BETPerforming>
 
 @property(strong,setter = bet_setRequestSerializer:)  BETURLSessionRequestSerializer<BETURLSessionRequestSerializing> *    bet_serializerForRequest;
 @property(strong,setter = bet_setResponseSerializer:) BETURLSessionResponseSerializer<BETURLSessionResponseSerializing> *   bet_serializerForResponse;
@@ -47,7 +47,7 @@
 
 
 @interface __BETInternalSessionTask ()
-<SIPerforming>
+<BETPerforming>
 @property(nonatomic,strong) __BETInternalSession * internalSession;
 @property(nonatomic,strong,setter = bet_setParseResponseError:) NSError * bet_parseResponseError;
 @property(nonatomic,strong,setter = bet_setParseRequestError:) NSError * bet_parseRequestError;
