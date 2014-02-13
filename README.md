@@ -72,6 +72,11 @@ pod 'BETURLSession'
 ```
 
 
+## Notes
+Proper naming
+completion: for callbacks that are complete (option)
+completionHandler: callbacks that are complete but need action (required)
+handler: callbacks that need action but are not necessarily completion (required)
 
 
 Contact
