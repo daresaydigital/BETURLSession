@@ -9,12 +9,15 @@
 #import "SHAppDelegate.h"
 #import <BETURLSession.h>
 
+@interface SHAppDelegate ()
+- (NSString *)joinQueryWithDictionary:(NSDictionary *)dictionary;
+@end
 
 
 @implementation SHAppDelegate
 
 -(void)applicationDidFinishLaunching:(NSNotification *)aNotification;{
-  NSURLSession * session = [NSURLSession bet_sessionWithName:@"Random" baseURLString:@"http://httpbin.org"];
+  NSURLSession * session = [NSURLSession bet_sessionWithName:@"Random" baseURLString:@"http://localhost:3000"];
   
   NSMutableArray * bigData = @[].mutableCopy;
   for (NSInteger i = 0; i!=50000; i++) {
@@ -30,15 +33,17 @@
   //  }];
 
   
-  NSURLSessionTask * task = [session bet_customTaskOnResource:@"post" requestHandler:^NSURLRequest *(NSMutableURLRequest *modifierRequest) {
+  NSURLSessionTask * task = [session bet_customTaskOnResource:@"users" requestHandler:^NSURLRequest *(NSMutableURLRequest *modifierRequest) {
+    
+    
+    NSDictionary *parameters = @{@"user" :
+                                   @{@"avatar":[[NSImage imageNamed:@"sample_image"] TIFFRepresentation],@"name":@"se<>ivan", @"weight" : @(1)}
+                                 };
+    
+    
+    [self addMultipartDataWithParameters:parameters toURLRequest:modifierRequest];
+    
     modifierRequest.HTTPMethod = @"POST";
-    NSString *boundary = [self boundaryString];
-    [modifierRequest addValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary] forHTTPHeaderField:@"Content-Type"];
-    
-    NSData *fileData = [[NSImage imageNamed:@"sample_image"] TIFFRepresentation];
-    NSData *data = [self createBodyWithBoundary:boundary username:@"rob" password:@"password" data:fileData filename:@"theFileorSo.png"];
-    
-    [modifierRequest setHTTPBody:data];
     return modifierRequest;
   } completionHandler:^(NSURL *location, NSData *responseObjectData, NSHTTPURLResponse *HTTPURLResponse, NSURLSessionTask *task, NSError *error) {
     NSString * response = [[NSString alloc] initWithData:responseObjectData encoding:NSUTF8StringEncoding];
@@ -62,61 +67,95 @@
   
 }
 
-- (NSData *) createBodyWithBoundary:(NSString *)boundary username:(NSString*)username password:(NSString*)password data:(NSData*)data filename:(NSString *)filename
+//- (void)addFormDataWithParameters:(NSDictionary *)parameters toURLRequest:(NSMutableURLRequest *)request
+//{
+//  [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
+//  NSString *query = [self joinQueryWithDictionary:parameters];
+//  request.HTTPBody = [query dataUsingEncoding:NSUTF8StringEncoding];
+//}
+
+
+
+#pragma mark - Content-type: multipart/form-data
+
+- (void)addMultipartDataWithParameters:(NSDictionary *)parameters toURLRequest:(NSMutableURLRequest *)request
 {
-  NSMutableData *body = [NSMutableData data];
-  
-  if (data) {
-    //only send these methods when transferring data as well as username and password
-    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"file\"; filename=\"%@\"\r\n", filename] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", [self mimeTypeForPath:filename]] dataUsingEncoding:NSUTF8StringEncoding]];
-    [body appendData:data];
-  }
-  
-  [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-  [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"username\"\r\n\r\n%@", username] dataUsingEncoding:NSUTF8StringEncoding]];
-  
-  [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-  [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"password\"\r\n\r\n%@", password] dataUsingEncoding:NSUTF8StringEncoding]];
-  
-  [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-  
-  return body;
-}
-- (NSString *)boundaryString
-{
-  // generate boundary string
-  //
-  // adapted from http://developer.apple.com/library/ios/#samplecode/SimpleURLConnections
-  
-  CFUUIDRef  uuid;
-  NSString  *uuidStr;
-  
-  uuid = CFUUIDCreate(NULL);
-  assert(uuid != NULL);
-  
-  uuidStr = CFBridgingRelease(CFUUIDCreateString(NULL, uuid));
-  assert(uuidStr != NULL);
-  
-  CFRelease(uuid);
-  
-  return [NSString stringWithFormat:@"Boundary-%@", uuidStr];
+  NSString *boundary = nil;
+  NSData *post = [self multipartDataWithParameters:parameters boundary:&boundary];
+  [request setValue:[@"multipart/form-data; boundary=" stringByAppendingString:boundary] forHTTPHeaderField:@"Content-type"];
+  request.HTTPBody = post;
 }
 
-- (NSString *)mimeTypeForPath:(NSString *)path
+- (NSData *)multipartDataWithParameters:(NSDictionary *)parameters boundary:(NSString **)boundary
 {
-  // get a mime type for an extension using MobileCoreServices.framework
+  NSMutableData *result = [[NSMutableData alloc] init];
+  if (boundary && !*boundary) {
+    char buffer[32];
+    for (NSUInteger i = 0; i < 32; i++) buffer[i] = "0123456789ABCDEF"[rand() % 16];
+    NSString *random = [[NSString alloc] initWithBytes:buffer length:32 encoding:NSASCIIStringEncoding];
+    *boundary = [NSString stringWithFormat:@"MyApp--%@", random];
+  }
+  NSData *newline = [@"\r\n" dataUsingEncoding:NSUTF8StringEncoding];
+  NSData *boundaryData = [[NSString stringWithFormat:@"--%@\r\n", boundary ? *boundary : @""] dataUsingEncoding:NSUTF8StringEncoding];
   
-  CFStringRef extension = (__bridge CFStringRef)[path pathExtension];
-  CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, extension, NULL);
-  assert(UTI != NULL);
-  
-  NSString *mimetype = CFBridgingRelease(UTTypeCopyPreferredTagWithClass(UTI, kUTTagClassMIMEType));
-  assert(mimetype != NULL);
-  
-  CFRelease(UTI);
-  
-  return mimetype;
+  for (NSArray *pair in [self flatten:parameters]) {
+    [result appendData:boundaryData];
+    [self appendToMultipartData:result key:pair[0] value:pair[1]];
+    [result appendData:newline];
+  }
+  NSString *end = [NSString stringWithFormat:@"--%@--\r\n", boundary ? *boundary : @""];
+  [result appendData:[end dataUsingEncoding:NSUTF8StringEncoding]];
+  return result;
 }
+
+- (void)appendToMultipartData:(NSMutableData *)data key:(NSString *)key value:(id)value
+{
+  if ([value isKindOfClass:NSData.class]) {
+    NSString *name = key;
+    if ([key rangeOfString:@"%2F"].length) {
+      NSRange r = [name rangeOfString:@"%2F"];
+      key = [key substringFromIndex:r.location + r.length];
+      name = [name substringToIndex:r.location];
+    }
+    NSString *string = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\nContent-Type: application/octet-stream\r\n\r\n", name, key];
+    [data appendData:[string dataUsingEncoding:NSUTF8StringEncoding]];
+    [data appendData:value];
+  } else {
+    NSString *string = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n%@", key, value];
+    [data appendData:[string dataUsingEncoding:NSUTF8StringEncoding]];
+  }
+}
+
+- (NSString *)unescape:(NSString *)string
+{
+  return CFBridgingRelease(CFURLCreateStringByReplacingPercentEscapesUsingEncoding(NULL, (__bridge CFStringRef)string, CFSTR(""), kCFStringEncodingUTF8));
+}
+
+- (NSString *)escape:(NSString *)string
+{
+  return CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (__bridge CFStringRef)string, NULL, CFSTR("*'();:@&=+$,/?!%#[]"), kCFStringEncodingUTF8));
+}
+-(NSArray *)flatten:(NSDictionary *)dictionary
+{
+  NSMutableArray *result = [NSMutableArray arrayWithCapacity:dictionary.count];
+  NSArray *keys = [dictionary.allKeys sortedArrayUsingSelector:@selector(compare:)];
+  for (NSString *key in keys) {
+    id value = [dictionary objectForKey:key];
+    if ([value isKindOfClass:NSArray.class] || [value isKindOfClass:NSSet.class]) {
+      NSString *k = [[self escape:key] stringByAppendingString:@"[]"];
+      for (id v in value) {
+        [result addObject:@[k, v]];
+      }
+    } else if ([value isKindOfClass:NSDictionary.class]) {
+      for (NSString *k in value) {
+        NSString *kk = [[self escape:key] stringByAppendingFormat:@"[%@]", [self escape:k]];
+        [result addObject:@[kk, [value valueForKey:k]]];
+      }
+    } else {
+      [result addObject:@[[self escape:key], value]];
+    }
+  }
+  return result;
+}
+
 @end
