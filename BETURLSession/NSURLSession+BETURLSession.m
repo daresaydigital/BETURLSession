@@ -20,6 +20,13 @@
 #import "BETURLSessionResponseSerializerJSON.h"
 
 
+@interface NSURLSession ()
+-(NSURLSessionTask *)bet_buildDataTaskOnResource:(NSString *)theResource
+                                      withParams:(id<NSFastEnumeration>)theParams
+                                  requestHandler:(BETURLSessionMutableRequestHandlerBlock)theRequestHandler
+                               completionHandler:(BETURLSessionTaskRequestDataCompletionBlock)theCompletion;
+
+@end
 //Use NSObject for implementation because NSURLSession is exposing __NSFCURLSession instead of the right class, causing unrecognized selectors exception. Basically Apple Swizzled. 
 @implementation NSObject (BETURLSession)
 
@@ -244,14 +251,15 @@
 }
 
 
+#pragma mark - Custom Tasks
 -(NSURLSessionTask *)bet_buildTaskWithHTTPMethodString:(NSString *)theMethodString
                                            onResource:(NSString *)theResource
                                                params:(id<NSFastEnumeration>)theParams
                                         completion:(BETURLSessionTaskRequestCompletionBlock)theCompletion; {
   
   NSParameterAssert(theMethodString);
-  
-  NSURLSessionTask * task = [self bet_buildDataTaskOnResource:theResource
+  NSURLSession * session = (NSURLSession*)self;
+  NSURLSessionTask * task = [session bet_buildDataTaskOnResource:theResource
                                                   withParams:theParams
                                         requestHandler:^NSMutableURLRequest *(NSMutableURLRequest *modifierRequest) {
     [modifierRequest setHTTPMethod:theMethodString];
@@ -264,16 +272,12 @@
   
 }
 
-#pragma mark - Custom Tasks
 
--(NSURLSessionTask *)bet_buildDataTaskOnResource:(NSString *)theResource
-                                      withParams:(id<NSFastEnumeration>)theParams
+-(NSURLSessionTask *)bet_customTaskOnResource:(NSString *)theResource
                                   requestHandler:(BETURLSessionMutableRequestHandlerBlock)theRequestHandler
                                completionHandler:(BETURLSessionTaskRequestDataCompletionBlock)theCompletion; {
-  
-  
+
   NSURLSession * session = (NSURLSession*)self;
-  
   NSURL * fullPathURL    = theResource ? [session.bet_baseURL URLByAppendingPathComponent:theResource] : session.bet_baseURL;
   NSParameterAssert(fullPathURL);
   
@@ -283,6 +287,42 @@
   request = nil;
   
   NSParameterAssert(modifierRequest);
+  NSURLSessionTask * task = nil;
+  if(modifierRequest.HTTPBody) task = [session uploadTaskWithRequest:modifierRequest fromData:modifierRequest.HTTPBody];
+  else task = [session downloadTaskWithRequest:modifierRequest];
+  
+  [session.bet_internalSession buildInternalSessionTaskWithURLSessionTask:task];
+  
+  [task bet_setRequestDataCompletion:theCompletion];
+
+  if(session.bet_isAutoResumed) [task resume];
+
+  return task;
+
+  
+  
+}
+
+
+#pragma mark - Privates
+-(NSURLSessionTask *)bet_buildDataTaskOnResource:(NSString *)theResource
+                                      withParams:(id<NSFastEnumeration>)theParams
+                                  requestHandler:(BETURLSessionMutableRequestHandlerBlock)theRequestHandler
+                               completionHandler:(BETURLSessionTaskRequestDataCompletionBlock)theCompletion; {
+  
+  
+  NSURLSession * session = (NSURLSession*)self;
+  NSURL * fullPathURL    = theResource ? [session.bet_baseURL URLByAppendingPathComponent:theResource] : session.bet_baseURL;
+  NSParameterAssert(fullPathURL);
+  
+  __block NSURLRequest * request = [NSURLRequest requestWithURL:fullPathURL];
+  __block NSMutableURLRequest * modifierRequest = request.mutableCopy;
+  if(theRequestHandler) modifierRequest = theRequestHandler(modifierRequest).mutableCopy;
+  request = nil;
+  
+  NSParameterAssert(modifierRequest);
+
+  
   
   __block NSError * parsingError    = nil;
   

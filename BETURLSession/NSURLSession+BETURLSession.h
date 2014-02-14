@@ -89,12 +89,10 @@
 
 typedef NSURLRequest * (^BETURLSessionMutableRequestHandlerBlock)(NSMutableURLRequest * modifierRequest);
 
-#pragma mark - Custom Tasks
+-(NSURLSessionTask *)bet_customTaskOnResource:(NSString *)theResource
+                               requestHandler:(BETURLSessionMutableRequestHandlerBlock)theRequestHandler
+                            completionHandler:(BETURLSessionTaskRequestDataCompletionBlock)theCompletion;
 
--(NSURLSessionTask *)bet_buildDataTaskOnResource:(NSString *)theResource
-                                      withParams:(id<NSFastEnumeration>)theParams
-                                  requestHandler:(BETURLSessionMutableRequestHandlerBlock)theRequestHandler
-                               completionHandler:(BETURLSessionTaskRequestDataCompletionBlock)theCompletion;
 
 
 @end

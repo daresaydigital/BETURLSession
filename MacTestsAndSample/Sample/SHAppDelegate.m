@@ -21,8 +21,22 @@
     [bigData addObject:@(i)];
   }
   
-  NSURLSessionTask * task = [session bet_taskPOSTResource:@"post" withParams:@{@"POST" : bigData} completion:^(BETResponse *response) {
-    NSLog(@"POST completed with code %@ & error %@", @(response.HTTPURLResponse.statusCode), response.error);
+//  NSURLSessionTask * task = [session bet_taskPOSTResource:@"post" withParams:@{@"POST" : bigData} completion:^(BETResponse *response) {
+//    NSLog(@"POST completed with code %@ & error %@", @(response.HTTPURLResponse.statusCode), response.error);
+//  }];
+
+  //  NSURLSessionTask * task = [session bet_taskPOSTResource:@"post" withParams:@{@"POST" : bigData} completion:^(BETResponse *response) {
+  //    NSLog(@"POST completed with code %@ & error %@", @(response.HTTPURLResponse.statusCode), response.error);
+  //  }];
+
+  
+  NSURLSessionTask * task = [session bet_customTaskOnResource:@"post" requestHandler:^NSURLRequest *(NSMutableURLRequest *modifierRequest) {
+    modifierRequest.HTTPMethod = @"POSt";
+    return modifierRequest;
+  } completionHandler:^(NSURL *location, NSData *responseObjectData, NSHTTPURLResponse *HTTPURLResponse, NSURLSessionTask *task, NSError *error) {
+    NSString * response = [[NSString alloc] initWithData:responseObjectData encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@ \n %@ \n %@ \n %@ \n %@ \n", location, response, HTTPURLResponse, task, error);
   }];
   
   BETURLSessionTaskProgressHandlerBlock (^progressHandlerWithName)(NSString *) = ^BETURLSessionTaskProgressHandlerBlock(NSString * name) {
