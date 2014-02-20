@@ -10,7 +10,7 @@
 #import <BETURLSession.h>
 
 @interface SHAppDelegate ()
-- (NSString *)joinQueryWithDictionary:(NSDictionary *)dictionary;
+
 @end
 
 
@@ -67,13 +67,6 @@
   
 }
 
-//- (void)addFormDataWithParameters:(NSDictionary *)parameters toURLRequest:(NSMutableURLRequest *)request
-//{
-//  [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-type"];
-//  NSString *query = [self joinQueryWithDictionary:parameters];
-//  request.HTTPBody = [query dataUsingEncoding:NSUTF8StringEncoding];
-//}
-
 
 
 #pragma mark - Content-type: multipart/form-data
@@ -120,7 +113,8 @@
     NSString *string = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\nContent-Type: application/octet-stream\r\n\r\n", name, key];
     [data appendData:[string dataUsingEncoding:NSUTF8StringEncoding]];
     [data appendData:value];
-  } else {
+  }
+  else {
     NSString *string = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n%@", key, value];
     [data appendData:[string dataUsingEncoding:NSUTF8StringEncoding]];
   }
