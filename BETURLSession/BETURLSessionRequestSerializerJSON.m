@@ -37,7 +37,10 @@
   else {
     NSMutableURLRequest * newRequest = theRequest.mutableCopy;
     NSError * error = nil;
-    [newRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:theParameters options:self.JSONWritingOptions error:&error]];
+    newRequest.HTTPBody =[NSJSONSerialization dataWithJSONObject:theParameters options:self.JSONWritingOptions error:&error];
+    [newRequest setValue:@(newRequest.HTTPBody.length).stringValue forHTTPHeaderField:@"Content-Length"];
+
+
     theBlock(newRequest,error);
   }
   
