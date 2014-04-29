@@ -313,13 +313,23 @@ static NSString * const BETURLSessionSerializerAbstractEscapedInQueryStringChara
   NSParameterAssert(self.acceptableMIMETypes);
   BOOL isValidResponse = YES;
   NSError * error = nil;
-  
+  id theResponseObject = nil;
+  NSString *localizedDescriptionString;
+    if(theData) {
+        theResponseObject =[NSJSONSerialization JSONObjectWithData:theData options:NSJSONWritingPrettyPrinted|| NSJSONReadingMutableContainers error:nil];
+        NSLog(@"error message %@",theResponseObject[@"error"]);
+    }
+    localizedDescriptionString = theResponseObject[@"error"] ?
+                                 theResponseObject[@"error"] : NSLocalizedString(@"BETURLSession Request Failed",@"BETURLSession Error");
+    
+
   if (theResponse && [theResponse isKindOfClass:[NSHTTPURLResponse class]]) {
     if ([self.acceptableHTTPStatusCodes containsIndex:(NSUInteger)theResponse.statusCode] == NO) {
+      
+
+        
       NSDictionary * userInfo = @{
-                                  NSLocalizedDescriptionKey:NSLocalizedString(@"BETURLSession Request Failed",
-                                                                              @"BETURLSession Error"),
-                                  
+                                  NSLocalizedDescriptionKey:localizedDescriptionString,
                                   NSLocalizedFailureReasonErrorKey:
                                     [NSString stringWithFormat:NSLocalizedString(@"Request failed: %@ (%d)",
                                                                                  @"BETURLSession"),
