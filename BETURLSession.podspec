@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   name           = "BETURLSession"
   url            = "https://github.com/screeninteraction/#{name}"
   git_url        = "#{url}.git"
-  version        = "1.2"
+  version        = "1.3"
   source_files   = "#{name}/**/*.{h,m}"
 
   s.name         = name
