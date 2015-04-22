@@ -272,6 +272,61 @@
   
 }
 
+-(NSURLSessionTask *)bet_buildTaskWithHTTPMethodString:(NSString *)theMethodString
+                                            onResource:(NSString *)theResource
+                                                params:(id<NSFastEnumeration>)theParams
+                                                  data:(NSData *)data
+                                              mimeType:(NSString *)mimeType
+                                              filename:(NSString *)filename
+                                                  name:(NSString *)name
+                                            completion:(BETURLSessionTaskRequestCompletionBlock)theCompletion
+{
+    NSParameterAssert(theMethodString);
+    
+    NSURLSession * session = (NSURLSession*)self;
+    NSURLSessionTask * task;
+    
+    task = [session bet_buildDataTaskOnResource:theResource withParams:theParams requestHandler:^NSURLRequest *(NSMutableURLRequest *modifierRequest){
+        
+        char buffer[10];
+        for (NSUInteger i = 0; i < 10; i++) buffer[i] = "0123456789ABCDEF"[rand() % 16];
+        NSString *random = [[NSString alloc] initWithBytes:buffer length:10 encoding:NSASCIIStringEncoding];
+        NSString *boundary = [NSString stringWithFormat:@"0x%@", random];
+        
+        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+        [modifierRequest addValue:contentType forHTTPHeaderField:@"Content-Type"];
+        [modifierRequest setHTTPMethod:theMethodString];
+        
+        NSMutableData *body = [NSMutableData data];
+        NSDictionary *params = (NSDictionary *)theParams;             
+        
+        for (NSString *key in [params allKeys]) {
+            [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", key] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[[NSString stringWithFormat:@"%@\r\n", params[key]] dataUsingEncoding:NSUTF8StringEncoding]];
+        }
+
+        if (data) {
+            [body appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", name, filename] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", mimeType] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:data];
+            [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+        }
+        
+        [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];        
+        
+        [modifierRequest setHTTPBody:body];
+        return modifierRequest.copy;
+                
+    } completionHandler:nil];
+    
+    [task bet_setRequestCompletion:theCompletion];
+    if(self.bet_isAutoResumed) [task resume];
+    
+    return task;
+}
+
 
 -(NSURLSessionTask *)bet_customTaskOnResource:(NSString *)theResource
                                   requestHandler:(BETURLSessionMutableRequestHandlerBlock)theRequestHandler
@@ -349,9 +404,9 @@
   
   
   [session.bet_serializerForRequest.HTTPAdditionalHeaders enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-    [modifierRequest setValue:obj forHTTPHeaderField:key];
+      if (!modifierRequest.allHTTPHeaderFields[key]) [modifierRequest setValue:obj forHTTPHeaderField:key];
   }];
-  
+     
   if(modifierRequest.HTTPBody && [session.bet_serializerForRequest.acceptableHTTPMethodsForURIEncoding containsObject:modifierRequest.HTTPMethod.uppercaseString] == NO) {
     task = [session uploadTaskWithRequest:modifierRequest fromData:modifierRequest.HTTPBody];
   }

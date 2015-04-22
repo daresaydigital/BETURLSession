@@ -86,6 +86,14 @@
                                                params:(id<NSFastEnumeration>)theParams
                                         completion:(BETURLSessionTaskRequestCompletionBlock)theCompletion;
 
+-(NSURLSessionTask *)bet_buildTaskWithHTTPMethodString:(NSString *)theMethodString
+                                            onResource:(NSString *)theResource
+                                                params:(id<NSFastEnumeration>)theParams
+                                                  data:(NSData *)data
+                                              mimeType:(NSString *)mimeType
+                                              filename:(NSString *)filename
+                                                  name:(NSString *)name
+                                            completion:(BETURLSessionTaskRequestCompletionBlock)theCompletion;
 
 typedef NSURLRequest * (^BETURLSessionMutableRequestHandlerBlock)(NSMutableURLRequest * modifierRequest);
 
